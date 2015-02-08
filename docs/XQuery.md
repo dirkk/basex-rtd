@@ -27,7 +27,9 @@ Install and manage XQuery and Java modules.
 Accessing and calling Java code from XQuery. 
 
 
-  UNKNOWN
+  
+### [Full-Text](Full-Text.md)
+
  How to use BaseX as a full-fledged full-text processor. 
 
 

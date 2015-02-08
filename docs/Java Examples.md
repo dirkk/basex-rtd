@@ -39,7 +39,9 @@ BaseX provides [Java Bindings](Java Bindings.md) for accessing external Java cod
  * [ModuleDemo.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/module/ModuleDemo.java) is a simple XQuery demo module that demonstrates how XQuery items can be processed from Java. It is derived from the `QueryModule` class. 
  * [QueryModule.java](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/query/QueryModule.java) is located in the BaseX core. Java query modules can extend this class to get access to the current query context and enrich functions with properties (). 
 
-  UNKNOWN The implementation of the [BaseX XQJ API](http://xqj.net/basex/) (closed-source) has been written by Charles Foster. It uses the client/server architecture. The basex-examples repository contains [various examples](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/xqj) on how to use XQJ. 
+  
+### XQJ API
+ The implementation of the [BaseX XQJ API](http://xqj.net/basex/) (closed-source) has been written by Charles Foster. It uses the client/server architecture. The basex-examples repository contains [various examples](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/xqj) on how to use XQJ. 
 
 
 ### [Client API](Clients.md)

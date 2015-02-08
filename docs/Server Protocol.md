@@ -133,7 +133,9 @@ Most language bindings provide the following constructors and functions:
  * Return process information:`String info()`
  * Close the session:`void close()`
 
-  UNKNOWN * Create query instance with session and query:`Query(Session session, String query)`
+  
+#### Query
+ * Create query instance with session and query:`Query(Session session, String query)`
  * Bind an external variable:`void bind(String name, String value, String type)`The type can be an empty string. 
  * Bind the context item:`void context(String value, String type)`The type can be an empty string. 
  * Execute the query and return the result:`String execute()`
@@ -143,7 +145,9 @@ Most language bindings provide the following constructors and functions:
  * Return serialization parameters:`String options()`
  * Return if the query may perform updates:`boolean updating()`
  * Close the query:`void close()`
-UNKNOWNUNKNOWN * Updated: cram-md5 replaced with digest authentication 
+
+#### Changelog
+UNKNOWN * Updated: cram-md5 replaced with digest authentication 
  * Updated: `BIND` command: support more than one item 
 UNKNOWN * Added: Query Commands CONTEXT, UPDATING and FULL 
  * Added: Client function `context(String value, String type)`

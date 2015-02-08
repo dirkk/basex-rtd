@@ -18,7 +18,9 @@ This page is one of the [Main Sections](Main Page.md) of the documentation. It c
  * [Statistics](Statistics.md) : Exemplary statistics on databases created with BaseX 
  * [Twitter](Twitter.md) : Storing live tweets in BaseX  
 
-  UNKNOWN * [User Management](User Management.md) : User management in the client/server environment 
+  
+### Server and Query Architecture
+ * [User Management](User Management.md) : User management in the client/server environment 
  * [Transaction Management](Transaction Management.md) : Insight into the BaseX transaction management 
  * [Logging](Logging.md) : Description of the server logs 
  * [Events](Events.md) : Description of the event feature 

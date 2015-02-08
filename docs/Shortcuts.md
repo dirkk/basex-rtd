@@ -41,7 +41,9 @@ Delete word right of cursor  | Ctrl Delete  | Alt Delete
 Delete text left of cursor  | Ctrl Shift Backspace  | ⌘ Backspace 
 Delete text right of cursor  | Ctrl Shift Delete  | ⌘ Delete 
 
-  UNKNOWN
+  
+#### Finding 
+
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
 Jump to next error  | Ctrl . (period)  | ⌘ . (period) 
@@ -50,7 +52,9 @@ Go to line  | Ctrl L  | ⌘ L
 Find and replace text  | Ctrl F  | ⌘ F 
 Find next instance of text  | F3Ctrl G  | ⌘ F3⌘ G 
 Find previous instance of text  | Shift F3Ctrl Shift G  | ⌘ Shift F3⌘ Shift G 
-UNKNOWN
+
+#### Navigation 
+
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
 Move one character to the left/right  | ←/→  | ←/→ 
@@ -60,7 +64,9 @@ Move one line up/down  | ↑/↓  | ↑/↓
 Move one screen-full up/down  | Page ↑/↓  | Page ↑/↓ (fn ↑/↓) 
 Move to top/bottom  | Ctrl Home/End  | ↖/↘ (⌘ ↑/↓) 
 Scroll one line up/down  | Ctrl ↑/↓  | Alt ↑/↓ 
-UNKNOWN The GUI editor provides various code completions, which simplify the authoring of complex XQuery applications. Opening elements, comments, quotes or brackets will automatically be closed, and new lines will automatically be indented. If the [shortcut](Shortcuts.md#Editor_Shortcuts) for code completions is pressed (Ctrl Space), the keys listed in the following table will be replaced with their corresponding values. An underscore indicates where the cursor will be placed after the replacement: 
+
+#### Code Completions
+ The GUI editor provides various code completions, which simplify the authoring of complex XQuery applications. Opening elements, comments, quotes or brackets will automatically be closed, and new lines will automatically be indented. If the [shortcut](Shortcuts.md#Editor_Shortcuts) for code completions is pressed (Ctrl Space), the keys listed in the following table will be replaced with their corresponding values. An underscore indicates where the cursor will be placed after the replacement: 
 
 
 **Key** | **Value**
@@ -111,7 +117,11 @@ UNKNOWN The GUI editor provides various code completions, which simplify the aut
 `try` | `try {  _} catch * {  }`
 `typeswitch` | `typeswitch(_)  case return   default return `
 `variable` | `declare variable $_ := ;`
-UNKNOWNUNKNOWN The following shortcuts are available from most GUI components: 
+
+#### GUI
+
+#### Global Shortcuts 
+ The following shortcuts are available from most GUI components: 
 
 
 **Description** | **Win/Linux** | **Mac**
@@ -127,7 +137,9 @@ Reset font size  | Ctrl 0  | ⌘ 0
 Browse back/forward  | Alt ←/→Backspace  | ⌘ ←/→ 
 Browse one level up  | Alt ↑  | ⌘ ↑ 
 Browse to the root node  | Alt Home  | ⌘ Home 
-UNKNOWN The following commands and options are also linked from the main menu: 
+
+#### Menu Shortcuts 
+ The following commands and options are also linked from the main menu: 
 
 
 #### Database 
@@ -160,11 +172,15 @@ Find files  | Ctrl H  | ⌘ Shift H
 Toggle result view  | Ctrl R  | ⌘ R 
 Toggle query info view  | Ctrl I  | ⌘ I 
 
-  UNKNOWN
+  
+#### Options 
+
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
 Open preference dialog  | Ctrl Shift P  | ⌘ , (comma) 
-UNKNOWN
+
+#### Visualization 
+
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
 Toggle map view  | Ctrl 1  | ⌘ 1 
@@ -173,7 +189,9 @@ Toggle folder view  | Ctrl 3  | ⌘ 3
 Toggle plot view  | Ctrl 4  | ⌘ 4 
 Toggle table view  | Ctrl 5  | ⌘ 5 
 Toggle explorer view  | Ctrl 6  | ⌘ 6 
-UNKNOWN
+
+#### Help 
+
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
 Show Help  | F1  | F1 

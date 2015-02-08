@@ -23,7 +23,9 @@ Execution plan:
 ![QueryPlan1.png](img/QueryPlan1.png)
 
 
-Replacing XQuery with equivalent XPath expressionsUNKNOWN Query: `//MEDIUM/LAN[text() contains text "dt"]`
+Replacing XQuery with equivalent XPath expressions
+### Execution plan for query execution with full-text index access and without
+ Query: `//MEDIUM/LAN[text() contains text "dt"]`
 
 
 Execution plan: 

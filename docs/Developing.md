@@ -20,11 +20,15 @@ This page is one of the [Main Sections](Main Page.md) of the documentation. It p
 The project's [JavaDoc](http://docs.basex.org/javadoc) can be explored online. 
 
 
-  UNKNOWN * [RESTXQ](RESTXQ.md) : Write web services with XQuery 
+  
+### [Web Application](Web Application.md)
+ * [RESTXQ](RESTXQ.md) : Write web services with XQuery 
  * [REST](REST.md) : Access and update databases via HTTP requests 
  * [WebDAV](WebDAV.md) : Access databases from your filesystem 
  * [XForms](XForms.md) : Build browser forms with XML technologies 
-UNKNOWN * [Clients](Clients.md) : Communicate with BaseX using C#, PHP, Python, Perl, C, ... 
+
+### APIs
+ * [Clients](Clients.md) : Communicate with BaseX using C#, PHP, Python, Perl, C, ... 
  * [Java Examples](Java Examples.md) : Code examples for developing with BaseX 
  * [XQJ API](http://xqj.net/basex) , implemented by Charles Foster 
  * [XQuery for Scala API](https://github.com/fancellu/xqs) , based on XQJ and written by Dino Fancellu 

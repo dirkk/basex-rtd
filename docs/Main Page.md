@@ -7,7 +7,9 @@
 ![Screenshot.png](img/Screenshot.png)
 
  
-BaseX GUIUNKNOWN[BaseX](http://basex.org) is both a light-weight, high-performance and scalable XML Database and an XQuery 3.0 Processor with full support for the W3C Update and Full Text extensions. It focuses on storing, querying, and visualizing large XML and JSON documents and collections. A visual frontend allows users to interactively explore data and evaluate queries in realtime (i.e., with each key click). BaseX is platform-independent and distributed under the free BSD License (find more in [Wikipedia](http://en.wikipedia.org/wiki/BaseX)). 
+BaseX GUI
+# Welcome to the documentation of BaseX!
+[BaseX](http://basex.org) is both a light-weight, high-performance and scalable XML Database and an XQuery 3.0 Processor with full support for the W3C Update and Full Text extensions. It focuses on storing, querying, and visualizing large XML and JSON documents and collections. A visual frontend allows users to interactively explore data and evaluate queries in realtime (i.e., with each key click). BaseX is platform-independent and distributed under the free BSD License (find more in [Wikipedia](http://en.wikipedia.org/wiki/BaseX)). 
 
  
 This documentation is based on **BaseX 8.0**. It can also be downloaded as [PDF](Documentation.md). Features that have recently been added or changed are highlighted and can be [searched for](http://docs.basex.org/index.php?search=7.8). 
@@ -29,7 +31,9 @@ More information on using the wide range of XQuery functions and performing XPat
 Categories: [XQuery](http://docs.basex.org/wiki/Category:XQuery)
 
 
-  UNKNOWN
+  
+## [Developer Section](Developing.md)
+
  The [Developer Section](Developing.md) provides useful information for developers. Here you can find information on our supported client APIs and HTTP services, and we present different ways how you can integrate BaseX into your own project. 
 
 
