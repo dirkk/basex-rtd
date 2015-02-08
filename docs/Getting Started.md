@@ -4,7 +4,7 @@
 
 
  
-This page is one of the [Main Sections](Main Page.md) of the documentation. It gives a quick introduction on how to start, run, and use BaseX. 
+This page is one of the [Main Sections](index.md) of the documentation. It gives a quick introduction on how to start, run, and use BaseX. 
 
  
 ## First Steps

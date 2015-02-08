@@ -4,7 +4,7 @@
 
 
  
-This page is one of the [Main Sections](Main Page.md) of the documentation. It provides useful information for developers. Here you can find information on various alternatives to integrate BaseX into your own project. 
+This page is one of the [Main Sections](index.md) of the documentation. It provides useful information for developers. Here you can find information on various alternatives to integrate BaseX into your own project. 
 
  
 ## Integrate & Contribute

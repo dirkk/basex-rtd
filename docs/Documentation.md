@@ -4,7 +4,7 @@
 
 
  
-This page is linked from the [Main Page](Main Page.md). It contains links to previous version of the BaseX documentation. 
+This page is linked from the [Main Page](index.md). It contains links to previous version of the BaseX documentation. 
 
  
 Since Version 7.2, we are offering PDF versions of our documentation: 

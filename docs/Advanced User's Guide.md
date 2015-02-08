@@ -4,7 +4,7 @@
 
 
  
-This page is one of the [Main Sections](Main Page.md) of the documentation. It contains details on the BaseX storage and the Server architecture, and presents some more GUI features. 
+This page is one of the [Main Sections](index.md) of the documentation. It contains details on the BaseX storage and the Server architecture, and presents some more GUI features. 
 
  
 ## Storage

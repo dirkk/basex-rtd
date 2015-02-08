@@ -4,7 +4,7 @@ repo_url: https://github.com/dirkk/basex-rtd
 site_favicon: favicon.ico
 markdown_extensions: [admonition]
 pages:
-- ["Main Page.md", "Getting Started", "Main Page"]
+- ["index.md", "Getting Started", "Main Page"]
 - ["Getting Started.md", "Getting Started", "Getting Started"]
 - ["Startup.md", "Getting Started", "Startup"]
 - ["Command-Line Options.md", "Getting Started", "Command-Line Options"]
