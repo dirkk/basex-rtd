@@ -47,6 +47,7 @@ h3, h4, h5, h6 {
 }
 
 .wy-nav-top,
+.wy-menu-vertical a:active,
 .wy-side-nav-search {
     background-color: #A00;
 }
