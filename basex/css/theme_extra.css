@@ -33,10 +33,24 @@
  *
  * https://github.com/tomchristie/mkdocs/issues/233
  */
-code {
+pre, code {
     white-space: pre;
+    color: #A00;
+    font-size: 75% !important;
+}
+
+h3, h4, h5, h6 {
+  color: #A00 !important;
 }
 
 .wy-side-nav-search {
-  background-color: #FC2006 !important;
+    background-color: #A00;
+}
+
+.rst-content dl:not(.docutils) dt {
+    color: #A00;
+    display: block;
+    border-top: 3px solid #A00;
+    background-color: #FFF4F4;
+    font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
 }
