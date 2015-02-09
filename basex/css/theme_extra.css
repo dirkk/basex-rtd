@@ -55,5 +55,6 @@ h3, h4, h5, h6 {
     display: block;
     border-top: 3px solid #A00;
     background-color: #FFF4F4;
+    font-size: 75% !important;
     font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
 }
