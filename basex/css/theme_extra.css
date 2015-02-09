@@ -46,6 +46,7 @@ h3, h4, h5, h6 {
   color: #A00 !important;
 }
 
+.wy-nav-top,
 .wy-side-nav-search {
     background-color: #A00;
 }
