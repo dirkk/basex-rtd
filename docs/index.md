@@ -2,11 +2,6 @@
 # Main Page
  
 
-!!! warning
-    Some note
-
-!!! note
-    Some note
 
  
 ![Screenshot.png](img/Screenshot.png)

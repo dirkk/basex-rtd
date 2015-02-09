@@ -1,6 +1,11 @@
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="{{ homepage_url }}">Docs</a> &raquo;</li>
+    {% for nav_item in nav %}
+      {% if nav_item.active%}
+        <li>{{ nav_item.title }} &raquo;</li>
+      {%endif%}
+    {% endfor %}
     <li>{{ current_page.title }}</li>
       <li class="wy-breadcrumbs-aside">
         {% if repo_url %}
