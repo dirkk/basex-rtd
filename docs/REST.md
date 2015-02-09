@@ -171,7 +171,8 @@ All query parameters that have not been processed before will be treated as vari
 
  * The following request assigns two variables to a server-side query file `mult.xq` placed in the HTTP directory:`http://localhost:8984/rest?run=mult.xq&$a=21&$b=2`
 
-    (: XQuery file: mult.xq :)
+    (: XQuery file: mult.xq
+    :)
     declare variable $a as xs:integer external;
     declare variable $b as xs:integer external;
     <mult>{ $a * $b }</mult>

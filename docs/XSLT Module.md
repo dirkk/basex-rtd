@@ -23,36 +23,35 @@ All functions in this module are assigned to the `http://basex.org/modules/xslt`
 
 ### xslt:processor
 
-`xslt:processor() as xs:string`
+xslt:processor() as xs:string
 
-Returns the name of the applied XSLT processor, or the path to a custom implementation (currently: "Java", "Saxon EE", "Saxon PE", or "Saxon HE"). 
+:   Returns the name of the applied XSLT processor, or the path to a custom implementation (currently: "Java", "Saxon EE", "Saxon PE", or "Saxon HE"). 
 
 
 ### xslt:version
 
-`xslt:version() as xs:string`
+xslt:version() as xs:string
 
-Returns the supported XSLT version (currently: "1.0" or "2.0"). "Unknown" is returned if a custom implementation was chosen. 
+:   Returns the supported XSLT version (currently: "1.0" or "2.0"). "Unknown" is returned if a custom implementation was chosen. 
 
 
 ### xslt:transform
 
-`xslt:transform($input as item(), $stylesheet as item()) as node()`
-`xslt:transform($input as item(), $stylesheet as item(), $params as item()) as node()`
+xslt:transform($input as item(), $stylesheet as item()) as node()
+xslt:transform($input as item(), $stylesheet as item(), $params as item()) as node()
 
-Transforms the document specified by `$input`, using the XSLT template specified by `$stylesheet`, and returns the result as node. `$input` and `$stylesheet` can be specified as  * `xs:string` , containing the path to the document, 
- * `xs:string` , containing the document in its string representation, or 
- * `node()` , containing the document itself. 
+:   Transforms the document specified by `$input`, using the XSLT template specified by `$stylesheet`, and returns the result as node. `$input` and `$stylesheet` can be specified as  * `xs:string` , containing the path to the document,     * `xs:string` , containing the document in its string representation, or 
+    * `node()` , containing the document itself. 
+    The `$params` argument can be used to bind variables to a stylesheet, which can either be specified Note that only strings are supported when using Saxon (XSLT 2.0). 
 
- The `$params` argument can be used to bind variables to a stylesheet, which can either be specified Note that only strings are supported when using Saxon (XSLT 2.0). 
 
 
 ### xslt:transform-text
 
-`xslt:transform-text($input as item(), $stylesheet as item()) as xs:string`
-`xslt:transform-text($input as item(), $stylesheet as item(), $params as item()) as xs:string`
+xslt:transform-text($input as item(), $stylesheet as item()) as xs:string
+xslt:transform-text($input as item(), $stylesheet as item(), $params as item()) as xs:string
 
-Transforms the document specified by `$input`, using the XSLT template specified by `$stylesheet`, and returns the result as string. The parameters are the same as described for [xslt:transform](XSLT Module.md#xslt-transform). 
+:   Transforms the document specified by `$input`, using the XSLT template specified by `$stylesheet`, and returns the result as string. The parameters are the same as described for [xslt:transform](XSLT Module.md#xslt-transform). 
 
 
 ### Examples
@@ -86,11 +85,14 @@ Transforms the document specified by `$input`, using the XSLT template specified
 **Query:**
 
 
-    (: Outputs the result as html. :)
+    (: Outputs the result as html.
+    :)
     declare option output:method 'html';
-    (: Turn whitespace chopping off. :)
+    (: Turn whitespace chopping off.
+    :)
     declare option db:chop 'no';
-    let $in :=
+    let $in
+    :=
       <books>
         <book>
           <title>XSLT Programmer’s Reference</title> 
@@ -103,7 +105,8 @@ Transforms the document specified by `$input`, using the XSLT template specified
           <author>Robert Romano</author>
         </book>
       </books>
-    let $style :=
+    let $style
+    :=
       <xsl:stylesheet version='2.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
       <xsl:output method='xml'/>
         <xsl:template match="/">
@@ -140,8 +143,10 @@ Transforms the document specified by `$input`, using the XSLT template specified
 **Query:**
 
 
-    let $in := <dummy/>
-    let $style := doc('variable.xsl')
+    let $in
+    := <dummy/>
+    let $style
+    := doc('variable.xsl')
     return (
       xslt:transform($in, $style, <xslt:parameters><xslt:v>1</xslt:v></xslt:parameters>),
       xslt:transform($in, $style, map { "v": 1 })

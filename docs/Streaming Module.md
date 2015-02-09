@@ -40,19 +40,18 @@ All functions in this module are assigned to the `http://basex.org/modules/strea
 Updated with Version 8.0: Extended to sequences. 
 
 
-`stream:materialize($value as item()*) as item()*`
+stream:materialize($value as item()*) as item()*
 
-Returns a materialized instance of the specified `$value`:  * if an item is streamable, its value will be retrieved, and a new item containing the value will be returned. 
- * other, non-streamable items will simply be passed through. 
+:   Returns a materialized instance of the specified `$value`:  * if an item is streamable, its value will be retrieved, and a new item containing the value will be returned.     * other, non-streamable items will simply be passed through. 
+    Materialization is advisable if a value is to be processed more than once, and is expensive to retrieve. It is get mandatory whenever a value is invalidated before it is requested (see the example below). 
 
- Materialization is advisable if a value is to be processed more than once, and is expensive to retrieve. It is get mandatory whenever a value is invalidated before it is requested (see the example below). 
 
 
 ### stream:is-streamable
 
-`stream:is-streamable($item as item()) as item()`
+stream:is-streamable($item as item()) as item()
 
-Checks whether the specified `$item` is streamable. 
+:   Checks whether the specified `$item` is streamable. 
 
  
 ## Changelog

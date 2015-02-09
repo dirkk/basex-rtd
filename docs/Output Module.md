@@ -16,29 +16,30 @@ All functions in this module are assigned to the `http://basex.org/modules/out` 
 
 ### out:nl
 
-`out:nl() as xs:string`
+out:nl() as xs:string
 
-Returns a single newline character (`&#10;`). 
+:   Returns a single newline character (`&#10;`). 
 
 
 ### out:tab
 
-`out:tab() as xs:string`
+out:tab() as xs:string
 
-Returns a single tabulator character (`&#9;`). 
+:   Returns a single tabulator character (`&#9;`). 
 
 
 ### out:format
 
-`out:format($format as xs:string, $item1 as item(), ...) as xs:string`
+out:format($format as xs:string, $item1 as item(), ...) as xs:string
 
-Returns a formatted string. `$item1` and all following items are applied to the `$format` string, according to [Java’s printf syntax](http://download.oracle.com/javase/1.5.0/docs/api/java/util/Formatter.html#syntax). 
+:   Returns a formatted string. `$item1` and all following items are applied to the `$format` string, according to [Java’s printf syntax](http://download.oracle.com/javase/1.5.0/docs/api/java/util/Formatter.html#syntax). 
 
-**Examples**
+    **Examples**
 
- * `out:format("%b", true())`  returns `true`. 
- * `out:format("%06d", 256)`  returns `000256`. 
- * `out:format("%e", 1234.5678)`  returns `1.234568e+03`. 
+
+    * `out:format("%b", true())`  returns `true`. 
+    * `out:format("%06d", 256)`  returns `000256`. 
+    * `out:format("%e", 1234.5678)`  returns `1.234568e+03`. 
 
  
 ## Changelog

@@ -86,7 +86,8 @@ To use the BaseX library the above created BaseXDatabase class can be extended w
 
 
     public String executeXQuery(String query) throws IOException {
-    	if(basexContext != null)
+    	if(basexContext
+    != null)
     		return new XQuery(query).execute(basexContext);
     	else
     		Log.e("BaseXDatabase", "No context");

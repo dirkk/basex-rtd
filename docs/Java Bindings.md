@@ -38,7 +38,8 @@ In the following example, 256 bytes are written to the file `output.txt`. First,
 
 
     declare namespace fw = "java.io.FileWriter";
-    let $file := fw:new('output.txt')
+    let $file
+    := fw:new('output.txt')
     return (
       for $i in 0 to 255
       return fw:write($file, xs:int($i)),
@@ -50,7 +51,8 @@ Function names with dashes will be rewritten to Java’s camel case notation:
 
 
     XQuery: get-contents($x as xs:string) 
-    Java  : getContents(String x)
+    Java 
+    : getContents(String x)
 
 
 Strings with invalid XML characters will be rejected by default. The validity check can be disabled by setting the [CHECKSTRINGS](Options.md#CHECKSTRINGS) option to false. The following query writes a file with a single 00-byte, which will then be successfully read via Java functions: 
@@ -60,7 +62,8 @@ Strings with invalid XML characters will be rejected by default. The validity ch
     declare namespace fr = 'java.io.FileReader';
     declare option db:checkstrings 'false';
     file:write-binary('00.bin', xs:hexBinary('00')),
-    br:new(fr:new('00.bin')) ! (br:readLine(.), br:close(.))
+    br:new(fr:new('00.bin'))
+    ! (br:readLine(.), br:close(.))
 
 
 Note that Java code cannot be pre-compiled, and will often be evaluated slower than optimized XQuery code. 
@@ -75,7 +78,8 @@ An example (the boolean values returned by `set:add()` are ignored):
 
 
     import module namespace set = "java.util.HashSet";
-    let $loop := (
+    let $loop
+    := (
       set:add("check"),
       set:add("what"),
       set:add("happens")

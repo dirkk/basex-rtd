@@ -70,25 +70,29 @@ The CSV function signatures provide an `$options` argument. Options can either b
 
 ### csv:parse
 
-`csv:parse($input as xs:string) as document-node(element(csv))`
-`csv:parse($input as xs:string, $options as item()) as item()`
+csv:parse($input as xs:string) as document-node(element(csv))
+csv:parse($input as xs:string, $options as item()) as item()
 
-Converts the CSV data specified by `$input` to an XML document or a map. The `$options` argument can be used to control the way the input is converted. 
+:   Converts the CSV data specified by `$input` to an XML document or a map. The `$options` argument can be used to control the way the input is converted. 
 
-**Errors**
+    **Errors**
 
-`BXCS0001`: the input cannot be parsed. 
+
+    `BXCS0001`: the input cannot be parsed. 
+
 
 ### csv:serialize
 
-`csv:serialize($input as node()) as xs:string`
-`csv:serialize($input as node(), $options as item()) as xs:string`
+csv:serialize($input as node()) as xs:string
+csv:serialize($input as node(), $options as item()) as xs:string
 
-Serializes the node specified by `$input` as CSV data, and returns the result as `xs:string`. Items can also be serialized as JSON if the [Serialization Parameter](Serialization.md)`method` is set to `csv`.The `$options` argument can be used to control the way the input is serialized. 
+:   Serializes the node specified by `$input` as CSV data, and returns the result as `xs:string`. Items can also be serialized as JSON if the [Serialization Parameter](Serialization.md)`method` is set to `csv`.The `$options` argument can be used to control the way the input is serialized. 
 
-**Errors**
+    **Errors**
 
-`BXCS0002`: the input cannot be serialized. 
+
+    `BXCS0002`: the input cannot be serialized. 
+
  
 ## Examples
 
@@ -105,7 +109,8 @@ Serializes the node specified by `$input` as CSV data, and returns the result as
 **Query:**
 
 
-    let $text := file:read-text('addressbook.csv')
+    let $text
+    := file:read-text('addressbook.csv')
     return csv:parse($text, { 'header': true() })
 
 
@@ -128,10 +133,14 @@ Serializes the node specified by `$input` as CSV data, and returns the result as
 **Query:**
 
 
-    let $text := file:read-text('some-data.csv')
-    let $options := { 'lax': 'no' }
-    let $xml := csv:parse($text, $options)
-    let $csv := csv:serialize($xml, $options)
+    let $text
+    := file:read-text('some-data.csv')
+    let $options
+    := { 'lax': 'no' }
+    let $xml
+    := csv:parse($text, $options)
+    let $csv
+    := csv:serialize($xml, $options)
     return $text eq $csv
 
 
@@ -141,14 +150,17 @@ Serializes the node specified by `$input` as CSV data, and returns the result as
 **Query:**
 
 
-    let $text := "Name;City" || out:nl() || "John;Newton" || out:nl() || "Jack;Oldtown"
-    let $options :=
+    let $text
+    := "Name;City" || out:nl() || "John;Newton" || out:nl() || "Jack;Oldtown"
+    let $options
+    :=
       <csv:options>
         <csv:separator value=';'/>
         <csv:format value='map'/>
         <csv:header value='yes'/>
       </csv:options>
-    let $map := csv:parse($text, $options)
+    let $map
+    := csv:parse($text, $options)
     return map:serialize($map)
 
 

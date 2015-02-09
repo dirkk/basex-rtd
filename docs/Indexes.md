@@ -23,7 +23,8 @@ The name index contains all element and attribute names of a database, and the f
 The name index is e.g. applied to pre-evaluate location steps that will never yield results: 
 
 
-    (: will be rewritten to an empty sequence :)
+    (: will be rewritten to an empty sequence
+    :)
     /non-existing-name
 
 
@@ -39,14 +40,16 @@ The path index is applied to rewrite descendant steps to multiple child steps. C
 
 
     doc('factbook.xml')//province,
-    (: ...will be rewritten to... :)
+    (: ...will be rewritten to...
+    :)
     doc('factbook.xml')/mondial/country/province
 
 
 The paths statistics are e.g. used to pre-evaluate the `count` function: 
 
 
-    (: will be rewritten and pre-evaluated by the path index :)
+    (: will be rewritten and pre-evaluated by the path index
+    :)
     count( doc('factbook')//country )
 
 
@@ -79,11 +82,14 @@ This index speeds up string-based equality tests on text nodes. The [UPDINDEX](O
 The following queries will all be rewritten for index access: 
 
 
-    (: 1st example :)
+    (: 1st example
+    :)
     //*[text() = 'Germany'],
-    (: 2nd example :)
+    (: 2nd example
+    :)
     doc('factbook.xml')//name[. = 'Germany'],
-    (: 3rd st example :)
+    (: 3rd st example
+    :)
     for $c in db:open('factbook')//country
     where $c//city/name = 'Hanoi'
     return $c/name
@@ -97,11 +103,15 @@ Matching text nodes can be directly requested from the index with the XQuery fun
 The text index also supports range queries based on string comparisons: 
 
 
-    (: 1st example :)
+    (: 1st example
+    :)
     db:open('Library')//Medium[Year >= '2005' and Year <= '2007'],
-    (: 2nd example :)
-    let $min := '2011-04-16T00:00:00'
-    let $max := '2011-04-19T23:59:59' 
+    (: 2nd example
+    :)
+    let $min
+    := '2011-04-16T00:00:00'
+    let $max
+    := '2011-04-19T23:59:59' 
     return db:open('news')//entry[date-time > $min and date-time < $max]
 
 
@@ -119,11 +129,14 @@ Similar to the text index, this index speeds up string-based equality and range 
 The following queries will all be rewritten for index access: 
 
 
-    (: 1st example :)
+    (: 1st example
+    :)
     //country[@car_code = 'J'],
-    (: 2nd example :)
+    (: 2nd example
+    :)
     //province[@* = 'Hokkaido']//name,
-    (: 3rd example :)
+    (: 3rd example
+    :)
     //sea[@depth > '2100' and @depth < '4000']
 
 
@@ -141,9 +154,11 @@ The following queries are examples for expressions that will be optimized for in
 If the full-text index exists, the following queries will all be rewritten for index access: 
 
 
-    (: 1st example :)
+    (: 1st example
+    :)
     //country/name[text() contains text 'and'],
-    (: 2nd example :)
+    (: 2nd example
+    :)
     //religions[. contains text { 'Catholic', 'Roman' }
         using case insensitive distance at most 2 words]
 

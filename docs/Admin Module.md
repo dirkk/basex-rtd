@@ -16,30 +16,32 @@ All functions in this module are assigned to the `http://basex.org/modules/admin
 
 ### admin:sessions
 
-`admin:sessions() as element(session)*`
+admin:sessions() as element(session)*
 
-Returns an element sequence with all currently opened sessions, including the user name, address (IP:port) and an optionally opened database.The output of this function and the [SHOW SESSIONS](Commands.md#SHOW_SESSIONS) command is similar. 
+:   Returns an element sequence with all currently opened sessions, including the user name, address (IP:port) and an optionally opened database.The output of this function and the [SHOW SESSIONS](Commands.md#SHOW_SESSIONS) command is similar. 
 
-**Examples**
+    **Examples**
 
- * `admin:sessions()`  may e.g. return `<session user="admin" address="127.0.0.1:6286" database="factbook"/>`
+
+    * `admin:sessions()`  may e.g. return `<session user="admin" address="127.0.0.1:6286" database="factbook"/>`
 
 
 ### admin:logs
 
-`admin:logs() as element(file)*`
-`admin:logs($date as xs:string) as element(entry)*`
-`admin:logs($date as xs:string, $merge as xs:boolean) as element(entry)*`
+admin:logs() as element(file)*
+admin:logs($date as xs:string) as element(entry)*
+admin:logs($date as xs:string, $merge as xs:boolean) as element(entry)*
 
-Returns [Logging](Logging.md) data compiled by the database or HTTP server:  * If no argument is specified, a list of all log files will be returned, including the file size and date. 
- * If a `$date` is specified, the contents of a single log file will be returned. 
- * If `$merge` is set to true, related log entries will be merged. Please note that the merge might not be 100% successful, as log entries may be ambiguous. 
+:   Returns [Logging](Logging.md) data compiled by the database or HTTP server:  * If no argument is specified, a list of all log files will be returned, including the file size and date.     * If a `$date` is specified, the contents of a single log file will be returned. 
+    * If `$merge` is set to true, related log entries will be merged. Please note that the merge might not be 100% successful, as log entries may be ambiguous. 
 
 
-**Examples**
+    **Examples**
 
- * `admin:logs()`  may return `<file size="834367"/>2013-01-23</file>` if a single log file exists. 
- * `admin:logs() ! admin:logs(.)`  lists the contents of all log files. 
+
+    * `admin:logs()`  may return `<file size="834367"/>2013-01-23</file>` if a single log file exists. 
+    * `admin:logs()
+    ! admin:logs(.)`  lists the contents of all log files. 
 
 
 ### admin:write-log
@@ -47,9 +49,9 @@ Returns [Logging](Logging.md) data compiled by the database or HTTP server:  * I
 Introduced with Version 8.0: 
 
 
-`admin:write-log($text as xs:string) as empty-sequence()`
+admin:write-log($text as xs:string) as empty-sequence()
 
-Writes a string to the database logs, along with current user data (timestamp, user name). If the function is called in a web application or a database client, the IP will be logged. Otherwise, the string `STANDALONE` will be logged. 
+:   Writes a string to the database logs, along with current user data (timestamp, user name). If the function is called in a web application or a database client, the IP will be logged. Otherwise, the string `STANDALONE` will be logged. 
 
  
 ## Changelog

@@ -21,23 +21,23 @@ This [XQuery Module](Module Library.md) contains helper functions for the [RESTX
 
 ### rest:base-uri
 
-`rest:base-uri() as xs:anyURI`
+rest:base-uri() as xs:anyURI
 
-This function returns the implementation defined base URI of the resource function. 
+:   This function returns the implementation defined base URI of the resource function. 
 
 
 ### rest:uri
 
-`rest:uri() as xs:anyURI`
+rest:uri() as xs:anyURI
 
-This function returns the complete URI that addresses the Resource Function. This is the result of [rest:base-uri](RESTXQ Module.md#rest-base-uri) appended with the path from the path annotation of the resource function. 
+:   This function returns the complete URI that addresses the Resource Function. This is the result of [rest:base-uri](RESTXQ Module.md#rest-base-uri) appended with the path from the path annotation of the resource function. 
 
 
 ### rest:wadl
 
-`rest:wadl() as element(wadl:application)`
+rest:wadl() as element(wadl:application)
 
-This (unofficial) function returns a [WADL description](http://www.w3.org/Submission/wadl) of all available REST services. 
+:   This (unofficial) function returns a [WADL description](http://www.w3.org/Submission/wadl) of all available REST services. 
 
  
 ## Changelog

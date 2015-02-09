@@ -225,7 +225,8 @@ We want to extend BaseX with this class and use its method. In order to make thi
     import module namespace j="http://basex.org/lib/testJar";
     declare namespace p="java:test.Printer";
     declare function j:print($str as xs:string) as xs:string {
-      let $printer := p:new()
+      let $printer
+    := p:new()
       return p:print($printer, $str)
     };
 

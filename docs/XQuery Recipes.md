@@ -13,9 +13,13 @@ This page contains code snippets that mainly originate from our [basex-talk](htt
 
  * The [Simple Map Operator](XQuery 3.0.md#Simple_Map_Operator) can be used to trigger an action if a value has a single item. The following two expressions are equivalent: 
 
-    let $s := "X" return (
-      (: OLD :) if(count($s) = 1) then 'OK' else (),
-      (: NEW :) $s ! 'OK'
+    let $s
+    := "X" return (
+      (: OLD
+    :) if(count($s) = 1) then 'OK' else (),
+      (: NEW
+    :) $s
+    ! 'OK'
     )
 
 
@@ -23,9 +27,12 @@ In some cases, also the first solution can be written more compact. If we know t
 
  * If you want to choose the first non-empty item from two arguments, we can use the position predicate: 
 
-    let $s := "X" return (
-      (: OLD :) if(exists($s)) then $s else 'default',
-      (: NEW :) ($s, 'default')[1]
+    let $s
+    := "X" return (
+      (: OLD
+    :) if(exists($s)) then $s else 'default',
+      (: NEW
+    :) ($s, 'default')[1]
     )
 
 
@@ -37,9 +44,12 @@ Note that this only works if both of your inputs have zero or one items.
 Returns dynamically named elements: 
 
 
-    let $root := "element"
-    let $value := "hi"
-    let $contents := <foo>Bar!</foo>
+    let $root
+    := "element"
+    let $value
+    := "hi"
+    let $contents
+    := <foo>Bar!</foo>
     return element { $root } {
       attribute { "about" } { $value }, $contents
     }
@@ -59,15 +69,18 @@ This snippet transform a _flat_ list of elements with `parentId`-references to a
 
 
     declare function local:link($entries as node()*, $id as xs:string) {
-     let $entry    := $entries[@id eq $id],
-         $children := $entries[@parentId eq $id]
+     let $entry   
+    := $entries[@id eq $id],
+         $children
+    := $entries[@parentId eq $id]
      return element entry {
        $entry/@*,
        for $child in $children
        return local:link($entries, $child/@id)
      }
     };
-    let $entries :=
+    let $entries
+    :=
      <entries>
     	  <entry id="entry1" />
     	  <entry id="entry2" parentId="entry1" />
@@ -100,7 +113,8 @@ results in
 This snippet converts an IP address to its numeric representation: 
 
 
-    let $ip := '134.34.226.65'
+    let $ip
+    := '134.34.226.65'
     return fold-left(
      function($n, $d) { 256 * $n + $d },
      0,

@@ -39,7 +39,9 @@ A first RESTXQ function is shown below:
 
 
     module namespace page = 'http://basex.org/examples/web-page';
-    declare %rest:path("hello/{$who}") %rest:GET function page:hello($who) {
+    declare
+    %rest:path("hello/{$who}")
+    %rest:GET function page:hello($who) {
       <response>
         <title>Hello { $who }!</title>
       </response>
@@ -58,10 +60,10 @@ The next function demonstrates a POST request:
 
 
     declare
-      %rest:path("/form")
-      %rest:POST
-      %rest:form-param("message","{$message}", "(no message)")
-      %rest:header-param("User-Agent", "{$agent}")
+    %rest:path("/form")
+    %rest:POST
+    %rest:form-param("message","{$message}", "(no message)")
+    %rest:header-param("User-Agent", "{$agent}")
       function page:hello-postman(
         $message as xs:string,
         $agent   as xs:string*)
@@ -113,18 +115,23 @@ A resource function must have a single _Path Annotation_ with a single string as
 The following example contains a path annotation with three segments and two templates. One of the function arguments is further specified with a data type, which means that the value for `$variable` will be cast to an `xs:integer` before being bound: 
 
 
-    declare %rest:path("/a/path/{$with}/some/{$variable}")
+    declare
+    %rest:path("/a/path/{$with}/some/{$variable}")
       function page:test($with, $variable as xs:integer) { ... };
 
 
 Since Version 8.0, variables can be extended by regular expressions: 
 
 
-    (: Matches all paths with "app" as first, a number as second, and "order" as third segment :)
-    declare %rest:path("app/{$code=[0-9]+}/order")
+    (: Matches all paths with "app" as first, a number as second, and "order" as third segment
+    :)
+    declare
+    %rest:path("app/{$code=[0-9]+}/order")
       function page:order($full-path) { ... };
-    (: Matches all other all paths starting with "app/" :)
-    declare %rest:path("app/{$path=.+}")
+    (: Matches all other all paths starting with "app/"
+    :)
+    declare
+    %rest:path("app/{$path=.+}")
       function page:others($path) { ... };
 
 
@@ -166,14 +173,19 @@ The HTTP method annotations are equivalent to all [HTTP request methods](http://
 The following function will be called if GET or POST is used as request method: 
 
 
-    declare %rest:GET %rest:POST %rest:path("/post")
+    declare
+    %rest:GET
+    %rest:POST
+    %rest:path("/post")
       function page:post() { "This was a GET or POST request" };
 
 
 The POST and PUT annotations may optionally take a string literal in order to map the HTTP request body to a [function argument](RESTXQ.md#RESTXQParameters). Once again, the target variable must be embraced by curly brackets: 
 
 
-    declare %rest:PUT("{$body}") %rest:path("/put")
+    declare
+    %rest:PUT("{$body}")
+    %rest:path("/put")
       function page:put($body) { "Request body: " || $body };
 
 
@@ -182,7 +194,8 @@ The POST and PUT annotations may optionally take a string literal in order to ma
 Since Version 7.9, custom HTTP methods can be specified with the `%rest:method` annotation: 
 
 
-    declare %rest:method("RETRIEVE")
+    declare
+    %rest:method("RETRIEVE")
       function page:retrieve() { "RETRIEVE was specified as request method." };
 
 
@@ -210,9 +223,10 @@ A function that is capable of handling multipart types is identical to other RES
 
 
     declare
-      %rest:path("/multipart")
-      %rest:POST("{$data}")
-      %rest:consumes("multipart/mixed") (: optional :)
+    %rest:path("/multipart")
+    %rest:POST("{$data}")
+    %rest:consumes("multipart/mixed") (: optional
+    :)
       function page:multipart($data as item()*)
     {
       "Number of items: " || count($data)
@@ -233,9 +247,9 @@ The value of the _first parameter_, if found in the [query component](Request Mo
 
 
     declare
-      %rest:path("/params")
-      %rest:query-param("id", "{$id}")
-      %rest:query-param("add", "{$add}", 42, 43, 44)
+    %rest:path("/params")
+    %rest:query-param("id", "{$id}")
+    %rest:query-param("add", "{$add}", 42, 43, 44)
       function page:params($id as xs:string?, $add as xs:integer+)
     {
       <result id="{ $id }" sum="{ sum($add) }"/>
@@ -265,14 +279,16 @@ The file contents are placed in a [map](Map Module.md), with the filename servin
 
 
     declare
-      %rest:POST
-      %rest:path("/upload")
-      %rest:form-param("files", "{$files}")
+    %rest:POST
+    %rest:path("/upload")
+    %rest:form-param("files", "{$files}")
       function page:upload($files)
     {
       for $name    in map:keys($files)
-      let $content := $files($name)
-      let $path    := file:temp-dir() || $name
+      let $content
+    := $files($name)
+      let $path   
+    := file:temp-dir() || $name
       return (
         file:write-binary($path, $content),
         <file name="{ $name }" size="{ file:size($path) }"/>
@@ -308,7 +324,8 @@ By default, a successful request is answered with the HTTP status code `200` (OK
 Custom responses can be built from within XQuery by returning an `rest:response` element, an `http:response` child node that matches the syntax of the [EXPath HTTP Client Module](http://expath.org/spec/http-client) specification, and more optional child nodes that will be serialized as usual. A function that reacts on an unknown resource may look as follows: 
 
 
-    declare %rest:path("") function page:error404() {
+    declare
+    %rest:path("") function page:error404() {
       <rest:response>
         <http:response status="404" message="I was not found.">
           <http:header name="Content-Language" value="en"/>
@@ -375,7 +392,8 @@ In main modules, serialization parameters may be specified in the query prolog. 
 
 
     declare option output:media-type 'text/plain';
-    declare %rest:path("version1") function page:version1() {
+    declare
+    %rest:path("version1") function page:version1() {
       'Keep it simple, stupid'
     };
 
@@ -385,7 +403,9 @@ In main modules, serialization parameters may be specified in the query prolog. 
 The serialization can also be parameterized via annotations: 
 
 
-    declare %output:media-type("text/plain") %rest:path("version2") function page:version2() {
+    declare
+    %output:media-type("text/plain")
+    %rest:path("version2") function page:version2() {
       'Still somewhat simple.'
     };
 
@@ -395,7 +415,8 @@ The serialization can also be parameterized via annotations:
 The following example demonstrates how serialization parameters can be dynamically set within a query: 
 
 
-    declare %rest:path("version3") function page:version3() {
+    declare
+    %rest:path("version3") function page:version3() {
       <rest:response>
         <output:serialization-parameters>
           <output:media-type value='text/plain'/>
@@ -421,11 +442,11 @@ By default, `application/xml` is returned as content type. In the following exam
 
 
     declare
-      %rest:path("")
-      %output:method("xhtml")
-      %output:omit-xml-declaration("no")
-      %output:doctype-public("-//W3C//DTD XHTML 1.0 Transitional//EN")  
-      %output:doctype-system("http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd")
+    %rest:path("")
+    %output:method("xhtml")
+    %output:omit-xml-declaration("no")
+    %output:doctype-public("-//W3C//DTD XHTML 1.0 Transitional//EN")  
+    %output:doctype-system("http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd")
       function page:start()
     {
       <html xmlns="http://www.w3.org/1999/xhtml">
@@ -463,7 +484,7 @@ Errors may occur unexpectedly. However, they can also be triggered by a query, a
 
 
     declare
-      %rest:path("/check/{$user}")
+    %rest:path("/check/{$user}")
       function page:check($user)
     {
       if($user = ('jack', 'lisa'))
@@ -471,8 +492,8 @@ Errors may occur unexpectedly. However, they can also be triggered by a query, a
       else fn:error(xs:QName('err:user'), $user)
     };
     declare 
-      %rest:error("err:user")
-      %rest:error-param("description", "{$user}")
+    %rest:error("err:user")
+    %rest:error-param("description", "{$user}")
       function page:user-error($user)
     {
       'User "' || $user || '" is unknown'
@@ -493,7 +514,8 @@ Errors that occur outside RESTXQ can be caught by adding `error-page` elements w
 The target location may be another RESTXQ function. The [request:attribute](Request Module.md#request-attribute) function can be used to request details on the caught error: 
 
 
-    declare %rest:path("/error404") function page:error404() {
+    declare
+    %rest:path("/error404") function page:error404() {
       "URL: " || request:attribute("javax.servlet.error.request_uri") || ", " || 
       "Error message: " || request:attribute("javax.servlet.error.message")
     };
@@ -508,7 +530,8 @@ The following example returns the current host name:
 
 
     import module namespace request = "http://exquery.org/ns/request";
-    declare %rest:path("/host-name") function page:host() {
+    declare
+    %rest:path("/host-name") function page:host() {
       'Remote host name: ' || request:remote-hostname()
     };
 

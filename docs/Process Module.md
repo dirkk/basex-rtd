@@ -16,50 +16,52 @@ All functions in this module are assigned to the `http://basex.org/modules/proc`
 
 ### proc:system
 
-`proc:system($cmd as xs:string) as xs:string`
-`proc:system($cmd as xs:string, $args as xs:string*) as xs:string`
-`proc:system($cmd as xs:string, $args as xs:string*, $encoding as xs:string) as xs:string`
+proc:system($cmd as xs:string) as xs:string
+proc:system($cmd as xs:string, $args as xs:string*) as xs:string
+proc:system($cmd as xs:string, $args as xs:string*, $encoding as xs:string) as xs:string
 
-Executes the specified command in a separate process and returns the result as string.Additional command arguments may be specified via `$args`.The result can be explicitly converted to a specified `$encoding`. If no encoding is specified, the system’s default encoding is used. 
+:   Executes the specified command in a separate process and returns the result as string.Additional command arguments may be specified via `$args`.The result can be explicitly converted to a specified `$encoding`. If no encoding is specified, the system’s default encoding is used. 
 
-**Errors**
+    **Errors**
 
-`BXPRnnnn`: If the command results in an error, an XQuery error will be raised. Its code will consist of the letters `BXPR` and four digits with the command’s exit code.`BXPR9999`: the specified encoding does not exist or is not supported. 
-**Examples**
 
- * `proc:system('date')`  returns the current date on a Linux system. 
- * The following example returns "Command not found", if the command "xyz" cannot be located or executed: 
+    `BXPRnnnn`: If the command results in an error, an XQuery error will be raised. Its code will consist of the letters `BXPR` and four digits with the command’s exit code.`BXPR9999`: the specified encoding does not exist or is not supported. 
 
+    **Examples**
+
+
+    * `proc:system('date')`  returns the current date on a Linux system. 
+    * The following example returns "Command not found", if the command "xyz" cannot be located or executed: 
     try {
-      proc:system('xyz')
+    proc:system('xyz')
     } catch bxerr:BXPR0002 {
-      'Command not found.'
+    'Command not found.'
     }
-
 
 
 ### proc:execute
 
-`proc:execute($cmd as xs:string) as element(result)`
-`proc:execute($cmd as xs:string, $args as xs:string*) as element(result)`
-`proc:execute($cmd as xs:string, $args as xs:string*, $encoding as xs:string) as element(result)`
+proc:execute($cmd as xs:string) as element(result)
+proc:execute($cmd as xs:string, $args as xs:string*) as element(result)
+proc:execute($cmd as xs:string, $args as xs:string*, $encoding as xs:string) as element(result)
 
-Executes the specified command in a separate process and returns the result as element.Additional command arguments may be specified via `$args`.The result can be explicitly converted to a specified `$encoding`. If no encoding is specified, the system’s default encoding is used.A result has the following structure: 
-    <result>
-      <output>...result output...</output>
-      <error>...error output...</error>
-      <code>0</code>
+:   Executes the specified command in a separate process and returns the result as element.Additional command arguments may be specified via `$args`.The result can be explicitly converted to a specified `$encoding`. If no encoding is specified, the system’s default encoding is used.A result has the following structure:     <result>
+    <output>...result output...</output>
+    <error>...error output...</error>
+    <code>0</code>
     </result>
 
 
+    **Errors**
 
-**Errors**
 
-`BXPR9999`: the specified encoding does not exist or is not supported. 
-**Examples**
+    `BXPR9999`: the specified encoding does not exist or is not supported. 
 
- * `proc:execute('dir', '\')`  returns the files of the root directory of a Windows system. 
- * `proc:execute('ls', ('-l', '-a'))`  executes the `ls -la` command on Unix systems. 
+    **Examples**
+
+
+    * `proc:execute('dir', '\')`  returns the files of the root directory of a Windows system. 
+    * `proc:execute('ls', ('-l', '-a'))`  executes the `ls -la` command on Unix systems. 
 
  
 ## Errors

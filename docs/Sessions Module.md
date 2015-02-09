@@ -23,65 +23,69 @@ This [XQuery Module](Module Library.md) can only be called from users with _Admi
 
 ### sessions:ids
 
-`sessions:ids() as xs:string`
+sessions:ids() as xs:string
 
-Returns the IDs of all registered sessions. 
+:   Returns the IDs of all registered sessions. 
 
 
 ### sessions:created
 
-`sessions:created($id as xs:string) as xs:dateTime`
+sessions:created($id as xs:string) as xs:dateTime
 
-Returns the creation time of the session specified by `$id`. 
+:   Returns the creation time of the session specified by `$id`. 
 
 
 ### sessions:accessed
 
-`sessions:accessed($id as xs:string) as xs:dateTime`
+sessions:accessed($id as xs:string) as xs:dateTime
 
-Returns the last access time of the session specified by `$id`. 
+:   Returns the last access time of the session specified by `$id`. 
 
 
 ### sessions:names
 
-`sessions:names($id as xs:string) as xs:string*`
+sessions:names($id as xs:string) as xs:string*
 
-Returns the names of all variables bound to the session specified by `$id`. 
+:   Returns the names of all variables bound to the session specified by `$id`. 
 
 
 ### sessions:get
 
-`sessions:get($id as xs:string, $key as xs:string) as xs:string?`
-`sessions:get($id as xs:string, $key as xs:string, $default as xs:string) as xs:string`
+sessions:get($id as xs:string, $key as xs:string) as xs:string?
+sessions:get($id as xs:string, $key as xs:string, $default as xs:string) as xs:string
 
-Returns the value of a variable bound to the session specified by `$id`. If the variable does not exist, an empty sequence or the optionally specified default value is returned instead. 
+:   Returns the value of a variable bound to the session specified by `$id`. If the variable does not exist, an empty sequence or the optionally specified default value is returned instead. 
 
-**Errors**
+    **Errors**
 
-`BXSE0002`: the value of a session variable could not be retrieved. 
+
+    `BXSE0002`: the value of a session variable could not be retrieved. 
+
 
 ### sessions:set
 
-`sessions:set($id as xs:string, $key as xs:string, $value as xs:string) as empty-sequence()`
+sessions:set($id as xs:string, $key as xs:string, $value as xs:string) as empty-sequence()
 
-Assigns a value to a variable bound to the session specified by `$id`. 
+:   Assigns a value to a variable bound to the session specified by `$id`. 
 
-**Errors**
+    **Errors**
 
-`BXSE0001`: a function item was specified as value of a session variable. 
+
+    `BXSE0001`: a function item was specified as value of a session variable. 
+
 
 ### sessions:delete
 
-`sessions:delete($id as xs:string, $key as xs:string) as empty-sequence()`
+sessions:delete($id as xs:string, $key as xs:string) as empty-sequence()
 
-Deletes a variable bound to the session specified by `$id`. 
+:   Deletes a variable bound to the session specified by `$id`. 
 
 
 ### sessions:close
 
-`sessions:close($id as xs:string) as empty-sequence()`
+sessions:close($id as xs:string) as empty-sequence()
 
-Unregisters the session specified by `$id`. 
+:   Unregisters the session specified by `$id`. 
 
  
 ## Errors

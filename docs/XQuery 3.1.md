@@ -15,9 +15,12 @@ A _map_ is a function that associates a set of keys with values, resulting in a 
 Maps can be constructed as follows: 
 
 
-    map { },                                    (: empty map :)
-    map { 'key': true(), 1984: (<a/>, <b/>) },  (: map with two entries :)
-    map:merge(                                  (: map with ten entries :)
+    map { },                                    (: empty map
+    :)
+    map { 'key': true(), 1984: (<a/>, <b/>) },  (: map with two entries
+    :)
+    map:merge(                                  (: map with ten entries
+    :)
       for $i in 1 to 10
       return map { $i: 'value' || $i }
     )
@@ -26,7 +29,8 @@ Maps can be constructed as follows:
 The function corresponding to the map has the signature `function($key as xs:anyAtomicType) as item()*`. The expression `$map($key)` returns the associated value; the function call `map:get($map, $key)` is equivalent. For example, if `$books-by-isbn` is a map whose keys are ISBNs and whose associated values are `book` elements, then the expression `$books-by-isbn("0470192747")` returns the `book` element with the given ISBN. The fact that a map is a function item allows it to be passed as an argument to higher-order functions that expect a function item as one of their arguments. As an example, the following query uses the higher-order function `fn:map($f, $seq)` to extract all bound values from a map: 
 
 
-    let $map := map { 'foo': 42, 'bar': 'baz', 123: 456 }
+    let $map
+    := map { 'foo': 42, 'bar': 'baz', 123: 456 }
     return fn:for-each(map:keys($map), $map)
 
 
@@ -50,23 +54,30 @@ An _array_ is a function that associates a set of positions, represented as posi
 Arrays can be constructed in two ways. With the square bracket notation, the comma serves as delimiter: 
 
 
-    [],            (: empty array :)
-    [ (1, 2) ],    (: array with single member :)
-    [ 1 to 2, 3 ]  (: array with two members; same as: [ (1, 2), 3 ] :)
+    [],            (: empty array
+    :)
+    [ (1, 2) ],    (: array with single member
+    :)
+    [ 1 to 2, 3 ]  (: array with two members; same as: [ (1, 2), 3 ]
+    :)
 
 
 With the `array` keyword and curly brackets, the inner expression is evaluated as usual, and the resulting values will be the members of the array: 
 
 
-    array { },           (: empty array;              same as: array { () } :)  
-    array { (1, 2) },    (: array with two members;   same as: array { 1, 2 } :)
-    array { 1 to 2, 3 }  (: array with three members; same as: array { 1, 2, 3 } :)
+    array { },           (: empty array;              same as: array { () }
+    :)  
+    array { (1, 2) },    (: array with two members;   same as: array { 1, 2 }
+    :)
+    array { 1 to 2, 3 }  (: array with three members; same as: array { 1, 2, 3 }
+    :)
 
 
 The function corresponding to the array has the signature `function($index as xs:integer) as item()*`. The expression `$array($index)` returns an addressed member of the array. The following query returns the five array members `48 49 50 51 52` as result: 
 
 
-    let $array := array { 48 to 52 }
+    let $array
+    := array { 48 to 52 }
     for $i in 1 to array:size($array)
     return $array($i)
 
@@ -79,23 +90,29 @@ Like all other values, arrays are immutable. For example, the `array:reverse` fu
 If an array is _atomized_, all of its members will be atomized. As a result, an atomized item may now result in more than one item. Some examples: 
 
 
-    fn:data([1 to 2])        (: returns the sequence 1, 2 :)
-    [ 'a', 'b', 'c' ] = 'b'  (: returns true :)
-    <a>{ [ 1, 2 ] }</a>      (: returns <a>1 2</a> :)
-    array { 1 to 2 } + 3     (: error: the left operand returns two items :)
+    fn:data([1 to 2])        (: returns the sequence 1, 2
+    :)
+    [ 'a', 'b', 'c' ] = 'b'  (: returns true
+    :)
+    <a>{ [ 1, 2 ] }</a>      (: returns <a>1 2</a>
+    :)
+    array { 1 to 2 } + 3     (: error: the left operand returns two items
+    :)
 
 
 Atomization also applies to function arguments. The following query returns 5, because the array will be atomized to a sequence of 5 integers: 
 
 
-    let $f := function($x as xs:integer*) { count($x) }
+    let $f
+    := function($x as xs:integer*) { count($x) }
     return $f([1 to 5])
 
 
 However, the next query returns 1, because the array is already of the general type `item()`, and no atomization will take place: 
 
 
-    let $f := function($x as item()*) { count($x) }
+    let $f
+    := function($x as item()*) { count($x) }
     return $f([1 to 5])
 
 
@@ -114,17 +131,28 @@ The lookup operator provides some syntactic sugar to access values of maps or ar
 The following example demonstrates the four alternatives: 
 
 
-    let $map := map { 'R': 'red', 'G': 'green', 'B': 'blue' }
+    let $map
+    := map { 'R': 'red', 'G': 'green', 'B': 'blue' }
     return (
-      $map?*          (: 1. returns all values; same as: map:keys($map) ! $map(.) :),
-      $map?R          (: 2. returns the value associated with the key 'R'; same as: $map('R') :),
-      $map?('G','B')  (: 3. returns the values associated with the key 'G' and 'B' :)
+      $map?*          (: 1. returns all values; same as: map:keys($map)
+    ! $map(.)
+    :),
+      $map?R          (: 2. returns the value associated with the key 'R'; same as: $map('R')
+    :),
+      $map?('G','B')  (: 3. returns the values associated with the key 'G' and 'B'
+    :)
     ),
-    let $array := [ 'one', 'two', 'three' ]
+    let $array
+    := [ 'one', 'two', 'three' ]
     return (
-      $array?*         (: 1. returns all values; same as: (1 to array:size($array)) ! $array(.) :),
-      $array?1         (: 2. returns the first value; same as: $array(1) :),
-      $array?(2 to 3)  (: 3. returns the second and third values; same as: (1 to 2) ! $array(.) :)
+      $array?*         (: 1. returns all values; same as: (1 to array:size($array))
+    ! $array(.)
+    :),
+      $array?1         (: 2. returns the first value; same as: $array(1)
+    :),
+      $array?(2 to 3)  (: 3. returns the second and third values; same as: (1 to 2)
+    ! $array(.)
+    :)
     )
 
 
@@ -135,7 +163,8 @@ The lookup operator can also be used without left operand. In this case, the con
       map { 'name': 'Guðrún', 'city': 'Reykjavík' },
       map { 'name': 'Hildur', 'city': 'Akureyri' }
     )
-    return $map[?name = 'Hildur'] ?city
+    return $map[?name = 'Hildur']
+    ?city
 
 
 ### Arrow Operator
@@ -143,14 +172,17 @@ The lookup operator can also be used without left operand. In this case, the con
 The arrow operator applies a function to a value. The value is used as the first argument to the function. It is introduced with the characters `=>`, and it is followed by the function to be called. If `$v` is a value and `f()` is a function, then `$v=>f()` is equivalent to `f($v)`, and `$v=>f($j)` is equivalent to `f($v, $j)`. This is further illustrated by an example: 
 
 
-    (: Returns 3 :)
+    (: Returns 3
+    :)
     count(('A', 'B', 'C')),
     ('A', 'B', 'C') => count(),
     ('A', 'B', 'C') => (function( $sequence) { count( $sequence)})(),
-    (: Returns W-E-L-C-O-M-E :)
+    (: Returns W-E-L-C-O-M-E
+    :)
     string-join(tokenize(upper-case('w e l c o m e')), '-'),
     'w e l c o m e' => upper-case() => tokenize() => string-join('-'),
-    (: Returns xfmdpnf :)
+    (: Returns xfmdpnf
+    :)
     codepoints-to-string(
       for $i in string-to-codepoints('welcome')
       return $i + 1
@@ -251,8 +283,10 @@ XQuery now provides native support for JSON objects. Strings and resources can b
 Parses the supplied string as JSON text and returns its item representation. The result may be a map, an array, a string, a double, a boolean, or an empty sequence. The allowed options are further specified in the [specification](http://www.w3.org/TR/xpath-functions-31/#func-parse-json). 
 
 
-    map:serialize(parse-json('{ "name": "john" }'))  (: yields { "name": "json" } :),
-    parse-json('[ 1, 2, 4, 8, 16]')?*                (: yields the integer sequence 1, 2, 4, 8, 16 :),
+    map:serialize(parse-json('{ "name": "john" }'))  (: yields { "name": "json" }
+    :),
+    parse-json('[ 1, 2, 4, 8, 16]')?*                (: yields the integer sequence 1, 2, 4, 8, 16
+    :),
 
 
 ##### fn:json-docs
@@ -264,7 +298,8 @@ Parses the supplied string as JSON text and returns its item representation. The
 Retrieves the text from the specified URI, parses the supplied string as JSON text and returns its item representation (see [fn:parse-json](XQuery 3.1.md#fn-parse-json) for more details). 
 
 
-    json-doc("http://ip.jsontest.com/")('ip')  (: returns your IP address :)
+    json-doc("http://ip.jsontest.com/")('ip')  (: returns your IP address
+    :)
 
 
 #### fn:sort
@@ -276,10 +311,14 @@ Retrieves the text from the specified URI, parses the supplied string as JSON te
 Returns a new sequence with sorted `$input` items. If a sort `$key` function is given, it will be applied on all items. The items of the resulting values will be sorted using the semantics of the `lt` expression. 
 
 
-    sort(reverse(1 to 3))                (: yields 1, 2, 3 :),
-    sort((3, -2, 1), abs#1)              (: yields 1, -2, 3 :),
-    sort((1,2,3), function($x) { -$x })  (: yields 3, 2, 1 :),
-    sort((1, 'a'))                       (: yields an error, as strings and integers cannot be compared :)
+    sort(reverse(1 to 3))                (: yields 1, 2, 3
+    :),
+    sort((3, -2, 1), abs#1)              (: yields 1, -2, 3
+    :),
+    sort((1,2,3), function($x) { -$x })  (: yields 3, 2, 1
+    :),
+    sort((1, 'a'))                       (: yields an error, as strings and integers cannot be compared
+    :)
 
 
 #### fn:contains-token
@@ -291,8 +330,10 @@ Returns a new sequence with sorted `$input` items. If a sort `$key` function is 
 The supplied strings will be tokenized at whitespace boundaries. The function returns `true` if one of the strings equals the supplied token, possibly under the rules of a supplied collation: 
 
 
-    contains-token(('a', 'b c', 'd'), 'c')                (: yields true :)
-    <xml class='one two'/>/contains-token(@class, 'one')  (: yields true :)
+    contains-token(('a', 'b c', 'd'), 'c')                (: yields true
+    :)
+    <xml class='one two'/>/contains-token(@class, 'one')  (: yields true
+    :)
 
 
 #### fn:parse-ietf-date
@@ -303,8 +344,10 @@ The supplied strings will be tokenized at whitespace boundaries. The function re
 Parses a string in the IETF format (which is widely used on the Internet) and returns a `xs:dateTime` item: 
 
 
-    fn:parse-ietf-date('28-Feb-1984 07:07:07')"              (: yields 1984-02-28T07:07:07Z :),
-    fn:parse-ietf-date('Wed, 01 Jun 2001 23:45:54 +02:00')"  (: yields 2001-06-01T23:45:54+02:00 :)
+    fn:parse-ietf-date('28-Feb-1984 07:07:07')"              (: yields 1984-02-28T07:07:07Z
+    :),
+    fn:parse-ietf-date('Wed, 01 Jun 2001 23:45:54 +02:00')"  (: yields 2001-06-01T23:45:54+02:00
+    :)
 
 
 #### fn:apply
@@ -318,9 +361,12 @@ A supplied function is invoked with the arguments supplied by an array. The arit
 Example: 
 
 
-    fn:apply(concat#5, array { 1 to 5 })            (: 12345 :)
-    fn:apply(function($a) { sum($a) }, [ 1 to 5 ])  (: 15 :)
-    fn:apply(count#1, [ 1,2 ])  (: error (the array has two members) :)
+    fn:apply(concat#5, array { 1 to 5 })            (: 12345
+    :)
+    fn:apply(function($a) { sum($a) }, [ 1 to 5 ])  (: 15
+    :)
+    fn:apply(count#1, [ 1,2 ])  (: error (the array has two members)
+    :)
 
 
 #### fn:random-number-generator
@@ -341,11 +387,20 @@ The returned random generator is _deterministic_: If the function is called twic
 Example: 
 
 
-    let $rng := fn:random-number-generator()
-    let $number := $rng('number')               (: returns a random number :)
-    let $next-rng := $rng('next')()             (: returns a new generator :)
-    let $next-number := $next-rng('number')     (: returns another random number :)
-    let $permutation := $rng('permute')(1 to 5) (: returns a random permutation of (1,2,3,4,5) :)
+    let $rng
+    := fn:random-number-generator()
+    let $number
+    := $rng('number')               (: returns a random number
+    :)
+    let $next-rng
+    := $rng('next')()             (: returns a new generator
+    :)
+    let $next-number
+    := $next-rng('number')     (: returns another random number
+    :)
+    let $permutation
+    := $rng('permute')(1 to 5) (: returns a random permutation of (1,2,3,4,5)
+    :)
     return ($number, $next-number, $permutation)
 
 
@@ -354,7 +409,8 @@ Example:
 The function has been extended to support scientific notation: 
 
 
-    format-number(1984.42, '00.0e0')  (: yields 19.8e2 :)
+    format-number(1984.42, '00.0e0')  (: yields 19.8e2
+    :)
 
 
 #### fn:tokenize
@@ -362,7 +418,8 @@ The function has been extended to support scientific notation:
 If no separator is specified as second argument, a string will be tokenized at whitespace boundaries: 
 
 
-    fn:tokenize("  a b  c d")  (: yields "a", "b", "c", "d" :)
+    fn:tokenize("  a b  c d")  (: yields "a", "b", "c", "d"
+    :)
 
 
 #### fn:trace
@@ -370,8 +427,10 @@ If no separator is specified as second argument, a string will be tokenized at w
 The second argument can now be omitted: 
 
 
-    fn:trace(<xml/>, "Node: ")/node()  (: yields the debugging output "Node: <xml/>" :),
-    fn:trace(<xml/>)/node()            (: returns the debugging output "<xml/>" :)
+    fn:trace(<xml/>, "Node: ")/node()  (: yields the debugging output "Node: <xml/>"
+    :),
+    fn:trace(<xml/>)/node()            (: returns the debugging output "<xml/>"
+    :)
 
 
 ### Binary Data
@@ -396,7 +455,8 @@ XQuery 3.1 provides a new default collation, which allows for a case-insensitive
 If the [ICU Library](http://site.icu-project.org/download) is downloaded and added to the classpath, the full [Unicode Collation Algorithm](http://www.w3.org/TR/xpath-functions-31/#uca-collations) features get available in BaseX: 
 
 
-    (: returns 0 (both strings are compared as equal) :)
+    (: returns 0 (both strings are compared as equal)
+    :)
     compare('a-b', 'ab', 'http://www.w3.org/2013/collation/UCA?alternate=shifted')
 
 

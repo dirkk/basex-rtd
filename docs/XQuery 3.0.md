@@ -17,7 +17,8 @@ Most clauses of FLWOR expressions can now be specified in an arbitrary order: ad
 
     for $country in db:open('factbook')//country
     where $country/@population > 100000000
-    let $name := $country/name[1]
+    let $name
+    := $country/name[1]
     for $city in $country//city[population > 1000000]
     group by $name
     return <country name='{ $name }'>{ $city/name }</country>
@@ -58,9 +59,12 @@ The [simple map](http://www.w3.org/TR/xquery-30/#id-map-operator) operator `!` p
 **Example:**
 
 
-    (: Simple map notation :)
-    (1 to 10) ! element node { . },
-    (: FLWOR notation :)
+    (: Simple map notation
+    :)
+    (1 to 10)
+    ! element node { . },
+    (: FLWOR notation
+    :)
     for $i in 1 to 10
     return element node { $i }
 
@@ -77,8 +81,10 @@ FLWOR expressions have been extended to include the [group by](http://www.w3.org
 
 
     for $ppl in doc('xmark')//people/person  
-    let $ic := $ppl/profile/@income
-    let $income :=  if($ic < 30000) then
+    let $ic
+    := $ppl/profile/@income
+    let $income
+    :=  if($ic < 30000) then
                        "challenge" 
                     else if($ic >= 30000 and $ic < 100000) then 
                        "standard" 
@@ -128,17 +134,20 @@ Moreover, a value can be assigned to the grouping variable. This is shown in the
 **XQuery:**
 
 
-    let $data :=
+    let $data
+    :=
       <xml>
         <person country='USA' name='John'/>
         <person country='USA' name='Jack'/>
         <person country='Germany' name='Johann'/>
       </xml>
     for $person in $data/person
-    group by $country := $person/@country/string()
+    group by $country
+    := $person/@country/string()
     return element persons {
       attribute country { $country },
-      $person/@name ! element name { data() }
+      $person/@name
+    ! element name { data() }
     }
 
 
@@ -281,7 +290,8 @@ Two vertical bars `||` (also named _pipe characters_) can be used to concatenate
 Default values can now be attached to external variable declarations. This way, an expression can also be evaluated if its external variables have not been bound to a new value. 
 
 
-    declare variable $user external := "admin";
+    declare variable $user external
+    := "admin";
     "User:", $user
 
 
@@ -313,7 +323,8 @@ The context item can now be specified in the prolog of an XQuery expression:
 **Example:**
 
 
-    declare context item := document {
+    declare context item
+    := document {
       <xml>
         <text>Hello</text>
         <text>World</text>
@@ -334,7 +345,8 @@ XQuery 3.0 introduces annotations to declare properties associated with function
 **Example:**
 
 
-    declare %private function local:max($x1, $x2) {
+    declare
+    %private function local:max($x1, $x2) {
       if($x1 > $x2) then $x1 else $x2
     };
     local:max(2, 3)
@@ -348,7 +360,8 @@ Since Version 8.0 of BaseX, the following implementation-defined annotations are
 
 
     declare option db:inlinelimit '0';
-    declare %basex:inline function local:id($x) { $x };
+    declare
+    %basex:inline function local:id($x) { $x };
     local:id(123)
 
 
@@ -362,7 +375,9 @@ If an integer is specified as annotation argument, it will be interpreted a loca
 **Example:**
 
 
-    declare %basex:lazy variable $january := doc('does-not-exist');
+    declare
+    %basex:lazy variable $january
+    := doc('does-not-exist');
     if(month-from-date(current-date()) == 1) then $january else ()
 
 

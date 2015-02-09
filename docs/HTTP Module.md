@@ -16,15 +16,17 @@ All functions in this module are assigned to the `http://expath.org/ns/http-clie
 
 ### http:send-request
 
-`http:send-request($request as element(http:request)?, $href as xs:string?, $bodies as item()*) as item()+`
-`http:send-request($request as element(http:request)) as item()+`
-`http:send-request($request as element(http:request)?, $href as xs:string?) as item()+`
+http:send-request($request as element(http:request)?, $href as xs:string?, $bodies as item()*) as item()+
+http:send-request($request as element(http:request)) as item()+
+http:send-request($request as element(http:request)?, $href as xs:string?) as item()+
 
-Sends an HTTP request and interprets the corresponding response. `$request` contains the parameters of the HTTP request such as HTTP method and headers. In addition to this it can also contain the URI to which the request will be sent and the body of the HTTP method. If the URI is not given with the parameter `$href`, its value in `$request` is used instead. The structure of `http:request` element follows the [EXPath](http://expath.org/spec/http-client) specification. 
+:   Sends an HTTP request and interprets the corresponding response. `$request` contains the parameters of the HTTP request such as HTTP method and headers. In addition to this it can also contain the URI to which the request will be sent and the body of the HTTP method. If the URI is not given with the parameter `$href`, its value in `$request` is used instead. The structure of `http:request` element follows the [EXPath](http://expath.org/spec/http-client) specification. 
 
-**Errors**
+    **Errors**
 
-`HC0001`: an HTTP error occurred.`HC0002`: error parsing the entity content as XML or HTML.`HC0003`: with a multipart response, the override-media-type must be either a multipart media type or application/octet-stream.`HC0004`: the src attribute on the body element is mutually exclusive with all other attribute (except the media-type).`HC0005`: the request element is not valid.`HC0006`: a timeout occurred waiting for the response. 
+
+    `HC0001`: an HTTP error occurred.`HC0002`: error parsing the entity content as XML or HTML.`HC0003`: with a multipart response, the override-media-type must be either a multipart media type or application/octet-stream.`HC0004`: the src attribute on the body element is mutually exclusive with all other attribute (except the media-type).`HC0005`: the request element is not valid.`HC0006`: a timeout occurred waiting for the response. 
+
 
 ### Examples
 
@@ -99,7 +101,8 @@ The response content type can also be overwritten in order to retrieve HTML page
 **Query:**
 
 
-    let $binary :=  http:send-request(
+    let $binary
+    :=  http:send-request(
       <http:request method='get'
          override-media-type='application/octet-stream'       
          href='http://www.google.com'>
@@ -158,7 +161,8 @@ POST request to the BaseX REST Service, specifying a username and password.
 **Query:**
 
 
-    let $request :=
+    let $request
+    :=
       <http:request href='http://localhost:8984/rest'
         method='post' username='admin' password='admin' send-authorization='true'>
         <http:body media-type='application/xml'>

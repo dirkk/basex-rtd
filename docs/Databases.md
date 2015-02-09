@@ -112,7 +112,8 @@ The following commands create an empty database, add two resources, explicitly f
 You may as well use the BaseX-specific [XQuery Database Functions](Database Module.md) to create, add, replace, and delete XML documents: 
 
 
-    let $root := "/path/to/xml/documents/"
+    let $root
+    := "/path/to/xml/documents/"
     for $file in file:list($root)
     return db:add("database", $root || $file)
 

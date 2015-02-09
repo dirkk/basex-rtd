@@ -82,39 +82,45 @@ Updated with Version 8.0: failure argument can now be an arbitrary item.
 
 ### unit:assert
 
-`unit:assert($test as item()*) as empty-sequence()`
-`unit:assert($test as item()*, $info as item()) as empty-sequence()`
+unit:assert($test as item()*) as empty-sequence()
+unit:assert($test as item()*, $info as item()) as empty-sequence()
 
-Asserts that the effective boolean value of the specified `$test` is true and returns an empty sequence. Otherwise, raises an error. The _effective boolean value_ of an expression can be explicitly computed by using the `fn:boolean` function.The default failure message can be overridden with the `$info` argument. 
+:   Asserts that the effective boolean value of the specified `$test` is true and returns an empty sequence. Otherwise, raises an error. The _effective boolean value_ of an expression can be explicitly computed by using the `fn:boolean` function.The default failure message can be overridden with the `$info` argument. 
 
-**Errors**
+    **Errors**
 
-`UNIT0001`: the assertion failed, or an error was raised. 
+
+    `UNIT0001`: the assertion failed, or an error was raised. 
+
 
 ### unit:assert-equals
 
-`unit:assert-equals($returned as item()*, $expected as item()*) as empty-sequence()`
-`unit:assert-equals($returned as item()*, $expected as item()*, $info as item()) as empty-sequence()`
+unit:assert-equals($returned as item()*, $expected as item()*) as empty-sequence()
+unit:assert-equals($returned as item()*, $expected as item()*, $info as item()) as empty-sequence()
 
-Asserts that the specified arguments are equal according to the rules of the `fn:deep-equals` function. Otherwise, raises an error.The default failure message can be overridden with the `$info` argument. 
+:   Asserts that the specified arguments are equal according to the rules of the `fn:deep-equals` function. Otherwise, raises an error.The default failure message can be overridden with the `$info` argument. 
 
-**Errors**
+    **Errors**
 
-`UNIT0001`: the assertion failed, or an error was raised. 
+
+    `UNIT0001`: the assertion failed, or an error was raised. 
+
 
 ### unit:fail
 
 Updated with Version 8.0: 0-argument signature adeded. 
 
 
-`unit:fail() as empty-sequence()`
-`unit:fail($info as item()) as empty-sequence()`
+unit:fail() as empty-sequence()
+unit:fail($info as item()) as empty-sequence()
 
-Raises a unit error. The default failure message can be overridden with the `$info` argument. 
+:   Raises a unit error. The default failure message can be overridden with the `$info` argument. 
 
-**Errors**
+    **Errors**
 
-`UNIT0001`: default error raised by this function. 
+
+    `UNIT0001`: default error raised by this function. 
+
  
 ## Example
 
@@ -124,52 +130,77 @@ The following XQUnit module `tests.xqm` contains all available unit annotations:
 ### Query
 
     module namespace test = 'http://basex.org/modules/xqunit-tests';
-    (:~ Initializing function, which is called once before all tests. :)
-    declare %unit:before-module function test:before-all-tests() {
+    (:~ Initializing function, which is called once before all tests.
+    :)
+    declare
+    %unit:before-module function test:before-all-tests() {
       ()
     };
-    (:~ Initializing function, which is called once after all tests. :)
-    declare %unit:after-module function test:after-all-tests() {
+    (:~ Initializing function, which is called once after all tests.
+    :)
+    declare
+    %unit:after-module function test:after-all-tests() {
       ()
     };
-    (:~ Initializing function, which is called before each test. :)
-    declare %unit:before function test:before() {
+    (:~ Initializing function, which is called before each test.
+    :)
+    declare
+    %unit:before function test:before() {
       ()
     };
-    (:~ Initializing function, which is called after each test. :)
-    declare %unit:after function test:after() {
+    (:~ Initializing function, which is called after each test.
+    :)
+    declare
+    %unit:after function test:after() {
       ()
     };
-    (:~ Function demonstrating a successful test. :)
-    declare %unit:test function test:assert-success() {
+    (:~ Function demonstrating a successful test.
+    :)
+    declare
+    %unit:test function test:assert-success() {
       unit:assert(<a/>)
     };
-    (:~ Function demonstrating a failure using unit:assert. :)
-    declare %unit:test function test:assert-failure() {
+    (:~ Function demonstrating a failure using unit:assert.
+    :)
+    declare
+    %unit:test function test:assert-failure() {
       unit:assert((), 'Empty sequence.')
     };
-    (:~ Function demonstrating a failure using unit:assert-equals. :)
-    declare %unit:test function test:assert-equals-failure() {
+    (:~ Function demonstrating a failure using unit:assert-equals.
+    :)
+    declare
+    %unit:test function test:assert-equals-failure() {
       unit:assert-equals(4 + 5, 6)
     };
-    (:~ Function demonstrating an unexpected success. :)
-    declare %unit:test("expected", "FORG0001") function test:unexpected-success() {
+    (:~ Function demonstrating an unexpected success.
+    :)
+    declare
+    %unit:test("expected", "FORG0001") function test:unexpected-success() {
       ()
     };
-    (:~ Function demonstrating an expected failure. :)
-    declare %unit:test("expected", "FORG0001") function test:expected-failure() {
+    (:~ Function demonstrating an expected failure.
+    :)
+    declare
+    %unit:test("expected", "FORG0001") function test:expected-failure() {
       1 + <a/>
     };
-    (:~ Function demonstrating the creation of a failure. :)
-    declare %unit:test function test:failure() {
+    (:~ Function demonstrating the creation of a failure.
+    :)
+    declare
+    %unit:test function test:failure() {
       unit:fail("Failure!")
     };
-    (:~ Function demonstrating an error. :)
-    declare %unit:test function test:error() {
+    (:~ Function demonstrating an error.
+    :)
+    declare
+    %unit:test function test:error() {
       1 + <a/>
     };
-    (:~ Skipping a test. :)
-    declare %unit:test %unit:ignore("Skipped!") function test:skipped() {
+    (:~ Skipping a test.
+    :)
+    declare
+    %unit:test
+    %unit:ignore("Skipped!") function test:skipped() {
       ()
     };
 

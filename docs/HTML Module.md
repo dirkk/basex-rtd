@@ -16,24 +16,25 @@ All functions in this module are assigned to the `http://basex.org/modules/html`
 
 ### html:parser
 
-`html:parser() as xs:string`
+html:parser() as xs:string
 
-Returns the name of the applied HTML parser (currently: `TagSoup`). If an _empty string_ is returned, TagSoup was not found in the classpath, and the input will be treated as well-formed XML. 
+:   Returns the name of the applied HTML parser (currently: `TagSoup`). If an _empty string_ is returned, TagSoup was not found in the classpath, and the input will be treated as well-formed XML. 
 
 
 ### html:parse
 
-`html:parse($input as xs:anyAtomicType) as document-node()`
-`html:parse($input as xs:anyAtomicType, $options as item()) as document-node()`
+html:parse($input as xs:anyAtomicType) as document-node()
+html:parse($input as xs:anyAtomicType, $options as item()) as document-node()
 
-Converts the HTML document specified by `$input` to XML, and returns a document node:  * The input may either be a string or a binary item (xs:hexBinary, xs:base64Binary). 
- * If the input is passed on in its binary representation, the HTML parser will try to automatically choose the correct encoding. 
+:   Converts the HTML document specified by `$input` to XML, and returns a document node:  * The input may either be a string or a binary item (xs:hexBinary, xs:base64Binary).     * If the input is passed on in its binary representation, the HTML parser will try to automatically choose the correct encoding. 
+    The `$options` argument can be used to set [TagSoup Options](Parsers.md#TagSoup_Options), which can be specified… 
 
- The `$options` argument can be used to set [TagSoup Options](Parsers.md#TagSoup_Options), which can be specified… 
 
-**Errors**
+    **Errors**
 
-`BXHL0001`: the input cannot be converted to XML. 
+
+    `BXHL0001`: the input cannot be converted to XML. 
+
  
 ## Examples
 

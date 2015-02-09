@@ -16,9 +16,9 @@ All functions in this module are assigned to the `http://basex.org/modules/rando
 
 ### random:double
 
-`random:double() as xs:double`
+random:double() as xs:double
 
-Returns a double value between 0.0 (inclusive) and 1.0 (exclusive). 
+:   Returns a double value between 0.0 (inclusive) and 1.0 (exclusive). 
 
 
 ### random:integer
@@ -26,20 +26,22 @@ Returns a double value between 0.0 (inclusive) and 1.0 (exclusive).
 Updated with Version 8.0: raise error for invalid input. 
 
 
-`random:integer() as xs:integer`
-`random:integer($max as xs:integer) as xs:integer`
+random:integer() as xs:integer
+random:integer($max as xs:integer) as xs:integer
 
-Returns an integer value, either in the whole integer range or between 0 (inclusive) and the given maximum (exclusive) 
+:   Returns an integer value, either in the whole integer range or between 0 (inclusive) and the given maximum (exclusive) 
 
-**Errors**
+    **Errors**
 
-`BXRA0001`: the maximum value is out of bounds. 
+
+    `BXRA0001`: the maximum value is out of bounds. 
+
 
 ### random:seeded-double
 
-`random:seeded-double($seed as xs:integer, $num as xs:integer) as xs:double*`
+random:seeded-double($seed as xs:integer, $num as xs:integer) as xs:double*
 
-Returns a sequence with `$num` double values between 0.0 (inclusive) and 1.0 (exclusive). The random values are created using the initial seed given in `$seed`. 
+:   Returns a sequence with `$num` double values between 0.0 (inclusive) and 1.0 (exclusive). The random values are created using the initial seed given in `$seed`. 
 
 
 ### random:seeded-integer
@@ -47,31 +49,34 @@ Returns a sequence with `$num` double values between 0.0 (inclusive) and 1.0 (ex
 Updated with Version 8.0: raise error for invalid input. 
 
 
-`random:seeded-integer($seed as xs:integer, $num as xs:integer) as xs:integer*`
-`random:seeded-integer($seed as xs:integer, $num as xs:integer, $max as xs:integer) as xs:integer*`
+random:seeded-integer($seed as xs:integer, $num as xs:integer) as xs:integer*
+random:seeded-integer($seed as xs:integer, $num as xs:integer, $max as xs:integer) as xs:integer*
 
-Returns a sequence with `$num` integer values, either in the whole integer range or between 0 (inclusive) and the given maximum (exclusive). The random values are created using the initial seed given in `$seed`. 
+:   Returns a sequence with `$num` integer values, either in the whole integer range or between 0 (inclusive) and the given maximum (exclusive). The random values are created using the initial seed given in `$seed`. 
 
-**Errors**
+    **Errors**
 
-`BXRA0001`: the maximum value is out of bounds.`BXRA0002`: the number of values to be returned is negative. 
+
+    `BXRA0001`: the maximum value is out of bounds.`BXRA0002`: the number of values to be returned is negative. 
+
 
 ### random:gaussian
 
-`random:gaussian($num as xs:integer) as xs:double*`
+random:gaussian($num as xs:integer) as xs:double*
 
-Returns a sequence with `$num` double values. The random values are Gaussian (i.e. normally) distributed with the mean 0.0. and the derivation 1.0. 
+:   Returns a sequence with `$num` double values. The random values are Gaussian (i.e. normally) distributed with the mean 0.0. and the derivation 1.0. 
 
 
 ### random:uuid
 
-`random:uuid() as xs:string`
+random:uuid() as xs:string
 
-Creates a random universally unique identifier (UUID), represented as 128-bit value. 
+:   Creates a random universally unique identifier (UUID), represented as 128-bit value. 
 
-**Examples**
+    **Examples**
 
- * `random:uuid() eq random:uuid()`  will (most probably) return the boolean value `false`. 
+
+    * `random:uuid() eq random:uuid()`  will (most probably) return the boolean value `false`. 
 
  
 ## Errors

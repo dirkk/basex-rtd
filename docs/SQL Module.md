@@ -16,106 +16,115 @@ All functions in this module are assigned to the `http://basex.org/modules/sql` 
 
 ### sql:init
 
-`sql:init($class as xs:string) as empty-sequence()`
+sql:init($class as xs:string) as empty-sequence()
 
-This function initializes a JDBC driver specified via `$class`. This step might be superfluous if the SQL database is not embedded. 
+:   This function initializes a JDBC driver specified via `$class`. This step might be superfluous if the SQL database is not embedded. 
 
-**Errors**
+    **Errors**
 
-`BXSQ0007`: the specified driver class is not found. 
+
+    `BXSQ0007`: the specified driver class is not found. 
+
 
 ### sql:connect
 
-`sql:connect($url as xs:string) as xs:integer`
-`sql:connect($url as xs:string, $user as xs:string, $password as xs:string) as xs:integer`
-`sql:connect($url as xs:string, $user as xs:string, $password as xs:string, $options as item()) as xs:integer`
+sql:connect($url as xs:string) as xs:integer
+sql:connect($url as xs:string, $user as xs:string, $password as xs:string) as xs:integer
+sql:connect($url as xs:string, $user as xs:string, $password as xs:string, $options as item()) as xs:integer
 
-This function establishes a connection to a relational database. As a result a connection handle is returned. The parameter `$url` is the URL of the database and shall be of the form: `jdbc:<driver name>:[//<server>[/<database>]]`. If the parameters `$user` and `$password` are specified, they are used as credentials for connecting to the database. The `$options` parameter can be used to set connection options, which can either be specified  * as children of an `<sql:options/>` element, e.g.: 
-
-    <sql:options>
-      <sql:autocommit value='true'/>
-      ...
+:   This function establishes a connection to a relational database. As a result a connection handle is returned. The parameter `$url` is the URL of the database and shall be of the form: `jdbc:<driver name>:[//<server>[/<database>]]`. If the parameters `$user` and `$password` are specified, they are used as credentials for connecting to the database. The `$options` parameter can be used to set connection options, which can either be specified  * as children of an `<sql:options/>` element, e.g.:     <sql:options>
+    <sql:autocommit value='true'/>
+    ...
     </sql:options>
-
- * as map, which contains all key/value pairs: 
-
+    * as map, which contains all key/value pairs: 
     map { "autocommit": "true", ... }
 
 
+    **Errors**
 
-**Errors**
 
-`BXSQ0001`: an SQL exception occurs, e.g. missing JDBC driver or not existing relation. 
+    `BXSQ0001`: an SQL exception occurs, e.g. missing JDBC driver or not existing relation. 
+
 
 ### sql:execute
 
 Once a connection is established, the returned connection handle can be used to execute queries on the database. Our SQL module supports both direct queries and prepared statements. 
 
 
-`sql:execute($connection as xs:integer, $query as xs:string) as element()*`
+sql:execute($connection as xs:integer, $query as xs:string) as element()*
 
- This function executes a query or update statement. The parameter `$connection` specifies a connection handle. The parameter `$query` is a string representing an SQL statement. 
+:   This function executes a query or update statement. The parameter `$connection` specifies a connection handle. The parameter `$query` is a string representing an SQL statement. 
 
-**Errors**
+    **Errors**
 
-`BXSQ0001`: an SQL exception occurs, e.g. not existing relation is retrieved.  `BXSQ0002`: a wrong connection handle is passed. 
+
+    `BXSQ0001`: an SQL exception occurs, e.g. not existing relation is retrieved.  `BXSQ0002`: a wrong connection handle is passed. 
+
 
 ### sql:execute-prepared
 
-`sql:execute-prepared($id as xs:integer, $params as element(sql:parameters)) as element()*`
+sql:execute-prepared($id as xs:integer, $params as element(sql:parameters)) as element()*
 
- This function executes a prepared statement. The parameter `$id` specifies a prepared statement handle. The optional parameter `$params` is an element `<sql:parameters/>` representing the parameters for a prepared statement along with their types and values. The following schema shall be used: 
-    element sql:parameters {
-     element sql:parameter {
-      attribute type { "int"|"string"|"boolean"|"date"|"double"|"float"|"short"|"time"|"timestamp" },
-      attribute null { "true"|"false" }?,
-      text }+ }?
-
+:   This function executes a prepared statement. The parameter `$id` specifies a prepared statement handle. The optional parameter `$params` is an element `<sql:parameters/>` representing the parameters for a prepared statement along with their types and values. The following schema shall be used:     element sql:parameters {
+    element sql:parameter {
+    attribute type { "int"|"string"|"boolean"|"date"|"double"|"float"|"short"|"time"|"timestamp" },
+    attribute null { "true"|"false" }?,
+    text }+ }?
 
 
-**Errors**
+    **Errors**
 
-`BXSQ0001`: an SQL exception occurs, e.g. not existing relation is retrieved.  `BXSQ0002`: a wrong prepared statement handle is passed. `BXSQ0003`: the number of `<sql:parameter/>` elements in `<sql:parameters/>` differs from the number of placeholders in the prepared statement. `BXSQ0004`: the type of a parameter for a prepared statement is not specified. `BXSQ0005`: an attribute different from `type` and `null` is set for a `<sql:parameter/>` element. `BXSQ0006`: a parameter is from type date, time or timestamp and its value is in an invalid format. 
+
+    `BXSQ0001`: an SQL exception occurs, e.g. not existing relation is retrieved.  `BXSQ0002`: a wrong prepared statement handle is passed. `BXSQ0003`: the number of `<sql:parameter/>` elements in `<sql:parameters/>` differs from the number of placeholders in the prepared statement. `BXSQ0004`: the type of a parameter for a prepared statement is not specified. `BXSQ0005`: an attribute different from `type` and `null` is set for a `<sql:parameter/>` element. `BXSQ0006`: a parameter is from type date, time or timestamp and its value is in an invalid format. 
+
 
 ### sql:prepare
 
-`sql:prepare($connection as xs:integer, $statement as xs:string) as xs:integer`
+sql:prepare($connection as xs:integer, $statement as xs:string) as xs:integer
 
-This function prepares a statement and returns a handle to it. The parameter `$connection` indicates the connection handle to be used. The parameter `$statement` is a string representing an SQL statement with one or more '?' placeholders. If the value of a field has to be set to `NULL`, then the attribute `null` of the element `<sql:parameter/>` has to be `true`. 
+:   This function prepares a statement and returns a handle to it. The parameter `$connection` indicates the connection handle to be used. The parameter `$statement` is a string representing an SQL statement with one or more '?' placeholders. If the value of a field has to be set to `NULL`, then the attribute `null` of the element `<sql:parameter/>` has to be `true`. 
 
-**Errors**
+    **Errors**
 
-`BXSQ0001`: an SQL exception occurs.  `BXSQ0002`: a wrong connection handle is passed. 
+
+    `BXSQ0001`: an SQL exception occurs.  `BXSQ0002`: a wrong connection handle is passed. 
+
 
 ### sql:commit
 
-`sql:commit($connection as xs:integer) as empty-sequence()`
+sql:commit($connection as xs:integer) as empty-sequence()
 
- This function commits the changes made to a relational database. `$connection` specifies the connection handle. 
+:   This function commits the changes made to a relational database. `$connection` specifies the connection handle. 
 
-**Errors**
+    **Errors**
 
-`BXSQ0001`: an SQL exception occurs.  `BXSQ0002`: a wrong connection handle is passed. 
+
+    `BXSQ0001`: an SQL exception occurs.  `BXSQ0002`: a wrong connection handle is passed. 
+
 
 ### sql:rollback
 
-`sql:rollback($connection as xs:integer) as empty-sequence()`
+sql:rollback($connection as xs:integer) as empty-sequence()
 
- This function rolls back the changes made to a relational database. `$connection` specifies the connection handle. 
+:   This function rolls back the changes made to a relational database. `$connection` specifies the connection handle. 
 
-**Errors**
+    **Errors**
 
-`BXSQ0001`: an SQL exception occurs.  `BXSQ0002`: a wrong connection handle is passed. 
+
+    `BXSQ0001`: an SQL exception occurs.  `BXSQ0002`: a wrong connection handle is passed. 
+
 
 ### sql:close
 
-`sql:close($connection as xs:integer) as empty-sequence()`
+sql:close($connection as xs:integer) as empty-sequence()
 
- This function closes a connection to a relational database. `$connection` specifies the connection handle. 
+:   This function closes a connection to a relational database. `$connection` specifies the connection handle. 
 
-**Errors**
+    **Errors**
 
-`BXSQ0001`: an SQL exception occurs.  `BXSQ0002`: a wrong connection handle is passed. 
+
+    `BXSQ0001`: an SQL exception occurs.  `BXSQ0002`: a wrong connection handle is passed. 
+
  
 ## Examples
 
@@ -124,7 +133,8 @@ This function prepares a statement and returns a handle to it. The parameter `$c
 A simple select statement can be executed on the following way: 
 
 
-    let $conn := sql:connect("jdbc:postgresql://localhost:5432/coffeehouse")
+    let $conn
+    := sql:connect("jdbc:postgresql://localhost:5432/coffeehouse")
     return sql:execute($conn, "SELECT * FROM coffees WHERE price < 10")
 
 
@@ -160,16 +170,25 @@ The result will look like:
 A prepared select statement can be executed in the following way: 
 
 
-    (: Establish a connection :)
-    let $conn := sql:connect("jdbc:postgresql://localhost:5432/coffeehouse")
-    (: Obtain a handle to a prepared statement :)
-    let $prep := sql:prepare($conn, "SELECT * FROM coffees WHERE price < ? AND cof_name = ?")
-    (: Values and types of prepared statement parameters :)
-    let $params := <sql:parameters>
+    (: Establish a connection
+    :)
+    let $conn
+    := sql:connect("jdbc:postgresql://localhost:5432/coffeehouse")
+    (: Obtain a handle to a prepared statement
+    :)
+    let $prep
+    := sql:prepare($conn, "SELECT * FROM coffees WHERE price <
+    ? AND cof_name =
+    ?")
+    (: Values and types of prepared statement parameters
+    :)
+    let $params
+    := <sql:parameters>
                     <sql:parameter type='double'>10</sql:parameter>
                     <sql:parameter type='string'>French_Roast</sql:parameter>
                    </sql:parameters>
-    (: Execute prepared statement :)
+    (: Execute prepared statement
+    :)
     return sql:execute-prepared($prep, $params)
 
 
@@ -178,19 +197,26 @@ A prepared select statement can be executed in the following way:
 The following expression demonstrates how SQLite can be addressed using the [Xerial SQLite JDBC driver](http://bitbucket.org/xerial/sqlite-jdbc): 
 
 
-    (: Initialize driver :)
+    (: Initialize driver
+    :)
     sql:init("org.sqlite.JDBC"),
-    (: Establish a connection :)
-    let $conn := sql:connect("jdbc:sqlite:database.db")
+    (: Establish a connection
+    :)
+    let $conn
+    := sql:connect("jdbc:sqlite:database.db")
     return (
-      (: Create a new table :)
+      (: Create a new table
+    :)
       sql:execute($conn, "drop table if exists person"),
       sql:execute($conn, "create table person (id integer, name string)"),
-      (: Run 10 updates :)
+      (: Run 10 updates
+    :)
       for $i in 1 to 10
-      let $q := "insert into person values(" || $i || ", '" || $i || "')"
+      let $q
+    := "insert into person values(" || $i || ", '" || $i || "')"
       return sql:execute($conn, $q),
-      (: Return table contents :)
+      (: Return table contents
+    :)
       sql:execute($conn, "select * from person"),
       sql:close($conn)
     )

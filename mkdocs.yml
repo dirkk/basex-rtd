@@ -1,8 +1,9 @@
 site_name: BaseX Documentation
 theme: readthedocs
+theme_dir: basex
 repo_url: https://github.com/dirkk/basex-rtd
 site_favicon: favicon.ico
-markdown_extensions: [admonition]
+markdown_extensions: [admonition, extra]
 pages:
 - ["index.md", "Getting Started", "Main Page"]
 - ["Getting Started.md", "Getting Started", "Getting Started"]

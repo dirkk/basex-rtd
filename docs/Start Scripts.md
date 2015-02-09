@@ -27,11 +27,14 @@ The following scripts can be used to launch the standalone version of BaseX. Ple
     REM Core and library classes
     set CP=%PWD%/../BaseX.jar
     set LIB=%PWD%/../lib
-    for /R "%LIB%" %%a in (*.jar) do set CP=!CP!;%%a
+    for /R "%LIB%"
+    %%a in (*.jar) do set CP=!CP!;%%a
     REM Options for virtual machine
     set VM=-Xmx512m
     REM Run code
-    java -cp "%CP%" %VM% org.basex.BaseX %*
+    java -cp "%CP%"
+    %VM% org.basex.BaseX
+    %*
 
 
 ### Linux/Mac: basex
@@ -39,7 +42,8 @@ The following scripts can be used to launch the standalone version of BaseX. Ple
     #!/bin/bash
     # Path to this script
     FILE="${BASH_SOURCE[0]}"
-    while [ -h "$FILE" ] ; do
+    while [ -h "$FILE" ]
+    ; do
       SRC="$(readlink "$FILE")"
       FILE="$( cd -P "$(dirname "$FILE")" && \
                cd -P "$(dirname "$SRC")" && pwd )/$(basename "$SRC")"
@@ -68,12 +72,16 @@ The scripts for starting the HTTP server, which gives access to the [REST](REST.
     REM Core and library classes
     set CP=%PWD%/../BaseX.jar
     set LIB=%PWD%/../lib
-    for /R "%LIB%" %%a in (*.jar) do set CP=!CP!;%%a
-    for /R "%LIB%" %%a in (*.jar) do set CP=!CP!;%%a
+    for /R "%LIB%"
+    %%a in (*.jar) do set CP=!CP!;%%a
+    for /R "%LIB%"
+    %%a in (*.jar) do set CP=!CP!;%%a
     REM Options for virtual machine
     set VM=-Xmx512m
     REM Run code
-    java -cp "%CP%;." %VM% org.basex.BaseXHTTP %*
+    java -cp "%CP%;."
+    %VM% org.basex.BaseXHTTP
+    %*
 
 
 ### Linux/Mac: basexhttp
@@ -81,7 +89,8 @@ The scripts for starting the HTTP server, which gives access to the [REST](REST.
     #!/bin/bash
     # Path to this script
     FILE="${BASH_SOURCE[0]}"
-    while [ -h "$FILE" ] ; do
+    while [ -h "$FILE" ]
+    ; do
       SRC="$(readlink "$FILE")"
       FILE="$( cd -P "$(dirname "$FILE")" && \
                cd -P "$(dirname "$SRC")" && pwd )/$(basename "$SRC")"

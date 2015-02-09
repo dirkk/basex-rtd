@@ -51,7 +51,8 @@ Function types can also be nested. As an example we take `local:on-sequences`, w
     declare function local:on-sequences(
       $fun as function(item()) as item()*
     ) as function(item()*) as item()* {
-      fn:for-each($fun, ?)
+      fn:for-each($fun,
+    ?)
     };
 
 
@@ -76,48 +77,51 @@ Some usage patterns on sequences are so common that the higher-order functions d
 
 #### fn:for-each
 
-`fn:for-each($seq as item()*, $fun as function(item()) as item()*)) as item()*`
+fn:for-each($seq as item()*, $fun as function(item()) as item()*)) as item()*
 
-Applies the function item `$fun` to every element of the sequence `$seq` and returns all of the results as a sequence. 
+:   Applies the function item `$fun` to every element of the sequence `$seq` and returns all of the results as a sequence. 
 
-**Examples**
+    **Examples**
 
- * Squaring all numbers from 1 to 10: 
- * _Result:_`1 4 9 16 25 36 49 64 81 100`
- * Applying a list of functions to a string: 
- * _Result:_`FOOBAR bar 6`
+
+    * Squaring all numbers from 1 to 10: 
+    * _Result:_`1 4 9 16 25 36 49 64 81 100`
+    * Applying a list of functions to a string: 
+    * _Result:_`FOOBAR bar 6`
 
 
 #### fn:filter
 
-`fn:filter($seq as item()*, $pred as function(item()) as xs:boolean)) as item()*`
+fn:filter($seq as item()*, $pred as function(item()) as xs:boolean)) as item()*
 
-Applies the boolean predicate `$pred` to all elements of the sequence `$seq`, returning those for which it returns `true()`. 
+:   Applies the boolean predicate `$pred` to all elements of the sequence `$seq`, returning those for which it returns `true()`. 
 
-**Examples**
+    **Examples**
 
- * All even integers until 10: 
- * _Result:_`2 4 6 8 10`
- * Strings that start with an upper-case letter: 
- * _Result:_`FooBar BAR`
- * Inefficient prime number generator: 
- * _Result:_`2 3 5 7 11 13 17 19`
+
+    * All even integers until 10: 
+    * _Result:_`2 4 6 8 10`
+    * Strings that start with an upper-case letter: 
+    * _Result:_`FooBar BAR`
+    * Inefficient prime number generator: 
+    * _Result:_`2 3 5 7 11 13 17 19`
 
 
 #### fn:for-each-pair
 
-`fn:for-each-pair($seq1 as item()*, $seq2 as item()*, $fun as function(item(), item()) as item()*) as item()*`
+fn:for-each-pair($seq1 as item()*, $seq2 as item()*, $fun as function(item(), item()) as item()*) as item()*
 
-_zips_ the elements from the two sequences `$seq1` and `$seq2` together with the function `$f`. It stops after the shorter sequence ends. 
+:   _zips_ the elements from the two sequences `$seq1` and `$seq2` together with the function `$f`. It stops after the shorter sequence ends. 
 
-**Examples**
+    **Examples**
 
- * Adding one to the numbers at odd positions: 
- * _Result:_`2 1 2 1 2`
- * Line numbering: 
- * _Result:_
- * Checking if a sequence is sorted: 
- * _Result:_`true false`
+
+    * Adding one to the numbers at odd positions: 
+    * _Result:_`2 1 2 1 2`
+    * Line numbering: 
+    * _Result:_
+    * Checking if a sequence is sorted: 
+    * _Result:_`true false`
 
 
 ### Folds 
@@ -133,7 +137,8 @@ Calculating the _product_ of a sequence of integers for example is easy in `Java
 
     public int product(int[] seq) {
       int result = 1;
-      for(int i : seq) {
+      for(int i
+    : seq) {
         result = result * i;
       }
       return result;
@@ -148,32 +153,34 @@ The _linear_ folds on sequences come in two flavours. They differ in the directi
 
 #### fn:fold-left
 
-`fn:fold-left($seq as item()*, $seed as item()*, $fun as function(item()*, item()) as item()*) as item()*`
+fn:fold-left($seq as item()*, $seed as item()*, $fun as function(item()*, item()) as item()*) as item()*
 
-The _left fold_ traverses the sequence from the left.  The query `fn:fold-left(1 to 5, 0, $f)` for example would be evaluated as: 
+:   The _left fold_ traverses the sequence from the left.  The query `fn:fold-left(1 to 5, 0, $f)` for example would be evaluated as: 
 
-**Examples**
+    **Examples**
 
- * Product of a sequence of integers: 
- * _Result:_`120`
- * Illustrating the evaluation order: 
- * _Result:_`$f($f($f($f($f($seed, 1), 2), 3), 4), 5)`
- * Building a decimal number from digits: 
- * _Result:_`12345 42`
+
+    * Product of a sequence of integers: 
+    * _Result:_`120`
+    * Illustrating the evaluation order: 
+    * _Result:_`$f($f($f($f($f($seed, 1), 2), 3), 4), 5)`
+    * Building a decimal number from digits: 
+    * _Result:_`12345 42`
 
 
 #### fn:fold-right
 
-`fn:fold-right($seq as item()*, $seed as item()*, $fun as function(item(), item()*) as item()*) as item()*`
+fn:fold-right($seq as item()*, $seed as item()*, $fun as function(item(), item()*) as item()*) as item()*
 
-The _right fold_`fn:fold-right($seq, $seed, $fun)` traverses the from the right.  The query `fn:fold-right(1 to 5, 0, $f)` for example would be evaluated as: 
+:   The _right fold_`fn:fold-right($seq, $seed, $fun)` traverses the from the right.  The query `fn:fold-right(1 to 5, 0, $f)` for example would be evaluated as: 
 
-**Examples**
+    **Examples**
 
- * Product of a sequence of integers: 
- * _Result:_`120`
- * Illustrating the evaluation order: 
- * _Result:_`$f(1, $f(2, $f(3, $f(4, $f(5, $seed)))))`
- * Reversing a sequence of items: 
- * _Result:_`10 9 8 7 6 5 4 3 2 1`
+
+    * Product of a sequence of integers: 
+    * _Result:_`120`
+    * Illustrating the evaluation order: 
+    * _Result:_`$f(1, $f(2, $f(3, $f(4, $f(5, $seed)))))`
+    * Reversing a sequence of items: 
+    * _Result:_`10 9 8 7 6 5 4 3 2 1`
 

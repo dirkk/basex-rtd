@@ -16,36 +16,41 @@ All functions in this module are assigned to the `http://basex.org/modules/clien
 
 ### client:connect
 
-`client:connect($host as xs:string, $port as xs:integer, $user as xs:string, $password as xs:string) as xs:anyURI`
+client:connect($host as xs:string, $port as xs:integer, $user as xs:string, $password as xs:string) as xs:anyURI
 
-This function establishes a connection to a remote BaseX server, creates a new client session, and returns a session id. The parameter `$host` is the name of the database server, `$port` specifies the server port, and `$user` and `$password` represent the login data. 
+:   This function establishes a connection to a remote BaseX server, creates a new client session, and returns a session id. The parameter `$host` is the name of the database server, `$port` specifies the server port, and `$user` and `$password` represent the login data. 
 
-**Errors**
+    **Errors**
 
-`BXCL0001`: an error occurs while creating the session (possible reasons: server not available, access denied). 
+
+    `BXCL0001`: an error occurs while creating the session (possible reasons: server not available, access denied). 
+
 
 ### client:execute
 
-`client:execute($id as xs:anyURI, $command as xs:string) as xs:string`
+client:execute($id as xs:anyURI, $command as xs:string) as xs:string
 
- This function executes a [command](Commands.md) and returns the result as string. The parameter `$id` contains the session id returned by [client:connect](Client Module.md#client-connect). The `$command` argument represents a single command, which will be executed by the server. 
+:   This function executes a [command](Commands.md) and returns the result as string. The parameter `$id` contains the session id returned by [client:connect](Client Module.md#client-connect). The `$command` argument represents a single command, which will be executed by the server. 
 
-**Errors**
+    **Errors**
 
-`BXCL0003`: an I/O error occurs while transferring data from or to the server.`BXCL0004`: an error occurs while executing a command. 
-**Examples**
 
-The following query creates a new database `TEST` on a remote BaseX server: 
-    client:connect('basex.server.org', 8080, 'admin', 'admin') !
-      client:execute(., 'create database TEST')
+    `BXCL0003`: an I/O error occurs while transferring data from or to the server.`BXCL0004`: an error occurs while executing a command. 
 
+    **Examples**
+
+
+    The following query creates a new database `TEST` on a remote BaseX server: 
+    client:connect('basex.server.org', 8080, 'admin', 'admin')
+    !
+    client:execute(., 'create database TEST')
 
 
 ### client:info
 
-`client:info($id as xs:anyURI) as xs:string`
+client:info($id as xs:anyURI) as xs:string
 
- This function returns an information string, created by a previous call of [client:execute](Client Module.md#client-execute). `$id` specifies the session id. 
+:   This function returns an information string, created by a previous call of [client:execute](Client Module.md#client-execute). `$id` specifies the session id. 
 
 
 ### client:query
@@ -53,33 +58,38 @@ The following query creates a new database `TEST` on a remote BaseX server:
 Updated with Version 8.0: Bound values may now contain no or more than one item. 
 
 
-`client:query($id as xs:anyURI, $query as xs:string) as item()*`
-`client:query($id as xs:anyURI, $query as xs:string, $bindings as map(*)) as item()*`
+client:query($id as xs:anyURI, $query as xs:string) as item()*
+client:query($id as xs:anyURI, $query as xs:string, $bindings as map(*)) as item()*
 
-Evaluates a query and returns the result as sequence. The parameter `$id` contains the session id returned by [client:connect](Client Module.md#client-connect), and `$query` represents the query string, which will be evaluated by the server.Variables and the context item can be declared via `$bindings`. The specified keys must be QNames or strings:  * If a key is a QName, it will be directly adopted as variable name. 
- * If a key is a string, it may be prefixed with a dollar sign. A namespace can be specified using the [Clark Notation](http://www.jclark.com/xml/xmlns.htm). If the specified string is empty, the value will be bound to the context item. 
+:   Evaluates a query and returns the result as sequence. The parameter `$id` contains the session id returned by [client:connect](Client Module.md#client-connect), and `$query` represents the query string, which will be evaluated by the server.Variables and the context item can be declared via `$bindings`. The specified keys must be QNames or strings:  * If a key is a QName, it will be directly adopted as variable name.     * If a key is a string, it may be prefixed with a dollar sign. A namespace can be specified using the [Clark Notation](http://www.jclark.com/xml/xmlns.htm). If the specified string is empty, the value will be bound to the context item. 
 
 
-**Errors**
+    **Errors**
 
-`BXCL0003`: an I/O error occurs while transferring data from or to the server.`BXCL0005`: an error occurs while evaluating a query, and if the original error cannot be extracted from the returned error string.`BXCL0006`: a value to be bound is no single item. 
-**Examples**
 
-The following query sends a query on a local server instance, binds the integer `123` to the variable `$n` and returns `246`: 
-    let $c := client:connect('localhost', 1984, 'admin', 'admin')
+    `BXCL0003`: an I/O error occurs while transferring data from or to the server.`BXCL0005`: an error occurs while evaluating a query, and if the original error cannot be extracted from the returned error string.`BXCL0006`: a value to be bound is no single item. 
+
+    **Examples**
+
+
+    The following query sends a query on a local server instance, binds the integer `123` to the variable `$n` and returns `246`: 
+    let $c
+    := client:connect('localhost', 1984, 'admin', 'admin')
     return client:query($c, "declare variable $n external; $n * 2", map { 'n': 123 })
+    The following query performs a query on a first server, the results of which are passed on to a second server: 
 
- The following query performs a query on a first server, the results of which are passed on to a second server: 
 
 ### client:close
 
-`client:close($id as xs:anyURI) as empty-sequence()`
+client:close($id as xs:anyURI) as empty-sequence()
 
- This function closes a client session. `$id` specifies the session id.At the end of query execution, open sessions will be automatically closed. 
+:   This function closes a client session. `$id` specifies the session id.At the end of query execution, open sessions will be automatically closed. 
 
-**Errors**
+    **Errors**
 
-`BXCL0003`: an I/O error occurs while transferring data from or to the server. 
+
+    `BXCL0003`: an I/O error occurs while transferring data from or to the server. 
+
  
 ## Errors
 

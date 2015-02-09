@@ -23,62 +23,65 @@ This [XQuery Module](Module Library.md) contains functions for accessing and mod
 
 ### session:id
 
-`session:id() as xs:string`
+session:id() as xs:string
 
-Returns the session ID of a servlet request. 
+:   Returns the session ID of a servlet request. 
 
-**Examples**
+    **Examples**
 
-Running the server-side XQuery file `id.xq` via `http://localhost:8984/id.xq`: 
+
+    Running the server-side XQuery file `id.xq` via `http://localhost:8984/id.xq`: 
     import module namespace session = "http://basex.org/modules/session";
     'Session ID: ' || session:id()
 
 
-
 ### session:created
 
-`session:created() as xs:dateTime`
+session:created() as xs:dateTime
 
-Returns the creation time of a session. 
+:   Returns the creation time of a session. 
 
 
 ### session:accessed
 
-`session:accessed() as xs:dateTime`
+session:accessed() as xs:dateTime
 
-Returns the last access time of a session. 
+:   Returns the last access time of a session. 
 
 
 ### session:names
 
-`session:names() as xs:string*`
+session:names() as xs:string*
 
-Returns the names of all variables bound to the current session. 
+:   Returns the names of all variables bound to the current session. 
 
-**Examples**
+    **Examples**
 
-Running the server-side XQuery file `names.xq` via `http://localhost:8984/names.xq`: 
+
+    Running the server-side XQuery file `names.xq` via `http://localhost:8984/names.xq`: 
     import module namespace session = "http://basex.org/modules/session";
-    session:names() ! element variable { . }
-
+    session:names()
+    ! element variable { . }
 
 
 ### session:get
 
-`session:get($key as xs:string) as item()*`
-`session:get($key as xs:string, $default as item()*) as item()*`
+session:get($key as xs:string) as item()*
+session:get($key as xs:string, $default as item()*) as item()*
 
-Returns the value of a variable bound to the current session. If the key is unknown, an empty sequence or the optionally specified default value is returned instead. 
+:   Returns the value of a variable bound to the current session. If the key is unknown, an empty sequence or the optionally specified default value is returned instead. 
 
-**Errors**
+    **Errors**
 
-`BXSE0002`: the value of a session variable could not be retrieved. 
-**Examples**
 
-Running the server-side XQuery file `get.xq` via `http://localhost:8984/get.xq?key=user`: 
+    `BXSE0002`: the value of a session variable could not be retrieved. 
+
+    **Examples**
+
+
+    Running the server-side XQuery file `get.xq` via `http://localhost:8984/get.xq?key=user`: 
     import module namespace session = "http://basex.org/modules/session";
     'Value of ' || $key || ': ' || session:get($key)
-
 
 
 ### session:set
@@ -86,40 +89,42 @@ Running the server-side XQuery file `get.xq` via `http://localhost:8984/get.xq?k
 Updated with Version 8.0: allow sequences as session values 
 
 
-`session:set($key as xs:string, $value as item()*) as empty-sequence()`
+session:set($key as xs:string, $value as item()*) as empty-sequence()
 
-Binds the specified key/value pair to a session. 
+:   Binds the specified key/value pair to a session. 
 
-**Errors**
+    **Errors**
 
-`BXSE0001`: a function item was specified as value of a session variable. 
-**Examples**
 
-Running the server-side XQuery file `set.xq` via `http://localhost:8984/set.xq?key=user&value=john`: 
+    `BXSE0001`: a function item was specified as value of a session variable. 
+
+    **Examples**
+
+
+    Running the server-side XQuery file `set.xq` via `http://localhost:8984/set.xq?key=user&value=john`: 
     import module namespace session = "http://basex.org/modules/session";
     session:set($key, $value), 'Variable was set.'
 
 
-
 ### session:delete
 
-`session:delete($key as xs:string) as empty-sequence()`
+session:delete($key as xs:string) as empty-sequence()
 
-Deletes a session variable. 
+:   Deletes a session variable. 
 
-**Examples**
+    **Examples**
 
-Running the server-side XQuery file `delete.xq` via `http://localhost:8984/delete.xq?key=user`: 
+
+    Running the server-side XQuery file `delete.xq` via `http://localhost:8984/delete.xq?key=user`: 
     import module namespace session = "http://basex.org/modules/session";
     session:delete($key), 'Variable was deleted.'
 
 
-
 ### session:close
 
-`session:close() as empty-sequence()`
+session:close() as empty-sequence()
 
-Unregisters a session and all data associated with it. 
+:   Unregisters a session and all data associated with it. 
 
  
 ## Errors

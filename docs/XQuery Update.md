@@ -66,7 +66,8 @@ All node elements are renamed. An iterative approach helps to modify multiple no
 
 #### transform
 
-    copy $c := doc('example.xml')//node[@id = 1]
+    copy $c
+    := doc('example.xml')//node[@id = 1]
     modify rename node $c as 'copyOfNode'
     return $c
 
@@ -80,7 +81,8 @@ The following example demonstrates a common use case:
 Query: 
 
 
-    copy $c :=
+    copy $c
+    :=
       <entry>
         <title>Transform expression example</title>
         <author>BaseX Team</author>
@@ -106,7 +108,8 @@ Result:
 The `<entry>` element (here it is passed to the expression as a DOM node) can also be replaced by a database node, e.g.: 
 
 
-    copy $c := (db:open('example')//entry)[1]
+    copy $c
+    := (db:open('example')//entry)[1]
     ...
 
 
@@ -116,7 +119,8 @@ In this case, the original database node remains untouched as well, as all updat
 Here is an example where we return an entire document, parts modified and all: 
 
 
-    copy $c := doc("zaokeng.kml")
+    copy $c
+    := doc("zaokeng.kml")
     modify (
       for $d in $c//*:Point
       return insert node (
@@ -216,7 +220,8 @@ If you want to modify nodes in main memory, you can use the [transform expressio
 To use updating expressions within a function, the `%updating` annotation has to be added to the function declaration. A correct declaration of a function that contains updating expressions (or one that calls updating functions) looks like this: 
 
 
-    declare %updating function { ... }
+    declare
+    %updating function { ... }
 
 
 ### Effects

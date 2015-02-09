@@ -62,7 +62,8 @@ The `csv` and `json` parameters are supplied with a list of options. Option name
 **Query**: 
 
 
-    (: The output namespace declaration is optional, because it is statically declared in BaseX) :)
+    (: The output namespace declaration is optional, because it is statically declared in BaseX)
+    :)
     declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
     declare option output:method "csv";
     declare option output:csv "header=yes, separator=semicolon";

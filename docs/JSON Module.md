@@ -87,28 +87,32 @@ The JSON function signatures provide an `$options` argument. Options can either 
 
 ### json:parse
 
-`json:parse($input as xs:string) as element(json)`
-`json:parse($input as xs:string, $options as item()) as item()`
+json:parse($input as xs:string) as element(json)
+json:parse($input as xs:string, $options as item()) as item()
 
-Converts the JSON document specified by `$input` to an XML document or a map. If the input can be successfully parsed, it can be serialized back to the original JSON representation. The `$options` argument can be used to control the way the input is converted. 
+:   Converts the JSON document specified by `$input` to an XML document or a map. If the input can be successfully parsed, it can be serialized back to the original JSON representation. The `$options` argument can be used to control the way the input is converted. 
 
-**Errors**
+    **Errors**
 
-`BXJS0001`: the specified input cannot be parsed as JSON document. 
+
+    `BXJS0001`: the specified input cannot be parsed as JSON document. 
+
 
 ### json:serialize
 
 Updated with BaseX 8.0: Aligned with the `json` output method of the official specification. 
 
 
-`json:serialize($input as node()) as xs:string`
-`json:serialize($input as node(), $options as item()) as xs:string`
+json:serialize($input as node()) as xs:string
+json:serialize($input as node(), $options as item()) as xs:string
 
-Serializes the node specified by `$input` as JSON, and returns the result as `xs:string` instance. The node is expected to conform to the output created by the [json:parse()](JSON Module.md#json-parse) function. All other items will be serialized as specified for the [json output method](XQuery 3.1.md#JSON_Serialization) of the official specification.Items can also be serialized as JSON if the [Serialization Parameter](Serialization.md)`method` is set to `json`.The `$options` argument can be used to control the way the input is serialized. 
+:   Serializes the node specified by `$input` as JSON, and returns the result as `xs:string` instance. The node is expected to conform to the output created by the [json:parse()](JSON Module.md#json-parse) function. All other items will be serialized as specified for the [json output method](XQuery 3.1.md#JSON_Serialization) of the official specification.Items can also be serialized as JSON if the [Serialization Parameter](Serialization.md)`method` is set to `json`.The `$options` argument can be used to control the way the input is serialized. 
 
-**Errors**
+    **Errors**
 
-`BXJS0002`: the specified node cannot be serialized as JSON document. 
+
+    `BXJS0002`: the specified node cannot be serialized as JSON document. 
+
  
 ## Examples
 
@@ -120,10 +124,13 @@ Serializes the node specified by `$input` as JSON, and returns the result as `xs
 **Query:**
 
 
-    let $database := "database"
+    let $database
+    := "database"
     for $name in file:list('.', false(), '*.json')
-    let $file := file:read-text($name)
-    let $json := json:parse($file)
+    let $file
+    := file:read-text($name)
+    let $json
+    := json:parse($file)
     return db:add($database, $json, $name) 
 
 
@@ -145,7 +152,8 @@ Serializes the node specified by `$input` as JSON, and returns the result as `xs
 **Query:**
 
 
-    (: serialize result as plain text :)
+    (: serialize result as plain text
+    :)
     declare option output:method 'text';
     json:serialize(<json type="object"/>)
 
@@ -189,7 +197,8 @@ Serializes the node specified by `$input` as JSON, and returns the result as `xs
 **Query:**
 
 
-    let $options := map { 'merge': true() }
+    let $options
+    := map { 'merge': true() }
     return json:parse('{
       "first_name": "John",
       "last_name": "Smith",
@@ -246,8 +255,10 @@ Serializes the node specified by `$input` as JSON, and returns the result as `xs
 
 
     for $doc in collection('json')
-    let $name := document-uri($doc)
-    let $json := json:serialize($doc)
+    let $name
+    := document-uri($doc)
+    let $json
+    := json:serialize($doc)
     return file:write($name, $json)
 
 

@@ -185,7 +185,8 @@ The XQuery Full Text Recommendation allows for the usage of scoring models and v
 The scoring model of BaseX takes into consideration the number of found terms, their frequency in a text, and the length of a text. The shorter the input text is, the higher scores will be: 
 
 
-    (: Score values: 1 0.62 0.45 :)
+    (: Score values: 1 0.62 0.45
+    :)
     for $text score $score in ("A", "A B", "A B C")[. contains text "A"]
     order by $score descending
     return <hit score='{ format-number($score, "0.00") }'>{ $text }</hit>
@@ -197,24 +198,35 @@ This simple approach has proven to consistently deliver good results, and in par
 Please note that scores will only be computed if a parent expression requests them: 
 
 
-    (: Computes and returns a scoring value. :)
-    let score $score := <x>Hello Universe</x> contains text "hello"
+    (: Computes and returns a scoring value.
+    :)
+    let score $score
+    := <x>Hello Universe</x> contains text "hello"
     return $score
-    (: No scoring value will be computed here. :)
-    let $result := <x>Hello Universe</x> contains text "hello"
-    let score $score := $result
+    (: No scoring value will be computed here.
+    :)
+    let $result
+    := <x>Hello Universe</x> contains text "hello"
+    let score $score
+    := $result
     return $score
 
 
 With Version 8.0, scores will be propagated by the `and` and `or` expressions and in predicates. In the following query, all returned scores are equal: 
 
 
-    let $text := "A B C"
-    let score $s1 := $text contains text "A" ftand "B C"
-    let score $s2 := $text contains text "A" ftand "B C"
-    let score $s3 := $text contains text "A" and $text contains text "B C"
-    let score $s4 := $text contains text "A" or $text contains text "B C"
-    let score $s5 := $text[. contains text "A"][. contains text "B C"]
+    let $text
+    := "A B C"
+    let score $s1
+    := $text contains text "A" ftand "B C"
+    let score $s2
+    := $text contains text "A" ftand "B C"
+    let score $s3
+    := $text contains text "A" and $text contains text "B C"
+    let score $s4
+    := $text contains text "A" or $text contains text "B C"
+    let score $s5
+    := $text[. contains text "A"][. contains text "B C"]
     return ($s1, $s2, $s3, $s4, $s5)
 
 
@@ -295,9 +307,11 @@ indicates that the index does not yield any results for the specified term and i
 The internal XQuery Full Text data model is pretty complex and may consume more main memory as would initially guess. If you plan to combine search terms via `ftand`, we recommend you to resort to an alternative, memory-saving representation: 
 
 
-    (: representation via "ftand" :)
+    (: representation via "ftand"
+    :)
     "A B" contains text "A" ftand "B" ftor "C" ftor "D"
-    (: memory saving representation :)
+    (: memory saving representation
+    :)
     "A B" contains text { "A", "B" } all ftor { "C", "D" } all
 
  
@@ -318,9 +332,11 @@ To enable this kind of searches, _whitespace chopping_ must be turned off when i
 Note that the node structure is completely ignored by the full-text tokenizer: The `contains text` expression applies all full-text operations to the _string value_ of its left operand. As a consequence, the `ft:mark` and `ft:extract` functions (see [Full-Text Functions](Full-Text Module.md)) will only yield useful results if they are applied to single text nodes, as the following example demonstrates: 
 
 
-    (: Structure is ignored; no highlighting: :)
+    (: Structure is ignored; no highlighting:
+    :)
     ft:mark(//p[. contains text 'real'])
-    (: Single text nodes are addressed: results will be highlighted: :)
+    (: Single text nodes are addressed: results will be highlighted:
+    :)
     ft:mark(//p[.//text() contains text 'real'])
 
 

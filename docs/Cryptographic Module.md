@@ -16,14 +16,16 @@ All functions in this module are assigned to the `http://expath.org/ns/crypto` n
 
 ### crypto:hmac
 
-`crypto:hmac($message as xs:string, $key as xs:string, $algorithm as xs:string) as xs:string`
-`crypto:hmac($message as xs:string, $key as xs:string, $algorithm as xs:string, $encoding as xs:string) as xs:string`
+crypto:hmac($message as xs:string, $key as xs:string, $algorithm as xs:string) as xs:string
+crypto:hmac($message as xs:string, $key as xs:string, $algorithm as xs:string, $encoding as xs:string) as xs:string
 
-Creates a message authentication code via a cryptographic hash function and a secret `$key`.  `$encoding` must either be `hex`, `base64` or the empty string and specifies the encoding of the returned authentication code. **Default is `base64`**. `$algorithm` describes the hash algorithm which is used for encryption. Currently supported are `md5`, `sha1`, `sha256`, `sha384`, `sha512`. **Default is `md5`**. 
+:   Creates a message authentication code via a cryptographic hash function and a secret `$key`.  `$encoding` must either be `hex`, `base64` or the empty string and specifies the encoding of the returned authentication code. **Default is `base64`**. `$algorithm` describes the hash algorithm which is used for encryption. Currently supported are `md5`, `sha1`, `sha256`, `sha384`, `sha512`. **Default is `md5`**. 
 
-**Errors**
+    **Errors**
 
-`CX0013`: the specified hashing algorithm is not supported.`CX0014`: the specified encoding method is not supported.`CX0019`: the specified secret key is invalid. 
+
+    `CX0013`: the specified hashing algorithm is not supported.`CX0014`: the specified encoding method is not supported.`CX0019`: the specified secret key is invalid. 
+
  
 ## Encryption & Decryption
 
@@ -37,23 +39,27 @@ The encryption and decryption functions underlie several limitations:
 
 ### crypto:encrypt
 
-`crypto:encrypt($input as xs:string, $encryption as xs:string, $key as xs:string, $algorithm as xs:string) as xs:string`
+crypto:encrypt($input as xs:string, $encryption as xs:string, $key as xs:string, $algorithm as xs:string) as xs:string
 
-Encrypts the given input string.  `$encryption` must be `symmetric`, as asymmetric encryption is not supported so far. **Default is `symmetric`**. `$key` is the secret key which is used for both encryption and decryption of input data. Its length is fixed and depends on the chosen algorithm: `8 bytes for DES`, `16 bytes for AES`. `$algorithm` must either be `DES` or `AES`. Other algorithms are not supported so far, but, of course, can be added on demand. **Default is `DES`**. 
+:   Encrypts the given input string.  `$encryption` must be `symmetric`, as asymmetric encryption is not supported so far. **Default is `symmetric`**. `$key` is the secret key which is used for both encryption and decryption of input data. Its length is fixed and depends on the chosen algorithm: `8 bytes for DES`, `16 bytes for AES`. `$algorithm` must either be `DES` or `AES`. Other algorithms are not supported so far, but, of course, can be added on demand. **Default is `DES`**. 
 
-**Errors**
+    **Errors**
 
-`CX0016`: padding problems arise.`CX0017`: padding is incorrect.`CX0018`: the encryption type is not supported.`CX0019`: the secret key is invalid.`CX0020`: the block size is incorrect.`CX0021`: the specified encryption algorithm is not supported. 
+
+    `CX0016`: padding problems arise.`CX0017`: padding is incorrect.`CX0018`: the encryption type is not supported.`CX0019`: the secret key is invalid.`CX0020`: the block size is incorrect.`CX0021`: the specified encryption algorithm is not supported. 
+
 
 ### crypto:decrypt
 
-`crypto:decrypt($input as xs:string, $type as xs:string, $key as xs:string, $algorithm as xs:string) as xs:string`
+crypto:decrypt($input as xs:string, $type as xs:string, $key as xs:string, $algorithm as xs:string) as xs:string
 
-Decrypts the encrypted `$input`.  `$type` must be `symmetric`. An option for asymmetric encryption will most likely be added with another version of BaseX. **Default is `symmetric`**. `$key` is the secret key which is used for both encryption and decryption of input data. Its length is fixed and depends on the chosen algorithm: `8 bytes for DES`, `16 bytes for AES`. `$algorithm` must either be `DES` or `AES`. Other algorithms are not supported so far, but, of course, can be added on demand. **Default is `DES`**. 
+:   Decrypts the encrypted `$input`.  `$type` must be `symmetric`. An option for asymmetric encryption will most likely be added with another version of BaseX. **Default is `symmetric`**. `$key` is the secret key which is used for both encryption and decryption of input data. Its length is fixed and depends on the chosen algorithm: `8 bytes for DES`, `16 bytes for AES`. `$algorithm` must either be `DES` or `AES`. Other algorithms are not supported so far, but, of course, can be added on demand. **Default is `DES`**. 
 
-**Errors**
+    **Errors**
 
-`CX0016`: padding problems arise.`CX0017`: padding is incorrect.`CX0018`: the encryption type is not supported.`CX0019`: the secret key is invalid.`CX0020`: the block size is incorrect.`CX0021`: the specified encryption algorithm is not supported. 
+
+    `CX0016`: padding problems arise.`CX0017`: padding is incorrect.`CX0018`: the encryption type is not supported.`CX0019`: the secret key is invalid.`CX0020`: the block size is incorrect.`CX0021`: the specified encryption algorithm is not supported. 
+
  
 ## XML Signatures
 
@@ -110,25 +116,29 @@ The `generate-signature` function allows to pass a `digital certificate`. This c
 
 ### crypto:generate-signature
 
-`crypto:generate-signature($input as node(), $canonicalization as xs:string, $digest as xs:string, $signature as xs:string, $prefix as xs:string, $type as xs:string) as node()`
-`crypto:generate-signature($input as node(), $canonicalization as xs:string, $digest as xs:string, $signature as xs:string, $prefix as xs:string, $type as xs:string, $xpath as xs:string, $certificate as node()) as node()`
-`crypto:generate-signature($input as node(), $canonicalization as xs:string, $digest as xs:string, $signature as xs:string, $prefix as xs:string, $type as xs:string, $ext as item()) as node()`
+crypto:generate-signature($input as node(), $canonicalization as xs:string, $digest as xs:string, $signature as xs:string, $prefix as xs:string, $type as xs:string) as node()
+crypto:generate-signature($input as node(), $canonicalization as xs:string, $digest as xs:string, $signature as xs:string, $prefix as xs:string, $type as xs:string, $xpath as xs:string, $certificate as node()) as node()
+crypto:generate-signature($input as node(), $canonicalization as xs:string, $digest as xs:string, $signature as xs:string, $prefix as xs:string, $type as xs:string, $ext as item()) as node()
 
-`$canonicalization` must either be `inclusive-with-comments`, `inclusive`, `exclusive-with-comments` or `exclusive`. **Default is `inclusive-with-comments`**.  `$digest` must be one of the following: `SHA1`, `SHA256` or `SHA512`. **Default is `SHA1`**. `$signature` must either be `RSA_SHA1` or `DSA_SHA1`. **Default is `RSA_SHA1`**. `$prefix` may be empty and prefixes the `Signature` element accordingly. `$type` is the signature type. It must either be `enveloped` or `enveloping` (detached signatures are not supported so far). **Default is `enveloped`**. `$xpath` is an arbitrary XPath expression which specifies a subset of the document that is to be signed. `$certificate` is the digitial certificate used to sign the input document. `$ext` may either be an `$xpath` expression or a `$certificate`. 
+:   `$canonicalization` must either be `inclusive-with-comments`, `inclusive`, `exclusive-with-comments` or `exclusive`. **Default is `inclusive-with-comments`**.  `$digest` must be one of the following: `SHA1`, `SHA256` or `SHA512`. **Default is `SHA1`**. `$signature` must either be `RSA_SHA1` or `DSA_SHA1`. **Default is `RSA_SHA1`**. `$prefix` may be empty and prefixes the `Signature` element accordingly. `$type` is the signature type. It must either be `enveloped` or `enveloping` (detached signatures are not supported so far). **Default is `enveloped`**. `$xpath` is an arbitrary XPath expression which specifies a subset of the document that is to be signed. `$certificate` is the digitial certificate used to sign the input document. `$ext` may either be an `$xpath` expression or a `$certificate`. 
 
-**Errors**
+    **Errors**
 
-`CX0001`: the canonicalization algorithm is not supported.`CX0002`: the digest algorithm is not supported.`CX0003`: the signature algorithm is not supported.`CX0004`: the `$xpath-expression` is invalid.`CX0005`: the root name of `$digital-certificate` is not 'digital-certificate.`CX0007`: the key store is null.`CX0012`: the key cannot be found in the specified key store.`CX0023`: the certificate alias is invalid.`CX0024`: an invalid algorithm is specified.`CX0025`: an exception occurs while the signing the document.`CX0026`: an exception occurs during key store initialization.`CX0027`: an IO exception occurs.`CX0028`: the signature type is not supported. 
+
+    `CX0001`: the canonicalization algorithm is not supported.`CX0002`: the digest algorithm is not supported.`CX0003`: the signature algorithm is not supported.`CX0004`: the `$xpath-expression` is invalid.`CX0005`: the root name of `$digital-certificate` is not 'digital-certificate.`CX0007`: the key store is null.`CX0012`: the key cannot be found in the specified key store.`CX0023`: the certificate alias is invalid.`CX0024`: an invalid algorithm is specified.`CX0025`: an exception occurs while the signing the document.`CX0026`: an exception occurs during key store initialization.`CX0027`: an IO exception occurs.`CX0028`: the signature type is not supported. 
+
 
 ### crypto:validate-signature
 
-`crypto:validate-signature($input-doc as node()) as xs:boolean`
+crypto:validate-signature($input-doc as node()) as xs:boolean
 
-Checks if the given node contains a `Signature` element and whether the signature is valid. In this case `true` is returned. If the signature is invalid the function returns `false`. 
+:   Checks if the given node contains a `Signature` element and whether the signature is valid. In this case `true` is returned. If the signature is invalid the function returns `false`. 
 
-**Errors**
+    **Errors**
 
-`CX0015`: the signature element cannot be found.`CX9994`: an unspecified problem occurs during validation.`CX9996`: an IO exception occurs during validation. 
+
+    `CX0015`: the signature element cannot be found.`CX9994`: an unspecified problem occurs during validation.`CX9996`: an IO exception occurs during validation. 
+
  
 ## Errors
 
