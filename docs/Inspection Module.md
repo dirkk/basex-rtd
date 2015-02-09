@@ -196,7 +196,9 @@ The output looks as follows if `inspect:xqdoc('sample.xqm')` is called:
 
  
 ## Changelog
-UNKNOWN * Updated: a query URI can now be specified with [inspect:functions](Inspection Module.md#inspect-functions). 
+** Version 7.9 **
+
+ * Updated: a query URI can now be specified with [inspect:functions](Inspection Module.md#inspect-functions). 
 
 This module was introduced with Version 7.7. 
 

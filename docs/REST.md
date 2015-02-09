@@ -22,7 +22,9 @@ A web browser can be used to perform simple GET-based REST requests and display 
 
 The root URL lists all available databases. The following examples assume that you have created a database instance from the [factbook.xml](http://files.basex.org/xml/factbook.xml) document: 
 
-UNKNOWN
+** **
+
+
     <rest:databases resources="1" xmlns:rest="http://basex.org/rest">
       <rest:database resources="1" size="1813599">factbook</rest:database>
     </rest:databases>
@@ -30,7 +32,9 @@ UNKNOWN
 
 The resources of a database can be listed by specifying the database, and potential sub directories, in the URL. In the given example, a single XML document is stored in the _factbook_ database: 
 
-UNKNOWN
+** **
+
+
     <rest:database name="factbook" resources="1" xmlns:rest="http://basex.org/rest">
       <rest:resource type="xml" content-type="application/xml" size="77192">factbook.xml</rest:resource>
     </rest:database>
@@ -38,7 +42,9 @@ UNKNOWN
 
 The contents of a database can be retrieved by directly addressing the resource: 
 
-UNKNOWN
+** **
+
+
 If a resource is not found, an HTTP response will be generated with `404` as status code. 
 
 
@@ -64,7 +70,9 @@ If the GET method is used, all query parameters are directly specified within th
  * `query` : Evaluate an XQuery expression. If a database or database path is specified in the URL, it is used as initial query context. 
  * `command` : Execute a single [database command](Commands.md). 
  * `run` : Evaluate an XQuery file or command script located on the server. The file path is resolved against the webapp directory (defined by `WEBPATH`). Before Version 7.9, only XQuery files could be evaluated. 
-UNKNOWN * Lists all resources found in the **tmp** path of the _factbook_ database:`http://localhost:8984/rest/factbook/tmp`
+** Examples **
+
+ * Lists all resources found in the **tmp** path of the _factbook_ database:`http://localhost:8984/rest/factbook/tmp`
  * Prints the city names from the _factbook_ database and encloses all results with a `<rest:result/>` elements:`http://localhost:8984/rest/factbook?query=//city/name&wrap=yes`
  * Serializes a document as JSONML:`http://localhost:8984/rest/factbook/factbook.xml?method=json&json=format=jsonml`
  * `US-ASCII`  is chosen as output encoding, and the query `eval.xq` is evaluated:`http://localhost:8984/rest?run=eval.xq&encoding=US-ASCII`
@@ -74,7 +82,9 @@ UNKNOWN * Lists all resources found in the **tmp** path of the _factbook_ databa
 
 The body of a POST request is interpreted as XML fragment, which specifies the operation to perform. The body must conform to a given [XML Schema](http://docs.basex.org/wiki/REST:_POST_Schema). 
 
-UNKNOWN * The following query returns the first five city names of the **factbook** database: 
+** Examples **
+
+ * The following query returns the first five city names of the **factbook** database: 
 
     <query xmlns="http://basex.org/rest">
       <text><![CDATA[ (//city/name)[position() <= 5] ]]></text>
@@ -127,7 +137,9 @@ There are two ways to store non-XML data in BaseX:
 
 If raw data is added and if no content type, or a wrong content, is specified, a `400` (BAD REQUEST) error will be raised. 
 
-UNKNOWN * A new database with the name **XMark** is created. If XML input is sent in the HTTP body, the resulting database resource will be called **XMark.xml**:`http://localhost:8984/rest/XMark`
+** Examples **
+
+ * A new database with the name **XMark** is created. If XML input is sent in the HTTP body, the resulting database resource will be called **XMark.xml**:`http://localhost:8984/rest/XMark`
  * A new database is created, and no whitespaces will be removed from the passed on XML input:`http://localhost:8984/rest/XMark?chop=false`
  * The contents of the HTTP body will be taken as input for the document **one.xml**, which will be stored in the **XMark** database:`http://localhost:8984/rest/XMark/one.xml`
 
@@ -141,7 +153,9 @@ Have a look at the [usage examples](REST.md#Usage_Examples) for more detailed ex
 
 The DELETE method is used to delete databases or resources within a database. 
 
-UNKNOWN * The **factbook** database is deleted:`http://localhost:8984/rest/factbook`
+** Example **
+
+ * The **factbook** database is deleted:`http://localhost:8984/rest/factbook`
  * All resources of the **XMark** database are deleted that reside in the **tmp** path:`http://localhost:8984/rest/XMark/tmp/`
 
 The HTTP status code `404` is returned if no database is specified. `200` (OK) will be sent in all other cases. 
@@ -153,7 +167,9 @@ The HTTP status code `404` is returned if no database is specified. `200` (OK) w
 
 All query parameters that have not been processed before will be treated as variable assignments: 
 
-UNKNOWN * The following request assigns two variables to a server-side query file `mult.xq` placed in the HTTP directory:`http://localhost:8984/rest?run=mult.xq&$a=21&$b=2`
+** Example **
+
+ * The following request assigns two variables to a server-side query file `mult.xq` placed in the HTTP directory:`http://localhost:8984/rest?run=mult.xq&$a=21&$b=2`
 
     (: XQuery file: mult.xq :)
     declare variable $a as xs:integer external;
@@ -190,7 +206,9 @@ As the content type of a REST response cannot be dynamically determined in all c
 
 The following three example requests will all return `<a/>` as result and use `application/xml` as content-type: 
 
-UNKNOWN 
+** **
+
+ 
 ## Usage Examples
 
 ### Java
@@ -247,16 +265,34 @@ Find Java examples for all methods here: [GET](https://github.com/BaseXdb/basex-
 
 Tools such as the Linux commands [Wget](http://www.gnu.org/s/wget/) or [cURL](http://curl.haxx.se/) exist to perform HTTP requests (try copy & paste): 
 
-UNKNOWN * `curl -i "http://localhost:8984/rest/factbook?query=//city/name"`
-UNKNOWN * `curl -i -X POST -H "Content-Type: application/xml" -d "<query xmlns='http://basex.org/rest'><text>//city/name</text></query>""http://localhost:8984/rest/factbook"`
+** GET **
+
+ * `curl -i "http://localhost:8984/rest/factbook?query=//city/name"`
+** POST **
+
+ * `curl -i -X POST -H "Content-Type: application/xml" -d "<query xmlns='http://basex.org/rest'><text>//city/name</text></query>""http://localhost:8984/rest/factbook"`
  * `curl -i -X POST -H "Content-Type: application/xml" -T query.xml "http://localhost:8984/rest/factbook"`
-UNKNOWN * `curl -i -X PUT -T "etc/xml/factbook.xml""http://localhost:8984/rest/factbook"`
+** PUT **
+
+ * `curl -i -X PUT -T "etc/xml/factbook.xml""http://localhost:8984/rest/factbook"`
  * `curl -i -X PUT -H "Content-Type: application/json" -T "plain.json""http://localhost:8984/rest/plain"`
-UNKNOWN * `curl -i -X DELETE "http://admin:admin@localhost:8984/rest/factbook"`
+** DELETE **
+
+ * `curl -i -X DELETE "http://admin:admin@localhost:8984/rest/factbook"`
  
 ## Changelog
-UNKNOWN * Updated: Also evaluate command scripts via the `run` operation. 
-UNKNOWN * Removed: direct evaluation of adresses resources with `application/xquery` as content type 
-UNKNOWN * Added: `options` parameter for specifying database options 
-UNKNOWN * Added: PUT request: automatic conversion to XML if known content type is specified 
-UNKNOWN * REST API introduced, replacing the old JAX-RX API 
+** Version 7.9 **
+
+ * Updated: Also evaluate command scripts via the `run` operation. 
+** Version 7.2 **
+
+ * Removed: direct evaluation of adresses resources with `application/xquery` as content type 
+** Version 7.1.1 **
+
+ * Added: `options` parameter for specifying database options 
+** Version 7.1 **
+
+ * Added: PUT request: automatic conversion to XML if known content type is specified 
+** Version 7.0 **
+
+ * REST API introduced, replacing the old JAX-RX API 

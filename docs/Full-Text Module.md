@@ -185,10 +185,20 @@ Normalizes the given `$input` string, using the current default full-text option
 `BXFT0001` | Both wildcards and fuzzy search have been specified as search options. 
  
 ## Changelog
-UNKNOWN * Added: [ft:contains](Full-Text Module.md#ft-contains), [ft:normalize](Full-Text Module.md#ft-normalize)
+** Version 8.0 **
+
+ * Added: [ft:contains](Full-Text Module.md#ft-contains), [ft:normalize](Full-Text Module.md#ft-normalize)
  * Updated: Options added to [ft:tokenize](Full-Text Module.md#ft-tokenize)
-UNKNOWN * Added: [ft:contains](Full-Text Module.md#ft-contains)
+** Version 7.8 **
+
+ * Added: [ft:contains](Full-Text Module.md#ft-contains)
  * Updated: Options added to [ft:search](Full-Text Module.md#ft-search)
-UNKNOWN * Updated: the functions no longer accept [Database Nodes](Database Module.md#Database_Nodes) as reference. Instead, the name of a database must now be specified. 
-UNKNOWN * Updated: [ft:search](Full-Text Module.md#ft-search) (second argument generalized, third parameter added) 
-UNKNOWN * Added: [ft:tokens](Full-Text Module.md#ft-tokens), [ft:tokenize](Full-Text Module.md#ft-tokenize)
+** Version 7.7 **
+
+ * Updated: the functions no longer accept [Database Nodes](Database Module.md#Database_Nodes) as reference. Instead, the name of a database must now be specified. 
+** Version 7.2 **
+
+ * Updated: [ft:search](Full-Text Module.md#ft-search) (second argument generalized, third parameter added) 
+** Version 7.1 **
+
+ * Added: [ft:tokens](Full-Text Module.md#ft-tokens), [ft:tokenize](Full-Text Module.md#ft-tokenize)

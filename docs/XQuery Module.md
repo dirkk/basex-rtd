@@ -138,10 +138,16 @@ Similar to `fn:trace($expr, $msg)`, but instead of a user-defined message, it em
 `BXXQ0004` | Query execution exceeded timeout. 
  
 ## Changelog
-UNKNOWN * Added: [xquery:update](XQuery Module.md#xquery-update), [xquery:parse](XQuery Module.md#xquery-parse)
+** Version 8.0 **
+
+ * Added: [xquery:update](XQuery Module.md#xquery-update), [xquery:parse](XQuery Module.md#xquery-parse)
  * Deleted: [xquery:evaluate](.md) (opened databases will now be closed by main query) 
-UNKNOWN * Added: `$options` argument 
-UNKNOWN * Added: [xquery:evaluate](.md)
+** Version 7.8.2 **
+
+ * Added: `$options` argument 
+** Version 7.8 **
+
+ * Added: [xquery:evaluate](.md)
  * Updated: used variables must be explicitly declared in the query string. 
 
 This module was introduced with Version 7.3. Functions have been adopted from the obsolete Utility Module. 

@@ -13,7 +13,13 @@ The events feature enables users with admin permissions to create events, which 
 
 
 ### Managing Events
-UNKNOWNUNKNOWNUNKNOWN
+** CREATE EVENT [name] **
+
+** DROP EVENT [name] **
+
+** SHOW EVENTS **
+
+
 ### Watching/Unwatching Events
 
 The events can currently be watched by the [Java](https://github.com/BaseXdb/basex-api/tree/master/src/main/java) and [C#](https://github.com/BaseXdb/basex-api/tree/master/src/main/c%23) clients. See the following Java code example: 

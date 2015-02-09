@@ -18,7 +18,9 @@ Some more notes on the logging facility:
  * The [Admin Module](Admin Module.md) provides access to the log files from XQuery. 
  
 ## Format
-UNKNOWN
+** Example 1**
+
+
     01:18:12.892   SERVER           admin   OK        Server was started (port: 1984)
     01:18:15.436   127.0.0.1:4722   jack    REQUEST   XQUERY for $i in 1 to 5 return random:double()
     01:18:15.446   127.0.0.1:4722   jack    OK        Query executed in 2.38 ms.                       2.72 ms
@@ -28,7 +30,9 @@ UNKNOWN
 
 A server has been started and a user `jack` has connected to the server to perform a query and exit properly. 
 
-UNKNOWN
+** Example 2**
+
+
     01:23:33.251   127.0.0.1:4736   john   OK        QUERY[0] 'hi'   0.44 ms
     01:23:33.337   127.0.0.1:4736   john   OK        ITER[0]         1.14 ms
     01:23:33.338   127.0.0.1:4736   john   OK        INFO[0]         0.36 ms
@@ -39,7 +43,9 @@ UNKNOWN
 
 A user `john` has performed an iterative query, using one of the client APIs. 
 
-UNKNOWN
+** Example 3**
+
+
     01:31:51.888   127.0.0.1:4803   admin   REQUEST   [GET] http://localhost:8984/rest/factbook
     01:31:51.892   127.0.0.1:4803   admin   200                                                   4.43 ms
 

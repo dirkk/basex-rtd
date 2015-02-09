@@ -53,9 +53,13 @@ Writes a string to the database logs, along with current user data (timestamp, u
 
  
 ## Changelog
-UNKNOWN * Added: [admin:write-log](Admin Module.md#admin-write-log)
+** Version 8.0 **
+
+ * Added: [admin:write-log](Admin Module.md#admin-write-log)
  * Deleted: admin:users (renamed to [user:list-details](User Module.md#user-list-details)) 
-UNKNOWN * Updated: [admin:users](.md): md5-encoded password added to output. 
+** Version 7.8.2 **
+
+ * Updated: [admin:users](.md): md5-encoded password added to output. 
  * Updated: [admin:logs](Admin Module.md#admin-logs): represent name of log files as string value; `$merge` argument added. 
 
 The Module was introduced with Version 7.5. 

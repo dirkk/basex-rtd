@@ -136,4 +136,6 @@ All resources stored in a database can be _exported_, i.e., written back to disk
 
  
 ## Changelog
-UNKNOWN * Updated: `fn:document-uri` and `fn:base-uri` now return strings that can be reused with `fn:doc` or `fn:collection` to reopen the original document. 
+** Version 7.2.1 **
+
+ * Updated: `fn:document-uri` and `fn:base-uri` now return strings that can be reused with `fn:doc` or `fn:collection` to reopen the original document. 

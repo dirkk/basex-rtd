@@ -11,7 +11,9 @@ Options can be specified multiple times. All options are evaluated in the given 
 
  
 ## BaseX Standalone
-UNKNOWN
+** Launch the console mode**
+
+
     $ basex
     BaseX [Standalone]
     Try "help" to get more information.
@@ -74,7 +76,9 @@ The meaning of all flags is listed in the following table. If an equivalent data
 `-z` |  Turns the serialization of XQuery results on/off. This flag is useful if the query is profiled or analyzed.  | `SERIALIZE` | `true` | 
  
 ## BaseX Server
-UNKNOWN
+** Launch the server **
+
+
     $ basexserver
     BaseX [Server]
     Server was started (port: 1984)
@@ -114,7 +118,9 @@ Multiple `-c` and `-i` flags can be specified. All other options will be set bef
 
  
 ## BaseX Client
-UNKNOWN
+** Launch the console mode communicating with the server **
+
+
 The user name and password will be requested. The default user/password combination is **admin**/**admin**: 
 
 
@@ -186,7 +192,9 @@ The flags have the following meaning (equivalent database options are shown in t
 `-z` |  Turns the serialization of XQuery results on/off. This flag is useful if the query is profiled or analyzed.  | `SERIALIZE` | `true` | 
  
 ## BaseX HTTP Server
-UNKNOWN
+** Launch the HTTP server**
+
+
     $ basexhttp
     BaseX [Server]
     Server was started (port: 1984)
@@ -232,7 +240,9 @@ The flags have the following meaning (equivalent database options are shown in t
 `-z` |  Does not generate any [log files](Logging.md).  | `LOG` | 
  
 ## BaseX GUI
-UNKNOWN
+** Launch the GUI**
+
+
     $ basexgui [file]
 
 
@@ -240,16 +250,32 @@ One or more XML and XQuery files can be passed on as parameters. If an XML file 
 
  
 ## Changelog
-UNKNOWN * Added: Runs tests in file or directory with `-t`. 
+** Version 7.9 **
+
+ * Added: Runs tests in file or directory with `-t`. 
  * Removed: interactive server mode. 
-UNKNOWN * Added: Specify if a query will be executed or parsed only with `-R`. 
-UNKNOWN * Added: Bind host to the [BaseX Server](Command-Line Options.md#Command-Line_OptionsBaseX_Server) with `-n`. 
-UNKNOWN * Added: detection of [Command Scripts](Commands.md#Basics). 
+** Version 7.8 **
+
+ * Added: Specify if a query will be executed or parsed only with `-R`. 
+** Version 7.7 **
+
+ * Added: Bind host to the [BaseX Server](Command-Line Options.md#Command-Line_OptionsBaseX_Server) with `-n`. 
+** Version 7.5 **
+
+ * Added: detection of [Command Scripts](Commands.md#Basics). 
  * Removed: HTTP server flags `-R`, `-W`, and `-X`. 
-UNKNOWN * Updated: all options are now evaluated in the given order. 
+** Version 7.3**
+
+ * Updated: all options are now evaluated in the given order. 
  * Updated: Create main-memory representations for specified sources with `-i`. 
  * Updated: Options `-C`/`-c` and `-q`/`[input]` merged. 
  * Updated: Option `-L` also separates serialized items with newlines (instead of spaces). 
-UNKNOWN * Added: RESTXQ Service 
-UNKNOWN * Added: Options `-C` and `-L` in standalone and client mode. 
-UNKNOWN * Updated: Multiple query files and `-c`/`-i`/`-q` flags can be specified. 
+** Version 7.2**
+
+ * Added: RESTXQ Service 
+** Version 7.1.1**
+
+ * Added: Options `-C` and `-L` in standalone and client mode. 
+** Version 7.1**
+
+ * Updated: Multiple query files and `-c`/`-i`/`-q` flags can be specified. 

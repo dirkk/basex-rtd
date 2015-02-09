@@ -93,8 +93,12 @@ The following query sends a query on a local server instance, binds the integer 
 `BXCL0006` |  A value to be bound is no single item. 
  
 ## Changelog
-UNKNOWN * Updated: Bound values may now contain no or more than one item in [client:query](Client Module.md#client-query). 
-UNKNOWN * Added: [client:info](Client Module.md#client-info)
+** Version 8.0 **
+
+ * Updated: Bound values may now contain no or more than one item in [client:query](Client Module.md#client-query). 
+** Version 7.5 **
+
+ * Added: [client:info](Client Module.md#client-info)
 
 The module was introduced with Version 7.3. 
 

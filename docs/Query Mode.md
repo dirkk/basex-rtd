@@ -62,4 +62,6 @@ Taken from our [repository](https://github.com/BaseXdb/basex-api/blob/master/src
 
  
 ## Changelog
-UNKNOWN * Added: `context()` function 
+** Version 7.2 **
+
+ * Added: `context()` function 

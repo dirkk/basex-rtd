@@ -160,11 +160,17 @@ Introduced with Version 8.0:
 
  
 ## Changelog
-UNKNOWN * Added: `map:for-each`, `map:merge`, `map:put`
+** Version 8.0 **
+
+ * Added: `map:for-each`, `map:merge`, `map:put`
  * Removed: support for collations (in accordance with the XQuery 3.1 spec). 
  * Removed: `map:new` (replaced with `map:merge`) 
  * Updated: aligned with latest specification: compare keys of type `xs:untypedAtomic` as `xs:string` instances, store `xs:float` or `xs:double` value `NaN`. 
  * Introduction on maps is now found in the article on [XQuery 3.1](XQuery 3.1.md#Maps). 
-UNKNOWN * Updated: map syntax `map { 'key': 'value' }`
+** Version 7.8 **
+
+ * Updated: map syntax `map { 'key': 'value' }`
  * Added: [map:serialize](Map Module.md#map-serialize)
-UNKNOWN * Updated: alternative map syntax without `map` keyword and `:` as key/value delimiter (e.g.: `{ 'key': 'value' })`
+** Version 7.7.1 **
+
+ * Updated: alternative map syntax without `map` keyword and `:` as key/value delimiter (e.g.: `{ 'key': 'value' })`

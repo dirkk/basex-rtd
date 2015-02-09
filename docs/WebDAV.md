@@ -43,5 +43,9 @@ Please check out the following tutorials to get WebDAV running on different oper
  * [oXygen Editor](Integrating oXygen.md)
  
 ## Changelog
-UNKNOWN * Added: [Locking](WebDAV.md#WebDAVLocking)
-UNKNOWN * WebDAV API introduced 
+** Version 7.7 **
+
+ * Added: [Locking](WebDAV.md#WebDAVLocking)
+** Version 7.0 **
+
+ * WebDAV API introduced 

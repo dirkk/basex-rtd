@@ -144,6 +144,10 @@ Returns the `$k` items in `$seq` that are greatest when sorted in the order of t
 
  
 ## Changelog
-UNKNOWN * Added: [hof:top-k-by](Higher-Order Functions Module.md#hof-top-k-by), [hof:top-k-with](Higher-Order Functions Module.md#hof-top-k-with)
+** Version 7.2 **
+
+ * Added: [hof:top-k-by](Higher-Order Functions Module.md#hof-top-k-by), [hof:top-k-with](Higher-Order Functions Module.md#hof-top-k-with)
  * Removed: hof:iterate 
-UNKNOWN * module added 
+** Version 7.0 **
+
+ * module added 

@@ -185,5 +185,9 @@ Calculates the CRC32 check sum of the given string `$str`.
 
  
 ## Changelog
-UNKNOWN * Moved: [math:random](Random Module.md#random-integer) and [math:uuid](Random Module.md#random-uuid) have been move to [Random Module](Random Module.md). 
-UNKNOWN * Added: [math:crc32](Math Module.md#math-crc32) and [math:uuid](Random Module.md#random-uuid) have been adopted from the obsolete Utility Module. 
+** Version 7.5 **
+
+ * Moved: [math:random](Random Module.md#random-integer) and [math:uuid](Random Module.md#random-uuid) have been move to [Random Module](Random Module.md). 
+** Version 7.3 **
+
+ * Added: [math:crc32](Math Module.md#math-crc32) and [math:uuid](Random Module.md#random-uuid) have been adopted from the obsolete Utility Module. 

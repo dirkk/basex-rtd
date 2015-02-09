@@ -58,9 +58,13 @@ Lists the names and versions of all currently installed packages.
 `BXRE0011` | The package contains a JAR descriptor but it cannot be read. 
  
 ## Changelog
-UNKNOWN * Updated: [repo:install](Repository Module.md#repo-install): existing packages will be replaced 
+** Version 7.2.1 **
+
+ * Updated: [repo:install](Repository Module.md#repo-install): existing packages will be replaced 
  * Updated: [repo:delete](Repository Module.md#repo-delete): remove specific version of a package 
-UNKNOWN * Updated: [repo:list](Repository Module.md#repo-list) now returns nodes 
+** Version 7.2 **
+
+ * Updated: [repo:list](Repository Module.md#repo-list) now returns nodes 
 
 The module was introduced with Version 7.1. 
 

@@ -191,7 +191,9 @@ This example unzips all files of an archive to the current directory:
 `ARCH9999` | Archive processing failed for some other reason. 
  
 ## Changelog
-UNKNOWN * Added: [archive:write](Archive Module.md#archive-write)
+** Version 7.7 **
+
+ * Added: [archive:write](Archive Module.md#archive-write)
 
 The module was introduced with Version 7.3. 
 

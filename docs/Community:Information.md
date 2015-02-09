@@ -41,7 +41,17 @@ Surround a word with double brackets: [[Wanted Topic]] and that word will be hig
 
 For now we only have few guidelines we used when creating new articles. Feel free to extend or change this list. 
 
-UNKNOWNUNKNOWNUNKNOWNUNKNOWNUNKNOWN
+** Don't be afraid **
+
+** Article Title **
+
+** Categories **
+
+** Code Examples **
+
+** Syntax Highlighting **
+
+
 ### Writing Articles
 
 Please see [Help:Editing](http://docs.basex.org/wiki/Help:Editing) for some information on _Wiki Syntax_. 

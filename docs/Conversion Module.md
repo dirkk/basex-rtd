@@ -177,7 +177,9 @@ Converts the specified item of type xs:dayTimeDuration to milliseconds represent
 `BXCO0002` | The specified encoding is invalid or not supported. 
  
 ## Changelog
-UNKNOWN * Added: `convert:integer-to-dateTime`, `convert:dateTime-to-integer`, `convert:integer-to-dayTime`, `convert:dayTime-to-integer`
+** Version 7.5 **
+
+ * Added: `convert:integer-to-dateTime`, `convert:dateTime-to-integer`, `convert:integer-to-dayTime`, `convert:dayTime-to-integer`
 
 The module was introduced with Version 7.3. Some of the functions have been adopted from the obsolete Utility Module. 
 

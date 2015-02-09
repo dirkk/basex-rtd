@@ -49,5 +49,9 @@ Log files are stored in text format in a `.logs` sub-directory of the database f
 
  
 ## Changelog
-UNKNOWN * Updated: `.basexperm` is obsolete. 
-UNKNOWN * Updated: the `.basexhome` file marks a folder as [home directory](Configuration.md#Home_Directory). 
+** Version 8.0 **
+
+ * Updated: `.basexperm` is obsolete. 
+** Version 7.7 **
+
+ * Updated: the `.basexhome` file marks a folder as [home directory](Configuration.md#Home_Directory). 

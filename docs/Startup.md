@@ -116,4 +116,6 @@ After that, you can open your browser and navigate to the start page [http://loc
 
  
 ## Changelog
-UNKNOWN * Updated: BaseXJAXRX has been replaced with BaseXHTTP 
+** Version 7.0 **
+
+ * Updated: BaseXJAXRX has been replaced with BaseXHTTP 

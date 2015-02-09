@@ -385,7 +385,13 @@ Semicolons can be replaced with ampersands; for convenience, the URL can be redu
 
  
 ## Changelog
-UNKNOWN * Updated: [Scores](Full-Text.md#Scoring) will be propagated by the `and` and `or` expressions and in predicates. 
-UNKNOWN * Added: [Collations](Full-Text.md#Full-TextCollations) support. 
-UNKNOWN * Removed: Trie index, which was specialized on wildcard queries. The fuzzy index now supports both wildcard and fuzzy queries. 
+** Version 8.0**
+
+ * Updated: [Scores](Full-Text.md#Scoring) will be propagated by the `and` and `or` expressions and in predicates. 
+** Version 7.7**
+
+ * Added: [Collations](Full-Text.md#Full-TextCollations) support. 
+** Version 7.3**
+
+ * Removed: Trie index, which was specialized on wildcard queries. The fuzzy index now supports both wildcard and fuzzy queries. 
  * Removed: TF/IDF scoring was discarded in favor of the internal scoring model. 

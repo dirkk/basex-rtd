@@ -209,7 +209,9 @@ The following expression demonstrates how SQLite can be addressed using the [Xer
 `BXSQ0007` | A specified database driver class is not found. 
  
 ## Changelog
-UNKNOWN * Updated: prepared statements are now executed via [sql:execute-prepared](SQL Module.md#sql-execute-prepared)
+** Version 7.5 **
+
+ * Updated: prepared statements are now executed via [sql:execute-prepared](SQL Module.md#sql-execute-prepared)
 
 The module was introduced with Version 7.0. 
 

@@ -226,14 +226,20 @@ By running `TEST tests.xqm`, the following report will be generated (timings may
 `UNIT0005` | An annotation has invalid arguments. 
  
 ## Changelog
-UNKNOWN * Deleted: `UNIT0006` (ignore results returned by functions). 
+** Version 8.0 **
+
+ * Deleted: `UNIT0006` (ignore results returned by functions). 
  * Added: [unit:fail](Unit Module.md#unit-fail), 0-argument signature. 
  * Updated: the info argument of functions can now be an arbitrary item. 
  * Updated: infos are now represented in an `info` child element. 
  * Updated: [unit:before](.md) and [unit:after](.md) can be extended by a filter argument. 
-UNKNOWN * Added: TEST command 
+** Version 7.9 **
+
+ * Added: TEST command 
  * Removed: [unit:test](.md), [unit:test-uris](.md)
-UNKNOWN * Added: [unit:assert-equals](Unit Module.md#unit-assert-equals)
+** Version 7.8 **
+
+ * Added: [unit:assert-equals](Unit Module.md#unit-assert-equals)
  * Updated: enhanced test report output 
 
 This module was introduced with Version 7.7. 

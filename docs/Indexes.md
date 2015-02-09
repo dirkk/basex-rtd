@@ -188,5 +188,9 @@ Since Version 8.0, the [AUTOOPTIMIZE](Options.md#AUTOOPTIMIZE) option is availab
 
  
 ## Changelog
-UNKNOWN * Added: AUTOOPTIMIZE option 
-UNKNOWN * Added: string-based range queries 
+** Version 8.0 **
+
+ * Added: AUTOOPTIMIZE option 
+** Version 7.2.1 **
+
+ * Added: string-based range queries 

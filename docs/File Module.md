@@ -405,14 +405,24 @@ Returns the parent directory of the static base URI. If the Base URI property is
 `io-error` | The operation fails for some other reason specific to the operating system. 
  
 ## Changelog
-UNKNOWN * Added: [file:current-dir](File Module.md#file-current-dir), [file:base-dir](File Module.md#file-base-dir), [file:children](File Module.md#file-children)
-UNKNOWN * Added: [file:parent](File Module.md#file-parent), [file:name](File Module.md#file-name)
+** Version 8.0 **
+
+ * Added: [file:current-dir](File Module.md#file-current-dir), [file:base-dir](File Module.md#file-base-dir), [file:children](File Module.md#file-children)
+** Version 7.8 **
+
+ * Added: [file:parent](File Module.md#file-parent), [file:name](File Module.md#file-name)
  * Updated: error codes; [file:read-binary](File Module.md#file-read-binary), [file:write-binary](File Module.md#file-write-binary): `$offset` and `$length` arguments added. 
  * Deleted: file:base-name, file:dir-name 
-UNKNOWN * Added: [file:create-temp-dir](File Module.md#file-create-temp-dir), [file:create-temp-file](File Module.md#file-create-temp-file), [file:temp-dir](File Module.md#file-temp-dir)
+** Version 7.7 **
+
+ * Added: [file:create-temp-dir](File Module.md#file-create-temp-dir), [file:create-temp-file](File Module.md#file-create-temp-file), [file:temp-dir](File Module.md#file-temp-dir)
  * Updated: all returned strings that refer to existing directories will be suffixed with a directory separator. 
-UNKNOWN * Added: [file:append-text](File Module.md#file-append-text), [file:write-text](File Module.md#file-write-text), [file:append-text-lines](File Module.md#file-append-text-lines), [file:write-text-lines](File Module.md#file-write-text-lines), [file:line-separator](File Module.md#file-line-separator)
+** Version 7.3 **
+
+ * Added: [file:append-text](File Module.md#file-append-text), [file:write-text](File Module.md#file-write-text), [file:append-text-lines](File Module.md#file-append-text-lines), [file:write-text-lines](File Module.md#file-write-text-lines), [file:line-separator](File Module.md#file-line-separator)
  * Aligned with latest specification: $file:directory-separator → [file:dir-separator](File Module.md#file-dir-separator), $file:path-separator → [file:path-separator](File Module.md#file-path-separator), file:is-directory → [file:is-dir](File Module.md#file-is-dir), file:create-directory → [file:create-dir](File Module.md#file-create-dir)
  * Updated: [file:write-binary](File Module.md#file-write-binary), [file:append-binary](File Module.md#file-append-binary): output limited to a single value 
-UNKNOWN * Updated: [file:delete](File Module.md#file-delete): `$recursive` parameter added to prevent sub-directories from being accidentally deleted. 
+** Version 7.2.1 **
+
+ * Updated: [file:delete](File Module.md#file-delete): `$recursive` parameter added to prevent sub-directories from being accidentally deleted. 
  * Fixed: [file:list](File Module.md#file-list) now returns relative instead of absolute paths. 

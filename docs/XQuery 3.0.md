@@ -384,10 +384,22 @@ New signatures have been added for the following functions:
 
  
 ## Changelog
-UNKNOWN * Added: %basex:inline, %basex:lazy 
-UNKNOWN * Added: [Enhanced FLWOR Expressions](XQuery 3.0.md#Enhanced_FLWOR_Expressions)
-UNKNOWN * Added: [Simple Map Operator](XQuery 3.0.md#Simple_Map_Operator)
-UNKNOWN * Added: [Annotations](XQuery 3.0.md#XQuery_3.0Annotations)
+** Version 8.0 **
+
+ * Added: %basex:inline, %basex:lazy 
+** Version 7.7 **
+
+ * Added: [Enhanced FLWOR Expressions](XQuery 3.0.md#Enhanced_FLWOR_Expressions)
+** Version 7.3 **
+
+ * Added: [Simple Map Operator](XQuery 3.0.md#Simple_Map_Operator)
+** Version 7.2 **
+
+ * Added: [Annotations](XQuery 3.0.md#XQuery_3.0Annotations)
  * Updated: [Expanded QNames](XQuery 3.0.md#Expanded_QNames)
-UNKNOWN * Added: [Expanded QNames](XQuery 3.0.md#Expanded_QNames), [Namespace Constructors](XQuery 3.0.md#Namespace_Constructors)
-UNKNOWN * Added: [String Concatenations](XQuery 3.0.md#String_Concatenations)
+** Version 7.1 **
+
+ * Added: [Expanded QNames](XQuery 3.0.md#Expanded_QNames), [Namespace Constructors](XQuery 3.0.md#Namespace_Constructors)
+** Version 7.0 **
+
+ * Added: [String Concatenations](XQuery 3.0.md#String_Concatenations)

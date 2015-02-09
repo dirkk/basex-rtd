@@ -355,12 +355,18 @@ Serializes the node specified by `$input` as JSON, and returns the result as `xs
 `BXJS0002` | The specified node cannot be serialized as JSON document. 
  
 ## Changelog
-UNKNOWN * Updated: Serialization aligned with the `json` output method of the official specification 
+** Version 8.0 **
+
+ * Updated: Serialization aligned with the `json` output method of the official specification 
  * Added: `liberal` option 
  * Removed: `spec` option 
-UNKNOWN * Removed: `json:parse-ml`, `json:serialize-ml`
+** Version 7.8 **
+
+ * Removed: `json:parse-ml`, `json:serialize-ml`
  * Updated: `json:parse` now returns a document node instead of an element, or an XQuery map if `format` is set to `map`. 
-UNKNOWN * Updated: `$options` argument added to [json:parse](JSON Module.md#json-parse) and [json:serialize](JSON Module.md#json-serialize)
+** Version 7.7.2 **
+
+ * Updated: `$options` argument added to [json:parse](JSON Module.md#json-parse) and [json:serialize](JSON Module.md#json-serialize)
  * Updated: [json:parse-ml](.md) and [json:serialize-ml](.md) are now _deprecated_
 
 The module was introduced with Version 7.0. 

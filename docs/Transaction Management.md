@@ -119,8 +119,18 @@ As the standalone versions of BaseX (command-line, GUI) cannot be synchronized w
 
  
 ## Changelog
-UNKNOWN * Added: Locks can also be acquired on [Java functions](Java Bindings.md#Java_BindingsLocking). 
-UNKNOWN * Added: database locking introduced, replacing process locking. 
-UNKNOWN * Updated: pin files replaced with shared/exclusive filesystem locking. 
-UNKNOWN * Added: pin files to mark open databases. 
-UNKNOWN * Added: update lock files. 
+** Version 7.8 **
+
+ * Added: Locks can also be acquired on [Java functions](Java Bindings.md#Java_BindingsLocking). 
+** Version 7.6 **
+
+ * Added: database locking introduced, replacing process locking. 
+** Version 7.2.1 **
+
+ * Updated: pin files replaced with shared/exclusive filesystem locking. 
+** Version 7.2 **
+
+ * Added: pin files to mark open databases. 
+** Version 7.1 **
+
+ * Added: update lock files. 

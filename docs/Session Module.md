@@ -131,7 +131,9 @@ Unregisters a session and all data associated with it.
 `BXSE0003` | A function was called outside the servlet context. 
  
 ## Changelog
-UNKNOWN * Updated: allow sequences as session values 
+** Version 8.0 **
+
+ * Updated: allow sequences as session values 
 
 This module was introduced with Version 7.5. 
 

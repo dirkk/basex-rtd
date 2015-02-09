@@ -41,10 +41,14 @@ Converts the HTML document specified by `$input` to XML, and returns a document 
 
 The following query converts the specified string to an XML document node. 
 
-UNKNOWN
+** Query**
+
+
     html:parse("<html>")
 
-UNKNOWN
+** Result**
+
+
     <html xmlns="http://www.w3.org/1999/xhtml"/>
 
 
@@ -52,10 +56,14 @@ UNKNOWN
 
 The next query creates an XML document without namespaces: 
 
-UNKNOWN
+** Query**
+
+
     html:parse("<a href='ok.html'/>", map { 'nons': true() })
 
-UNKNOWN
+** Result**
+
+
     <html>
       <body>
         <a shape="rect" href="ok.html"/>
@@ -67,10 +75,14 @@ UNKNOWN
 
 If the input encoding is unknown, the data to be processed can be passed on in its binary representation. The HTML parser will automatically try to detect the correct encoding: 
 
-UNKNOWN
+** Query**
+
+
     html:parse(fetch:binary("http://en.wikipedia.org"))
 
-UNKNOWN
+** Result**
+
+
     <html xmlns="http://www.w3.org/1999/xhtml" class="client-nojs" dir="ltr" lang="en">
       <head>
         <title>Wikipedia, the free encyclopedia</title>

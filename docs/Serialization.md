@@ -87,17 +87,33 @@ The `csv` and `json` parameters are supplied with a list of options. Option name
 
  
 ## Changelog
-UNKNOWN * Added: Support for `use-character-maps` and `parameter-document`
+** Version 8.0 **
+
+ * Added: Support for `use-character-maps` and `parameter-document`
  * Added: Serialization method `adaptive`
  * Updated: `adaptive` is new default method (before: `xml`) 
  * Removed: `format`, `wrap-prefix`, `wrap-uri`
-UNKNOWN * Added: `limit`: Stops serialization after the specified number of bytes has been serialized 
-UNKNOWN * Added: `csv` and `json` serialization parameters 
+** Version 7.8.2 **
+
+ * Added: `limit`: Stops serialization after the specified number of bytes has been serialized 
+** Version 7.8 **
+
+ * Added: `csv` and `json` serialization parameters 
  * Removed: `separator` option (use `item-separator` instead) 
-UNKNOWN * Added: `csv` serialization method 
+** Version 7.7.2 **
+
+ * Added: `csv` serialization method 
  * Added: temporary serialization methods `csv-header`, `csv-separator`, `json-unescape`, `json-spec`, `json-format`
-UNKNOWN * Added: official `item-separator` and `html-version` parameter 
+** Version 7.5 **
+
+ * Added: official `item-separator` and `html-version` parameter 
  * Updated: `method=html5` removed; serializers updated with the [latest version of the specification](http://www.w3.org/TR/2013/WD-xslt-xquery-serialization-30-20130108/), using `method=html` and `version=5.0`. 
-UNKNOWN * Added: `separator` parameter 
-UNKNOWN * Added: `newline` parameter 
-UNKNOWN * Added: Serialization parameters added to [REST API](REST.md); JSON/JsonML/raw methods 
+** Version 7.2 **
+
+ * Added: `separator` parameter 
+** Version 7.1 **
+
+ * Added: `newline` parameter 
+** Version 7.0 **
+
+ * Added: Serialization parameters added to [REST API](REST.md); JSON/JsonML/raw methods 

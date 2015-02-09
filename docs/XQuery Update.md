@@ -240,6 +240,10 @@ Along with the Update Facility, a number of new error codes and messages have be
 
  
 ## Changelog
-UNKNOWN * Added: `MIXUPDATES` option for [Returning Results](XQuery Update.md#Returning_Results) in updating expressions.</code> 
+** Version 8.0 **
+
+ * Added: `MIXUPDATES` option for [Returning Results](XQuery Update.md#Returning_Results) in updating expressions.</code> 
  * Added: information message if files are not written back 
-UNKNOWN * Added: [update](XQuery Update.md#update) convenience operator 
+** Version 7.8 **
+
+ * Added: [update](XQuery Update.md#update) convenience operator 

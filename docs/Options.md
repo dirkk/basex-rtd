@@ -697,27 +697,47 @@ Added with Version 8.0:
 **Summary** | Specifies the maximum number of index occurrences printed by the `INFO INDEX` command. 
  
 ## Changelog
-UNKNOWN * Added: `MIXUPDATES`, `AUTOOPTIMIZE`, `AUTHMETHOD`, `XINCLUDE`
+** Version 8.0 **
+
+ * Added: `MIXUPDATES`, `AUTOOPTIMIZE`, `AUTHMETHOD`, `XINCLUDE`
  * Updated: `PROXYPORT`: default set to 0; will be ignored. `PROXYHOST`, `NONPROXYHOSTS`: empty strings will be ignored. 
-UNKNOWN * Updated: `ADDARCHIVES`: parsing of TAR and TGZ files. 
-UNKNOWN * Added: `CSVPARSER`, `JSONPARSER`, `TEXTPARSER`, `HTMLPARSER`, `INLINELIMIT`, `TAILCALLS`, `DEFAULTDB`, `RUNQUERY`
+** Version 7.8.1 **
+
+ * Updated: `ADDARCHIVES`: parsing of TAR and TGZ files. 
+** Version 7.8 **
+
+ * Added: `CSVPARSER`, `JSONPARSER`, `TEXTPARSER`, `HTMLPARSER`, `INLINELIMIT`, `TAILCALLS`, `DEFAULTDB`, `RUNQUERY`
  * Updated: `WRITEBACK` only applies to main-memory document instances. 
  * Updated: `DEBUG` option can be changed at runtime by users with admin permissions. 
  * Updated: default of `INTPARSE` is now `false`. 
  * Removed: `HTMLOPT` (replaced with `HTMLPARSER`), `PARSEROPT` (replaced with parser-specific options), `DOTDISPLAY`, `DOTTY`
-UNKNOWN * Added: `ADDCACHE`, `CHECKSTRINGS`, `FTINDEXSPLITSIZE`, `INDEXSPLITSIZE`
-UNKNOWN * Added: `GLOBALLOCK`
+** Version 7.7 **
+
+ * Added: `ADDCACHE`, `CHECKSTRINGS`, `FTINDEXSPLITSIZE`, `INDEXSPLITSIZE`
+** Version 7.6 **
+
+ * Added: `GLOBALLOCK`
  * Added: store local options in configuration file after `# Local Options` comments. 
-UNKNOWN * Added: options can now be set via system properties 
+** Version 7.5 **
+
+ * Added: options can now be set via system properties 
  * Added: a pragma expression can be used to locally change database options 
  * Added: `USER`, `PASSWORD`, `LOG`, `LOGMSGMAXLEN`, `WEBPATH`, `RESTXQPATH``HTTPLOCAL`, `CREATEONLY`, `STRIPNS`
  * Removed: `HTTPPATH`; `HTTPPORT`: `jetty.xml` configuration file is used instead 
  * Removed: global options cannot be changed anymore during the lifetime of a BaseX instance 
-UNKNOWN * Updated: `KEEPALIVE`, `TIMEOUT`: default values changed 
+** Version 7.3 **
+
+ * Updated: `KEEPALIVE`, `TIMEOUT`: default values changed 
  * Removed: `WILDCARDS`; new index supports both fuzzy and wildcard queries 
  * Removed: `SCORING`; new scoring model will focus on lengths of text nodes and match options 
-UNKNOWN * Added: `PROXYHOST`, `PROXYPORT`, `NONPROXYHOSTS`, `HTMLOPT`
+** Version 7.2 **
+
+ * Added: `PROXYHOST`, `PROXYPORT`, `NONPROXYHOSTS`, `HTMLOPT`
  * Updated: `TIMEOUT`: ignore timeout for admin users 
-UNKNOWN * Added: `ADDRAW`, `MAXLEN`, `MAXCATS`, `UPDINDEX`
+** Version 7.1 **
+
+ * Added: `ADDRAW`, `MAXLEN`, `MAXCATS`, `UPDINDEX`
  * Updated: `BINDINGS`
-UNKNOWN * Added: `SERVERHOST`, `KEEPALIVE`, `AUTOFLUSH`, `QUERYPATH`
+** Version 7.0 **
+
+ * Added: `SERVERHOST`, `KEEPALIVE`, `AUTOFLUSH`, `QUERYPATH`

@@ -226,7 +226,15 @@ Similar to the other formats the text parser can be specified in the prolog of a
 
  
 ## Changelog
-UNKNOWN * Updated: parser options 
-UNKNOWN * Removed: CSV option "format"
-UNKNOWN * Updated: the CSV `SEPARATOR` option may now be assigned arbitrary single characters 
-UNKNOWN * Updated: Enhanced support for TagSoup options 
+** Version 7.8 **
+
+ * Updated: parser options 
+** Version 7.7.2 **
+
+ * Removed: CSV option "format"
+** Version 7.3 **
+
+ * Updated: the CSV `SEPARATOR` option may now be assigned arbitrary single characters 
+** Version 7.2 **
+
+ * Updated: Enhanced support for TagSoup options 

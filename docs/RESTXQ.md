@@ -523,14 +523,22 @@ RESTXQ has been proposed by [Adam Retter](http://www.adamretter.org.uk/). More i
  * [Web Application, RESTXQ Development](http://files.basex.org/xmlprague2013/slides/Develop-RESTXQ-WebApps-with-BaseX.pdf) . Web Application Development with RESTXQ Slides from XMLPrague 2013 
  
 ## Changelog
-UNKNOWN * Added: DBA (Database Administration Interface, written with RESTXQ) 
+** Version 8.0 **
+
+ * Added: DBA (Database Administration Interface, written with RESTXQ) 
  * Added: Support of regular expresssions in the [Path Annotation](RESTXQ.md#Paths)
  * Added: Evaluation of quality factors that are supplied in the [Accept header](RESTXQ.md#Content_Negotiation)
-UNKNOWN * Updated: [XQuery Errors](RESTXQ.md#XQuery_Errors), extended error annotations 
+** Version 7.9 **
+
+ * Updated: [XQuery Errors](RESTXQ.md#XQuery_Errors), extended error annotations 
  * Added: `%rest:method`
-UNKNOWN * Added: [Error Handling](RESTXQ.md#Error_Handling), [File Uploads](RESTXQ.md#File_Uploads), [Multipart Types](RESTXQ.md#Multipart_Types)
+** Version 7.7 **
+
+ * Added: [Error Handling](RESTXQ.md#Error_Handling), [File Uploads](RESTXQ.md#File_Uploads), [Multipart Types](RESTXQ.md#Multipart_Types)
  * Updated: RESTXQ function may now also be specified in main modules (suffix: `*.xq`). 
  * Updated: the RESTXQ prefix has been changed from `restxq` to `rest`. 
  * Updated: parameters are implicitly cast to the type of the function argument 
  * Updated: the RESTXQ root url has been changed to `http://localhost:8984/`
-UNKNOWN * Added: new XML elements `<rest:redirect/>` and `<rest:forward/>`
+** Version 7.5 **
+
+ * Added: new XML elements `<rest:redirect/>` and `<rest:forward/>`

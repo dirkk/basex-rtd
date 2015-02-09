@@ -82,7 +82,9 @@ Creates a random universally unique identifier (UUID), represented as 128-bit va
 `BXRA0002` | The specified number of values to be returned is negative. 
  
 ## Changelog
-UNKNOWN * Updated: [random:integer](Random Module.md#random-integer), [random:seeded-integer](Random Module.md#random-seeded-integer) raise error for invalid input. 
+** Version 8.0 **
+
+ * Updated: [random:integer](Random Module.md#random-integer), [random:seeded-integer](Random Module.md#random-seeded-integer) raise error for invalid input. 
 
 The module was introduced with Version 7.5. It includes some functionality which was previously located in the [Math Module](Math Module.md). 
 

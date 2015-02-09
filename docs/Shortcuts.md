@@ -200,7 +200,15 @@ Show Help  | F1  | F1
 
 
 ### Changelog
-UNKNOWN * Added: Sort lines (Ctrl-U) 
-UNKNOWN * Added: [Code Completions](Shortcuts.md#Code_Completions), Project (Ctrl P), Find Files (Ctrl Shift F) 
-UNKNOWN * Added: go to line (Ctrl F) 
-UNKNOWN * Added: delete complete line (Ctrl Shift D), jump to highlighted error (Ctrl .) 
+** Version 7.8.2 **
+
+ * Added: Sort lines (Ctrl-U) 
+** Version 7.8 **
+
+ * Added: [Code Completions](Shortcuts.md#Code_Completions), Project (Ctrl P), Find Files (Ctrl Shift F) 
+** Version 7.5 **
+
+ * Added: go to line (Ctrl F) 
+** Version 7.3 **
+
+ * Added: delete complete line (Ctrl Shift D), jump to highlighted error (Ctrl .) 

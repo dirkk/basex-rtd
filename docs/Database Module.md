@@ -610,21 +610,41 @@ Retrieves the content type of a resource in the database `$db` and the path `$pa
 `BXDB0014` | Path points to a directory. 
  
 ## Changelog
-UNKNOWN * Updated: parsing options added to [db:create](Database Module.md#db-create), [db:add](Database Module.md#db-add) and [db:replace](Database Module.md#db-replace). 
+** Version 7.9 **
+
+ * Updated: parsing options added to [db:create](Database Module.md#db-create), [db:add](Database Module.md#db-add) and [db:replace](Database Module.md#db-replace). 
  * Updated: allow [UPDINDEX](Options.md#UPDINDEX) if `$all` is `true`. 
-UNKNOWN * Added: [db:alter](Database Module.md#db-alter), [db:copy](Database Module.md#db-copy), [db:create-backup](Database Module.md#db-create-backup), [db:drop-backup](Database Module.md#db-drop-backup), [db:restore](Database Module.md#db-restore)
-UNKNOWN * Removed: db:fulltext (use [ft:search](Full-Text Module.md#ft-search) instead) 
-UNKNOWN * Added: [db:export](Database Module.md#db-export), [db:name](Database Module.md#db-name), [db:path](Database Module.md#db-path)
+** Version 7.8.2 **
+
+ * Added: [db:alter](Database Module.md#db-alter), [db:copy](Database Module.md#db-copy), [db:create-backup](Database Module.md#db-create-backup), [db:drop-backup](Database Module.md#db-drop-backup), [db:restore](Database Module.md#db-restore)
+** Version 7.8 **
+
+ * Removed: db:fulltext (use [ft:search](Full-Text Module.md#ft-search) instead) 
+** Version 7.7 **
+
+ * Added: [db:export](Database Module.md#db-export), [db:name](Database Module.md#db-name), [db:path](Database Module.md#db-path)
  * Updated: `$options` argument added to [db:create](Database Module.md#db-create) and [db:optimize](Database Module.md#db-optimize). 
  * Updated: the functions no longer accept [Database Nodes](Database Module.md#Database_Nodes) as reference. Instead, the name of a database must now be specified. 
-UNKNOWN * Updated: [db:create](Database Module.md#db-create): allow more than one input and path. 
-UNKNOWN * Updated: [db:add](Database Module.md#db-add): input nodes will be automatically converted to document nodes 
+** Version 7.6 **
+
+ * Updated: [db:create](Database Module.md#db-create): allow more than one input and path. 
+** Version 7.5 **
+
+ * Updated: [db:add](Database Module.md#db-add): input nodes will be automatically converted to document nodes 
  * Added: [db:backups](Database Module.md#db-backups)
  * Added: [db:create](Database Module.md#db-create)
  * Added: [db:drop](Database Module.md#db-drop)
-UNKNOWN * Added: [db:flush](Database Module.md#db-flush)
-UNKNOWN * Added: [db:text-range](Database Module.md#db-text-range), [db:attribute-range](Database Module.md#db-attribute-range), [db:output](Database Module.md#db-output)
-UNKNOWN * Added: [db:list-details](Database Module.md#db-list-details), [db:content-type](Database Module.md#db-content-type)
+** Version 7.3 **
+
+ * Added: [db:flush](Database Module.md#db-flush)
+** Version 7.2.1 **
+
+ * Added: [db:text-range](Database Module.md#db-text-range), [db:attribute-range](Database Module.md#db-attribute-range), [db:output](Database Module.md#db-output)
+** Version 7.1 **
+
+ * Added: [db:list-details](Database Module.md#db-list-details), [db:content-type](Database Module.md#db-content-type)
  * Updated: [db:info](Database Module.md#db-info), [db:system](Database Module.md#db-system), [db:retrieve](Database Module.md#db-retrieve)
-UNKNOWN * Added: [db:retrieve](Database Module.md#db-retrieve), [db:store](Database Module.md#db-store), [db:exists](Database Module.md#db-exists), [db:is-raw](Database Module.md#db-is-raw), [db:is-xml](Database Module.md#db-is-xml)
+** Version 7.0 **
+
+ * Added: [db:retrieve](Database Module.md#db-retrieve), [db:store](Database Module.md#db-store), [db:exists](Database Module.md#db-exists), [db:is-raw](Database Module.md#db-is-raw), [db:is-xml](Database Module.md#db-is-xml)
  * Updated: [db:list](Database Module.md#db-list), [db:open](Database Module.md#db-open), [db:add](Database Module.md#db-add)

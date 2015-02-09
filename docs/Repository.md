@@ -253,8 +253,14 @@ If the resulting path has no file suffix, it may point to either an XQuery modul
  * `a:b:c`  → not supported (_no path component_) 
 
 ### Changelog
-UNKNOWN * Updated: [Installation](Repository.md#RepositoryInstallation): existing packages will be replaced without raising an error 
+** Version 7.2.1 **
+
+ * Updated: [Installation](Repository.md#RepositoryInstallation): existing packages will be replaced without raising an error 
  * Updated: [Removal](Repository.md#Removal): remove specific version of a package 
  * Added: [Packaging](Repository.md#Packaging), [URI Rewriting](Repository.md#URI_Rewriting)
-UNKNOWN * Added: [Repository Module](Repository Module.md)
-UNKNOWN * Added: [EXPath Packaging](Repository.md#EXPath_Packaging)
+** Version 7.1 **
+
+ * Added: [Repository Module](Repository Module.md)
+** Version 7.0 **
+
+ * Added: [EXPath Packaging](Repository.md#EXPath_Packaging)

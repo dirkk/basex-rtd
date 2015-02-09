@@ -56,7 +56,9 @@ Checks whether the specified `$item` is streamable.
 
  
 ## Changelog
-UNKNOWN * Update: [stream:materialize](Streaming Module.md#stream-materialize) extended to sequences. 
+** Version 8.0 **
+
+ * Update: [stream:materialize](Streaming Module.md#stream-materialize) extended to sequences. 
 
 This module was introduced with Version 7.7. 
 

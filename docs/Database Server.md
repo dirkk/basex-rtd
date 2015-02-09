@@ -19,13 +19,17 @@ First, launch a **Server** and **Client** instance of BaseX: double click on the
 
 ` > CREATE DB factbook factbook.xml `
 
-UNKNOWN
+** **
+
+
 If everything works you see the following lines: 
 
 
     Database 'factbook' created in 950.83 ms.
 
-UNKNOWN
+** Where is the database stored? **
+
+
 By default, databases are stored in the `BaseXData` directory, which is located in your home folder. Depending on your [Configuration](Configuration.md), the location of your home folder varies. For example, on a Mac it's `/Users/John`, if your name is John. If you have used the Windows Installer, the directory will be named `data`, and reside in the application directory. 
 
 

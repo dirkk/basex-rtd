@@ -181,9 +181,15 @@ Returns the value of the named Cookie in an HTTP request. If there is no such co
 
  
 ## Changelog
-UNKNOWN * Updated: The returned values of [request:parameter-names](Request Module.md#request-parameter-names), [request:parameter](Request Module.md#request-parameter) now also include form field parameters. 
-UNKNOWN * Added: [request:context-path](Request Module.md#request-context-path)
-UNKNOWN * Added: [request:attribute](Request Module.md#request-attribute)
+** Version 7.9 **
+
+ * Updated: The returned values of [request:parameter-names](Request Module.md#request-parameter-names), [request:parameter](Request Module.md#request-parameter) now also include form field parameters. 
+** Version 7.8 **
+
+ * Added: [request:context-path](Request Module.md#request-context-path)
+** Version 7.7 **
+
+ * Added: [request:attribute](Request Module.md#request-attribute)
 
 This module was introduced with Version 7.5. 
 

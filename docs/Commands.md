@@ -619,23 +619,41 @@ Introduced with Version 8.0:
 **Summary** | Exits the console mode (alias of [EXIT](Commands.md#EXIT)). 
  
 ## Changelog
-UNKNOWN * Updated: commands for [User Management](Commands.md#CommandsUser_Management)
+** Version 8.0 **
+
+ * Updated: commands for [User Management](Commands.md#CommandsUser_Management)
  * Updated: `OPEN`: path argument added 
  * Removed: `CS` command 
  * Added: `QUIT`
-UNKNOWN * Added: `TEST` runs XQUnit tests. 
-UNKNOWN * Updated: syntax of [valid names](Commands.md#Valid_Names). 
-UNKNOWN * Added: `EXECUTE` executes a command script. 
+** Version 7.5 **
+
+ * Added: `TEST` runs XQUnit tests. 
+** Version 7.7 **
+
+ * Updated: syntax of [valid names](Commands.md#Valid_Names). 
+** Version 7.5 **
+
+ * Added: `EXECUTE` executes a command script. 
  * Added: `INSPECT` performs integrity checks. 
  * Added: automatic detection of [Command Scripts](Commands.md#Basics). 
  * Removed: `SHOW DATABASES`; information is also returned by `SHOW SESSIONS`. 
  * Removed: `OPEN`: path argument. 
-UNKNOWN * Added: [XML Syntax](Commands.md#XML_Syntax) added. 
+** Version 7.3 **
+
+ * Added: [XML Syntax](Commands.md#XML_Syntax) added. 
  * Updated: `CHECK` can now be used to create empty databases. 
  * Updated: Names and paths in `OPEN` and `LIST` are now specified as separate arguments. 
-UNKNOWN * Updated: permissions for `GET` and `SET` changed from `READ` to `NONE`. 
-UNKNOWN * Updated: `CREATE INDEX`, `DROP INDEX` (`PATH` argument removed. Path summary is always available now and updated with [OPTIMIZE](Commands.md#OPTIMIZE)). 
+** Version 7.2.1 **
+
+ * Updated: permissions for `GET` and `SET` changed from `READ` to `NONE`. 
+** Version 7.2 **
+
+ * Updated: `CREATE INDEX`, `DROP INDEX` (`PATH` argument removed. Path summary is always available now and updated with [OPTIMIZE](Commands.md#OPTIMIZE)). 
  * Updated: permissions for `REPO DELETE`, `REPO INSTALL` and `REPO LIST`. 
-UNKNOWN * Updated: `KILL` (killing sessions by specifying IP:port) 
-UNKNOWN * Added: `FLUSH`, `RETRIEVE`, `STORE`. 
+** Version 7.1 **
+
+ * Updated: `KILL` (killing sessions by specifying IP:port) 
+** Version 7.0 **
+
+ * Added: `FLUSH`, `RETRIEVE`, `STORE`. 
  * Updated: `ADD`: simplified arguments. 

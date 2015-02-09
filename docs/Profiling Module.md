@@ -90,9 +90,15 @@ Swallows all items of the specified `$value` and returns an empty sequence. This
 
  
 ## Changelog
-UNKNOWN * Added: `prof:void`
-UNKNOWN * Added: `prof:human`
-UNKNOWN * Added: `prof:dump`, `prof:current-ms`, `prof:current-ns`
+** Version 7.7 **
+
+ * Added: `prof:void`
+** Version 7.6 **
+
+ * Added: `prof:human`
+** Version 7.5 **
+
+ * Added: `prof:dump`, `prof:current-ms`, `prof:current-ns`
 
 This module was introduced with Version 7.3. 
 

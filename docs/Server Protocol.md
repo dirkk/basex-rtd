@@ -147,9 +147,13 @@ Most language bindings provide the following constructors and functions:
  * Close the query:`void close()`
 
 #### Changelog
-UNKNOWN * Updated: cram-md5 replaced with digest authentication 
+** Version 8.0 **
+
+ * Updated: cram-md5 replaced with digest authentication 
  * Updated: `BIND` command: support more than one item 
-UNKNOWN * Added: Query Commands CONTEXT, UPDATING and FULL 
+** Version 7.2 **
+
+ * Added: Query Commands CONTEXT, UPDATING and FULL 
  * Added: Client function `context(String value, String type)`
 
 

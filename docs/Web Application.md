@@ -104,13 +104,25 @@ Users are specified in a `users.xml` file, which is stored in the database direc
 
 With cURL, and most browsers, you can specify the user name and password with each HTTP request within the request string as plain text, using the format `USER:PASSWORD@URL`. An example: 
 
-UNKNOWN 
+** **
+
+ 
 ## Changelog
-UNKNOWN * Added: digest authentication 
+** Version 8.0 **
+
+ * Added: digest authentication 
  * Updated: user management 
  * Updated: default user/password disabled in web.xml 
-UNKNOWN * Added: service-specific permissions 
-UNKNOWN * Added: `jetty.xml`: configuration for Jetty Server 
+** Version 7.7 **
+
+ * Added: service-specific permissions 
+** Version 7.5 **
+
+ * Added: `jetty.xml`: configuration for Jetty Server 
  * Updated: `server` replaced with `httplocal` mode 
-UNKNOWN * Updated: `client` mode replaced with `server` mode 
-UNKNOWN * Web Application concept revised 
+** Version 7.3 **
+
+ * Updated: `client` mode replaced with `server` mode 
+** Version 7.2 **
+
+ * Web Application concept revised 

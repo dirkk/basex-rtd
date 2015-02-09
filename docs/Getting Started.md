@@ -35,9 +35,10 @@ This page is one of the [Main Sections](index.md) of the documentation. It gives
  * [BaseX for Dummies (II)](http://www.swennenhuis.nl/basexfordummies/BaseX_for_dummies_part_2.pdf)
  * [BaseX Adventures](http://www.ffzg.unizg.hr/klafil/dokuwiki/doku.php/z:basex-adv) . Written by Neven Jovanović 
  * [Tutorial](http://www.learndb.com/databases/basex-tutorial-for-using-an-xml-native-database-management-system) . Written by Imed Bouchrika 
-   * [Slides and Examples](http://files.basex.org/publications/xmlprague2013/)  from the BaseX User Meetups 
+ * [Slides and Examples](http://files.basex.org/publications/xmlprague2013/)  from the BaseX User Meetups 
  * [Stack Overflow](http://stackoverflow.com/questions/tagged/basex) , Questions tagged with `basex`
  * [XQuery Summer Institute](https://github.com/XQueryInstitute/Course-Materials/tree/master/exercises) , Exercises 
  * [XQuery Tutorial](http://w3schools.com/xquery/default.asp) , W3 Schools 
 
+  
 

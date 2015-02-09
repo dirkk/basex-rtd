@@ -243,7 +243,9 @@ XQuery now provides native support for JSON objects. Strings and resources can b
 
 
 ##### fn:parse-json
-UNKNOWN * `fn:parse-json($input as xs:string) as item()?`
+** Signatures **
+
+ * `fn:parse-json($input as xs:string) as item()?`
  * `fn:parse-json($input as xs:string, $options as map(*)) as item()?`
 
 Parses the supplied string as JSON text and returns its item representation. The result may be a map, an array, a string, a double, a boolean, or an empty sequence. The allowed options are further specified in the [specification](http://www.w3.org/TR/xpath-functions-31/#func-parse-json). 
@@ -254,7 +256,9 @@ Parses the supplied string as JSON text and returns its item representation. The
 
 
 ##### fn:json-docs
-UNKNOWN * `fn:json-doc($uri as xs:string) as item()?`
+** Signatures **
+
+ * `fn:json-doc($uri as xs:string) as item()?`
  * `fn:json-doc($uri as xs:string, $options as map(*)) as item()?`
 
 Retrieves the text from the specified URI, parses the supplied string as JSON text and returns its item representation (see [fn:parse-json](XQuery 3.1.md#fn-parse-json) for more details). 
@@ -264,7 +268,9 @@ Retrieves the text from the specified URI, parses the supplied string as JSON te
 
 
 #### fn:sort
-UNKNOWN * `fn:sort($input as item()*) as item()*`
+** Signatures **
+
+ * `fn:sort($input as item()*) as item()*`
  * `fn:sort($input as item()*, $key as function(item()*) as xs:anyAtomicType*)) as item()*`
 
 Returns a new sequence with sorted `$input` items. If a sort `$key` function is given, it will be applied on all items. The items of the resulting values will be sorted using the semantics of the `lt` expression. 
@@ -277,7 +283,9 @@ Returns a new sequence with sorted `$input` items. If a sort `$key` function is 
 
 
 #### fn:contains-token
-UNKNOWN * `fn:contains-token($input as xs:string*, $token as string) as xs:boolean`
+** Signatures **
+
+ * `fn:contains-token($input as xs:string*, $token as string) as xs:boolean`
  * `fn:contains-token($input as xs:string*, $token as string, $collation as xs:string) as xs:boolean`
 
 The supplied strings will be tokenized at whitespace boundaries. The function returns `true` if one of the strings equals the supplied token, possibly under the rules of a supplied collation: 
@@ -288,7 +296,9 @@ The supplied strings will be tokenized at whitespace boundaries. The function re
 
 
 #### fn:parse-ietf-date
-UNKNOWN * `fn:parse-ietf-date($input as xs:string?) as xs:string?`
+** Signature **
+
+ * `fn:parse-ietf-date($input as xs:string?) as xs:string?`
 
 Parses a string in the IETF format (which is widely used on the Internet) and returns a `xs:dateTime` item: 
 
@@ -298,7 +308,9 @@ Parses a string in the IETF format (which is widely used on the Internet) and re
 
 
 #### fn:apply
-UNKNOWN * `fn:apply($function as function(*), $array as array(*)) as item()*`
+** Signatures **
+
+ * `fn:apply($function as function(*), $array as array(*)) as item()*`
 
 A supplied function is invoked with the arguments supplied by an array. The arity of the function must be the same as the size of the array. 
 
@@ -312,7 +324,9 @@ Example:
 
 
 #### fn:random-number-generator
-UNKNOWN * `fn:random-number-generator() as map(xs:string, item())`
+** Signatures **
+
+ * `fn:random-number-generator() as map(xs:string, item())`
  * `fn:random-number-generator($seed as xs:anyAtomicType) as map(xs:string, item())`
 
 Creates a random number generator, using an optional seed. The returned map contains three entries: 

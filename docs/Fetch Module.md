@@ -100,7 +100,9 @@ Returns the content-type (also called mime-type) of the resource specified by `$
 `BXFE0002` | The specified encoding is not supported, or unknown. 
  
 ## Changelog
-UNKNOWN * Added: [fetch:xml](Fetch Module.md#fetch-xml)
+** Version 8.0 **
+
+ * Added: [fetch:xml](Fetch Module.md#fetch-xml)
 
 The module was introduced with Version 7.6. 
 

@@ -189,7 +189,13 @@ If an XQuery expression is run which calls the Java `write()` function, every ot
 
  
 ## Changelog
-UNKNOWN * Added: `QueryResource` interface, called after a query has been fully evaluated. 
-UNKNOWN * Added: Java locking annotations 
+** Version 8.0 **
+
+ * Added: `QueryResource` interface, called after a query has been fully evaluated. 
+** Version 7.8 **
+
+ * Added: Java locking annotations 
  * Updated: `context` variable has been split into `queryContext` and `staticContext`. 
-UNKNOWN * Added: import of Java modules, context awareness 
+** Version 7.2.1 **
+
+ * Added: import of Java modules, context awareness 

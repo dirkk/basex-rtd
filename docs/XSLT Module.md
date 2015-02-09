@@ -174,6 +174,10 @@ Transforms the document specified by `$input`, using the XSLT template specified
 `BXSL0001` |  An error occurred during the transformation process. 
  
 ## Changelog
-UNKNOWN * Added: [xslt:transform-text](XSLT Module.md#xslt-transform-text)
+** Version 7.6 **
+
+ * Added: [xslt:transform-text](XSLT Module.md#xslt-transform-text)
  * Updated: [xslt:transform](XSLT Module.md#xslt-transform) returned error code 
-UNKNOWN * Updated: $xslt:processor → [xslt:processor](XSLT Module.md#xslt-processor), $xslt:version → [xslt:version](XSLT Module.md#xslt-version)
+** Version 7.3 **
+
+ * Updated: $xslt:processor → [xslt:processor](XSLT Module.md#xslt-processor), $xslt:version → [xslt:version](XSLT Module.md#xslt-version)

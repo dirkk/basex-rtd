@@ -105,7 +105,9 @@ Validates the document specified by `$input` and returns warning, errors and fat
 `BXVA0002` | The validation cannot be started. 
  
 ## Changelog
-UNKNOWN * Added: [validate:xsd-info](Validation Module.md#validate-xsd-info), [validate:dtd-info](Validation Module.md#validate-dtd-info)
+** Version 7.6 **
+
+ * Added: [validate:xsd-info](Validation Module.md#validate-xsd-info), [validate:dtd-info](Validation Module.md#validate-dtd-info)
 
 The module was introduced with Version 7.3. 
 

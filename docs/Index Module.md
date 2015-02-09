@@ -75,8 +75,12 @@ Returns all attribute names stored in the [Name Index](Indexes.md#Name_Index) of
 `BXDB0002`: The addressed database does not exist or could not be opened. 
  
 ## Changelog
-UNKNOWN * Updated: the functions no longer accept [Database Nodes](Database Module.md#Database_Nodes) as reference. Instead, the name of a database must now be specified. 
-UNKNOWN * Updated: [index:texts](Index Module.md#index-texts), [index:attributes](Index Module.md#index-attributes): signature with three arguments added. 
+** Version 7.7 **
+
+ * Updated: the functions no longer accept [Database Nodes](Database Module.md#Database_Nodes) as reference. Instead, the name of a database must now be specified. 
+** Version 7.3 **
+
+ * Updated: [index:texts](Index Module.md#index-texts), [index:attributes](Index Module.md#index-attributes): signature with three arguments added. 
 
 The module was introduced with Version 7.1. 
 

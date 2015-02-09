@@ -57,4 +57,6 @@ Many of the interfaces contain the following files:
  * `EventExample`  demonstrates how to watch and unwatch [Events](Events.md). 
  
 ## Changelog
-UNKNOWN * Updated: cram-md5 replaced with digest authentication 
+** Version 8.0 **
+
+ * Updated: cram-md5 replaced with digest authentication 

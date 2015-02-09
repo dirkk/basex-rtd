@@ -97,6 +97,12 @@ The scripts for starting the HTTP server, which gives access to the [REST](REST.
 
  
 ## Changelog
-UNKNOWN * Updated: Static dependencies removed from Windows batch scripts. 
-UNKNOWN * Updated: The `BaseXHTTP` start class moved from `org.basex.api` to `org.basex`. 
-UNKNOWN * Updated: The `basexjaxrx` scripts have been replaced with the `basexhttp` scripts. 
+** Version 7.5 **
+
+ * Updated: Static dependencies removed from Windows batch scripts. 
+** Version 7.2 **
+
+ * Updated: The `BaseXHTTP` start class moved from `org.basex.api` to `org.basex`. 
+** Version 7.0 **
+
+ * Updated: The `basexjaxrx` scripts have been replaced with the `basexhttp` scripts. 
