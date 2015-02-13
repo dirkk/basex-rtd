@@ -2,8 +2,9 @@
     {% for nav_item in nav %}
         {% if nav_item.children %}
             <li class="toctree-l1 {% if nav_item.active%}current{%endif%}">
-              <span>{{ nav_item.title }}</span>
-            {% for nav_item in nav_item.children %}
+              <a class="toctree-l1">{{ nav_item.title }}</a>
+              <ul>
+              {% for nav_item in nav_item.children %}
                 <li class="toctree-l2 {% if nav_item.active%}current{%endif%}">
                     <a class="{% if nav_item.active%}current{%endif%}" href="{{ nav_item.url }}">{{ nav_item.title }}</a>
                     {% if nav_item == current_page %}
@@ -19,7 +20,8 @@
                         </ul>
                     {% endif %}
                 </li>
-            {% endfor %}
+              {% endfor %}
+              </ul>
             </li>
         {% else %}
             <li class="toctree-l1 {% if nav_item.active%}current{%endif%}">

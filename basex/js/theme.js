@@ -12,6 +12,14 @@ $( document ).ready(function() {
     $(document).on('click', "[data-toggle='rst-current-version']", function() {
       $("[data-toggle='rst-versions']").toggleClass("shift-up");
     });
+    // close/open first navigation layer links
+    $(document).on('click', ".wy-menu-vertical ul.current li a.toctree-l1", function(ev) {
+      var currentText = $(".wy-menu-vertical ul.current li.toctree-l1.current a.toctree-l1").text();
+      $(".wy-menu-vertical ul.current li.current").removeClass("current");
+      if (currentText !== ev.currentTarget.text) {
+        $(ev.currentTarget.parentNode).addClass("current");
+      }
+    });
     // Make tables responsive
     $("table.docutils:not(.field-list)").wrap("<div class='wy-table-responsive'></div>");
 

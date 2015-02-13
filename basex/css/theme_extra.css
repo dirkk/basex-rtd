@@ -52,6 +52,10 @@ h3, h4, h5, h6 {
     background-color: #A00;
 }
 
+.wy-menu-vertical li.toctree-l1.current {
+  background-color: #343131;
+}
+
 .rst-content dl:not(.docutils) dt {
     color: #A00;
     display: block;
@@ -59,4 +63,12 @@ h3, h4, h5, h6 {
     background-color: #FFF4F4;
     font-size: 75% !important;
     font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
+}
+
+.toctree-l1 ul {
+  display: none;
+}
+
+.toctree-l1.current ul {
+  display: block;
 }
