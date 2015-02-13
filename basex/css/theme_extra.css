@@ -72,3 +72,7 @@ h3, h4, h5, h6 {
 .toctree-l1.current ul {
   display: block;
 }
+
+li.toctree-l2 ul ul {
+  padding-left: 20px;
+}

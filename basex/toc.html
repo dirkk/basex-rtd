@@ -13,9 +13,11 @@
                             <li class="toctree-l3">
                               <a href="{{ toc_item.url }}">{{ toc_item.title }}</a>
                             </li>
+                            <ul>
                             {% for toc_item in toc_item.children %}
                                 <li><a class="toctree-l4" href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
                             {% endfor %}
+                            </ul>
                         {% endfor %}
                         </ul>
                     {% endif %}
