@@ -1,5 +1,3 @@
-
-# Archive Module
  
 
 
@@ -7,22 +5,19 @@
 This [XQuery Module](Module Library.md) contains functions to handle archives (including ePub, Open Office, JAR, and many other formats). New ZIP and GZIP archives can be created, existing archives can be updated, and the archive entries can be listed and extracted. The [archive:extract-binary](Archive Module.md#archive-extract-binary) function includes an example for writing the contents of an archive to disk. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/archive` namespace, which is statically bound to the `archive` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### archive:create
+## archive:create
 
 archive:create($entries as item(), $contents as item()*) as xs:base64Binary
 archive:create($entries as item(), $contents as item()*, $options as item()) as xs:base64Binary
 
-:   Creates a new archive from the specified entries and contents.The `$entries` argument contains meta information required to create new entries. All items may either be of type `xs:string`, representing the entry name, or `element(archive:entry)`, containing the name as text node and additional, optional attributes:  * `last-modified` : timestamp, specified as xs:dateTime (default: current time)     * `compression-level` : 0-9, 0 = uncompressed (default: 8) 
-    * `encoding` : for textual entries (default: UTF-8) 
-    An example: The actual `$contents` must be `xs:string` or `xs:base64Binary` items. The `$options` parameter contains archiving options, which can either be specified Currently, the following combinations are supported (all others will be rejected): 
-
+:   Creates a new archive from the specified entries and contents.The `$entries` argument contains meta information required to create new entries. All items may either be of type `xs:string`, representing the entry name, or `element(archive:entry)`, containing the name as text node and additional, optional attributes:  * `last-modified` : timestamp, specified as xs:dateTime (default: current time) 
 
     **Errors**
 
@@ -37,14 +32,11 @@ archive:create($entries as item(), $contents as item()*, $options as item()) as 
     The following function creates an archive `mp3.zip`, which contains all MP3 files of a local directory: 
 
 
-### archive:entries
+## archive:entries
 
 archive:entries($archive as xs:base64Binary) as element(archive:entry)*
 
-:   Returns the entry descriptors of the specified `$archive`. A descriptor contains the following attributes, provided that they are available in the archive format:  * `size` : original file size     * `last-modified` : timestamp, formatted as xs:dateTime 
-    * `compressed-size` : compressed file size 
-    An example: 
-
+:   Returns the entry descriptors of the specified `$archive`. A descriptor contains the following attributes, provided that they are available in the archive format:  * `size` : original file size 
 
     **Errors**
 
@@ -58,7 +50,7 @@ archive:entries($archive as xs:base64Binary) as element(archive:entry)*
     sum(archive:entries(file:read-binary('zip.zip'))/@size)
 
 
-### archive:options
+## archive:options
 
 archive:options($archive as xs:base64Binary) as element(archive:options)
 
@@ -79,7 +71,7 @@ archive:options($archive as xs:base64Binary) as element(archive:options)
     </archive:options>
 
 
-### archive:extract-text
+## archive:extract-text
 
 archive:extract-text($archive as xs:base64Binary) as xs:string*
 archive:extract-text($archive as xs:base64Binary, $entries as item()*) as xs:string*
@@ -102,7 +94,7 @@ archive:extract-text($archive as xs:base64Binary, $entries as item()*, $encoding
     return archive:extract-text($archive, $entry)
 
 
-### archive:extract-binary
+## archive:extract-binary
 
 archive:extract-binary($archive as xs:base64Binary) as xs:string*
 archive:extract-binary($archive as xs:base64Binary, $entries as item()*) as xs:base64Binary*
@@ -131,7 +123,7 @@ archive:extract-binary($archive as xs:base64Binary, $entries as item()*) as xs:b
     )
 
 
-### archive:update
+## archive:update
 
 archive:update($archive as xs:base64Binary, $entries as item()*, $contents as item()*) as xs:base64Binary
 
@@ -165,7 +157,7 @@ archive:update($archive as xs:base64Binary, $entries as item()*, $contents as it
     return file:write-binary($output, $updated)
 
 
-### archive:delete
+## archive:delete
 
 archive:delete($archive as xs:base64Binary, $entries as item()*) as xs:base64Binary
 
@@ -187,7 +179,7 @@ archive:delete($archive as xs:base64Binary, $entries as item()*) as xs:base64Bin
     return file:write-binary('new.zip', archive:delete($zip, $entries))
 
 
-### archive:write
+## archive:write
 
 archive:write($path as xs:string, $archive as xs:base64Binary) as xs:string*
 archive:write($path as xs:string, $archive as xs:base64Binary, $entries as item()*) as empty-sequence()
@@ -206,7 +198,7 @@ archive:write($path as xs:string, $archive as xs:base64Binary, $entries as item(
     archive:write(file:read-binary('archive.zip'))
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -218,7 +210,7 @@ archive:write($path as xs:string, $archive as xs:base64Binary, $entries as item(
 `ARCH0006` | The chosen archive format only allows single entries. 
 `ARCH9999` | Archive processing failed for some other reason. 
  
-## Changelog
+# Changelog
 ** Version 7.7 **
 
  * Added: [archive:write](Archive Module.md#archive-write)

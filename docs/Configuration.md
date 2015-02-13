@@ -1,5 +1,3 @@
-
-# Configuration
  
 
 
@@ -7,7 +5,7 @@
 This article is part of the [Advanced User's Guide](Advanced User's Guide.md). It gives some more insight into the configuration of BaseX. 
 
  
-## Configuration Files
+# Configuration Files
 
 BaseX maintains some configuration files, which are stored in the project’s [Home Directory](Configuration.md#Home_Directory): 
 
@@ -21,7 +19,7 @@ BaseX maintains some configuration files, which are stored in the project’s [H
 Note that, depending on your OS and configuration, files and folders with a '.' prefix may be hidden. 
 
 
-### Home Directory
+## Home Directory
 
 As BaseX is distributed in different flavors, and may be started from different locations, it dynamically determines its home directory: 
 
@@ -30,7 +28,7 @@ As BaseX is distributed in different flavors, and may be started from different 
  * Otherwise, the files are searched in the **application directory** (the folder in which the BaseX code is located). 
  * In all other cases, the **user's home directory** (defined in `user.home`) is chosen. 
 
-### Database Directory
+## Database Directory
 
 A database in BaseX consists of several files, which are located in a directory named by the name of the database. If the user’s home directory has been chosen as base directory, the database directories will be planed in a `BaseXData` directory. Otherwise, the directory will be named `data`. 
 
@@ -43,12 +41,12 @@ The database path can be changed as follows:
 **Note:** Existing databases will not be automatically moved to the new destination. 
 
 
-### Log Files
+## Log Files
 
 Log files are stored in text format in a `.logs` sub-directory of the database folder (see [Logging](Logging.md) for more information). 
 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Updated: `.basexperm` is obsolete. 

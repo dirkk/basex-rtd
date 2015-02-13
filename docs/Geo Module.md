@@ -1,5 +1,3 @@
-
-# Geo Module
  
 
 
@@ -10,7 +8,7 @@ This [XQuery Module](Module Library.md) contains functions that may be applied t
 Geometries introduced in GML 2 are: Point, LineString, LinearRing, Polygon, MultiPoint, MultiLineString, MultiPolygon, and MultiGeometry. All nodes queried by BaseX should be a valid geometry. The only geometry type which is not supported by BaseX right now is MultiGeometry. 
 
  
-## Conventions
+# Conventions
  * This module is included in the complete distributions of BaseX (zip, exe, war). 
  * All functions are assigned to the `http://expath.org/ns/geo` namespace, which must be dynamically imported: 
 
@@ -20,9 +18,9 @@ Geometries introduced in GML 2 are: Point, LineString, LinearRing, Polygon, Mult
  * In this documentation, the namespace is bound to the `geo` prefix. 
  * All errors are assigned to the `http://expath.org/ns/error` namespace, which is statically bound to the `experr` prefix. 
  
-## General Functions
+# General Functions
 
-### geo:dimension
+## geo:dimension
 
 geo:dimension($geometry as element(*)) as xs:integer
 
@@ -34,7 +32,7 @@ geo:dimension($geometry as element(*)) as xs:integer
     `GEO0001`: the given element is not recognized as a valid geometry.`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:geometry-type
+## geo:geometry-type
 
 geo:geometry-type($geometry as element(*)) as xs:QName
 
@@ -46,7 +44,7 @@ geo:geometry-type($geometry as element(*)) as xs:QName
     `GEO0001`: the given element is not recognized as a valid geometry.`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:srid
+## geo:srid
 
 geo:srid($geometry as element(*)) as xs:integer
 
@@ -58,7 +56,7 @@ geo:srid($geometry as element(*)) as xs:integer
     `GEO0001`: the given element is not recognized as a valid geometry.`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:envelope
+## geo:envelope
 
 geo:envelope($geometry as element(*)) as element(*)
 
@@ -70,7 +68,7 @@ geo:envelope($geometry as element(*)) as element(*)
     `GEO0001`: the given element is not recognized as a valid geometry.`GEO0002`: the given element cannot be read by reader for some reason.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:as-text
+## geo:as-text
 
 geo:as-text($geometry as element(*)) as xs:string
 
@@ -82,7 +80,7 @@ geo:as-text($geometry as element(*)) as xs:string
     `GEO0001`: the given element is not recognized as a valid geometry.`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:as-binary
+## geo:as-binary
 
 geo:as-binary($geometry as element(*)) as xs:base64Binary
 
@@ -94,7 +92,7 @@ geo:as-binary($geometry as element(*)) as xs:base64Binary
     `GEO0001`: the given element is not recognized as a valid geometry.`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:is-simple
+## geo:is-simple
 
 geo:is-simple($geometry as element(*)) as xs:boolean
 
@@ -106,7 +104,7 @@ geo:is-simple($geometry as element(*)) as xs:boolean
     `GEO0001`: the given element is not recognized as a valid geometry.`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:boundary
+## geo:boundary
 
 geo:boundary($geometry as element(*)) as element(*)?
 
@@ -118,7 +116,7 @@ geo:boundary($geometry as element(*)) as element(*)?
     `GEO0001`: the given element is not recognized as a valid geometry.`GEO0002`: the given element cannot be read by reader for some reason.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:num-geometries
+## geo:num-geometries
 
 geo:num-geometries($geometry as element(*)) as xs:integer
 
@@ -130,7 +128,7 @@ geo:num-geometries($geometry as element(*)) as xs:integer
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:geometry-n
+## geo:geometry-n
 
 geo:geometry-n($geometry as element(*), $geoNumber as xs:integer) as element(*)
 
@@ -142,7 +140,7 @@ geo:geometry-n($geometry as element(*), $geoNumber as xs:integer) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0004`: the the input index of geometry is out of range.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:length
+## geo:length
 
 geo:length($geometry as element(*)) as xs:double
 
@@ -154,7 +152,7 @@ geo:length($geometry as element(*)) as xs:double
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:num-points
+## geo:num-points
 
 geo:num-points($geometry as element(*)) as xs:integer
 
@@ -166,7 +164,7 @@ geo:num-points($geometry as element(*)) as xs:integer
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:area
+## geo:area
 
 geo:area($geometry as element(*)) as xs:double
 
@@ -178,7 +176,7 @@ geo:area($geometry as element(*)) as xs:double
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:centroid
+## geo:centroid
 
 geo:centroid($geometry as element(*)) as element(*)
 
@@ -190,7 +188,7 @@ geo:centroid($geometry as element(*)) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:point-on-surface
+## geo:point-on-surface
 
 geo:point-on-surface($geometry as element(*)) as element(*)
 
@@ -202,9 +200,9 @@ geo:point-on-surface($geometry as element(*)) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
  
-## Spatial Predicate Functions
+# Spatial Predicate Functions
 
-### geo:equals
+## geo:equals
 
 geo:equals($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
 
@@ -216,7 +214,7 @@ geo:equals($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:disjoint
+## geo:disjoint
 
 geo:disjoint($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
 
@@ -228,7 +226,7 @@ geo:disjoint($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:intersects
+## geo:intersects
 
 geo:intersects($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
 
@@ -240,7 +238,7 @@ geo:intersects($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:touches
+## geo:touches
 
 geo:touches($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
 
@@ -252,7 +250,7 @@ geo:touches($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:crosses
+## geo:crosses
 
 geo:crosses($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
 
@@ -264,7 +262,7 @@ geo:crosses($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:within
+## geo:within
 
 geo:within($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
 
@@ -276,7 +274,7 @@ geo:within($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:contains
+## geo:contains
 
 geo:contains($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
 
@@ -288,7 +286,7 @@ geo:contains($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:overlaps
+## geo:overlaps
 
 geo:overlaps($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
 
@@ -300,7 +298,7 @@ geo:overlaps($geometry1 as element(*), $geometry2 as element(*)) as xs:boolean
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:relate
+## geo:relate
 
 geo:relate($geometry1 as element(*), $geometry2 as element(*), $intersectionMatrix as xs:string) as xs:boolean
 
@@ -312,9 +310,9 @@ geo:relate($geometry1 as element(*), $geometry2 as element(*), $intersectionMatr
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
  
-## Analysis Functions
+# Analysis Functions
 
-### geo:distance
+## geo:distance
 
 geo:distance($geometry1 as element(*), $geometry2 as element(*)) as xs:double
 
@@ -326,7 +324,7 @@ geo:distance($geometry1 as element(*), $geometry2 as element(*)) as xs:double
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:buffer
+## geo:buffer
 
 geo:buffer($geometry as element(*), $distance as xs:double) as element(*)
 
@@ -338,7 +336,7 @@ geo:buffer($geometry as element(*), $distance as xs:double) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:convex-hull
+## geo:convex-hull
 
 geo:convex-hull($geometry as element(*)) as element(*)
 
@@ -350,7 +348,7 @@ geo:convex-hull($geometry as element(*)) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:intersection
+## geo:intersection
 
 geo:intersection($geometry1 as element(*), $geometry2 as element(*)) as element(*)?
 
@@ -362,7 +360,7 @@ geo:intersection($geometry1 as element(*), $geometry2 as element(*)) as element(
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:union
+## geo:union
 
 geo:union($geometry1 as element(*), $geometry2 as element(*)) as element(*)
 
@@ -374,7 +372,7 @@ geo:union($geometry1 as element(*), $geometry2 as element(*)) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:difference
+## geo:difference
 
 geo:difference($geometry1 as element(*), $geometry2 as element(*)) as element(*)?
 
@@ -386,7 +384,7 @@ geo:difference($geometry1 as element(*), $geometry2 as element(*)) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:sym-difference
+## geo:sym-difference
 
 geo:sym-difference($geometry1 as element(*), $geometry2 as element(*)) as element(*)?
 
@@ -398,9 +396,9 @@ geo:sym-difference($geometry1 as element(*), $geometry2 as element(*)) as elemen
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
  
-## Functions Specific to Geometry Type
+# Functions Specific to Geometry Type
 
-### geo:x
+## geo:x
 
 geo:x($point as element(*)) as xs:double
 
@@ -412,7 +410,7 @@ geo:x($point as element(*)) as xs:double
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:y
+## geo:y
 
 geo:y($point as element(*)) as xs:double?
 
@@ -424,7 +422,7 @@ geo:y($point as element(*)) as xs:double?
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:z
+## geo:z
 
 geo:z($point as element(*)) as xs:double?
 
@@ -436,7 +434,7 @@ geo:z($point as element(*)) as xs:double?
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason. 
 
 
-### geo:start-point
+## geo:start-point
 
 geo:start-point($line as element(*)) as element(*)
 
@@ -448,7 +446,7 @@ geo:start-point($line as element(*)) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0003`: the given element has to be a line. Other geometries are not accepted. 
 
 
-### geo:end-point
+## geo:end-point
 
 geo:end-point($line as element(*)) as element(*)
 
@@ -460,7 +458,7 @@ geo:end-point($line as element(*)) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0003`: the given element has to be a line. Other geometries are not accepted. 
 
 
-### geo:is-closed
+## geo:is-closed
 
 geo:is-closed($line as element(*)) as xs:boolean
 
@@ -472,7 +470,7 @@ geo:is-closed($line as element(*)) as xs:boolean
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0003`: the given element has to be a line. Other geometries are not accepted. 
 
 
-### geo:is-ring
+## geo:is-ring
 
 geo:is-ring($line as element(*)) as xs:boolean
 
@@ -484,7 +482,7 @@ geo:is-ring($line as element(*)) as xs:boolean
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0003`: the given element has to be a line. Other geometries are not accepted. 
 
 
-### geo:point-n
+## geo:point-n
 
 geo:point-n($line as element(*)) as element(*)
 
@@ -496,7 +494,7 @@ geo:point-n($line as element(*)) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0003`: the given element has to be a line. Other geometries are not accepted.`GEO0004`: the the input index of geometry is out of range.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:exterior-ring
+## geo:exterior-ring
 
 geo:exterior-ring($polygon as element(*)) as element(*)
 
@@ -508,7 +506,7 @@ geo:exterior-ring($polygon as element(*)) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0003`: the given element has to be a polygon. Other geometries are not accepted.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
 
-### geo:num-interior-ring
+## geo:num-interior-ring
 
 geo:num-interior-ring($polygon as element(*)) as xs:integer
 
@@ -520,7 +518,7 @@ geo:num-interior-ring($polygon as element(*)) as xs:integer
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0003`: the given element has to be a polygon. Other geometries are not accepted. 
 
 
-### geo:interior-ring-n
+## geo:interior-ring-n
 
 geo:interior-ring-n($polygon as element(*)) as element(*)
 
@@ -532,7 +530,7 @@ geo:interior-ring-n($polygon as element(*)) as element(*)
     `GEO0001`: the given element(s) is not recognized as a valid geometry (QName).`GEO0002`: the given element cannot be read by reader for some reason.`GEO0003`: the given element has to be a polygon. Other geometries are not accepted.`GEO0004`: the the input index of geometry is out of range.`GEO0005`: the output object cannot be written as an element by writer for some reason. 
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -542,7 +540,7 @@ geo:interior-ring-n($polygon as element(*)) as element(*)
 `GEO0004` | The input index is out of range. 
 `GEO0005` | The result geometry can not be written by GMLwriter. 
  
-## Changelog
+# Changelog
 
 The module was introduced with Version 7.6. 
 

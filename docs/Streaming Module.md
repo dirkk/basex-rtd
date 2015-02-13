@@ -1,5 +1,3 @@
-
-# Streaming Module
  
 
 
@@ -28,33 +26,31 @@ The XQuery expression below serves as an example on how large files can be downl
     file:write-binary('output.data', fetch:binary('http://files.basex.org/xml/xmark111mb.zip'))
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/stream` namespace, which is statically bound to the `stream` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### stream:materialize
+## stream:materialize
 
 Updated with Version 8.0: Extended to sequences. 
 
 
 stream:materialize($value as item()*) as item()*
 
-:   Returns a materialized instance of the specified `$value`:  * if an item is streamable, its value will be retrieved, and a new item containing the value will be returned.     * other, non-streamable items will simply be passed through. 
-    Materialization is advisable if a value is to be processed more than once, and is expensive to retrieve. It is get mandatory whenever a value is invalidated before it is requested (see the example below). 
+:   Returns a materialized instance of the specified `$value`:  * if an item is streamable, its value will be retrieved, and a new item containing the value will be returned. 
 
 
-
-### stream:is-streamable
+## stream:is-streamable
 
 stream:is-streamable($item as item()) as item()
 
 :   Checks whether the specified `$item` is streamable. 
 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Update: [stream:materialize](Streaming Module.md#stream-materialize) extended to sequences. 

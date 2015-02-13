@@ -1,5 +1,3 @@
-
-# Twitter
  
 
 
@@ -10,17 +8,17 @@ This article is part of the [Advanced User's Guide](Advanced User's Guide.md). I
 As [Twitter](http://twitter.com) attracts more and more users (over 140 million active users in 2012) and is generating large amounts of data (over 340 millions of short messages ('tweets') daily), it became a really exciting data source for all kind of analytics. Twitter provides the developer community with a set of [APIs](https://dev.twitter.com/start) for retrieving the data about its users and their communication, including the [Streaming API](https://dev.twitter.com/docs/streaming-apis) for data-intensive applications, the [Search API](https://dev.twitter.com/docs/using-search) for querying and filtering the messaging content, and the [REST API](https://dev.twitter.com/docs/api) for accessing the core primitives of the Twitter platform. 
 
  
-## BaseX as Twitter Storage
+# BaseX as Twitter Storage
 
 For retrieving the Twitter stream we connect with the Streaming API to the endpoint of Twitter and receive a never ending tweet stream. As Twitter delivers the tweets as [JSON](http://www.json.org/) objects the objects has to be converted into XML fragments. For this purpose the parse function of the [XQuery JSON Module](JSON Module.md) is used. In the examples section both versions are shown ([tweet as JSON](Twitter.md#Example_Tweet_.28JSON.29) and [tweet as XML](Twitter.md#Example_Tweet_.28XML.29)). For storing the tweets including the meta-data, we use the standard _insert_ function of [XQuery Update](http://docs.basex.org/wiki/XQuery Update). 
 
  
-## Twitter’s Streaming Data
+# Twitter’s Streaming Data
 
 Each tweet object in the data stream contains the tweet message itself and over 60 data fields (for further information see the [fields description](https://dev.twitter.com/docs/platform-objects)). The following section shows the amount of data, that is delivered by the Twitter Streaming API to the connected endpoints with the 10% gardenhose access per hour on the 6th of the months February, March, April and May. It is the pure public live stream without any filtering applied. 
 
 
-### Statistics
+## Statistics
 
 ![Tweets.png](img/Tweets.png)
 
@@ -44,7 +42,7 @@ Each tweet object in the data stream contains the tweet message itself and over 
  |  Average tweets per minute  |  24.988 
  |  Average tweets per second  |  416 
 
-### Example Tweet (JSON)
+## Example Tweet (JSON)
 
     {
       "contributors": null,
@@ -118,7 +116,7 @@ Each tweet object in the data stream contains the tweet message itself and over 
     }
 
 
-### Example Tweet (XML)
+## Example Tweet (XML)
 
     <json booleans="retweeted possibly__sensitive truncated favorited possibly__sensitive__editable default__profile profile__background__tile protected contributors__enabled verified default__profile__image geo__enabled profile__use__background__image show__all__inline__media is__translator" 
       numbers="id retweet__count statuses__count favourites__count followers__count friends__count listed__count"
@@ -193,7 +191,7 @@ Each tweet object in the data stream contains the tweet message itself and over 
     </json>
 
  
-## BaseX Performance 
+# BaseX Performance 
 
 The test show the time BaseX needs to insert large amounts of real tweets into a database. We can derive that BaseX scales very well and can keep up with the incoming amount of tweets in the stream. Some lower values can occur, cause the size of the tweets differ according to the meta-data contained in the tweet object. Note: The `AUTOFLUSH` option is set to `FALSE` (default: `SET AUTOFLUSH TRUE`) 
 
@@ -201,12 +199,12 @@ The test show the time BaseX needs to insert large amounts of real tweets into a
 System Setup: Mac OS X 10.6.8, 3.2 GHz Intel Core i3, 8 GB 1333 MHz DDR3 RAM BaseX Version: BaseX 7.3 beta 
 
 
-### Insert with XQuery Update 
+## Insert with XQuery Update 
 
 These tests show the performance of BaseX performing inserts with XQuery Update as single updates per tweet or bulk updates with different amount of tweets. The initial database just contained a root node `<tweets/>` and all incoming tweets are inserted after converting from JSON to XML into the root node. The time needed for the inserts includes the conversion time. 
 
 
-#### Single Updates 
+### Single Updates 
 
 ** Amount of tweets ** | ** Time in seconds ** | ** Time in minutes ** | ** Database Size (without indexes) **
 ---------------------- | --------------------- | --------------------- | -------------------------------------

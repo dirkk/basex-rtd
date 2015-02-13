@@ -1,5 +1,3 @@
-
-# JSON Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains functions to parse and serialize JSON documents. [JSON (JavaScript Object Notation)](http://www.json.org/) is a popular data exchange format for applications written in JavaScript. As there are notable differences between JSON and XML, no mapping exists that guarantees a lossless, bidirectional conversion between JSON and XML. For this reason, we offer various mappings, all of which are suited to different use cases. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/json` namespace, which is statically bound to the `json` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
 
-### Conversion Formats
+## Conversion Formats
 
-#### Direct
+### Direct
 
 The `direct` conversion format allows a lossless conversion from JSON to XML and back. The transformation is based on the following rules: 
 
@@ -24,7 +22,7 @@ The `direct` conversion format allows a lossless conversion from JSON to XML and
  * Object and array values are stored in text nodes. 
  * The types of values are represented via `type` attributes: 
 
-#### Attributes
+### Attributes
 
 The `attributes` format is lossless, too. The transformation based on the following rules: 
 
@@ -34,12 +32,12 @@ The `attributes` format is lossless, too. The transformation based on the follow
  * Object and array values are stored in text nodes. 
  * The types of values are represented via `type` attributes: 
 
-#### Map
+### Map
 
 The `map` format is lossless, too. It converts a JSON document to an XQuery map. The conversion rules for are specified in the [XSLT 3.0 specification](http://www.w3.org/TR/xslt-30/#func-parse-json). 
 
 
-#### JsonML
+### JsonML
 
 The `jsonml` format is designed to convert XML to JSON and back, using the JsonML dialect. JsonML allows the transformation of arbitrary XML documents, but namespaces, comments and processing instructions will be discarded in the transformation process. More details are found in the official [JsonML documentation](http://jsonml.org/XML). 
 
@@ -47,7 +45,7 @@ The `jsonml` format is designed to convert XML to JSON and back, using the JsonM
 **A little advice**: in the Database Creation dialog of the GUI, if you select JSON Parsing and switch to the _Parsing_ tab, you can see the effects of some of the conversion options. 
 
 
-### Options
+## Options
 
 The following options are available (the _Direction_ column indicates if an option applies to parsing, serialization, or both operations): 
 
@@ -83,9 +81,9 @@ The JSON function signatures provide an `$options` argument. Options can either 
     map { 'format': 'direct', ... }
 
  
-## Functions
+# Functions
 
-### json:parse
+## json:parse
 
 json:parse($input as xs:string) as element(json)
 json:parse($input as xs:string, $options as item()) as item()
@@ -98,7 +96,7 @@ json:parse($input as xs:string, $options as item()) as item()
     `BXJS0001`: the specified input cannot be parsed as JSON document. 
 
 
-### json:serialize
+## json:serialize
 
 Updated with BaseX 8.0: Aligned with the `json` output method of the official specification. 
 
@@ -114,9 +112,9 @@ json:serialize($input as node(), $options as item()) as xs:string
     `BXJS0002`: the specified node cannot be serialized as JSON document. 
 
  
-## Examples
+# Examples
 
-### BaseX Format
+## BaseX Format
 
 **Example 1: Adds all JSON documents in a directory to a database**
 
@@ -246,7 +244,7 @@ json:serialize($input as node(), $options as item()) as xs:string
     </json>
 
 
-### JsonML Format
+## JsonML Format
 
 **Example 1: Converts all XML documents in a database to JsonML and writes them to disk**
 
@@ -358,14 +356,14 @@ json:serialize($input as node(), $options as item()) as xs:string
         "212 555-1234"]]
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
 `BXJS0001` | The specified input cannot be parsed as JSON document. 
 `BXJS0002` | The specified node cannot be serialized as JSON document. 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Updated: Serialization aligned with the `json` output method of the official specification 

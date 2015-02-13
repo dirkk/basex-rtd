@@ -1,5 +1,3 @@
-
-# Random Module
  
 
 
@@ -7,21 +5,21 @@
 This [XQuery Module](Module Library.md) contains functions for computing random values. All functions except for [random:seeded-double](Random Module.md#random-seeded-double) and [random:seeded-integer](Random Module.md#random-seeded-integer) are non-deterministic, i. e., they return different values for each call. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/random` namespace, which is statically bound to the `random` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### random:double
+## random:double
 
 random:double() as xs:double
 
 :   Returns a double value between 0.0 (inclusive) and 1.0 (exclusive). 
 
 
-### random:integer
+## random:integer
 
 Updated with Version 8.0: raise error for invalid input. 
 
@@ -37,14 +35,14 @@ random:integer($max as xs:integer) as xs:integer
     `BXRA0001`: the maximum value is out of bounds. 
 
 
-### random:seeded-double
+## random:seeded-double
 
 random:seeded-double($seed as xs:integer, $num as xs:integer) as xs:double*
 
 :   Returns a sequence with `$num` double values between 0.0 (inclusive) and 1.0 (exclusive). The random values are created using the initial seed given in `$seed`. 
 
 
-### random:seeded-integer
+## random:seeded-integer
 
 Updated with Version 8.0: raise error for invalid input. 
 
@@ -60,14 +58,14 @@ random:seeded-integer($seed as xs:integer, $num as xs:integer, $max as xs:intege
     `BXRA0001`: the maximum value is out of bounds.`BXRA0002`: the number of values to be returned is negative. 
 
 
-### random:gaussian
+## random:gaussian
 
 random:gaussian($num as xs:integer) as xs:double*
 
 :   Returns a sequence with `$num` double values. The random values are Gaussian (i.e. normally) distributed with the mean 0.0. and the derivation 1.0. 
 
 
-### random:uuid
+## random:uuid
 
 random:uuid() as xs:string
 
@@ -79,14 +77,14 @@ random:uuid() as xs:string
     * `random:uuid() eq random:uuid()`  will (most probably) return the boolean value `false`. 
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
 `BXRA0001` | The specified maximum value is out of bounds. 
 `BXRA0002` | The specified number of values to be returned is negative. 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Updated: [random:integer](Random Module.md#random-integer), [random:seeded-integer](Random Module.md#random-seeded-integer) raise error for invalid input. 

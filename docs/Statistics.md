@@ -1,5 +1,3 @@
-
-# Statistics
  
 
 
@@ -7,7 +5,7 @@
 This article is part of the [Advanced User's Guide](Advanced User's Guide.md). It lists statistics on various XML instances that have been created with BaseX, with the value and full-text indexes turned off. The URLs to the original sources, if available or public, are listed below. 
 
  
-## Databases 
+# Databases 
  * FileSize is the original size of the input documents 
  * #Files indicates the number of stored XML documents 
  * #DbSize is the size of the resulting database (excluding the [value index structures](Indexes.md#Value_Indexes)) 
@@ -84,7 +82,7 @@ If a fixed database limit is reached, documents can be distributed in several da
  Factbook  |  1743 KiB  |  1  |  1560 KiB  |  77'315  |  16  |  23  |  32  |  0  |  6 
  XMark  |  1134 KiB  |  1  |  1334 KiB  |  33'056  |  2  |  74  |  9  |  0  |  13 
 
-### Sources 
+## Sources 
 
 ** Instances ** | ** Source **
 --------------- | ------------

@@ -1,5 +1,3 @@
-
-# Maven
  
 
 
@@ -7,7 +5,7 @@
 This page is part of the [Developer Section](Developing.md). It demonstrates how [Maven](http://maven.apache.org) is used to compile and run BaseX, and embed it into other projects. 
 
  
-## Using Maven
+# Using Maven
 
 If you have [cloned our repository](Git.md) and installed Maven on your machine, you can run the following commands from all local repository directories: 
 
@@ -24,7 +22,7 @@ There are several alternatives for starting BaseX:
  * type in `mvn jetty:run` in the `basex-api` directory to start BaseX with Jetty and the HTTP servers, 
  * run one of the [Start Scripts](Start Scripts.md) contained in the `etc` directory 
 
-### Artifacts
+## Artifacts
 
 You can easily embed BaseX into your own Maven projects by adding the following XML snippets to your `pom.xml` file: 
 
@@ -38,7 +36,7 @@ You can easily embed BaseX into your own Maven projects by adding the following 
     </repositories>
 
 
-#### BaseX Main Package
+### BaseX Main Package
 
     <dependency>
       <groupId>org.basex</groupId>
@@ -47,7 +45,7 @@ You can easily embed BaseX into your own Maven projects by adding the following 
     </dependency>
 
 
-#### APIs and Services
+### APIs and Services
 
 ...including APIs and the [REST](REST.md), [RESTXQ](RESTXQ.md) and [WebDAV](WebDAV.md) services:
 
@@ -59,7 +57,7 @@ You can easily embed BaseX into your own Maven projects by adding the following 
     </dependency>
 
 
-#### XQJ API
+### XQJ API
 
 The XQJ API is hosted at [http://xqj.net](http://xqj.net):
 

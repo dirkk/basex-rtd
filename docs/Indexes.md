@@ -1,5 +1,3 @@
-
-# Indexes
  
 
 
@@ -10,12 +8,12 @@ This article is part of the [Advanced User's Guide](Advanced User's Guide.md) an
 Nearly all examples in this article are based on the [factbook.xml](http://files.basex.org/xml/factbook.xml) document. To see how a query is rewritten, please turn on the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations) in the GUI or use the [-V flag](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) on command line. 
 
  
-## Structural Indexes
+# Structural Indexes
 
 Structural indexes will always be present and cannot be dropped by the user: 
 
 
-### Name Index
+## Name Index
 
 The name index contains all element and attribute names of a database, and the fixed-size index ids are stored in the main database table. If a database is updated, new names are automatically added. Furthermore, the index is enriched with statistical information, such as the distinct (categorical) or minimum and maximum values of its elements and attributes. The maximum number of categories to store per name can be changed via [MAXCATS](Options.md#MAXCATS). The statistics are discarded after database updates and can be recreated with the [OPTIMIZE](Commands.md#OPTIMIZE) command. 
 
@@ -31,7 +29,7 @@ The name index is e.g. applied to pre-evaluate location steps that will never yi
 The contents of the name indexes can be directly accessed with the XQuery functions [index:element-names](Index Module.md#index-element-names) and [index:attribute-names](Index Module.md#index-attribute-names). 
 
 
-### Path Index
+## Path Index
 
 The path index (also called _path summary_) stores all distinct paths of the documents in the database. It contains the same statistical information as the name index. The statistics are discarded after database updates and can be recreated with the [OPTIMIZE](Commands.md#OPTIMIZE) command. 
 
@@ -56,7 +54,7 @@ The paths statistics are e.g. used to pre-evaluate the `count` function:
 The contents of the path index can be directly accessed with the XQuery function [index:facets](Index Module.md#index-facets). 
 
 
-### Resource Index
+## Resource Index
 
 The resource index contains references to the `pre` values of all XML document nodes. It speeds up the access to specific documents in a database, and it will be automatically updated when updates are performed. 
 
@@ -67,14 +65,14 @@ The following query will be sped up by the resource index:
     db:open('DatabaseWithLotsOfDocuments')
 
  
-## Value Indexes
+# Value Indexes
 
 Value indexes can be optionally created and dropped by the user. The text and attribute index will be created by default. 
 
 
-### Text Index
+## Text Index
 
-#### Exact Queries
+### Exact Queries
 
 This index speeds up string-based equality tests on text nodes. The [UPDINDEX](Options.md#UPDINDEX) option can be activated to keep this index up-to-date. 
 
@@ -98,7 +96,7 @@ The following queries will all be rewritten for index access:
 Matching text nodes can be directly requested from the index with the XQuery function [db:text](Database Module.md#db-text). The index contents can be accessed via [index:texts](Index Module.md#index-texts). 
 
 
-#### Range Queries
+### Range Queries
 
 The text index also supports range queries based on string comparisons: 
 
@@ -121,7 +119,7 @@ Text nodes can be directly accessed from the index via the XQuery function [db:t
 Please note that the current index structures do not support queries for numbers and dates. 
 
 
-### Attribute Index
+## Attribute Index
 
 Similar to the text index, this index speeds up string-based equality and range tests on attribute values. The [UPDINDEX](Options.md#UPDINDEX) option can be activated to keep this index up-to-date. 
 
@@ -143,7 +141,7 @@ The following queries will all be rewritten for index access:
 Matching text nodes can be directly requested from the index with the XQuery functions [db:attribute](Database Module.md#db-attribute) and [db:attribute-range](Database Module.md#db-attribute-range). The index contents can be accessed with [index:attributes](Index Module.md#index-attributes). 
 
 
-### Full-Text Index
+## Full-Text Index
 
 The [Full-Text](Full-Text.md) index speeds up queries using the `contains text` expression. Internally, two index structures are provided: the default index sorts all keys alphabetically by their character length. It is particularly fast if fuzzy searches are performed. The second index is a compressed trie structure, which needs slightly more memory, but is specialized on wildcard searches. Both index structures will be merged in a future version of BaseX. 
 
@@ -166,7 +164,7 @@ If the full-text index exists, the following queries will all be rewritten for i
 Matching text nodes can be directly requested from the index via the XQuery function [ft:search](Full-Text Module.md#ft-search). The index contents can be accessed with [ft:tokens](Full-Text Module.md#ft-tokens). 
 
 
-### Index Construction
+## Index Construction
 
 If main memory runs out while creating a value index, the currently generated index structures will be partially written to disk and eventually merged. If the used memory heuristics fails for some reason (i.e., because multiple index operations run at the same time), fixed index split sizes may be chosen via the [INDEXSPLITSIZE](Options.md#INDEXSPLITSIZE) and [FTINDEXSPLITSIZE](Options.md#FTINDEXSPLITSIZE) options. 
 
@@ -188,7 +186,7 @@ If [DEBUG](Options.md#DEBUG) is set to true, and if a new database is created fr
 The info string `3 splits` indicates that three partial full-text index structures were written to disk, and the string `12089347 operations` tells that the index construction consisted of appr. 12 mio index operations. If we set [FTINDEXSPLITSIZE](Options.md#FTINDEXSPLITSIZE) to the fixed value `4000000` (12 mio divided by three), or a smaller value, we should be able to build the index and circumvent the memory heuristics. 
 
  
-## Updates
+# Updates
 
 By default, index structures are discarded after an update operation. As a result, queries will be executed more slowly. There are different alternatives to cope with this: 
 
@@ -202,7 +200,7 @@ With the [UPDINDEX](Options.md#UPDINDEX) option, text and attributes index struc
 Since Version 8.0, the [AUTOOPTIMIZE](Options.md#AUTOOPTIMIZE) option is available, which recreates all outdated index structures and statistics after a database update. This option should only be activated for medium-sized databases. 
 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: AUTOOPTIMIZE option 

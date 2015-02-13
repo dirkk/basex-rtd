@@ -1,5 +1,3 @@
-
-# Execution Plan
  
 
 
@@ -7,9 +5,9 @@
 This article is part of the [Advanced User's Guide](Advanced User's Guide.md). For each execution of a query, BaseX creates an execution plan. This execution plan shows you each step of the query, so that you can evaluate your query and analyse if it accesses any [indexes](Indexes.md) or not. You can activate the execution plan by activating the `XMLPLAN` or `DOTPLAN` options. 
 
  
-## Examples
+# Examples
 
-### Execution plan for original and optimized query execution
+## Execution plan for original and optimized query execution
 
 Query: ` for $item in doc(’xmark’)/descendant::item where $item/payment = ’Creditcard’ return $item `
 
@@ -24,7 +22,7 @@ Execution plan:
 
 
 Replacing XQuery with equivalent XPath expressions
-### Execution plan for query execution with full-text index access and without
+## Execution plan for query execution with full-text index access and without
  Query: `//MEDIUM/LAN[text() contains text "dt"]`
 
 

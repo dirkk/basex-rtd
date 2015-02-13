@@ -1,5 +1,3 @@
-
-# Shortcuts
  
 
 
@@ -7,14 +5,14 @@
 This page is part of the [Getting Started](Getting Started.md) Section. It gives you an overview of the hotkeys available in the GUI of BaseX. 
 
  
-## Editor
+# Editor
 
-### Editor Shortcuts
+## Editor Shortcuts
 
 The text editor can be used to create, edit, save and execute XQuery expressions, XML documents and any other textual files. 
 
 
-#### Custom Editing 
+### Custom Editing 
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
@@ -24,7 +22,7 @@ Format code (experimental)  | Ctrl Shift F  | ⌘ Shift F
 (Un)comment selection/line  | Ctrl K  | ⌘ K 
 Delete complete line  | Ctrl Shift D  | ⌘ Shift D 
 
-#### Standard Editing 
+### Standard Editing 
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
@@ -42,7 +40,7 @@ Delete text left of cursor  | Ctrl Shift Backspace  | ⌘ Backspace
 Delete text right of cursor  | Ctrl Shift Delete  | ⌘ Delete 
 
   
-#### Finding 
+### Finding 
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
@@ -53,7 +51,7 @@ Find and replace text  | Ctrl F  | ⌘ F
 Find next instance of text  | F3Ctrl G  | ⌘ F3⌘ G 
 Find previous instance of text  | Shift F3Ctrl Shift G  | ⌘ Shift F3⌘ Shift G 
 
-#### Navigation 
+### Navigation 
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
@@ -65,7 +63,7 @@ Move one screen-full up/down  | Page ↑/↓  | Page ↑/↓ (fn ↑/↓)
 Move to top/bottom  | Ctrl Home/End  | ↖/↘ (⌘ ↑/↓) 
 Scroll one line up/down  | Ctrl ↑/↓  | Alt ↑/↓ 
 
-#### Code Completions
+### Code Completions
  The GUI editor provides various code completions, which simplify the authoring of complex XQuery applications. Opening elements, comments, quotes or brackets will automatically be closed, and new lines will automatically be indented. If the [shortcut](Shortcuts.md#Editor_Shortcuts) for code completions is pressed (Ctrl Space), the keys listed in the following table will be replaced with their corresponding values. An underscore indicates where the cursor will be placed after the replacement: 
 
 
@@ -118,9 +116,9 @@ Scroll one line up/down  | Ctrl ↑/↓  | Alt ↑/↓
 `typeswitch` | `typeswitch(_)  case return   default return `
 `variable` | `declare variable $_ := ;`
 
-#### GUI
+### GUI
 
-#### Global Shortcuts 
+### Global Shortcuts 
  The following shortcuts are available from most GUI components: 
 
 
@@ -138,11 +136,11 @@ Browse back/forward  | Alt ←/→Backspace  | ⌘ ←/→
 Browse one level up  | Alt ↑  | ⌘ ↑ 
 Browse to the root node  | Alt Home  | ⌘ Home 
 
-#### Menu Shortcuts 
+### Menu Shortcuts 
  The following commands and options are also linked from the main menu: 
 
 
-#### Database 
+### Database 
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
@@ -152,7 +150,7 @@ View/edit database properties  | Ctrl D  | ⌘ D
 Close opened database  | Ctrl Shift W  | ⌘ Shift W 
 Exit application  | Ctrl Q  | ⌘ Q 
 
-#### Editor 
+### Editor 
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
@@ -162,7 +160,7 @@ Save file  | Ctrl S  | ⌘ S
 Save copy of file  | Ctrl Shift S  | ⌘ Shift S 
 Close tab  | Ctrl W, Ctrl F4  | ⌘ W, ⌘ F4 
 
-#### View 
+### View 
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
@@ -173,13 +171,13 @@ Toggle result view  | Ctrl R  | ⌘ R
 Toggle query info view  | Ctrl I  | ⌘ I 
 
   
-#### Options 
+### Options 
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
 Open preference dialog  | Ctrl Shift P  | ⌘ , (comma) 
 
-#### Visualization 
+### Visualization 
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
@@ -190,7 +188,7 @@ Toggle plot view  | Ctrl 4  | ⌘ 4
 Toggle table view  | Ctrl 5  | ⌘ 5 
 Toggle explorer view  | Ctrl 6  | ⌘ 6 
 
-#### Help 
+### Help 
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
@@ -199,7 +197,7 @@ Show Help  | F1  | F1
  Additionally, the names of HTML entities will be converted to their Unicode representation (as an example, `Auml` will be translated to `ä`). 
 
 
-### Changelog
+## Changelog
 ** Version 7.8.2 **
 
  * Added: Sort lines (Ctrl-U) 

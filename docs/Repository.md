@@ -1,5 +1,3 @@
-
-# Repository
  
 
 
@@ -7,7 +5,7 @@
 This article is part of the [XQuery Portal](XQuery.md). It describes how external XQuery modules and Java code can be installed in the XQuery module repository, and how new packages are built and deployed. 
 
  
-## Introduction
+# Introduction
 
 One of the reasons why languages such as Java or Perl have been so successful is the vast amount of libraries that are available to developers. As XQuery comes with only 150 pre-defined functions, which cannot meet all requirements, there is some need for additional library modules – such as [FunctX](http://www.xqueryfunctions.com/) – that extend the language with new features. 
 
@@ -17,7 +15,7 @@ BaseX offers the following mechanisms to make modules accessible to the XQuery p
 1. The default [Packaging](Repository.md#Packaging) mechanism will install single XQuery and Java modules in the repository. 
 2. The [EXPath Packaging](Repository.md#EXPath_Packaging) system provides a generic mechanism for adding XQuery modules to query processors. A package is defined as a `.xar` archive, which encapsulates one or more extension libraries. 
 
-### Importing Modules
+## Importing Modules
 
 Library modules can be imported with the `import module` statement, followed by a freely choosable prefix and the namespace of the target module. The specified location may be absolute or relative; in the latter case, it is resolved against the location (i.e., _static base URI_) of the calling module. Import module statements must be placed at the beginning of a module: 
 
@@ -48,7 +46,7 @@ If a modules is placed in the repository, there is no need to specify a location
     functx:capitalize-first('test')
 
 
-### Commands
+## Commands
 
 There are various ways to handle your packages: 
 
@@ -59,7 +57,7 @@ There are various ways to handle your packages:
 You can even manually add and remove packages in the repository directory; all changes will automatically be detected by the query processor. 
 
 
-#### Installation
+### Installation
 
 A module or package can be installed with the `REPO INSTALL` command. The path to the file has to be given as a parameter: 
 
@@ -71,7 +69,7 @@ A module or package can be installed with the `REPO INSTALL` command. The path t
 The installation will only succeed if the specified file conforms to the constraints described below. If you know that your input is valid, you may as well copy the files directly to the repository directory, or edit its contents in the repository without deleting and reinstalling them. 
 
 
-#### Listing
+### Listing
 
 All currently installed packages can be listed with the `REPO LIST` command. It will return the names of all packages, their version, and the directory in which they are installed: 
 
@@ -82,7 +80,7 @@ All currently installed packages can be listed with the `REPO LIST` command. It 
     1 package(s).
 
 
-#### Removal
+### Removal
 
 A package can be deleted with the command REPO DELETE and an additional argument, containing its name or the name suffixed with a hyphen and the package version: 
 
@@ -91,9 +89,9 @@ A package can be deleted with the command REPO DELETE and an additional argument
     REPO DELETE http://www.functx.com-1.0
 
 
-### Packaging
+## Packaging
 
-#### XQuery
+### XQuery
 
 If an XQuery file is specified as input for the install command, it will be parsed as XQuery library module. If parsing was successful, the module URI will be [rewritten](Repository.md#URI_Rewriting) to a file path and attached with the `.xqm` file suffix, and the original file will be renamed and copied to that path into the repository. 
 
@@ -114,7 +112,7 @@ Importing the repository module:
     m:hello("Universe")
 
 
-#### Java
+### Java
 
 Suitable JAR archives may contain one or more class files. One of them will be chosen as main class, which must be specified in a `Main-Class` entry in the manifest file (`META-INF/MANIFEST.MF`). This fully qualified Java class name will be rewritten to a file path by replacing the dots with slashes and attaching with the `.jar` file suffix, and the original file will be renamed and copied to that path into the repository. 
 
@@ -176,12 +174,12 @@ After installing the module, all of the following URIs can be used in XQuery to 
 Please be aware that the execution of Java code can cause side effects that conflict with the functional nature of XQuery, or may introduce new security risks. The article on [Java Bindings](Java Bindings.md) gives more insight on how Java code is handled from the XQuery processor. 
 
 
-### EXPath Packaging
+## EXPath Packaging
 
 The [EXPath specification](http://expath.org/spec/pkg) defines how the structure of a .xar archive shall look like. The package contains at its root a package descriptor named `expath-pkg.xml`. This descriptor presents some meta data about the package as well as the libraries which it contains and their dependencies on other libraries or processors. 
 
 
-#### XQuery
+### XQuery
 
 Apart from the package descriptor, a `.xar` archive contains a directory which includes the actual XQuery modules. For example, the [FunctX XQuery Library](http://www.functx.com/) is packaged as follows: 
 
@@ -192,7 +190,7 @@ Apart from the package descriptor, a `.xar` archive contains a directory which i
       functx.xsl
 
 
-#### Java
+### Java
 
 In case you want to extend BaseX with a Java archive, some additional requirements have to be fulfilled: 
 
@@ -237,7 +235,7 @@ As it can be seen, the class `Printer` is declared with its binary name as a nam
 On our [file server](http://files.basex.org/modules/), you can find some example libraries packaged as XML archives (xar files). You can use them to try our packaging API or just as a reference for creating your own packages. 
 
 
-### URI Rewriting
+## URI Rewriting
 
 If modules are looked up in the repository, their URIs are rewritten to a local file path. The URI transformation has been inspired by [Zorba](http://www.zorba.io/documentation/3.0/zorba/architecture/uriresolvers): 
 
@@ -253,7 +251,7 @@ If the resulting path has no file suffix, it may point to either an XQuery modul
  * `a/little/example`  → `a/little/example`
  * `a:b:c`  → not supported (_no path component_) 
 
-### Changelog
+## Changelog
 ** Version 7.2.1 **
 
  * Updated: [Installation](Repository.md#RepositoryInstallation): existing packages will be replaced without raising an error 

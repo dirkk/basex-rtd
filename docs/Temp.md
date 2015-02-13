@@ -1,10 +1,8 @@
-
-# Temp
  
 
 
  
-## Linux
+# Linux
 
 Run BaseX as a service: 
 

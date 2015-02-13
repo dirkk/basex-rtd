@@ -1,5 +1,3 @@
-
-# HTML Module
  
 
 
@@ -7,28 +5,26 @@
 This [XQuery Module](Module Library.md) provides functions for converting HTML to XML. Conversion will only take place if [TagSoup](http://home.ccil.org/~cowan/XML/tagsoup/) is included in the classpath (see [HTML Parsing](Parsers.md#HTML_Parser) for more details). 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/html` namespace, which is statically bound to the `html` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### html:parser
+## html:parser
 
 html:parser() as xs:string
 
 :   Returns the name of the applied HTML parser (currently: `TagSoup`). If an _empty string_ is returned, TagSoup was not found in the classpath, and the input will be treated as well-formed XML. 
 
 
-### html:parse
+## html:parse
 
 html:parse($input as xs:anyAtomicType) as document-node()
 html:parse($input as xs:anyAtomicType, $options as item()) as document-node()
 
-:   Converts the HTML document specified by `$input` to XML, and returns a document node:  * The input may either be a string or a binary item (xs:hexBinary, xs:base64Binary).     * If the input is passed on in its binary representation, the HTML parser will try to automatically choose the correct encoding. 
-    The `$options` argument can be used to set [TagSoup Options](Parsers.md#TagSoup_Options), which can be specified… 
-
+:   Converts the HTML document specified by `$input` to XML, and returns a document node:  * The input may either be a string or a binary item (xs:hexBinary, xs:base64Binary). 
 
     **Errors**
 
@@ -36,9 +32,9 @@ html:parse($input as xs:anyAtomicType, $options as item()) as document-node()
     `BXHL0001`: the input cannot be converted to XML. 
 
  
-## Examples
+# Examples
 
-### Basic Example
+## Basic Example
 
 The following query converts the specified string to an XML document node. 
 
@@ -53,7 +49,7 @@ The following query converts the specified string to an XML document node.
     <html xmlns="http://www.w3.org/1999/xhtml"/>
 
 
-### Specifying Options
+## Specifying Options
 
 The next query creates an XML document without namespaces: 
 
@@ -72,7 +68,7 @@ The next query creates an XML document without namespaces:
     </html>
 
 
-### Parsing Binary Input
+## Parsing Binary Input
 
 If the input encoding is unknown, the data to be processed can be passed on in its binary representation. The HTML parser will automatically try to detect the correct encoding: 
 
@@ -91,13 +87,13 @@ If the input encoding is unknown, the data to be processed can be passed on in i
         ...
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
 `BXHL0001` | The input cannot be converted to XML. 
  
-## Changelog
+# Changelog
 
 The module was introduced with Version 7.6. 
 

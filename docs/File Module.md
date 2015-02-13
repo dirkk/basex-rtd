@@ -1,5 +1,3 @@
-
-# File Module
  
 
 
@@ -10,7 +8,7 @@ This [XQuery Module](Module Library.md) contains functions related to file syste
 This module is based on the [EXPath File Module](http://expath.org/spec/file). 
 
  
-## Conventions
+# Conventions
 
 All functions and errors in this module are assigned to the `http://expath.org/ns/file` namespace, which is statically bound to the `file` prefix. 
 
@@ -21,9 +19,9 @@ For serialization parameters, the `http://www.w3.org/2010/xslt-xquery-serializat
 Returned strings that refer to existing directories are suffixed with a directory separator. The error `invalid-path` is raised if a path is invalid. 
 
  
-## Read Operations
+# Read Operations
 
-### file:list
+## file:list
 
 file:list($dir as xs:string) as xs:string*
 file:list($dir as xs:string, $recursive as xs:boolean) as xs:string*
@@ -37,7 +35,7 @@ file:list($dir as xs:string, $recursive as xs:boolean, $pattern as xs:string) as
     `not-found`: the specified file does not exist.`no-dir`: the specified path does not point to a directory.`io-error`: the operation fails for some other reason. 
 
 
-### file:children
+## file:children
 
 Introduced with Version 8.0:
 
@@ -52,7 +50,7 @@ file:children($dir as xs:string) as xs:string*
     `not-found`: the specified file does not exist.`no-dir`: the specified path does not point to a directory.`io-error`: the operation fails for some other reason. 
 
 
-### file:read-binary
+## file:read-binary
 
 file:read-binary($path as xs:string) as xs:base64Binary
 file:read-binary($path as xs:string, $offset as xs:integer) as xs:base64Binary
@@ -71,7 +69,7 @@ file:read-binary($path as xs:string, $offset as xs:integer, $length as xs:intege
     * `stream:materialize(file:read-binary("config.data"))`  returns a materialized representation of the streamable result. 
 
 
-### file:read-text
+## file:read-text
 
 file:read-text($path as xs:string) as xs:string
 file:read-text($path as xs:string, $encoding as xs:string) as xs:string
@@ -89,7 +87,7 @@ file:read-text($path as xs:string, $encoding as xs:string) as xs:string
     * `stream:materialize(file:read-text("config.txt"))`  returns a materialized representation of the streamable result. 
 
 
-### file:read-text-lines
+## file:read-text-lines
 
 file:read-text-lines($path as xs:string) as xs:string
 file:read-text-lines($path as xs:string, $encoding as xs:string) as xs:string*
@@ -102,9 +100,9 @@ file:read-text-lines($path as xs:string, $encoding as xs:string) as xs:string*
     `not-found`: the specified file does not exist.`is-dir`: the specified path is a directory.`unknown-encoding`: the specified encoding is not supported, or unknown.`io-error`: the operation fails for some other reason. 
 
  
-## Write Operations
+# Write Operations
 
-### file:create-dir
+## file:create-dir
 
 file:create-dir($dir as xs:string) as empty-sequence()
 
@@ -116,7 +114,7 @@ file:create-dir($dir as xs:string) as empty-sequence()
     `exists`: a file with the same path already exists.`io-error`: the operation fails for some other reason. 
 
 
-### file:create-temp-dir
+## file:create-temp-dir
 
 file:create-temp-dir($prefix as xs:string, $suffix as xs:string) as xs:string
 file:create-temp-dir($prefix as xs:string, $suffix as xs:string, $dir as xs:string) as xs:string
@@ -129,7 +127,7 @@ file:create-temp-dir($prefix as xs:string, $suffix as xs:string, $dir as xs:stri
     `no-dir`: the specified directory points to a file.`io-error`: the directory could not be created. 
 
 
-### file:create-temp-file
+## file:create-temp-file
 
 file:create-temp-file($prefix as xs:string, $suffix as xs:string) as xs:string
 file:create-temp-file($prefix as xs:string, $suffix as xs:string, $dir as xs:string) as xs:string
@@ -142,7 +140,7 @@ file:create-temp-file($prefix as xs:string, $suffix as xs:string, $dir as xs:str
     `no-dir`: the specified directory points to a file.`io-error`: the directory could not be created. 
 
 
-### file:delete
+## file:delete
 
 file:delete($path as xs:string) as empty-sequence()
 file:delete($path as xs:string, $recursive as xs:boolean) as empty-sequence()
@@ -155,19 +153,12 @@ file:delete($path as xs:string, $recursive as xs:boolean) as empty-sequence()
     `not-found`: the specified path does not exist.`io-error`: the operation fails for some other reason. 
 
 
-### file:write
+## file:write
 
 file:write($path as xs:string, $items as item()*) as empty-sequence()
 file:write($path as xs:string, $items as item()*, $params as item()) as empty-sequence()
 
-:   Writes a serialized sequence of items to the specified file. If the file already exists, it will be overwritten.The `$params` argument contains serialization parameters (see [Serialization](Serialization.md) for more details), which can either be specified  * as children of an `<output:serialization-parameters/>` element, as defined for the [fn:serialize()](http://www.w3.org/TR/xpath-functions-30/#func-serialize) function; e.g.:     <output:serialization-parameters>
-    <output:method value='xml'/>
-    <output:cdata-section-elements value="div"/>
-    ...
-    </output:serialization-parameters>
-    * as map, which contains all key/value pairs: 
-    map { "method": "xml", "cdata-section-elements": "div", ... }
-
+:   Writes a serialized sequence of items to the specified file. If the file already exists, it will be overwritten.The `$params` argument contains serialization parameters (see [Serialization](Serialization.md) for more details), which can either be specified  * as children of an `<output:serialization-parameters/>` element, as defined for the [fn:serialize()](http://www.w3.org/TR/xpath-functions-30/#func-serialize) function; e.g.: 
 
     **Errors**
 
@@ -175,7 +166,7 @@ file:write($path as xs:string, $items as item()*, $params as item()) as empty-se
     `no-dir`: the parent of specified path is no directory.`is-dir`: the specified path is a directory.`io-error`: the operation fails for some other reason. 
 
 
-### file:write-binary
+## file:write-binary
 
 file:write-binary($path as xs:string, $value as xs:anyAtomicType) as empty-sequence()
 file:write-binary($path as xs:string, $value as xs:anyAtomicType, $offset as xs:integer) as empty-sequence()
@@ -188,7 +179,7 @@ file:write-binary($path as xs:string, $value as xs:anyAtomicType, $offset as xs:
     `no-dir`: the parent of specified path is no directory.`is-dir`: the specified path is a directory.`out-of-range`: the offset is negative, or it exceeds the current file size.`io-error`: the operation fails for some other reason. 
 
 
-### file:write-text
+## file:write-text
 
 file:write-text($path as xs:string, $value as xs:string) as empty-sequence()
 file:write-text($path as xs:string, $value as xs:string, $encoding as xs:string) as empty-sequence()
@@ -201,7 +192,7 @@ file:write-text($path as xs:string, $value as xs:string, $encoding as xs:string)
     `no-dir`: the parent of specified path is no directory.`is-dir`: the specified path is a directory.`unknown-encoding`: the specified encoding is not supported, or unknown.`io-error`: the operation fails for some other reason. 
 
 
-### file:write-text-lines
+## file:write-text-lines
 
 file:write-text-lines($path as xs:string, $values as xs:string*) as empty-sequence()
 file:write-text-lines($path as xs:string, $values as xs:string*, $encoding as xs:string) as empty-sequence()
@@ -214,7 +205,7 @@ file:write-text-lines($path as xs:string, $values as xs:string*, $encoding as xs
     `no-dir`: the parent of specified path is no directory.`is-dir`: the specified path is a directory.`unknown-encoding`: the specified encoding is not supported, or unknown.`io-error`: the operation fails for some other reason. 
 
 
-### file:append
+## file:append
 
 file:append($path as xs:string, $items as item()*) as empty-sequence()
 file:append($path as xs:string, $items as item()*, $params as item()) as empty-sequence()
@@ -227,7 +218,7 @@ file:append($path as xs:string, $items as item()*, $params as item()) as empty-s
     `no-dir`: the parent of specified path is no directory.`is-dir`: the specified path is a directory.`io-error`: the operation fails for some other reason. 
 
 
-### file:append-binary
+## file:append-binary
 
 file:append-binary($path as xs:string, $value as xs:anyAtomicType) as empty-sequence()
 
@@ -239,7 +230,7 @@ file:append-binary($path as xs:string, $value as xs:anyAtomicType) as empty-sequ
     `no-dir`: the parent of specified path is no directory.`is-dir`: the specified path is a directory.`io-error`: the operation fails for some other reason. 
 
 
-### file:append-text
+## file:append-text
 
 file:append-text($path as xs:string, $value as xs:string) as empty-sequence()
 file:append-text($path as xs:string, $value as xs:string, $encoding as xs:string) as empty-sequence()
@@ -252,7 +243,7 @@ file:append-text($path as xs:string, $value as xs:string, $encoding as xs:string
     `no-dir`: the parent of specified path is no directory.`is-dir`: the specified path is a directory.`unknown-encoding`: the specified encoding is not supported, or unknown.`io-error`: the operation fails for some other reason. 
 
 
-### file:append-text-lines
+## file:append-text-lines
 
 file:append-text-lines($path as xs:string, $values as xs:string*) as empty-sequence()
 file:append-text-lines($path as xs:string, $values as xs:string*, $encoding as xs:string) as empty-sequence()
@@ -265,7 +256,7 @@ file:append-text-lines($path as xs:string, $values as xs:string*, $encoding as x
     `no-dir`: the parent of specified path is no directory.`is-dir`: the specified path is a directory.`unknown-encoding`: the specified encoding is not supported, or unknown.`io-error`: the operation fails for some other reason. 
 
 
-### file:copy
+## file:copy
 
 file:copy($source as xs:string, $target as xs:string) as empty-sequence()
 
@@ -277,7 +268,7 @@ file:copy($source as xs:string, $target as xs:string) as empty-sequence()
     `not-found`: the specified source does not exist.`exists`: the specified source is a directory and the target is a file.`no-dir`: the parent of the specified target is no directory.`io-error`: the operation fails for some other reason. 
 
 
-### file:move
+## file:move
 
 file:move($source as xs:string, $target as xs:string) as empty-sequence()
 
@@ -289,30 +280,30 @@ file:move($source as xs:string, $target as xs:string) as empty-sequence()
     `not-found`: the specified source does not exist.`exists`: the specified source is a directory and the target is a file.`no-dir`: the parent of the specified target is no directory.`io-error`: the operation fails for some other reason. 
 
  
-## File Properties
+# File Properties
 
-### file:exists
+## file:exists
 
 file:exists($path as xs:string) as xs:boolean
 
 :   Returns an `xs:boolean` indicating whether a file or directory specified by `$path` exists in the file system. 
 
 
-### file:is-dir
+## file:is-dir
 
 file:is-dir($path as xs:string) as xs:boolean
 
 :   Returns an `xs:boolean` indicating whether the argument `$path` points to an existing directory. 
 
 
-### file:is-file
+## file:is-file
 
 file:is-file($path as xs:string) as xs:boolean
 
 :   Returns an `xs:boolean` indicating whether the argument `$path` points to an existing file. 
 
 
-### file:last-modified
+## file:last-modified
 
 file:last-modified($path as xs:string) as xs:dateTime
 
@@ -324,7 +315,7 @@ file:last-modified($path as xs:string) as xs:dateTime
     `not-found`: the specified path does not exist. 
 
 
-### file:size
+## file:size
 
 file:size($file as xs:string) as xs:integer
 
@@ -336,16 +327,16 @@ file:size($file as xs:string) as xs:integer
     `not-found`: the specified file does not exist. 
 
  
-## Path Functions
+# Path Functions
 
-### file:name
+## file:name
 
 file:name($path as xs:string) as xs:string
 
 :   Returns the name of a file or directory specified by `$path`. An empty string is returned if the path points to the root directory. 
 
 
-### file:parent
+## file:parent
 
 file:parent($path as xs:string) as xs:string?
 
@@ -357,7 +348,7 @@ file:parent($path as xs:string) as xs:string?
     * `file:parent(static-base-uri())`  returns the directory of the current XQuery module. 
 
 
-### file:path-to-native
+## file:path-to-native
 
 file:path-to-native($path as xs:string) as xs:string
 
@@ -369,51 +360,51 @@ file:path-to-native($path as xs:string) as xs:string
     `not-found`: the specified file does not exist.`io-error`: the specified path cannot be transformed to its native representation. 
 
 
-### file:resolve-path
+## file:resolve-path
 
 file:resolve-path($path as xs:string) as xs:string
 
 :   Transforms the `$path` argument to an absolute operating system path. 
 
 
-### file:path-to-uri
+## file:path-to-uri
 
 file:path-to-uri($path as xs:string) as xs:string
 
 :   Transforms the path specified by `$path` into a URI with the `file://` scheme. 
 
  
-## System Properties
+# System Properties
 
-### file:dir-separator
+## file:dir-separator
 
 file:dir-separator() as xs:string
 
 :   Returns the directory separator used by the operating system, such as `/` or `\`. 
 
 
-### file:path-separator
+## file:path-separator
 
 file:path-separator() as xs:string
 
 :   Returns the path separator used by the operating system, such as `;` or `:`. 
 
 
-### file:line-separator
+## file:line-separator
 
 file:line-separator() as xs:string
 
 :   Returns the line separator used by the operating system, such as `&#10;`, `&#13;&#10;` or `&#13;`. 
 
 
-### file:temp-dir
+## file:temp-dir
 
 file:temp-dir() as xs:string
 
 :   Returns the system’s default temporary-file directory. 
 
 
-### file:current-dir
+## file:current-dir
 
 Introduced with Version 8.0:
 
@@ -423,7 +414,7 @@ file:current-dir() as xs:string
 :   Returns the current working directory. - This function returns the same result as the function call `file:resolve-path()`<nulli/> </td> 
 
 
-### file:base-dir
+## file:base-dir
 
 Introduced with Version 8.0:
 
@@ -433,7 +424,7 @@ file:base-dir() as xs:string?
 :   Returns the parent directory of the static base URI. If the Base URI property is undefined, the empty sequence is returned. - If a static base URI exists, and if points to a local file path, this function returns the same result as the expression `file:parent(static-base-uri())`. 
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -446,7 +437,7 @@ file:base-dir() as xs:string?
 `out-of-range` | The specified offset or length is negative, or the chosen values would exceed the file bounds. 
 `io-error` | The operation fails for some other reason specific to the operating system. 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: [file:current-dir](File Module.md#file-current-dir), [file:base-dir](File Module.md#file-base-dir), [file:children](File Module.md#file-children)

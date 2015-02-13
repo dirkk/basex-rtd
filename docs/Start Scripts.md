@@ -1,5 +1,3 @@
-
-# Start Scripts
  
 
 
@@ -13,12 +11,12 @@ The following scripts, which are referenced in the [Startup](Startup.md) and [Co
 If BaseX terminates with an `Out of Memory` error, you can assign more RAM via the `-Xmx` flag (see below). 
 
  
-## Main Package
+# Main Package
 
 The following scripts can be used to launch the standalone version of BaseX. Please replace the class name in `org.basex.BaseX` with either `BaseXClient`, `BaseXServer`, or `BaseXGUI` to run the client, server or GUI version. 
 
 
-### Windows: basex.bat
+## Windows: basex.bat
 
     @echo off
     setLocal EnableDelayedExpansion
@@ -37,7 +35,7 @@ The following scripts can be used to launch the standalone version of BaseX. Ple
     %*
 
 
-### Linux/Mac: basex
+## Linux/Mac: basex
 
     #!/bin/bash
     # Path to this script
@@ -58,12 +56,12 @@ The following scripts can be used to launch the standalone version of BaseX. Ple
     java -cp "$CP" $VM org.basex.BaseX "$@"
 
  
-## HTTP Server
+# HTTP Server
 
 The scripts for starting the HTTP server, which gives access to the [REST](REST.md), [RESTXQ](RESTXQ.md) and [WebDAV](WebDAV.md) services, can be found below. 
 
 
-### Windows: basexhttp.bat
+## Windows: basexhttp.bat
 
     @echo off
     setLocal EnableDelayedExpansion
@@ -84,7 +82,7 @@ The scripts for starting the HTTP server, which gives access to the [REST](REST.
     %*
 
 
-### Linux/Mac: basexhttp
+## Linux/Mac: basexhttp
 
     #!/bin/bash
     # Path to this script
@@ -105,7 +103,7 @@ The scripts for starting the HTTP server, which gives access to the [REST](REST.
     java -cp "$CP" $VM org.basex.BaseXHTTP "$@"
 
  
-## Changelog
+# Changelog
 ** Version 7.5 **
 
  * Updated: Static dependencies removed from Windows batch scripts. 

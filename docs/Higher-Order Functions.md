@@ -1,5 +1,3 @@
-
-# Higher-Order Functions
  
 
 
@@ -7,7 +5,7 @@
 This page talks about _higher-order functions_ introduced with [XQuery 3.0](XQuery 3.0.md). The BaseX-specific [Higher-Order Functions Module](Higher-Order Functions Module.md) contains some additional useful functions. 
 
  
-## Function Items
+# Function Items
 
 Probably the most important new feature in XQuery 3.0 are _function items_, i. e., items that act as functions, but can also be passed to and from other functions and expressions. This feature makes functions _first-class citizens_ of the language. 
 
@@ -15,7 +13,7 @@ Probably the most important new feature in XQuery 3.0 are _function items_, i. e
 The [XQuery 3.0](XQuery 3.0.md#XQuery_3.0Function_Items) page goes into details on how function items can be obtained. 
 
 
-### Function Types 
+## Function Types 
 
 Like every XQuery item, function items have a _sequence type_. It can be used to specify the _arity_ (number of arguments the function takes) and the argument and result types. 
 
@@ -62,7 +60,7 @@ We'll see later how `fn:for-each(...)` works. The type of `local:on-sequences(..
 `function(function(item()) as item()*) as function(item()*) as item()*`. 
 
  
-## Higher-Order Functions
+# Higher-Order Functions
 
 A _higher-order function_ is a function that takes other functions as arguments and/or returns them as results. `fn:for-each` and `local:on-sequences` from the last chapter are nice examples. 
 
@@ -70,12 +68,12 @@ A _higher-order function_ is a function that takes other functions as arguments 
 With the help of higher-order functions, one can extract common patterns of _behaviour_ and abstract them into a library function. 
 
 
-### Higher-Order Functions on Sequences 
+## Higher-Order Functions on Sequences 
 
 Some usage patterns on sequences are so common that the higher-order functions describing them are in the XQuery standard libraries. They are listed here, together with their possible XQuery implementation and some motivating examples. 
 
 
-#### fn:for-each
+### fn:for-each
 
 fn:for-each($seq as item()*, $fun as function(item()) as item()*)) as item()*
 
@@ -90,7 +88,7 @@ fn:for-each($seq as item()*, $fun as function(item()) as item()*)) as item()*
     * _Result:_`FOOBAR bar 6`
 
 
-#### fn:filter
+### fn:filter
 
 fn:filter($seq as item()*, $pred as function(item()) as xs:boolean)) as item()*
 
@@ -107,7 +105,7 @@ fn:filter($seq as item()*, $pred as function(item()) as xs:boolean)) as item()*
     * _Result:_`2 3 5 7 11 13 17 19`
 
 
-#### fn:for-each-pair
+### fn:for-each-pair
 
 fn:for-each-pair($seq1 as item()*, $seq2 as item()*, $fun as function(item(), item()) as item()*) as item()*
 
@@ -124,7 +122,7 @@ fn:for-each-pair($seq1 as item()*, $seq2 as item()*, $fun as function(item(), it
     * _Result:_`true false`
 
 
-### Folds 
+## Folds 
 
 A _fold_, also called _reduce_ or _accumulate_ in other languages, is a very basic higher-order function on sequences. It starts from a seed value and incrementally builds up a result, consuming one element from the sequence at a time and combining it with the aggregate of a user-defined function. 
 
@@ -151,7 +149,7 @@ Nice and efficient implementations using folds will be given below.
 The _linear_ folds on sequences come in two flavours. They differ in the direction in which they traverse the sequence: 
 
 
-#### fn:fold-left
+### fn:fold-left
 
 fn:fold-left($seq as item()*, $seed as item()*, $fun as function(item()*, item()) as item()*) as item()*
 
@@ -168,7 +166,7 @@ fn:fold-left($seq as item()*, $seed as item()*, $fun as function(item()*, item()
     * _Result:_`12345 42`
 
 
-#### fn:fold-right
+### fn:fold-right
 
 fn:fold-right($seq as item()*, $seed as item()*, $fun as function(item(), item()*) as item()*) as item()*
 

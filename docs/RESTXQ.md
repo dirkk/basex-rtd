@@ -1,5 +1,3 @@
-
-# RESTXQ
  
 
 
@@ -24,7 +22,7 @@ The following features are available since Version 8.0:
  * Evaluation of quality factors that are supplied in the [Accept header](RESTXQ.md#Content_Negotiation)
  * BaseX is now shipped with a Database Administration Interface (DBA). It will automatically be launched when requesting the RESTXQ root page. 
  
-## Introduction
+# Introduction
 
 The RESTXQ service is accessible via `http://localhost:8984/`. 
 
@@ -97,17 +95,17 @@ If you post something (e.g. using curl or the embedded form at [http://localhost
     </response>
 
  
-## Requests
+# Requests
 
 This section shows how annotations are used to handle and process HTTP requests. 
 
 
-### Constraints
+## Constraints
 
 Constraints restrict the HTTP requests that a resource function may process. 
 
 
-#### Paths
+### Paths
 
 A resource function must have a single _Path Annotation_ with a single string as argument. The function will be called if a URL matches the path segments and templates of the argument. _Path templates_ contain variables in curly brackets, and map the corresponding segments of the request path to the arguments of the resource function. The first slash in the path is optional; 
 
@@ -135,7 +133,7 @@ Since Version 8.0, variables can be extended by regular expressions:
       function page:others($path) { ... };
 
 
-#### Content Negotiation
+### Content Negotiation
 
 Two following annotations can be used to restrict functions to specific content types: 
 
@@ -163,9 +161,9 @@ Since Version 8.0, quality factors supplied by a client will also be considered 
 Note that this annotation will _not_ affect the content-type of the HTTP response. Instead, you will need to add a `%output:media-type` annotation. 
 
 
-#### HTTP Methods
+### HTTP Methods
 
-##### Fixed Methods
+#### Fixed Methods
 
 The HTTP method annotations are equivalent to all [HTTP request methods](http://en.wikipedia.org/wiki/HTTP#Request_methods) except for TRACE and CONNECT. Zero or more methods may be used on a function; if none is specified, the function will be invoked for each method. 
 
@@ -189,7 +187,7 @@ The POST and PUT annotations may optionally take a string literal in order to ma
       function page:put($body) { "Request body: " || $body };
 
 
-##### Custom Methods
+#### Custom Methods
 
 Since Version 7.9, custom HTTP methods can be specified with the `%rest:method` annotation: 
 
@@ -199,7 +197,7 @@ Since Version 7.9, custom HTTP methods can be specified with the `%rest:method` 
       function page:retrieve() { "RETRIEVE was specified as request method." };
 
 
-#### Content Types
+### Content Types
 
 If a content-type is specified in the request, the content is converted to the following XQuery type: 
 
@@ -214,7 +212,7 @@ If a content-type is specified in the request, the content is converted to the f
 _others_ | `xs:base64Binary`
 `multipart/*` |  sequence (see next paragraph) 
 
-##### Multipart Types
+#### Multipart Types
 
 The single parts of a multipart message are represented as a sequence, and each part is converted to an XQuery item as described in the last paragraph. 
 
@@ -236,12 +234,12 @@ A function that is capable of handling multipart types is identical to other RES
 Please note that support for multipart types is still experimental, and it may change in a future version BaseX. Your feedback is welcome. 
 
 
-### Parameters
+## Parameters
 
 The following annotations can be used to bind request values to function arguments. Values will implicitly be cast to the type of the argument. 
 
 
-#### Query Parameters
+### Query Parameters
 
 The value of the _first parameter_, if found in the [query component](Request Module.md#Request_ModuleConventions), will be assigned to the variable specified as _second parameter_. If no value is specified in the HTTP request, all additional parameters will be bound to the variable (if no additional parameter is given, an empty sequence will be bound): 
 
@@ -256,7 +254,7 @@ The value of the _first parameter_, if found in the [query component](Request Mo
     };
 
 
-#### HTML Form Fields
+### HTML Form Fields
 
 Form parameters are specified the same way as [query parameters](RESTXQ.md#Query_Parameters). Their values are extracted from GET or POST requests. 
 
@@ -264,7 +262,7 @@ Form parameters are specified the same way as [query parameters](RESTXQ.md#Query
     %rest:form-param("parameter", "{$value}", "default")
 
 
-##### File Uploads
+#### File Uploads
 
 Files can be uploaded to the server by using the content type `multipart/form-data` (the HTML5 `multiple` attribute enables the upload of multiple files): 
 
@@ -296,7 +294,7 @@ The file contents are placed in a [map](Map Module.md), with the filename servin
     };
 
 
-#### HTTP Headers
+### HTTP Headers
 
 Header parameters are specified the same way as [query parameters](RESTXQ.md#Query_Parameters): 
 
@@ -305,7 +303,7 @@ Header parameters are specified the same way as [query parameters](RESTXQ.md#Que
     %rest:header-param("Referer", "{$referer}", "none")
 
 
-#### Cookies
+### Cookies
 
 Cookie parameters are specified the same way as [query parameters](RESTXQ.md#Query_Parameters): 
 
@@ -314,12 +312,12 @@ Cookie parameters are specified the same way as [query parameters](RESTXQ.md#Que
     %rest:cookie-param("authentication", "{$auth}", "no_auth")
 
  
-## Responses
+# Responses
 
 By default, a successful request is answered with the HTTP status code `200` (OK) and is followed by the given content. An erroneous request leads to an error code and an optional error message (e.g. `404` for “resource not found”). 
 
 
-### Custom Responses
+## Custom Responses
 
 Custom responses can be built from within XQuery by returning an `rest:response` element, an `http:response` child node that matches the syntax of the [EXPath HTTP Client Module](http://expath.org/spec/http-client) specification, and more optional child nodes that will be serialized as usual. A function that reacts on an unknown resource may look as follows: 
 
@@ -335,7 +333,7 @@ Custom responses can be built from within XQuery by returning an `rest:response`
     };
 
 
-### Forwards and Redirects
+## Forwards and Redirects
 
 The two XML elements `rest:forward` and `rest:redirect` can be used in the context of [Web Applications](Web Application.md), precisely in the context of RESTXQ. These nodes allow e.g. multiple [XQuery Updates](XQuery Update.md) in a row by redirecting to the RESTXQ path of updating functions. Both wrap a URL to a RESTXQ path. The wrapped URL should be properly encoded via `fn:encode-for-uri()`. 
 
@@ -343,7 +341,7 @@ The two XML elements `rest:forward` and `rest:redirect` can be used in the conte
 Note that, currently, these elements are not part of RESTXQ specification. 
 
 
-#### rest:forward
+### rest:forward
 
 Usage: wrap the location as follows 
 
@@ -363,7 +361,7 @@ As an example, returning
 would internally forward to [http://localhost:8984/hello/universe](http://localhost:8984/hello/universe)
 
 
-#### rest:redirect
+### rest:redirect
 
     <rest:redirect>{ $location }</rest:redirect>
 
@@ -381,12 +379,12 @@ would internally forward to [http://localhost:8984/hello/universe](http://localh
 The client decides whether to follow this redirection. Browsers usually will, tools like [curl](http://curl.haxx.se/) won’t unless `-L` is specified. 
 
 
-### Output
+## Output
 
 Similar to the [REST](REST.md#Content_Type) interface, result serialization can be modified via [XQuery 3.0 serialization parameters](XQuery 3.0.md#XQuery_3.0Serialization); in RESTXQ, serialization parameters may be specified in the query prolog, via annotations, or within REST response element. Global parameters are overwritten by more local parameters. 
 
 
-#### Query Prolog
+### Query Prolog
 
 In main modules, serialization parameters may be specified in the query prolog. These parameters will then apply to all functions in a module. In the following example, the content type of the response is overwritten with the `media-type` parameter: 
 
@@ -398,7 +396,7 @@ In main modules, serialization parameters may be specified in the query prolog. 
     };
 
 
-#### Annotations
+### Annotations
 
 The serialization can also be parameterized via annotations: 
 
@@ -410,7 +408,7 @@ The serialization can also be parameterized via annotations:
     };
 
 
-#### Response Element
+### Response Element
 
 The following example demonstrates how serialization parameters can be dynamically set within a query: 
 
@@ -455,9 +453,9 @@ By default, `application/xml` is returned as content type. In the following exam
     };
 
  
-## Error Handling
+# Error Handling
 
-### XQuery Errors
+## XQuery Errors
 
 Updated with Version 7.9:
 
@@ -500,7 +498,7 @@ Errors may occur unexpectedly. However, they can also be triggered by a query, a
     };
 
 
-### HTTP Errors
+## HTTP Errors
 
 Errors that occur outside RESTXQ can be caught by adding `error-page` elements with an error code and a target location to the `web.xml` configuration file (find more details in the [Jetty Documentation](http://www.eclipse.org/jetty/documentation/current/custom-error-pages.html)): 
 
@@ -521,7 +519,7 @@ The target location may be another RESTXQ function. The [request:attribute](Requ
     };
 
  
-## Functions
+# Functions
 
 The [Request Module](Request Module.md) contains functions for accessing data related to the current HTTP request. Two modules exist for setting and retrieving server-side session data of the current user ([Session Module](Session Module.md)) and all users known to the HTTP server ([Sessions Module](Sessions Module.md)). The [RESTXQ Module](RESTXQ Module.md) provides functions for requesting RESTXQ base URIs and generating a [WADL description](http://www.w3.org/Submission/wadl/) of all services. Please note that the namespaces of all of these modules must be explicitly specified via module imports in the query prolog. 
 
@@ -536,7 +534,7 @@ The following example returns the current host name:
     };
 
  
-## References
+# References
 
 RESTXQ has been proposed by [Adam Retter](http://www.adamretter.org.uk/). More information on all specifics can be found in the following two documents: 
 
@@ -545,7 +543,7 @@ RESTXQ has been proposed by [Adam Retter](http://www.adamretter.org.uk/). More i
  * [RESTXQ Specification](http://exquery.github.com/exquery/exquery-restxq-specification/restxq-1.0-specification.html) , Unofficial Draft 
  * [Web Application, RESTXQ Development](http://files.basex.org/xmlprague2013/slides/Develop-RESTXQ-WebApps-with-BaseX.pdf) . Web Application Development with RESTXQ Slides from XMLPrague 2013 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: DBA (Database Administration Interface, written with RESTXQ) 

@@ -1,5 +1,3 @@
-
-# Full-Text
  
 
 
@@ -10,7 +8,7 @@ This article is part of the [XQuery Portal](XQuery.md). It summarizes the full-t
 Full-text retrieval is an essential query feature for working with XML documents, and BaseX was the first query processor that fully supported the [W3C XQuery Full Text 1.0](http://www.w3.org/TR/xpath-full-text-10/) Recommendation. 
 
  
-## Introduction
+# Introduction
 
 The XQuery and XPath Full Text Recommendation (XQFT) is a feature-rich extension of the XQuery language. It can be used to both query XML documents and single strings for words and phrases. This section gives you a quick insight into the most important features of the language. 
 
@@ -36,7 +34,7 @@ The `occurs` keyword comes into play when more than one occurrence of a token is
 Varius range modifiers are available: `exactly`, `at least`, `at most`, and `from ... to ...`. 
 
 
-### Combining Results
+## Combining Results
 
 In the given example, curly braces are used to combine multiple keywords: 
 
@@ -66,7 +64,7 @@ The keywords `not in` are special: they are used to find tokens which are not pa
     return $text contains text "New" not in "New York"
 
 
-### Positional Filters
+## Positional Filters
 
 A popular retrieval operation is to filter texts by the distance of the searched words. In this query… 
 
@@ -102,7 +100,7 @@ Last but not least, three specifiers exist to filter results depending on the po
  * `at end`  expects tokens to occur at the text end 
  * `entire content`  only accepts texts which have no other words at the beginning or end 
 
-### Match Options
+## Match Options
 
 As indicated in the introduction, the input and query texts are tokenized before they are compared with each other. During this process, texts are split into tokens, which are then normalized, based on the following matching options: 
 
@@ -140,12 +138,12 @@ The `wildcards` option facilitates search operations similar to simple regular e
 This was a quick introduction to XQuery Full Text; you are invited to explore the numerous other features of the language! 
 
  
-## BaseX Features
+# BaseX Features
 
 This page lists BaseX-specific full-text features and options. 
 
 
-### Options
+## Options
 
 The available full-text index can handle various combinations of the match options defined in the XQuery Full Text Recommendation. By default, most options are disabled. The GUI dialogs for creating new databases or displaying the database properties contain a tab for choosing between all available options. On the command-line, the `SET` command can be used to activate full-text indexing or creating a full-text index for existing databases: 
 
@@ -160,7 +158,7 @@ The following indexing options are available:
  * **Diacritics** : diacritics are indexed as well (`SET DIACRITICS true`). 
  * **Stopword List** : a stop word list can be defined to reduce the number of indexed tokens (`SET STOPWORDS [filename]`). 
 
-### Languages
+## Languages
 
 The chosen language determines how the input text will be tokenized and stemmed. The basic code base and `jar` file of BaseX comes with built-in support for English and German. More languages are supported if the following libraries are found in the classpath: 
 
@@ -177,7 +175,7 @@ The following two queries, which both return `true`, demonstrate that stemming d
     "häuser" contains text "haus" using stemming using language "de"
 
 
-### Scoring
+## Scoring
 
 The XQuery Full Text Recommendation allows for the usage of scoring models and values within queries, with scoring being completely implementation-defined. 
 
@@ -230,7 +228,7 @@ With Version 8.0, scores will be propagated by the `and` and `or` expressions an
     return ($s1, $s2, $s3, $s4, $s5)
 
 
-### Thesaurus
+## Thesaurus
 
 BaseX supports full-text queries using thesauri, but it does not provide a default thesaurus. This is why queries such as 
 
@@ -249,7 +247,7 @@ will return `false`. However, if the thesaurus is specified, then the result wil
 The format of the thesaurus files must be the same as the format of the thesauri provided by the [XQuery and XPath Full Text 1.0 Test Suite](http://dev.w3.org/2007/xpath-full-text-10-test-suite). It is an XML with structure defined by an [XSD Schema](http://dev.w3.org/cvsweb/~checkout~/2007/xpath-full-text-10-test-suite/TestSuiteStagingArea/TestSources/thesaurus.xsd?rev=1.3;content-type=application%2Fxml). 
 
 
-### Fuzzy Querying
+## Fuzzy Querying
 
 In addition to the official recommendation, BaseX supports fuzzy querying. The XQFT grammar was enhanced by the FTMatchOption `using fuzzy ` to allow for approximate searches in full texts. By default, the standard [full-text index](Indexes.md) already supports the efficient execution of fuzzy searches. 
 
@@ -283,9 +281,9 @@ In addition to the official recommendation, BaseX supports fuzzy querying. The X
 Fuzzy search is based on the Levenshtein distance. The maximum number of allowed errors is calculated by dividing the token length of a specified query term by 4, preserving a minimum of 1 errors. A static error distance can be set by adjusting the `LSERROR` property (default: `SET LSERROR 0`). The query above yields two results as there is no error between the query term “house” and the text node “house”, and one error between “house” and “hous”. 
 
  
-## Performance
+# Performance
 
-### Index Processing
+## Index Processing
 
 BaseX offers different evaluation strategies for XQFT queries, the choice of which depends on the input data and the existence of a full text index. The query compiler tries to optimize and speed up queries by applying a full text index structure whenever possible and useful. Three evaluation strategies are available: the standard sequential database scan, a full-text index based evaluation and a hybrid one, combining both strategies (see [XQuery Full Text implementation in BaseX](http://www.inf.uni-konstanz.de/gk/pubsys/publishedFiles/GrGaHo09.pdf)). Query optimization and selection of the most efficient evaluation strategy is done in a full-fledged automatic manner. The output of the query optimizer indicates which evaluation plan is chosen for a specific query. It can be inspected by activating verbose querying (Command: `SET VERBOSE ON`) or opening the Query Info in the GUI. The message 
 
@@ -302,7 +300,7 @@ suggests that the full-text index is applied to speed up query evaluation. A sec
 indicates that the index does not yield any results for the specified term and is thus skipped. If index optimizations are missing, it sometimes helps to give the compiler a second chance and try different rewritings of the same query. 
 
 
-### FTAnd
+## FTAnd
 
 The internal XQuery Full Text data model is pretty complex and may consume more main memory as would initially guess. If you plan to combine search terms via `ftand`, we recommend you to resort to an alternative, memory-saving representation: 
 
@@ -315,7 +313,7 @@ The internal XQuery Full Text data model is pretty complex and may consume more 
     "A B" contains text { "A", "B" } all ftor { "C", "D" } all
 
  
-## Mixed Content
+# Mixed Content
 
 When working with so-called narrative XML documents, such as HTML, [TEI](http://tei-c.org/), or [DocBook](http://docbook.org) documents, you typically have _mixed content_, i.e., elements containing a mix of text and markup, such as: 
 
@@ -358,12 +356,12 @@ For more examples, see [XQuery and XPath Full Text 1.0 Use Cases](http://www.w3.
 As BaseX does not support the ignore option, it raises error [FTST0007](XQuery Errors.md#Full-Text_Errors) when it encounters `without content` in a full-text `contains` expression. 
 
  
-## Functions
+# Functions
 
 Some additional [Full-Text Functions](Full-Text Module.md) have been added to BaseX to extend the official language recommendation with useful features, such as explicitly requesting the score value of an item, marking the hits of a full-text request, or directly accessing the full-text index with the default index options. 
 
  
-## Collations
+# Collations
 
 Version 8.0: See [XQuery 3.1](XQuery 3.1.md#XQuery_3.1Collations) for new official collation features. 
 
@@ -400,7 +398,7 @@ Semicolons can be replaced with ampersands; for convenience, the URL can be redu
     index-of(("a", "á", "à"), "a", "?lang=it-IT;strength=primary")
 
  
-## Changelog
+# Changelog
 ** Version 8.0**
 
  * Updated: [Scores](Full-Text.md#Scoring) will be propagated by the `and` and `or` expressions and in predicates. 

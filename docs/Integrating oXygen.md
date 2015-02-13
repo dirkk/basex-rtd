@@ -1,5 +1,3 @@
-
-# Integrating oXygen
  
 
 
@@ -9,12 +7,12 @@ This tutorial is part of the [Getting Started](Getting Started.md) Section. It d
   * Resources in [databases](Databases.md) can be opened and modified. 
  * XPath/XQuery expressions can be run by the [query processor](XQuery.md) of BaseX. 
  
-## Access Database Resources
+# Access Database Resources
 
-### Preparations
+## Preparations
  * First, start the BaseX [WebDAV](WebDAV.md) service. 
 
-### Configuration
+## Configuration
 1. Go to menu _Options_ → _Preferences_ → _Data Sources_
 2. In the Connections panel, click the _New_ button (`+`) 
 3. Enter "BaseX-WebDAV" as connection name 
@@ -33,13 +31,13 @@ You can now open single database files as follows:
 ![Webdav-oxygen02.png](img/Webdav-oxygen02.png)
 
 
-### Perform Queries
+## Perform Queries
 
-#### Preparations
+### Preparations
 1. Download one of the complete [BaseX distributions](http://basex.org/download) (ZIP, EXE) 
 2. Charles Foster's XQJ implementation provides a default (client/server) and a local driver. If you want to use the first flavor, you need to start a [BaseX Server](Startup.md#StartupBaseX_Server) instance 
 
-#### Data Source
+### Data Source
 1. Start oXygen and go to _Options_ → _Preferences_ → _Data Sources_
 2. Add a new Data Source with the _New_ button (`+`) 
 3. Enter "BaseX-XQJ" as connection name and choose _XQuery API for Java (XQJ)_ as type 
@@ -47,13 +45,13 @@ You can now open single database files as follows:
 5. Unter "Driver class", choose the default or the local XQJ driver (`net.xqj.basex.BaseXXQDataSource` vs. `net.xqj.basex.local.BaseXXQDataSource`). 
 6. Press _OK_
 
-#### Connection
+### Connection
 1. Press _New_ (`+`) in the Connection Panel below. 
 2. Enter Name "BaseX" and select "BaseX-XQJ" in the Data Source box. 
 3. If you use the default driver, you need to enter connection details: 
 4. Now press _OK_, and your connection is ready. 
 
-#### Usage
+### Usage
 
 The query execution works as follows: 
 

@@ -1,5 +1,3 @@
-
-# Command-Line Options
  
 
 
@@ -10,7 +8,7 @@ This article is part of the [Getting Started](Getting Started.md) Guide. It give
 Options can be specified multiple times. All options are evaluated in the given order (in earlier versions, the sequential evaluation was limited to the specified inputs, query files, queries and commands, while all other options were initially set). The standard input can be parsed by specifying a single dash (`-`) as argument. 
 
  
-## BaseX Standalone
+# BaseX Standalone
 ** Launch the console mode**
 
 
@@ -75,7 +73,7 @@ The meaning of all flags is listed in the following table. If an equivalent data
 `-X` |  Generates the query plan before or after query compilation. `-x` needs to be activated to make the plan visible.  | `COMPPLAN` | `true` | 
 `-z` |  Turns the serialization of XQuery results on/off. This flag is useful if the query is profiled or analyzed.  | `SERIALIZE` | `true` | 
  
-## BaseX Server
+# BaseX Server
 ** Launch the server **
 
 
@@ -117,7 +115,7 @@ The flags have the following meaning (equivalent database options are shown in t
 Multiple `-c` and `-i` flags can be specified. All other options will be set before any other operation takes place. The specified inputs, query files, queries and commands will be subsequently evaluated after that in the given order. The standard input can be parsed by specifying a single dash (`-`) as argument. 
 
  
-## BaseX Client
+# BaseX Client
 ** Launch the console mode communicating with the server **
 
 
@@ -191,7 +189,7 @@ The flags have the following meaning (equivalent database options are shown in t
 `-X` |  Generates the query plan before or after query compilation. `-x` needs to be activated to make the plan visible.  | `COMPPLAN` | `after` | 
 `-z` |  Turns the serialization of XQuery results on/off. This flag is useful if the query is profiled or analyzed.  | `SERIALIZE` | `true` | 
  
-## BaseX HTTP Server
+# BaseX HTTP Server
 ** Launch the HTTP server**
 
 
@@ -239,7 +237,7 @@ The flags have the following meaning (equivalent database options are shown in t
 `-U<name>` |  Specifies a user name, which will be used by the HTTP services for opening a new session.  | `USER` |  | `-Uadmin`
 `-z` |  Does not generate any [log files](Logging.md).  | `LOG` | 
  
-## BaseX GUI
+# BaseX GUI
 ** Launch the GUI**
 
 
@@ -249,7 +247,7 @@ The flags have the following meaning (equivalent database options are shown in t
 One or more XML and XQuery files can be passed on as parameters. If an XML file is specified, a database instance is created from this file, or an existing database is opened. XQuery files are opened in the XQuery editor. 
 
  
-## Changelog
+# Changelog
 ** Version 7.9 **
 
  * Added: Runs tests in file or directory with `-t`. 

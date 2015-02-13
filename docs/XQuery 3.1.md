@@ -1,5 +1,3 @@
-
-# XQuery 3.1
  
 
 
@@ -7,7 +5,7 @@
 This article is part of the [XQuery Portal](XQuery.md). It summarizes the new features of the [XQuery 3.1](http://www.w3.org/TR/xquery-31/) Working Draft that are already supported by BaseX. 
 
  
-## Maps
+# Maps
 
 A _map_ is a function that associates a set of keys with values, resulting in a collection of key/value pairs. Each key/value pair in a map is called an entry. A key is an arbitrary atomic value, and the associated value is an arbitrary sequence. Within a map, no two entries have the same key, when compared using the `eq` operator. It is not necessary that all the keys should be mutually comparable (for example, they can include a mixture of integers and strings). 
 
@@ -46,7 +44,7 @@ Like all other values, maps are immutable. For example, the `map:remove` functio
 Maps may be compared using the `fn:deep-equal` function. The [Map Module](Map Module.md) describes the available set of map functions. 
 
 
-### Arrays
+## Arrays
 
 An _array_ is a function that associates a set of positions, represented as positive integer keys, with values. The first position in an array is associated with the integer `1`. The values of an array are called its members. In the type hierarchy, array has a distinct type, which is derived from function. 
 
@@ -85,7 +83,7 @@ The function corresponding to the array has the signature `function($index as xs
 Like all other values, arrays are immutable. For example, the `array:reverse` function creates a new array containing a re-ordering of the members of an existing array, but the existing array is not changed by the operation. Like sequences, arrays have no identity. It is meaningful to compare the contents of two arrays, but there is no way of asking whether they are "the same array": two arrays with the same content are indistinguishable. 
 
 
-#### Atomization
+### Atomization
 
 If an array is _atomized_, all of its members will be atomized. As a result, an atomized item may now result in more than one item. Some examples: 
 
@@ -119,7 +117,7 @@ However, the next query returns 1, because the array is already of the general t
 Arrays can be compared with the `fn:deep-equal` function. The [Array Module](Array Module.md) describes the available set of array functions. 
 
 
-### Lookup Operator
+## Lookup Operator
 
 The lookup operator provides some syntactic sugar to access values of maps or array members at a specified position. It is introduced by the question mark (`?`) and followed by a specifier. The specifier can be: 
 
@@ -167,7 +165,7 @@ The lookup operator can also be used without left operand. In this case, the con
     ?city
 
 
-### Arrow Operator
+## Arrow Operator
 
 The arrow operator applies a function to a value. The value is used as the first argument to the function. It is introduced with the characters `=>`, and it is followed by the function to be called. If `$v` is a value and `f()` is a function, then `$v=>f()` is equivalent to `f($v)`, and `$v=>f($j)` is equivalent to `f($v, $j)`. This is further illustrated by an example: 
 
@@ -194,12 +192,12 @@ The arrow operator applies a function to a value. The value is used as the first
 The syntax makes nested function calls more readable, as it is easy to see if parentheses are balanced. 
 
 
-### Serialization
+## Serialization
 
 Two [Serialization](Serialization.md) methods have been added to the [Serialization spec](http://www.w3.org/TR/xslt-xquery-serialization-31/): 
 
 
-#### Adaptive Serialization
+### Adaptive Serialization
 
 In Version 8.0 of BaseX, `adaptive` is the new default serialization method. It provides a textual representation for all XDM types, including maps and arrays, functions, attributes, and namespaces. All items will be separated using the value of the `item-separator` parameter, or a newline if no value is specified: 
 
@@ -219,7 +217,7 @@ Result:
     function true#0
 
 
-#### JSON Serialization
+### JSON Serialization
 
 The new `json` serialization output method can be used to serialize XQuery maps, arrays, atomic values and empty sequences as JSON. 
 
@@ -242,12 +240,12 @@ The following two queries will both return the JSON snippet `{ "key": "value" }`
     </json>
 
 
-### Functions
+## Functions
 
 The following functions of the [XQuery 3.1 Functions and Operators](http://www.w3.org/TR/xpath-functions-31/) Working Draft have been added. Please be aware that the functions are still subject to change: 
 
 
-#### Map Functions
+### Map Functions
 
 The following map functions are now available: 
 
@@ -258,7 +256,7 @@ The following map functions are now available:
 Please check out the [Map Module](Map Module.md) for more details. 
 
 
-#### Array Functions
+### Array Functions
 
 The following array functions are now available: 
 
@@ -269,12 +267,12 @@ The following array functions are now available:
 Please check out the [Array Module](Array Module.md) for more details. 
 
 
-#### JSON Functions
+### JSON Functions
 
 XQuery now provides native support for JSON objects. Strings and resources can be parsed to XQuery items and, as [shown above](XQuery 3.1.md#JSON_Serialization), serialized back to their original form. 
 
 
-##### fn:parse-json
+#### fn:parse-json
 ** Signatures **
 
  * `fn:parse-json($input as xs:string) as item()?`
@@ -289,7 +287,7 @@ Parses the supplied string as JSON text and returns its item representation. The
     :),
 
 
-##### fn:json-docs
+#### fn:json-docs
 ** Signatures **
 
  * `fn:json-doc($uri as xs:string) as item()?`
@@ -302,7 +300,7 @@ Retrieves the text from the specified URI, parses the supplied string as JSON te
     :)
 
 
-#### fn:sort
+### fn:sort
 ** Signatures **
 
  * `fn:sort($input as item()*) as item()*`
@@ -321,7 +319,7 @@ Returns a new sequence with sorted `$input` items. If a sort `$key` function is 
     :)
 
 
-#### fn:contains-token
+### fn:contains-token
 ** Signatures **
 
  * `fn:contains-token($input as xs:string*, $token as string) as xs:boolean`
@@ -336,7 +334,7 @@ The supplied strings will be tokenized at whitespace boundaries. The function re
     :)
 
 
-#### fn:parse-ietf-date
+### fn:parse-ietf-date
 ** Signature **
 
  * `fn:parse-ietf-date($input as xs:string?) as xs:string?`
@@ -350,7 +348,7 @@ Parses a string in the IETF format (which is widely used on the Internet) and re
     :)
 
 
-#### fn:apply
+### fn:apply
 ** Signatures **
 
  * `fn:apply($function as function(*), $array as array(*)) as item()*`
@@ -369,7 +367,7 @@ Example:
     :)
 
 
-#### fn:random-number-generator
+### fn:random-number-generator
 ** Signatures **
 
  * `fn:random-number-generator() as map(xs:string, item())`
@@ -404,7 +402,7 @@ Example:
     return ($number, $next-number, $permutation)
 
 
-#### fn:format-number
+### fn:format-number
 
 The function has been extended to support scientific notation: 
 
@@ -413,7 +411,7 @@ The function has been extended to support scientific notation:
     :)
 
 
-#### fn:tokenize
+### fn:tokenize
 
 If no separator is specified as second argument, a string will be tokenized at whitespace boundaries: 
 
@@ -422,7 +420,7 @@ If no separator is specified as second argument, a string will be tokenized at w
     :)
 
 
-#### fn:trace
+### fn:trace
 
 The second argument can now be omitted: 
 
@@ -433,7 +431,7 @@ The second argument can now be omitted:
     :)
 
 
-### Binary Data
+## Binary Data
 
 Items of type `xs:hexBinary` and `xs:base64Binary` can now be compared against each other. The following queries all yield `true`: 
 
@@ -443,7 +441,7 @@ Items of type `xs:hexBinary` and `xs:base64Binary` can now be compared against e
     max((xs:hexBinary('aa'), xs:hexBinary('bb'))) = xs:hexBinary('bb')
 
 
-### Collations
+## Collations
 
 XQuery 3.1 provides a new default collation, which allows for a case-insensitive comparison of ASCII characters (`A-Z` = `a-z`). This query returns `true`: 
 
@@ -460,13 +458,13 @@ If the [ICU Library](http://site.icu-project.org/download) is downloaded and add
     compare('a-b', 'ab', 'http://www.w3.org/2013/collation/UCA?alternate=shifted')
 
 
-### Pending Features
+## Pending Features
 
 The features of XQuery 3.1 are still subject to change, but we are planning to add the following enhancements in near future: 
 
  * New functions: `fn:collation-key`, `fn:load-xquery-module`, `fn:transform`
  
-## Changelog
+# Changelog
 
 Introduced with Version 8.0. 
 

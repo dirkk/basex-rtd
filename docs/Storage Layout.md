@@ -1,5 +1,3 @@
-
-# Storage Layout
  
 
 
@@ -7,7 +5,7 @@
 This article is part of the [Advanced User's Guide](Advanced User's Guide.md). It presents some low-level details on how data is stored in the database files. 
 
  
-## Data Types
+# Data Types
 
 The following data types are used for specifying the storage layout: 
 
@@ -21,12 +19,12 @@ The following data types are used for specifying the storage layout:
 `Nums`, `Tokens`, `Doubles` |  Arrays of values, introduced with the number of entries  | `1,2` → `02 01 31 01 32`
 `TokenSet` |  Key array (`Tokens`), next/bucket/size arrays (3x `Nums`)  | 
  
-## Database Files
+# Database Files
 
 The following tables illustrate the layout of the BaseX database files. All files are suffixed with `.basex`. 
 
 
-### Meta Data, Name/Path/Doc Indexes: `inf`
+## Meta Data, Name/Path/Doc Indexes: `inf`
 
 ** Description ** | ** Format ** | ** Method **
 ----------------- | ------------ | ------------
@@ -37,18 +35,18 @@ The following tables illustrate the layout of the BaseX database files. All file
 **2 c) Namespaces** |  1. Token set, storing prefixes (`TokenSet`)2. Token set, storing URIs (`TokenSet`)3. NSNode:3.1. pre value (`Num`)3.2. References to prefix/URI pairs (`Nums`)3.3. Number of children (`Num`)3.4. Recursive generation of child nodes (→ 3)  | [Namespaces()](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/data/Namespaces.java)[NSNode()](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/data/NSNode.java)
 **2 d) Document Index** |  Array of integers, representing the distances between all document pre values (`Nums`)  | [DocIndex()](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/index/DocIndex.java)
 
-### Node Table: `tbl`, `tbli`
+## Node Table: `tbl`, `tbli`
  * `tbl` : Main database table, stored in blocks. 
  * `tbli` : Database directory, organizing the database blocks. 
 
 Some more information on the [node storage](Node Storage.md) is available. 
 
 
-### Texts: `txt`, `atv`
+## Texts: `txt`, `atv`
  * `txt` : Heap file for text values (document names, string values of texts, comments and processing instructions) 
  * `atv` : Heap file for attribute values. 
 
-### Value Indexes: `txtl`, `txtr`, `atvl`, `atvr`
+## Value Indexes: `txtl`, `txtr`, `atvl`, `atvr`
 
 **Text Index:**
 
@@ -61,7 +59,7 @@ The **Attribute Index** is contained in the files `atvl` and `atvr`; it uses the
 For a more detailed discussion and examples of these file formats please see [Index File Structure](Index File Structure.md). 
 
 
-### Full-Text Fuzzy Index: `ftxx`, `ftxy`, `ftxz`
+## Full-Text Fuzzy Index: `ftxx`, `ftxy`, `ftxz`
 
 ...may soon be reimplemented. 
 

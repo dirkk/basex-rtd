@@ -1,5 +1,3 @@
-
-# Translations
  
 
 
@@ -25,7 +23,7 @@ Thanks to the following contributors, BaseX is currently available in 10 languag
 It is easy to translate BaseX into your native language! This is how you can proceed: 
 
  
-## Working with the sources
+# Working with the sources
 
 If you have downloaded all BaseX sources via [Eclipse](Developing with Eclipse.md) or [Git](Git.md), you may proceed as follows: 
 
@@ -39,7 +37,7 @@ All language files are placed in the `src/main/resources/lang` directory of the 
 5. Translate the texts in your language file and restart BaseX in order to see the changes 
 6. Repeat the last step if you want to revise your translations 
 
-### Updating BaseX.jar
+## Updating BaseX.jar
 
 You may directly add new languages to the JAR file. JAR files are nothing else than ZIP archives, and all language files are placed in the `lang` directory int the JAR file: 
 

@@ -1,5 +1,3 @@
-
-# User Management
  
 
 
@@ -31,7 +29,7 @@ Passwords in commands and XQuery functions are now specified in **plain text**. 
 You will be safe if you follow basic security measures: ensure that your password will not end up in your bash history, avoid sending passwords via ordinary REST requests, etc. 
 
  
-## Rules
+# Rules
 
 In the permission hierarchy below, the existing permissions are illustrated. A higher permission includes all lower permissions. For example, all users who have the `write` permission assigned will also be able to execute commands requiring `read` permission. 
 
@@ -45,7 +43,7 @@ Local permissions are applied to databases. They have a higher precedence and ov
 Permissions hierarchy User names must follow the [valid names constraints](Commands.md#Valid_Names), and the database patterns must follow the [Glob Syntax](Commands.md#Glob_Syntax). 
 
 
-### Commands
+## Commands
 
 Admin permissions are required to execute all of the following commands: 
 
@@ -89,7 +87,7 @@ Note: Local permissions overwrite global permissions. As a consequence, the 'tes
 `> XQUERY user:drop('test')`
 
  
-## Changelog
+# Changelog
 
 Revised in Version 8.0. 
 

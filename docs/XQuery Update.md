@@ -1,5 +1,3 @@
-
-# XQuery Update
  
 
 
@@ -10,9 +8,9 @@ This article is part of the [XQuery Portal](XQuery.md). It summarizes the update
 BaseX offers a complete implementation of the [XQuery Update Facility (XQUF)](http://www.w3.org/TR/xquery-update-10/). This article aims to provide a very quick and basic introduction to the XQUF. First, some examples for update expressions are given. After that, a few problems are addressed that frequently arise due to the nature of the language. These are stated in the [Concepts](http://docs.basex.org/wiki/XQuery UpdateConcepts) paragraph. 
 
  
-## Features
+# Features
 
-### Updating Expressions
+## Updating Expressions
 
 There are five new expressions to modify data. While `insert`, `delete`, `rename` and `replace` are basically self-explanatory, the `transform` expression is different, as modified nodes are copied in advance and the original databases remain untouched. 
 
@@ -20,7 +18,7 @@ There are five new expressions to modify data. While `insert`, `delete`, `rename
 An expression consists of a target node (the node we want to alter) and additional information like insertion nodes, a QName, etc. which depends on the type of expression. Optional modifiers are available for some of them. You can find a few examples and additional information below. 
 
 
-#### insert
+### insert
 
     insert node (attribute { 'a' } { 5 }, 'text', <e/>) into /n
 
@@ -31,7 +29,7 @@ Insert enables you to insert a sequence of nodes into a single target node. Seve
 _Note_: in most cases, **as last** and **after** will be evaluated faster than **as first** and **before**! 
 
 
-#### delete
+### delete
 
     delete node //node
 
@@ -39,7 +37,7 @@ _Note_: in most cases, **as last** and **after** will be evaluated faster than *
 The example query deletes all `<node>` elements in your database. Note that, in contrast to other updating expressions, the delete expression allows multiple nodes as a target. 
 
 
-#### replace
+### replace
 
     replace node /n with <a/>
 
@@ -53,7 +51,7 @@ The target element is replaced by the DOM node `<a/>`. You can also replace the 
 All descendants of /n are deleted and the given text is inserted as the only child. Note that the result of the insert sequence is either a single text node or an empty sequence. If the insert sequence is empty, all descendants of the target are deleted. Consequently, replacing the value of a node leaves the target with either a single text node or no descendants at all. 
 
 
-#### rename
+### rename
 
     for $n in //node
     return rename node $n as 'renamedNode' 
@@ -62,9 +60,9 @@ All descendants of /n are deleted and the given text is inserted as the only chi
 All node elements are renamed. An iterative approach helps to modify multiple nodes within a single statement. Nodes on the descendant- or attribute-axis of the target are not affected. This has to be done explicitly as well. 
 
 
-### Non-Updating Expressions
+## Non-Updating Expressions
 
-#### transform
+### transform
 
     copy $c
     := doc('example.xml')//node[@id = 1]
@@ -131,7 +129,7 @@ Here is an example where we return an entire document, parts modified and all:
     return $c
 
 
-#### update
+### update
 
     for $item in db:open('data')//item
     return $item update delete node text()
@@ -143,24 +141,24 @@ The `update` expression is a convenience operator for writing simple transform e
 Please note that `update` is not part of the official XQuery Update Facility yet. It is currently being discussed in the [W3 Bug Tracker](https://www.w3.org/Bugs/Public/show_bug.cgi?id=23643); your feedback is welcome. 
 
 
-### Functions
+## Functions
 
-#### fn:put
+### fn:put
 
 `fn:put()` is also part of the XQUF and enables the user to serialize XDM instances to secondary storage. It is executed at the end of a snapshot. Serialized documents therefore reflect all changes made effective during a query. 
 
 
-#### Database Functions
+### Database Functions
 
 Some additional, updating [database functions](Database Module.md#Database_ModuleUpdates) exist in order to perform updates on document and database level. 
 
 
-### Concepts
+## Concepts
 
 There are a few specialties around XQuery Update that you should know about. In addition to the **simple expression**, the XQUF adds the **updating expression** as a new type of expression. An updating expression returns only a Pending Update List (PUL) as a result which is subsequently applied to addressed databases and DOM nodes. A simple expression cannot perform any permanent changes and returns an empty or non-empty sequence. 
 
 
-#### Pending Update List
+### Pending Update List
 
 The most important thing to keep in mind when using XQuery Update is the Pending Update List (PUL). Updating statements are not executed immediately, but are first collected as update primitives within a set-like structure. At the end of a query, after some consistency checks and optimizations, the update primitives will be applied in the following order: 
 
@@ -177,7 +175,7 @@ If an inconsistency is found, an error message is returned and all accessed data
 It may be surprising to see `db:create` in the lower part of this list. This means that newly created database cannot be accessed by the same query, which can be explained by the semantics of updating queries: all expressions can only be evaluated on databases that already exist while the query is evaluated. As a consequence, `db:create` is mainly useful in the context of [Command Scripts](Commands.md#Basics), or [Web Applications](Web Application.md), in which a redirect to another page can be triggered after having created a database. 
 
 
-##### Example
+#### Example
 
 The query… 
 
@@ -202,7 +200,7 @@ The query…
 Despite explicitly renaming all child nodes of `<doc/>`, the former `<a/>` element is the only one to be renamed. The `<b/>` element is inserted within the same snapshot and is therefore not yet visible to the user. 
 
 
-#### Returning Results
+### Returning Results
 
 By default, it is not possible to mix different types of expressions in a query result. The outermost expression of a query must either be a collection of updating or non-updating expressions. But there are two ways out: 
 
@@ -215,7 +213,7 @@ By default, it is not possible to mix different types of expressions in a query 
 If you want to modify nodes in main memory, you can use the [transform expression](http://docs.basex.org/wiki/XQuery Updatetransform). 
 
 
-#### Function Declaration
+### Function Declaration
 
 To use updating expressions within a function, the `%updating` annotation has to be added to the function declaration. A correct declaration of a function that contains updating expressions (or one that calls updating functions) looks like this: 
 
@@ -224,9 +222,9 @@ To use updating expressions within a function, the `%updating` annotation has to
     %updating function { ... }
 
 
-### Effects
+## Effects
 
-#### Original Files
+### Original Files
 
 In BaseX, all updates are performed on database nodes or in main memory. By default, update operations never affect the original input file (since Version 8.0, the info string "Updates are not written back" appears in the query info to indicate this). The following solutions exist to write XML documents and binary resources to disk: 
 
@@ -234,17 +232,17 @@ In BaseX, all updates are performed on database nodes or in main memory. By defa
  * Functions like `fn:put` or `file:write` can be used to write single XML documents to disk. With `file:write-binary`, you can write binary resources. 
  * The [EXPORT](Commands.md#EXPORT) command can be used write all resources of a databases to disk. 
 
-#### Indexes
+### Indexes
 
 Index structures are discarded after update operations when [UPDINDEX](Options.md#UPDINDEX) is turned off (which is the default). More details are found in the article on [Indexing](http://docs.basex.org/wiki/IndexesUpdates). 
 
 
-### Error Messages
+## Error Messages
 
 Along with the Update Facility, a number of new error codes and messages have been added to the specification and BaseX. All errors are listed in the [XQuery Errors](XQuery Errors.md#Update_Errors) overview. 
 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: `MIXUPDATES` option for [Returning Results](XQuery Update.md#Returning_Results) in updating expressions.</code> 

@@ -1,5 +1,3 @@
-
-# Options
  
 
 
@@ -34,86 +32,86 @@ Various ways exist to access and change options:
 If options are implicitly changed by operations in the [GUI](http://docs.basex.org/wiki/Graphical User Interface), the underlying commands will be listed in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations). 
 
  
-## Global Options
+# Global Options
 
 Global options are constants. They can only be set in the configuration file or via system properties (see above). One exception is the [DEBUG](.md) option, which can also be changed at runtime by users with [admin permissions](User Management.md). 
 
 
-### General
+## General
 
-#### DEBUG
+### DEBUG
 
 **Signature** | `DEBUG [boolean]`
 ------------- | -----------------
 **Default** | `false`
 **Summary** | Sends internal debug info to STDERR. This option can be turned on to get additional information for development and debugging purposes. It can also be triggered on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-d`. 
 
-#### DBPATH
+### DBPATH
 
 **Signature** | `DBPATH [path]`
 ------------- | ---------------
 **Default** | `{home}/BaseXData` or `{home}/data`
 **Summary** | Points to the directory in which all databases are located. 
 
-#### REPOPATH
+### REPOPATH
 
 **Signature** | `REPOPATH [path]`
 ------------- | -----------------
 **Default** | `{home}/BaseXRepo`
 **Summary** | Points to the [Repository](Repository.md), in which all XQuery modules are located. 
 
-#### LANG
+### LANG
 
 **Signature** | `LANG [language]`
 ------------- | -----------------
 **Default** | `English`
 **Summary** | Specifies the interface language. Currently, seven languages are available: 'English', 'German', 'French', 'Dutch', 'Italian', 'Japanese', and 'Vietnamese'. 
 
-#### LANGKEY
+### LANGKEY
 
 **Signature** | `LANGKEY [boolean]`
 ------------- | -------------------
 **Default** | `false`
 **Summary** | Prefixes all texts with the internal language keys. This option is helpful if BaseX is translated into another language, and if you want to see where particular texts are displayed. 
 
-#### GLOBALLOCK
+### GLOBALLOCK
 
 **Signature** | `GLOBALLOCK [boolean]`
 ------------- | ----------------------
 **Default** | `false`
 **Summary** | Controls if local (database) or global (process) locking will be used for managing read and write operations. The article on [Transaction Management](Transaction Management.md) provides more details on concurrency control. 
 
-### Client/Server Architecture
+## Client/Server Architecture
 
-#### HOST
+### HOST
 
 **Signature** | `HOST [host]`
 ------------- | -------------
 **Default** | `localhost`
 **Summary** | This host name is used by the client when connecting to a server. This option can also be changed when running the client on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Client) via `-n`. 
 
-#### PORT
+### PORT
 
 **Signature** | `PORT [port]`
 ------------- | -------------
 **Default** | `1984`
 **Summary** | This port is used by the client when connecting to a server. This option can also be changed when running the client on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Client) via `-p`. 
 
-#### SERVERPORT
+### SERVERPORT
 
 **Signature** | `SERVERPORT [port]`
 ------------- | -------------------
 **Default** | `1984`
 **Summary** | This is the port the database server will be listening to. This option can also be changed when running the server on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Server) via `-p`. 
 
-#### EVENTPORT
+### EVENTPORT
 
 **Signature** | `EVENTPORT [port]`
 ------------- | ------------------
 **Default** | `1985`
 **Summary** | This port is used by the client to listen for [server events](Events.md). It will only be bound if a client attaches itself to a database event. This option can also be changed when running the server on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Server) via `-e`. 
 
-#### USER
+### USER
 
 **Signature** | `USER [name]`
 ------------- | -------------
@@ -123,7 +121,7 @@ Global options are constants. They can only be set in the configuration file or 
  * The option can also be changed on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Client) via `-U`. 
 
 
-#### PASSWORD
+### PASSWORD
 
 **Signature** | `PASSWORD [password]`
 ------------- | ---------------------
@@ -134,7 +132,7 @@ Global options are constants. They can only be set in the configuration file or 
  * Please note that it is a security risk to specify your password in plain text. 
 
 
-#### AUTHMETHOD
+### AUTHMETHOD
 
 Introduced with Version 8.0: 
 
@@ -144,14 +142,14 @@ Introduced with Version 8.0:
 **Default** | _Basic_
 **Summary** | Specifies the HTTP Authentication, which will be proposed by the [HTTP server](Web Application.md) if a client sends an unauthorized request. Allowed values are `Basic` and `Digest`. 
 
-#### SERVERHOST
+### SERVERHOST
 
 **Signature** | `SERVERHOST [host|ip]`
 ------------- | ----------------------
 **Default** | _empty_
 **Summary** | This is the host name or ip address the server is bound to. If the option is set to an empty string (which is the default), the server will be open to all clients. 
 
-#### PROXYHOST
+### PROXYHOST
 
 Updated with Version 8.0: empty string will be ignored. 
 
@@ -161,7 +159,7 @@ Updated with Version 8.0: empty string will be ignored.
 **Default** | _empty_
 **Summary** | This is the host name of a proxy server. If the value is an empty string, it will be ignored. 
 
-#### PROXYPORT
+### PROXYPORT
 
 Updated with Version 8.0: default set to 0; will be ignored. 
 
@@ -171,7 +169,7 @@ Updated with Version 8.0: default set to 0; will be ignored.
 **Default** | `0`
 **Summary** | This is the port number of a proxy server. If the value is set to `0`, it will be ignored. 
 
-#### NONPROXYHOSTS
+### NONPROXYHOSTS
 
 Updated with Version 8.0: empty string will be ignored. 
 
@@ -181,68 +179,68 @@ Updated with Version 8.0: empty string will be ignored.
 **Default** | _empty_
 **Summary** | This is a list of hosts that should be directly accessed. If the value is an empty string, it will be ignored. 
 
-#### TIMEOUT
+### TIMEOUT
 
 **Signature** | `TIMEOUT [seconds]`
 ------------- | -------------------
 **Default** | `30`
 **Summary** | Specifies the maximum time a read-only transaction may take. If an operation takes longer than the specified timeout, it will be aborted. Write operations will not be affected by this timeout, as this would corrupt the integrity of the database. The timeout is deactivated if the timeout is set to `0`. It is ignored for `ADMIN` operations. 
 
-#### KEEPALIVE
+### KEEPALIVE
 
 **Signature** | `KEEPALIVE [seconds]`
 ------------- | ---------------------
 **Default** | `600`
 **Summary** | Specifies the maximum time a client will be remembered by the server. If there has been no interaction with a client for a longer time than specified by this timeout, it will be disconnected. Running operations will not be affected by this option. The keepalive check is deactivated if the value is set to `0`. 
 
-#### PARALLEL
+### PARALLEL
 
 **Signature** | `PARALLEL [number]`
 ------------- | -------------------
 **Default** | `8`
 **Summary** | Denotes the maximum allowed `number` of parallel [transactions](Transaction Management.md).Note that a higher number of parallel operations may increase disk activity and thus slow down queries. In some cases, a single transaction may even give you better results than any parallel activity. 
 
-#### LOG
+### LOG
 
 **Signature** | `LOG [boolean]`
 ------------- | ---------------
 **Default** | `true`
 **Summary** | Turns [Logging](Logging.md) of server operations and HTTP requests on/off. This option can also be changed when running the server on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Server) via `-z`. 
 
-#### LOGMSGMAXLEN
+### LOGMSGMAXLEN
 
 **Signature** | `LOGMSGMAXLEN [length]`
 ------------- | -----------------------
 **Default** | `1000`
 **Summary** | Specifies the maximum length of a single [log message](Logging.md). 
 
-### HTTP Options
+## HTTP Options
 
 If BaseX is run as [Web Application](Web Application.md), the HTTP options are either determined by the web server, or specified in the `webapp/WEB-INF` directory and the `jetty.xml` and `web.xml` configuration files. 
 
 
-#### WEBPATH
+### WEBPATH
 
 **Signature** | `WEBPATH [path]`
 ------------- | ----------------
 **Default** | `{home}/BaseXWeb` or `{home}/webapp`
 **Summary** | Points to the directory in which all the [Web Application](Web Application.md) contents are stored, including XQuery, Script, [RESTXQ](RESTXQ.md) and configuration files. 
 
-#### RESTXQPATH
+### RESTXQPATH
 
 **Signature** | `RESTXQPATH [path]`
 ------------- | -------------------
 **Default** | _empty_
 **Summary** | Points to the directory which contains the [RESTXQ](RESTXQ.md) modules of a web application. Relative paths will be resolved against the [WEBPATH](Options.md#WEBPATH) directory. 
 
-#### HTTPLOCAL
+### HTTPLOCAL
 
 **Signature** | `HTTPLOCAL [boolean]`
 ------------- | ---------------------
 **Default** | `false`
 **Summary** | By default, a database server instance will be opened along with the web server. If the flag is set to `true`, all commands will be executed in an embedded database context.If BaseX is run as [Web Application](Web Application.md), and if the flag is `false`, the server will be started as soon as the first HTTP service is called. 
 
-#### STOPPORT
+### STOPPORT
 
 **Signature** | `STOPPORT [port]`
 ------------- | -----------------
@@ -252,85 +250,85 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
  * This option can also be changed when running the HTTP server on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Server) via `-s`. 
 
  
-## Create Options
+# Create Options
 
-### General
+## General
 
-#### MAINMEM
+### MAINMEM
 
 **Signature** | `MAINMEM [boolean]`
 ------------- | -------------------
 **Default** | `false`
 **Summary** | If this option is turned on, new databases will be exclusively created in main memory. Most queries will be evaluated faster in main memory mode, but all data is lost if BaseX is shut down. The value of this option will be assigned once to a new database, and cannot be changed after that. 
 
-#### ADDCACHE
+### ADDCACHE
 
 **Signature** | `ADDCACHE [boolean]`
 ------------- | --------------------
 **Default** | `false`
 **Summary** | If this option is activated, data structures of documents will first be cached to disk before being added to the final database. This option is helpful when larger documents need to be added, and if the existing heuristics cannot estimate the input size (e.g. when adding directories or sending input streams). 
 
-### Parsing
+## Parsing
 
-#### CREATEFILTER
+### CREATEFILTER
 
 **Signature** | `CREATEFILTER [filter]`
 ------------- | -----------------------
 **Default** | `*.xml`
 **Summary** | File filter in the [Glob Syntax](Commands.md#Glob_Syntax), which is applied whenever new databases are created, or resources are added to a database. 
 
-#### ADDARCHIVES
+### ADDARCHIVES
 
 **Signature** | `ADDARCHIVES [boolean]`
 ------------- | -----------------------
 **Default** | `true`
 **Summary** | If this option is set to `true`, files within archives (ZIP, GZIP, TAR, TGZ, DOCX, etc.) are parsed whenever new databases are created or resources are added to a database. 
 
-#### SKIPCORRUPT
+### SKIPCORRUPT
 
 **Signature** | `SKIPCORRUPT [boolean]`
 ------------- | -----------------------
 **Default** | `false`
 **Summary** | Skips corrupt (i.e., not well-formed) files while creating a database or adding new documents. If this option is activated, document updates are slowed down, as all files will be parsed twice. Next, main memory consumption will be higher as parsed files will be cached in main memory. 
 
-#### ADDRAW
+### ADDRAW
 
 **Signature** | `ADDRAW [boolean]`
 ------------- | ------------------
 **Default** | `false`
 **Summary** | If this option is activated, and if new resources are added to a database, all files that are not filtered by the [CREATEFILTER](Options.md#CREATEFILTER) option will be added as _raw_ files (i.e., in their binary representation). 
 
-#### PARSER
+### PARSER
 
 **Signature** | `PARSER [type]`
 ------------- | ---------------
 **Default** | `XML`
 **Summary** | Defines a [parser](Parsers.md) for importing new files to the database. Currently, 'XML', 'JSON', 'CSV', 'TEXT', 'HTML' are available as parsers. HTML will be parsed as normal XML files if [Tagsoup](http://home.ccil.org/~cowan/XML/tagsoup/) is not found in the classpath. 
 
-#### CSVPARSER
+### CSVPARSER
 
 **Signature** | `CSVPARSER [options]`
 ------------- | ---------------------
 **Default** | _empty_
 **Summary** | Specifies the way how CSV data is to be parsed. The available options are listed in the [CSV Module](CSV Module.md#CSV_ModuleOptions). 
 
-#### JSONPARSER
+### JSONPARSER
 
 **Signature** | `JSONPARSER [options]`
 ------------- | ----------------------
 **Default** | _empty_
 **Summary** | Specifies the way how JSON data is to be parsed. The available options are listed in the [JSON Module](JSON Module.md#JSON_ModuleOptions). 
 
-#### TEXTPARSER
+### TEXTPARSER
 
 **Signature** | `TEXTPARSER [options]`
 ------------- | ----------------------
 **Default** | _empty_
 **Summary** | Specifies the way how TEXT data is to be parsed. Available options are listed in the article on [Parsers](Parsers.md). 
 
-### XML Parsing
+## XML Parsing
 
-#### CHOP
+### CHOP
 
 **Signature** | `CHOP [boolean]`
 ------------- | ----------------
@@ -349,28 +347,28 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
 
 
 
-#### STRIPNS
+### STRIPNS
 
 **Signature** | `STRIPNS [boolean]`
 ------------- | -------------------
 **Default** | `false`
 **Summary** | Strips all namespaces from an XML document and all elements while parsing. 
 
-#### INTPARSE
+### INTPARSE
 
 **Signature** | `INTPARSE [boolean]`
 ------------- | --------------------
 **Default** | `false`
 **Summary** | Uses the internal XML parser instead of the standard Java XML parser. The internal parser is faster, more fault tolerant and supports common HTML entities out-of-the-box, but it does not support all features needed for parsing DTDs. 
 
-#### DTD
+### DTD
 
 **Signature** | `DTD [boolean]`
 ------------- | ---------------
 **Default** | `false`
 **Summary** | Parses referenced DTDs and resolves XML entities. By default, this option is switched to `false`, as many DTDs are located externally, which may completely block the process of creating new databases. The [CATFILE](Options.md#CATFILE) option can be changed to locally resolve DTDs. 
 
-#### XINCLUDE
+### XINCLUDE
 
 Added with Version 8.0: 
 
@@ -380,54 +378,54 @@ Added with Version 8.0:
 **Default** | `true`
 **Summary** | Resolves XInclude inclusion tags and merges referenced XML documents. By default, this option is switched to `true`. This option is only available if the standard Java XML Parser is used (see [INTPARSE](Options.md#INTPARSE)). 
 
-#### CATFILE
+### CATFILE
 
 **Signature** | `CATFILE [path]`
 ------------- | ----------------
 **Default** | _empty_
 **Summary** | Specifies a catalog file to locally resolve DTDs; see the entry on [Catalog Resolvers](Catalog Resolver.md) for more details. 
 
-### Indexing
+## Indexing
 
 The current index and full-text index options will be stored in a new database, and take effect if indexes are rebuilt via the [OPTIMIZE](Commands.md#OPTIMIZE). 
 
 
-#### TEXTINDEX
+### TEXTINDEX
 
 **Signature** | `TEXTINDEX [boolean]`
 ------------- | ---------------------
 **Default** | `true`
 **Summary** | Creates a text index whenever a new database is created. A text index speeds up queries with equality comparisons on text nodes; see [Indexes](Indexes.md) for more details. 
 
-#### ATTRINDEX
+### ATTRINDEX
 
 **Signature** | `ATTRINDEX [boolean]`
 ------------- | ---------------------
 **Default** | `true`
 **Summary** | Creates an attribute index whenever a new database is created. An attribute index speeds up queries with equality comparisons on attribute values; see [Indexes](Indexes.md) for more details. 
 
-#### FTINDEX
+### FTINDEX
 
 **Signature** | `FTINDEX [boolean]`
 ------------- | -------------------
 **Default** | `false`
 **Summary** | Creates a full-text index whenever a new database is created. A full-text index speeds up queries with full-text expressions; see [Indexes](Indexes.md) for more details. 
 
-#### MAXLEN
+### MAXLEN
 
 **Signature** | `MAXLEN [int]`
 ------------- | --------------
 **Default** | `96`
 **Summary** | Specifies the maximum length of strings that are to be indexed by the name, path, value, and full-text index structures. The value of this option will be assigned once to a new database, and cannot be changed after that. 
 
-#### MAXCATS
+### MAXCATS
 
 **Signature** | `MAXCATS [int]`
 ------------- | ---------------
 **Default** | `100`
 **Summary** | Specifies the maximum number of distinct values (categories) that will be stored together with the element/attribute names or unique paths in the [Name Index](http://docs.basex.org/wiki/IndexesName_Index) or [Path Index](http://docs.basex.org/wiki/IndexesPath_Index). The value of this option will be assigned once to a new database, and cannot be changed after that. 
 
-#### UPDINDEX
+### UPDINDEX
 
 **Signature** | `UPDINDEX [boolean]`
 ------------- | --------------------
@@ -438,7 +436,7 @@ The current index and full-text index options will be stored in a new database, 
  * The value of this option will be assigned once to a new database. It can be reassigned by running [OPTIMIZE ALL](Commands.md#OPTIMIZE) or [db:optimize($db, true())](Database Module.md#db-optimize). 
 
 
-#### AUTOOPTIMIZE
+### AUTOOPTIMIZE
 
 Introduced with Version 8.0: 
 
@@ -452,74 +450,74 @@ Introduced with Version 8.0:
  * The value of this option will be assigned once to a new database. It can be reassigned by running [OPTIMIZE](Commands.md#OPTIMIZE) or [db:optimize](Database Module.md#db-optimize). 
 
 
-#### INDEXSPLITSIZE
+### INDEXSPLITSIZE
 
 **Signature** | `INDEXSPLITSIZE [num]`
 ------------- | ----------------------
 **Default** | `0`
 **Summary** | This option affects the [construction](Indexes.md#Index_Construction) of new text and attribute indexes. It specifies the number of index build operations that are performed before writing partial index data to disk. By default, if the value is set to 0, some dynamic split heuristics are applied. By setting the value to its maximum (2147483647), the index will never be split. 
 
-#### FTINDEXSPLITSIZE
+### FTINDEXSPLITSIZE
 
 **Signature** | `FTINDEXSPLITSIZE [num]`
 ------------- | ------------------------
 **Default** | `0`
 **Summary** | This option affects the [construction](Indexes.md#Index_Construction) of new full-text indexes. It specifies the number of index build operations that are performed before writing partial index data to disk. By default, if the value is set to 0, some dynamic split heuristics are applied. By setting the value to its maximum (2147483647), the index will never be split. 
 
-### Full-Text
+## Full-Text
 
-#### STEMMING
+### STEMMING
 
 **Signature** | `STEMMING [boolean]`
 ------------- | --------------------
 **Default** | `false`
 **Summary** | If `true`, all tokens will be stemmed during full-text indexing, using a language-specific stemmer implementation. By default, token will not be stemmed. 
 
-#### CASESENS
+### CASESENS
 
 **Signature** | `CASESENS [boolean]`
 ------------- | --------------------
 **Default** | `false`
 **Summary** | If `true`, the case of tokens will be preserved during full-text indexing. By default, case will be ignored (all tokens will be indexed in lower case). 
 
-#### DIACRITICS
+### DIACRITICS
 
 **Signature** | `DIACRITICS [boolean]`
 ------------- | ----------------------
 **Default** | `false`
 **Summary** | If set to `true`, diacritics will be preserved during full-text indexing. By default, diacritics will be removed. 
 
-#### LANGUAGE
+### LANGUAGE
 
 **Signature** | `LANGUAGE [lang]`
 ------------- | -----------------
 **Default** | `en`
 **Summary** | The specified language will influence the way how an input text will be tokenized. This option is mainly important if tokens are to be stemmed, or if the tokenization of a language differs from Western languages. 
 
-#### STOPWORDS
+### STOPWORDS
 
 **Signature** | `STOPWORDS [path]`
 ------------- | ------------------
 **Default** | _empty_
 **Summary** | A new full-text index will drop tokens that are listed in the specified stopword list. A stopword list may decrease the size of the full text index. A standard stopword list for English texts is provided in the directory `etc/stopwords.txt` in the official releases or available online at [http://files.basex.org/etc/stopwords.txt](http://files.basex.org/etc/stopwords.txt). 
  
-## Query Options
+# Query Options
 
-### QUERYINFO
+## QUERYINFO
 
 **Signature** | `QUERYINFO [boolean]`
 ------------- | ---------------------
 **Default** | `false`
 **Summary** | Prints more information on internal query rewritings, optimizations, and performance. By default, this info is shown in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations) in the GUI. It can also be activated on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-V`. 
 
-### XQUERY3
+## XQUERY3
 
 **Signature** | `XQUERY3`
 ------------- | ---------
 **Default** | `true`
 **Summary** | Enables all [XQuery 3.0](XQuery 3.0.md) features supported by BaseX. If this option is set to `false`, the XQuery parser will only accept expressions of the XQuery 1.0 specification. 
 
-### MIXUPDATES
+## MIXUPDATES
 
 Added with Version 8.0:
 
@@ -529,7 +527,7 @@ Added with Version 8.0:
 **Default** | `false`
 **Summary** | Allows queries to both contain updating and non-updating expressions. All updating constraints will be turned off, and nodes to be returned will be copied before they are modified by an updating expression. – By default, this option is set to `false`, because the XQuery Update Facility does not allow to [return results](XQuery Update.md#Returning_Results). 
 
-### BINDINGS
+## BINDINGS
 
 **Signature** | `BINDINGS [vars]`
 ------------- | -----------------
@@ -546,49 +544,49 @@ Added with Version 8.0:
 
    binds the value `hello world!` to the variable $BIND-VAR and shows how it can be used in a [ Command Script](Commands.md#Command_Scripts). 
 
-### QUERYPATH
+## QUERYPATH
 
 **Signature** | `QUERYPATH [path]`
 ------------- | ------------------
 **Default** | _empty_
 **Summary** | Contains the path (_base URI_) to the executed query (default: _empty_). This directory will be used to resolve relative paths to documents, query modules, and other resources addressed in a query. 
 
-### INLINELIMIT
+## INLINELIMIT
 
 **Signature** | `INLINELIMIT`
 ------------- | -------------
 **Default** | `100`
 **Summary** | The XQuery compiler inlines functions to speed up query evaluation. Inlining will only take place if a function body is not too large (i.e., if it does not contain too many expressions). With this option, this maximum number of expressions can be specified.Function inlining can be turned off by setting the value to `0`. The limit can be locally overridden via the `%basex:inline` annotation. 
 
-### TAILCALLS
+## TAILCALLS
 
 **Signature** | `TAILCALLS`
 ------------- | -----------
 **Default** | `256`
 **Summary** | Specifies how many stack frames of [tail-calls](http://en.wikipedia.org/wiki/Tail_call) are allowed on the stack at any time. When this limit is reached, tail-call optimization takes place and some call frames are eliminated. The feature can be turned off by setting the value to `-1`. 
 
-### DEFAULTDB
+## DEFAULTDB
 
 **Signature** | `DEFAULTDB`
 ------------- | -----------
 **Default** | `false`
 **Summary** | If this option is turned on, paths specified in the `fn:doc` and `fn:collections` functions will first be resolved against a database that has been opened in the global context outside the query (e.g. by the [OPEN](Commands.md#OPEN) command). If the path does not match any existing resources, it will be resolved as described in the article on [accessing database resources](Databases.md#Access_Resources). 
 
-### CACHEQUERY
+## CACHEQUERY
 
 **Signature** | `CACHEQUERY [boolean]`
 ------------- | ----------------------
 **Default** | `false`
 **Summary** | Caches the query results before returning them to the client. This option may be set to `true` if the whole result is needed for further operations (such as is e.g. the case in the GUI of BaseX). 
 
-### FORCECREATE
+## FORCECREATE
 
 **Signature** | `FORCECREATE [boolean]`
 ------------- | -----------------------
 **Default** | `false`
 **Summary** | By activating this option, the XQuery `doc()` and `collection()` functions will create database instances for the addressed input files. 
 
-### CHECKSTRINGS
+## CHECKSTRINGS
 
 **Signature** | `CHECKSTRINGS [boolean]`
 ------------- | ------------------------
@@ -597,37 +595,37 @@ Added with Version 8.0:
  * Please be aware that an inconsiderate use of this option may cause unexpected behavior when storing or outputting strings. 
 
 
-### LSERROR
+## LSERROR
 
 **Signature** | `LSERROR [error]`
 ------------- | -----------------
 **Default** | `0`
 **Summary** | This option specifies the maximum Levenshtein error for the BaseX-specific fuzzy match option. See the page on [Full-Texts](Full-Text.md#Fuzzy_Querying) for more information on fuzzy querying. 
 
-### RUNQUERY
+## RUNQUERY
 
 **Signature** | `RUNQUERY [boolean]`
 ------------- | --------------------
 **Default** | `true`
 **Summary** | Specifies if a query will be executed or parsed only. This option can also be changed on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-R`. 
 
-### RUNS
+## RUNS
 
 **Signature** | `RUNS [num]`
 ------------- | ------------
 **Default** | `1`
 **Summary** | Specifies how often a query will be evaluated. The result is serialized only once, and the measured times are averages of all runs. This option can also be changed on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-r`. 
  
-## Serialization Options
+# Serialization Options
 
-### SERIALIZE
+## SERIALIZE
 
 **Signature** | `SERIALIZE [boolean]`
 ------------- | ---------------------
 **Default** | `true`
 **Summary** | Results of XQuery expressions will be serialized if this option is turned on. For debugging purposes and performance measurements, this option can be set to `false`. It can also be turned off on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-z`. 
 
-### SERIALIZER
+## SERIALIZER
 
 **Signature** | `SERIALIZER [params]`
 ------------- | ---------------------
@@ -638,65 +636,65 @@ Added with Version 8.0:
 
 **Example** | `encoding=US-ASCII,omit-xml-declaration=no` : sets the encoding to `US-ASCII` and prints the XML declaration. 
 
-### EXPORTER
+## EXPORTER
 
 **Signature** | `EXPORTER [params]`
 ------------- | -------------------
 **Default** | _empty_
 **Summary** | Contains parameters for exporting all resources of a database; see [Serialization](Serialization.md) for more details. Keys and values are separated by equality signs, multiple parameters are delimited by commas. 
 
-### XMLPLAN
+## XMLPLAN
 
 **Signature** | `XMLPLAN [boolean]`
 ------------- | -------------------
 **Default** | `false`
 **Summary** | Prints the execution plan of an XQuery expression in its XML representation. This option can also be activated on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-x`. 
 
-### COMPPLAN
+## COMPPLAN
 
 **Signature** | `COMPPLAN [boolean]`
 ------------- | --------------------
 **Default** | `true`
 **Summary** | Generates the query plan, which can be activated via [[#XMLPLAN|XMLPLAN], before or after query compilation. This option can also be activated on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-X`. 
 
-### DOTPLAN
+## DOTPLAN
 
 **Signature** | `DOTPLAN [boolean]`
 ------------- | -------------------
 **Default** | `false`
 **Summary** | Visualizes the execution plan of an XQuery expression with [dotty](http://www.graphviz.org) and saves its dot file in the query directory. 
 
-### DOTCOMPACT
+## DOTCOMPACT
 
 **Signature** | `DOTCOMPACT [boolean]`
 ------------- | ----------------------
 **Default** | `false`
 **Summary** | Chooses a compact dot representation. 
  
-## Other Options
+# Other Options
 
-### AUTOFLUSH
+## AUTOFLUSH
 
 **Signature** | `AUTOFLUSH [boolean]`
 ------------- | ---------------------
 **Default** | `true`
 **Summary** | Flushes database buffers to disk after each update. If this option is set to `false`, bulk operations (multiple single updates) will be evaluated faster. As a drawback, the chance of data loss increases if the database is not explicitly flushed via the [FLUSH](Commands.md#FLUSH) command. 
 
-### WRITEBACK
+## WRITEBACK
 
 **Signature** | `WRITEBACK [boolean]`
 ------------- | ---------------------
 **Default** | `false`
 **Summary** | Propagates updates on main-memory instances of files that have been retrieved via `fn:doc` or `fn:collection` back to disk. This option can also be activated on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-u`. Please note that, when turning this option on, your original files will not be backed up. 
 
-### MAXSTAT
+## MAXSTAT
 
 **Signature** | `MAXSTAT [num]`
 ------------- | ---------------
 **Default** | `30`
 **Summary** | Specifies the maximum number of index occurrences printed by the `INFO INDEX` command. 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: `MIXUPDATES`, `AUTOOPTIMIZE`, `AUTHMETHOD`, `XINCLUDE`

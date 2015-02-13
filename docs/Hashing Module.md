@@ -1,5 +1,3 @@
-
-# Hashing Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) provides functions that perform different hash operations. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/hash` namespace, which is statically bound to the `hash` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### hash:md5
+## hash:md5
 
 hash:md5($value as xs:anyAtomicType) as xs:base64Binary
 
@@ -32,7 +30,7 @@ hash:md5($value as xs:anyAtomicType) as xs:base64Binary
     * `hash:md5(xs:base64Binary(""))`  returns `1B2M2Y8AsgTpgAmY7PhCfg==`. 
 
 
-### hash:sha1
+## hash:sha1
 
 hash:sha1($value as xs:anyAtomicType) as xs:base64Binary
 
@@ -50,7 +48,7 @@ hash:sha1($value as xs:anyAtomicType) as xs:base64Binary
     * `hash:sha1(xs:base64Binary(""))`  returns `2jmj7l5rSw0yVb/vlWAYkK/YBwk=`. 
 
 
-### hash:sha256
+## hash:sha256
 
 hash:sha256($value as xs:anyAtomicType) as xs:base64Binary
 
@@ -68,7 +66,7 @@ hash:sha256($value as xs:anyAtomicType) as xs:base64Binary
     * `hash:sha256(xs:base64Binary(""))`  returns `47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=`. 
 
 
-### hash:hash
+## hash:hash
 
 hash:hash($value as xs:anyAtomicType, $algorithm as xs:string) as xs:base64Binary
 
@@ -86,13 +84,13 @@ hash:hash($value as xs:anyAtomicType, $algorithm as xs:string) as xs:base64Binar
     * `hash:md5("", "")`  raises an error. 
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
 `HASH0001` | The specified hash algorithm is unknown. 
  
-## Changelog
+# Changelog
 
 The module was introduced with Version 7.3. 
 

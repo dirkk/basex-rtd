@@ -1,5 +1,3 @@
-
-# Session Module
  
 
 
@@ -7,7 +5,7 @@
 This [XQuery Module](Module Library.md) contains functions for accessing and modifying server-side session information. This module is mainly useful in the context of [Web Applications](Web Application.md). 
 
  
-## Conventions
+# Conventions
  * The `basex-api` package must be included in the classpath. This is always the case if you use one of the complete distributions (zip, exe, war) of BaseX. 
  * All functions are assigned to the `http://basex.org/modules/session` namespace. The module must be imported in the query prolog: 
 
@@ -19,9 +17,9 @@ This [XQuery Module](Module Library.md) contains functions for accessing and mod
  * If any of the functions is called outside the servlet context, the error `BXSE0003`: is raised. 
  * As sessions are side-effecting operations, all functions are flagged as _non-deterministic_. This means that the functions will not be reordered by the compiler. 
  
-## Functions
+# Functions
 
-### session:id
+## session:id
 
 session:id() as xs:string
 
@@ -35,21 +33,21 @@ session:id() as xs:string
     'Session ID: ' || session:id()
 
 
-### session:created
+## session:created
 
 session:created() as xs:dateTime
 
 :   Returns the creation time of a session. 
 
 
-### session:accessed
+## session:accessed
 
 session:accessed() as xs:dateTime
 
 :   Returns the last access time of a session. 
 
 
-### session:names
+## session:names
 
 session:names() as xs:string*
 
@@ -64,7 +62,7 @@ session:names() as xs:string*
     ! element variable { . }
 
 
-### session:get
+## session:get
 
 session:get($key as xs:string) as item()*
 session:get($key as xs:string, $default as item()*) as item()*
@@ -84,7 +82,7 @@ session:get($key as xs:string, $default as item()*) as item()*
     'Value of ' || $key || ': ' || session:get($key)
 
 
-### session:set
+## session:set
 
 Updated with Version 8.0: allow sequences as session values 
 
@@ -106,7 +104,7 @@ session:set($key as xs:string, $value as item()*) as empty-sequence()
     session:set($key, $value), 'Variable was set.'
 
 
-### session:delete
+## session:delete
 
 session:delete($key as xs:string) as empty-sequence()
 
@@ -120,14 +118,14 @@ session:delete($key as xs:string) as empty-sequence()
     session:delete($key), 'Variable was deleted.'
 
 
-### session:close
+## session:close
 
 session:close() as empty-sequence()
 
 :   Unregisters a session and all data associated with it. 
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -135,7 +133,7 @@ session:close() as empty-sequence()
 `BXSE0002` | An error occurred while retrieving the value of a session attribute. 
 `BXSE0003` | A function was called outside the servlet context. 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Updated: allow sequences as session values 

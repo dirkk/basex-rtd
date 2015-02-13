@@ -1,5 +1,3 @@
-
-# Serialization
  
 
 
@@ -13,7 +11,7 @@ This page is part of the [XQuery Portal](XQuery.md). Serialization parameters de
  * setting the [EXPORTER](Options.md#EXPORTER) option before exporting a database, or 
  * setting them as [REST](REST.md#RESTParameters) query parameters. 
  
-## Parameters
+# Parameters
 
 The following table gives a brief summary of all serialization parameters recognized by BaseX. For details, please refer to official specification. 
 
@@ -87,7 +85,7 @@ The `csv` and `json` parameters are supplied with a list of options. Option name
     Jack;Oldtown
 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: Support for `use-character-maps` and `parameter-document`

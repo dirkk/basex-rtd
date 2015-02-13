@@ -1,5 +1,3 @@
-
-# XQuery 3.0
  
 
 
@@ -7,7 +5,7 @@
 This article is part of the [XQuery Portal](XQuery.md). It summarizes the most interesting features of the [XQuery 3.0](http://www.w3.org/TR/xquery-30/) Recommendations. XQuery 3.0 is fully supported by BaseX. 
 
  
-## Enhanced FLWOR Expressions
+# Enhanced FLWOR Expressions
 
 Most clauses of FLWOR expressions can now be specified in an arbitrary order: additional `let` and `for` clauses can be put after a `where` clause, and multiple `where`, `order by` and `group by` statements can be used. This means that many nested loops can now be rewritten to a single FLWOR expression. 
 
@@ -51,7 +49,7 @@ Window clauses provide a rich set of variable declarations to process sub-sequen
 More information on window clauses, and all other enhancements, can be found in the [specification](http://www.w3.org/TR/xquery-30/#id-windows). 
 
 
-### Simple Map Operator
+## Simple Map Operator
 
 The [simple map](http://www.w3.org/TR/xquery-30/#id-map-operator) operator `!` provides a compact notation for applying the results of a first to a second expression: the resulting items of the first expression are bound to the context item one by one, and the second expression is evaluated for each item. The map operator may be used as replacement for FLWOR expressions: 
 
@@ -72,7 +70,7 @@ The [simple map](http://www.w3.org/TR/xquery-30/#id-map-operator) operator `!` p
 A map operator is defined to be part of a path expression, which may now mix path and map operators. In contrast to the path operator, the results of the map operator will not be made duplicate-free and returned in document order. 
 
 
-### Group By
+## Group By
 
 FLWOR expressions have been extended to include the [group by](http://www.w3.org/TR/xquery-30/#id-group-by) clause, which is well-established among relational database systems. `group by` can be used to apply value-based partitioning to query results: 
 
@@ -163,7 +161,7 @@ Moreover, a value can be assigned to the grouping variable. This is shown in the
     </persons>
 
 
-### Try/Catch
+## Try/Catch
 
 The [try/catch](http://www.w3.org/TR/xquery-30/#id-try-catch) construct can be used to handle errors at runtime: 
 
@@ -193,7 +191,7 @@ Within the scope of the catch clause, a number of variables are implicitly decla
  * `$err:column-number` : column number where the error occurred 
  * `$err:additional` : error stack trace 
 
-### Switch
+## Switch
 
 The [switch](http://www.w3.org/TR/xquery-30/#id-switch) statement is available in many other programming languages. It chooses one of several expressions to evaluate based on its input value. 
 
@@ -234,7 +232,7 @@ The expression to evaluate can correspond to multiple input values.
 **Result:**`red red`
 
 
-### Function Items
+## Function Items
 
 One of the most distinguishing features added in _XQuery 3.0_ are _function items_, also known as _lambdas_ or _lambda functions_. They make it possible to abstract over functions and thus write more modular code. 
 
@@ -254,7 +252,7 @@ Function items can be obtained in three different ways:
 Function items can also be passed as arguments to and returned as results from functions. These so-called [Higher-Order Functions](Higher-Order Functions.md) like `fn:map` and `fn:fold-left` are discussed in more depth on their own Wiki page. 
 
 
-### Expanded QNames
+## Expanded QNames
 
 A _QName_ can now be directly prefixed with the letter "Q" and a namespace URI in the [Clark Notation](http://www.jclark.com/xml/xmlns.htm). 
 
@@ -269,7 +267,7 @@ The syntax differed in older versions of the XQuery 3.0 specification, in which 
  * `"http://www.w3.org/2005/xpath-functions/math":pi()`
  * `"java:java.io.FileOutputStream":new("output")`
 
-### Namespace Constructors
+## Namespace Constructors
 
 New namespaces can now be created via so-called 'Computed Namespace Constructors'. 
 
@@ -277,7 +275,7 @@ New namespaces can now be created via so-called 'Computed Namespace Constructors
     element node { namespace pref { 'http://url.org/' } }
 
 
-### String Concatenations
+## String Concatenations
 
 Two vertical bars `||` (also named _pipe characters_) can be used to concatenate strings. This operator is a shortcut for the `fn:concat()` function. 
 
@@ -285,7 +283,7 @@ Two vertical bars `||` (also named _pipe characters_) can be used to concatenate
     'Hello' || '' || 'Universe'
 
 
-### External Variables
+## External Variables
 
 Default values can now be attached to external variable declarations. This way, an expression can also be evaluated if its external variables have not been bound to a new value. 
 
@@ -295,7 +293,7 @@ Default values can now be attached to external variable declarations. This way, 
     "User:", $user
 
 
-### Serialization
+## Serialization
 
 [Serialization parameters](Serialization.md) can now be defined within XQuery expressions. Parameters are placed in the query prolog and need to be specified as option declarations, using the `output` prefix. 
 
@@ -315,7 +313,7 @@ Default values can now be attached to external variable declarations. This way, 
 In BaseX, the `output` prefix is statically bound and can thus be omitted. Note that all namespaces need to be specified when using external APIs, such as [XQJ](http://xqj.net/basex/). 
 
 
-### Context Item
+## Context Item
 
 The context item can now be specified in the prolog of an XQuery expression: 
 
@@ -337,7 +335,7 @@ The context item can now be specified in the prolog of an XQuery expression:
 **Result:**`5 5`
 
 
-### Annotations
+## Annotations
 
 XQuery 3.0 introduces annotations to declare properties associated with functions and variables. For instance, a function may be declared %public, %private, or %updating. 
 
@@ -384,7 +382,7 @@ If an integer is specified as annotation argument, it will be interpreted a loca
 The annotation ensures that an error will only be thrown if the condition yields true. Without the annotation, the error will always be thrown, because the referenced document is not found. 
 
 
-### Functions
+## Functions
 
 The following functions have been added in the [XQuery 3.0 Functions and Operators](http://www.w3.org/TR/xpath-functions-30/) Specification: 
 
@@ -398,7 +396,7 @@ New signatures have been added for the following functions:
 `fn:document-uri`, `fn:string-join`, `fn:node-name`, `fn:round`, `fn:data`
 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: %basex:inline, %basex:lazy 

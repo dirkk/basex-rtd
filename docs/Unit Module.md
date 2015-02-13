@@ -1,5 +1,3 @@
-
-# Unit Module
  
 
 
@@ -13,7 +11,7 @@ With Version 7.9, the unit testing functionality has been further stabilized:
  * Tests can also be executed from the BaseX GUI. 
  * XQUnit functions can now contain updating functions.  
  
-## Introduction
+# Introduction
 
 The more complex a software application grows, the more error-prone it gets. This is why testing frameworks have been developed, which provide a standardized, automatized way for testing software. The [XUnit](http://en.wikipedia.org/wiki/XUnit) frameworks (such as SUnit or JUnit) allow testing of atomic unit of a program, such as single functions and algorithms. 
 
@@ -21,25 +19,25 @@ The more complex a software application grows, the more error-prone it gets. Thi
 This module borrows heavily from the existing frameworks: it provides various annotations for testing XQuery functions. Unit functions are provided to assert the validity of arbitrary conditions expressed in XQuery and to raise errors whenever a condition is not satisfied. Some additional functions exist to run all unit tests of the current module or a set of specified library modules. 
 
  
-## Usage
+# Usage
 
 Tests are not started from within XQuery anymore. Instead, a [TEST](Commands.md#TEST) command is now available, which compiles all XQuery modules in a given file or directory and runs all functions that are annotated with `%unit:test`. A test report is generated and returned, which resembles the format returned by other xUnit testing frameworks, such as the Maven Surefire Plugin ([see below](Unit Module.md#Result)). 
 
  
-## Conventions
+# Conventions
 
 All annotations, functions and errors in this module are assigned to the `http://basex.org/modules/unit` namespace, which is statically bound to the `unit` prefix. 
 
  
-## Annotations
+# Annotations
 
-### %unit:test
+## %unit:test
 
 **Syntax** | `%unit:test``%unit:test("expected", <ERROR>)`
 ---------- | ---------------------------------------------
 **Summary** | With this annotation, a function can be marked as unit test. It will be evaluated whenever a test report is created for the module in which this function is located.If an optional error code is specified and if the function expression does not raise that error, the test will fail. 
 
-### %unit:before
+## %unit:before
 
 Updated with Version 8.0: filter argument added. 
 
@@ -48,7 +46,7 @@ Updated with Version 8.0: filter argument added.
 ---------- | ----------------------------------------
 **Summary** | A function decorated with this annotation will be evaluated **before each** unit test. If a function name is specified as argument, it will only be evaluated before that function. 
 
-### %unit:after
+## %unit:after
 
 Updated with Version 8.0: filter argument added. 
 
@@ -57,30 +55,30 @@ Updated with Version 8.0: filter argument added.
 ---------- | --------------------------------------
 **Summary** | A function decorated with this annotation will be evaluated **after each** unit test. If a function name is specified as argument, it will only be evaluated before that function. 
 
-### %unit:before-module
+## %unit:before-module
 
 **Syntax** | `%unit:before-module`
 ---------- | ---------------------
 **Summary** | If a function is decorated with this annotation, it will be evaluated **before all** unit tests in the current module. 
 
-### %unit:after-module
+## %unit:after-module
 
 **Syntax** | `%unit:after-module`
 ---------- | --------------------
 **Summary** | If a function is decorated with this annotation, it will be evaluated **after all** unit tests in the current module. 
 
-### %unit:ignore
+## %unit:ignore
 
 **Syntax** | `%unit:ignore``%unit:ignore(<MESSAGE>)`
 ---------- | ---------------------------------------
 **Summary** | If a function is decorated with this annotation, it will temporarily be ignored by the test suite runner. 
  
-## Functions
+# Functions
 
 Updated with Version 8.0: failure argument can now be an arbitrary item. 
 
 
-### unit:assert
+## unit:assert
 
 unit:assert($test as item()*) as empty-sequence()
 unit:assert($test as item()*, $info as item()) as empty-sequence()
@@ -93,7 +91,7 @@ unit:assert($test as item()*, $info as item()) as empty-sequence()
     `UNIT0001`: the assertion failed, or an error was raised. 
 
 
-### unit:assert-equals
+## unit:assert-equals
 
 unit:assert-equals($returned as item()*, $expected as item()*) as empty-sequence()
 unit:assert-equals($returned as item()*, $expected as item()*, $info as item()) as empty-sequence()
@@ -106,7 +104,7 @@ unit:assert-equals($returned as item()*, $expected as item()*, $info as item()) 
     `UNIT0001`: the assertion failed, or an error was raised. 
 
 
-### unit:fail
+## unit:fail
 
 Updated with Version 8.0: 0-argument signature adeded. 
 
@@ -122,12 +120,12 @@ unit:fail($info as item()) as empty-sequence()
     `UNIT0001`: default error raised by this function. 
 
  
-## Example
+# Example
 
 The following XQUnit module `tests.xqm` contains all available unit annotations: 
 
 
-### Query
+## Query
 
     module namespace test = 'http://basex.org/modules/xqunit-tests';
     (:~ Initializing function, which is called once before all tests.
@@ -208,7 +206,7 @@ The following XQUnit module `tests.xqm` contains all available unit annotations:
 By running `TEST tests.xqm`, the following report will be generated (timings may differ): 
 
 
-### Result
+## Result
 
     <testsuites time="PT0.256S">
       <testsuite name="file:///C:/Users/user/Desktop/test.xqm" time="PT0.212S" tests="8" failures="4" errors="1" skipped="1">
@@ -246,7 +244,7 @@ By running `TEST tests.xqm`, the following report will be generated (timings may
     </testsuites>
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -256,7 +254,7 @@ By running `TEST tests.xqm`, the following report will be generated (timings may
 `UNIT0004` | An annotation was declared twice. 
 `UNIT0005` | An annotation has invalid arguments. 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Deleted: `UNIT0006` (ignore results returned by functions). 

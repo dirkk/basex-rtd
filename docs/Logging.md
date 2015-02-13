@@ -1,5 +1,3 @@
-
-# Logging
  
 
 
@@ -17,7 +15,7 @@ Some more notes on the logging facility:
  * The maximum length of logging messages can be changed via [LOGMSGMAXLEN](Options.md#LOGMSGMAXLEN). 
  * The [Admin Module](Admin Module.md) provides access to the log files from XQuery. 
  
-## Format
+# Format
 ** Example 1**
 
 

@@ -1,5 +1,3 @@
-
-# Java Examples
  
 
 
@@ -7,7 +5,7 @@
 This page is part of the [Developer Section](Developing.md). The following Java code snippets demonstrate how easy it is to run database commands, create collections, perform queries, etc. by integrating the BaseX code. Most examples are taken from our [basex-examples](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples) repository, in which you will find some more use cases. 
 
  
-## Local Examples
+# Local Examples
 
 The following code snippets work in _embedded_ mode; they do not rely on an additional server instance: 
 
@@ -19,7 +17,7 @@ The following code snippets work in _embedded_ mode; they do not rely on an addi
  * [QueryCollection.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/local/QueryCollection.java) creates, runs queries against it and drops a collection. 
  * [WikiExample.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/local/WikiExample.java) creates a database from an url (wiki instance), runs a query against it and drops the database. 
 
-### Server Examples
+## Server Examples
 
 The examples below take advantage of the client/server architecture: 
 
@@ -30,7 +28,7 @@ The examples below take advantage of the client/server architecture:
  * [ServerEventsGUI.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/server/ServerEventsGUI.java) is a little GUI example for demonstrating database events. 
  * [UserExample.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/server/UserExample.java) manages database users. 
 
-### XQuery Module Examples
+## XQuery Module Examples
 
 BaseX provides [Java Bindings](Java Bindings.md) for accessing external Java code via XQuery functions. The following examples show how this feature can be utilized: 
 
@@ -40,11 +38,11 @@ BaseX provides [Java Bindings](Java Bindings.md) for accessing external Java cod
  * [QueryModule.java](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/query/QueryModule.java) is located in the BaseX core. Java query modules can extend this class to get access to the current query context and enrich functions with properties (). 
 
   
-### XQJ API
+## XQJ API
  The implementation of the [BaseX XQJ API](http://xqj.net/basex/) (closed-source) has been written by Charles Foster. It uses the client/server architecture. The basex-examples repository contains [various examples](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/xqj) on how to use XQJ. 
 
 
-### [Client API](Clients.md)
+## [Client API](Clients.md)
  * [BaseXClient.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/api/BaseXClient.java) provides an implementation of the [Server Protocol](Server Protocol.md). 
  * [Example.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/api/Example.java) demonstrates how commands can be executed on a server. 
  * [QueryExample.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/api/QueryExample.java) shows how queries can be executed in an iterative manner. 
@@ -54,13 +52,13 @@ BaseX provides [Java Bindings](Java Bindings.md) for accessing external Java cod
  * [EventExample.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/api/EventExample.java) demonstrates how to trigger and receive database events. 
  * [BinaryExample.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/api/BinaryExample.java) shows how binary resource can be added to and retrieved from the database. 
 
-### [REST API](REST.md)
+## [REST API](REST.md)
  * [RESTGet.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/rest/RESTGet.java) presents the HTTP GET method. 
  * [RESTPost.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/rest/RESTPost.java) presents the HTTP POST method. 
  * [RESTPut.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/rest/RESTPut.java) presents the HTTP PUT method. 
  * [RESTAll.java](https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/rest/RESTAll.java) runs all examples at one go. 
 
-### XML:DB API (deprecated)
+## XML:DB API (deprecated)
 
 Note that the XML:DB API does not talk to the server and can thus only be used in embedded mode. 
 

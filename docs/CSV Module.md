@@ -1,5 +1,3 @@
-
-# CSV Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains a single function to parse CSV input. [CSV](http://en.wikipedia.org/wiki/Comma-separated_values) (comma-separated values) is a popular representation for tabular data, exported e. g. from Excel. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/csv` namespace, which is statically bound to the `csv` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
 
-### Conversion
+## Conversion
 
-#### XML: Direct, Attributes
+### XML: Direct, Attributes
 
 CSV is converted to XML as follows: 
 
@@ -24,7 +22,7 @@ CSV is converted to XML as follows:
  * If the `header` option is set to `true`, the first text line is parsed as table header, and the `<entry>` elements are replaced with the field names: 
  * If `format` is set to `attributes`, field names will be stored in name attributes. 
 
-#### Map
+### Map
 
 If `format` is set to `map`, the CSV data will be converted to an XQuery map: 
 
@@ -35,7 +33,7 @@ If `format` is set to `map`, the CSV data will be converted to an XQuery map:
 **A little advice**: in the Database Creation dialog of the GUI, if you select CSV Parsing and switch to the _Parsing_ tab, you can see the effects of some of the conversion options. 
 
 
-### Options
+## Options
 
 The following options are available: 
 
@@ -66,9 +64,9 @@ The CSV function signatures provide an `$options` argument. Options can either b
     map { 'separator': ';', ... }
 
  
-## Functions
+# Functions
 
-### csv:parse
+## csv:parse
 
 csv:parse($input as xs:string) as document-node(element(csv))
 csv:parse($input as xs:string, $options as item()) as item()
@@ -81,7 +79,7 @@ csv:parse($input as xs:string, $options as item()) as item()
     `BXCS0001`: the input cannot be parsed. 
 
 
-### csv:serialize
+## csv:serialize
 
 csv:serialize($input as node()) as xs:string
 csv:serialize($input as node(), $options as item()) as xs:string
@@ -94,7 +92,7 @@ csv:serialize($input as node(), $options as item()) as xs:string
     `BXCS0002`: the input cannot be serialized. 
 
  
-## Examples
+# Examples
 
 **Example 1:** Converts CSV data to XML, interpreting the first row as table header: 
 
@@ -179,14 +177,14 @@ csv:serialize($input as node(), $options as item()) as xs:string
     }
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
 `BXCS0001` |  The input cannot be parsed. 
 `BXCS0002` |  The node cannot be serialized. 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: `backslashes` option 

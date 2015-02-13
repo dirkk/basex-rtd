@@ -1,5 +1,3 @@
-
-# XQuery Recipes
  
 
 
@@ -7,7 +5,7 @@
 This page contains code snippets that mainly originate from our [basex-talk](https://mailman.uni-konstanz.de/mailman/listinfo/basex-talk) mailing list. 
 
  
-## Compact Notations 
+# Compact Notations 
 
 `if`/`not`/`else` constructs can look pretty verbose in XQuery. However, some alternatives exist in order to make conditional code more compact: 
 
@@ -39,7 +37,7 @@ In some cases, also the first solution can be written more compact. If we know t
 Note that this only works if both of your inputs have zero or one items. 
 
 
-### Computed Elements 
+## Computed Elements 
 
 Returns dynamically named elements: 
 
@@ -63,7 +61,7 @@ The result is an XML fragment with `<element>` as root node:
     </element>
 
 
-### Transform List to Tree 
+## Transform List to Tree 
 
 This snippet transform a _flat_ list of elements with `parentId`-references to a nested list. 
 
@@ -108,7 +106,7 @@ results in
     </entry>
 
 
-### IP-Converter 
+## IP-Converter 
 
 This snippet converts an IP address to its numeric representation: 
 
@@ -128,7 +126,7 @@ results in
     2250433089
 
 
-### Count number of files 
+## Count number of files 
 
 This snippets returns the number of JPG files in a directory and its sub-directories: 
 

@@ -1,5 +1,3 @@
-
-# Startup
  
 
 
@@ -7,7 +5,7 @@
 This article is part of the [Getting Started](Getting Started.md) Guide. It tells you how to get BaseX running. 
 
  
-## Getting Started
+# Getting Started
 
 First of all, [download](http://basex.org/download) BaseX from our homepage. The following distributions are available: 
 
@@ -24,17 +22,17 @@ BaseX can be run and used in various ways:
  * as [client/server](Database Server.md) application, or 
  * as [Web Application](Web Application.md), called from a web server. 
 
-### Requirements
+## Requirements
 
 BaseX is platform independent and runs on any system that provides an implementation of [Java 1.6](http://www.java.com) (JRE). It has been tested on Windows (2000, XP, Vista, 7), Max OS X (10.x), Linux(SuSE xxx, Debian, Ubuntu) and OpenBSD (4.x). 
 
 
-### Concurrent Operations
+## Concurrent Operations
 
 If you plan to perform concurrent read and write operations on a single database, the client/server architecture is the right choice. You may safely open the same database in different JVMs (Java virtual machines) for read-only access, and you won’t encounter any problems when reading from or writing to different databases, but your update operations will be rejected if the database to be written to is currently opened by another virtual machine. 
 
 
-### BaseX GUI
+## BaseX GUI
 
 The [GUI](http://docs.basex.org/wiki/Graphical User Interface) is the visual interface to the features of BaseX. It can be used to create new databases, perform queries or interactively explore your XML data. 
 
@@ -50,7 +48,7 @@ The GUI can be started as follows (get more information on all [Startup Options]
 Note that the GUI does _not_ interact with the client/server architecture. 
 
 
-### BaseX Standalone
+## BaseX Standalone
 
 The [Standalone Mode](Standalone Mode.md) can be used to execute XQuery expressions or run database commands on command line. It can also be used both for scripting and batch processing your XML data. 
 
@@ -64,7 +62,7 @@ The standalone version can be started as follows (get more information on all [S
 Note that the standalone mode does _not_ interact with the client/server architecture. 
 
 
-### BaseX Server
+## BaseX Server
 
 The [Database Server](Database Server.md) comes into play if BaseX is to be used by more than one user (client). It handles concurrent [read and write transactions](Transaction Management.md), provides [user management](User Management.md) and [logs all user interactions](Logging.md). 
 
@@ -78,7 +76,7 @@ By default, the server listens to the port `1984`. There are several ways of sta
 Pressing `Ctrl+c` will close all connections and databases and shut down the server process. 
 
 
-### BaseX Client
+## BaseX Client
 
 The [BaseX Client](Database Server.md) interface can be used to send commands and queries to the server instance on command line. 
 
@@ -100,7 +98,7 @@ The password should be changed with the `PASSWORD` command after the first login
 Please check out the article on the [Database Server](Database Server.md) for more details. 
 
 
-### BaseX HTTP Server
+## BaseX HTTP Server
 
 The HTTP Server gives access to the [REST](REST.md), [RESTXQ](RESTXQ.md) and [WebDAV](WebDAV.md) Services of BaseX. By default, it starts an instance of the [Jetty Web Server](http://jetty.codehaus.org/jetty/), which by default listens to the port `8984`, and the BaseX Server, which listens to `1984`. 
 
@@ -115,7 +113,7 @@ To run the HTTP Server, you need to [download](http://basex.org/products/downloa
 After that, you can open your browser and navigate to the start page [http://localhost:8984](http://localhost:8984). 
 
  
-## Changelog
+# Changelog
 ** Version 7.0 **
 
  * Updated: BaseXJAXRX has been replaced with BaseXHTTP 

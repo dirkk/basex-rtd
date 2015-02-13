@@ -1,5 +1,3 @@
-
-# XForms
  
 
 
@@ -10,12 +8,12 @@ This page is part of the [Developer Section](Developing.md) and belongs to the [
 XForms provides mechanisms to display and edit the contents of XML snippets in the browser without resorting to JavaScript. In combination with the [RESTXQ](RESTXQ.md) API and the database backend, this is an elegant way of building web applications that completely reside in the XML stack. 
 
  
-## Internals
+# Internals
 
 If an HTML document with XForms elements is requested, a web form is generated, which allows users to edit the contents of an XML file. The data model stays consistent during this process, i.e. the data types are always as described in the models. Actions can be configured as well: the model can e. g. be sent to a server and processed further, using the [REST](REST.md) or [RESTXQ](RESTXQ.md) APIs. 
 
 
-### Run the example
+## Run the example
 
 Several [implementations](http://www.w3.org/community/xformsusers/wiki/XForms_Implementations) of the XForms Recommendation are available (some AJAX-based, some client-side). In this article, we will focus on the light-weight, LGPL-licensed [XSLTForms](http://www.agencexml.com/xsltforms) project from Alain Couthures. The following steps are required to get the XForms example running: 
 
@@ -71,7 +69,7 @@ To modify the XML instance, `xf:input` elements are used. With the following cod
 an input element is displayed that allows users to change the date. As `xs:date` was bound to dates in the data model, a date picker will be presented for choosing a valid date. 
 
 
-### Further reading
+## Further reading
 
 For further reading, you are invited to 
 

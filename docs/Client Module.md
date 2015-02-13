@@ -1,5 +1,3 @@
-
-# Client Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains functions to access remote BaseX server instances from XQuery. With this module, you can on the one hand execute database commands and on the other hand evaluate queries, the results of which are returned as XDM sequences. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/client` namespace, which is statically bound to the `client` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### client:connect
+## client:connect
 
 client:connect($host as xs:string, $port as xs:integer, $user as xs:string, $password as xs:string) as xs:anyURI
 
@@ -26,7 +24,7 @@ client:connect($host as xs:string, $port as xs:integer, $user as xs:string, $pas
     `BXCL0001`: an error occurs while creating the session (possible reasons: server not available, access denied). 
 
 
-### client:execute
+## client:execute
 
 client:execute($id as xs:anyURI, $command as xs:string) as xs:string
 
@@ -46,14 +44,14 @@ client:execute($id as xs:anyURI, $command as xs:string) as xs:string
     client:execute(., 'create database TEST')
 
 
-### client:info
+## client:info
 
 client:info($id as xs:anyURI) as xs:string
 
 :   This function returns an information string, created by a previous call of [client:execute](Client Module.md#client-execute). `$id` specifies the session id. 
 
 
-### client:query
+## client:query
 
 Updated with Version 8.0: Bound values may now contain no or more than one item. 
 
@@ -61,8 +59,7 @@ Updated with Version 8.0: Bound values may now contain no or more than one item.
 client:query($id as xs:anyURI, $query as xs:string) as item()*
 client:query($id as xs:anyURI, $query as xs:string, $bindings as map(*)) as item()*
 
-:   Evaluates a query and returns the result as sequence. The parameter `$id` contains the session id returned by [client:connect](Client Module.md#client-connect), and `$query` represents the query string, which will be evaluated by the server.Variables and the context item can be declared via `$bindings`. The specified keys must be QNames or strings:  * If a key is a QName, it will be directly adopted as variable name.     * If a key is a string, it may be prefixed with a dollar sign. A namespace can be specified using the [Clark Notation](http://www.jclark.com/xml/xmlns.htm). If the specified string is empty, the value will be bound to the context item. 
-
+:   Evaluates a query and returns the result as sequence. The parameter `$id` contains the session id returned by [client:connect](Client Module.md#client-connect), and `$query` represents the query string, which will be evaluated by the server.Variables and the context item can be declared via `$bindings`. The specified keys must be QNames or strings:  * If a key is a QName, it will be directly adopted as variable name. 
 
     **Errors**
 
@@ -79,7 +76,7 @@ client:query($id as xs:anyURI, $query as xs:string, $bindings as map(*)) as item
     The following query performs a query on a first server, the results of which are passed on to a second server: 
 
 
-### client:close
+## client:close
 
 client:close($id as xs:anyURI) as empty-sequence()
 
@@ -91,7 +88,7 @@ client:close($id as xs:anyURI) as empty-sequence()
     `BXCL0003`: an I/O error occurs while transferring data from or to the server. 
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -102,7 +99,7 @@ client:close($id as xs:anyURI) as empty-sequence()
 `BXCL0005` |  An error occurred while evaluating a query. Will only be raised if the XQuery error cannot be extracted from the returned error string. 
 `BXCL0006` |  A value to be bound is no single item. 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Updated: Bound values may now contain no or more than one item in [client:query](Client Module.md#client-query). 

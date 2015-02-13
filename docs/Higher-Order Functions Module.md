@@ -1,5 +1,3 @@
-
-# Higher-Order Functions Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) adds some useful higher-order functions, additional to the [Higher-Order Functions](Higher-Order Functions.md) provided by the official specification. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/hof` namespace, which is statically bound to the `hof` prefix. 
 
  
-## Functions
+# Functions
 
-### hof:id
+## hof:id
 
 hof:id($expr as item()*) as item()*
 
@@ -45,7 +43,7 @@ hof:id($expr as item()*) as item()*
     returns: `1 2 3 4 5 | 5 4 3 2 1`
 
 
-### hof:const
+## hof:const
 
 hof:const($expr as item()*, $ignored as item()*) as item()*
 
@@ -100,7 +98,7 @@ hof:const($expr as item()*, $ignored as item()*) as item()*
     returns `3 42`
 
 
-### hof:fold-left1
+## hof:fold-left1
 
 hof:fold-left1($seq as item()+, $f as function(item()*, item()) as item()*) as item()*
 
@@ -113,7 +111,7 @@ hof:fold-left1($seq as item()+, $f as function(item()*, item()) as item()*) as i
     * `hof:fold-left1((), function($a, $b) { $a + $b })`  throws `XPTY0004`, because `$seq` has to be non-empty. 
 
 
-### hof:until
+## hof:until
 
 hof:until($pred as function(item()*) as xs:boolean, $f as function(item()*) as item()*, $start as item()*) as item()*
 
@@ -136,15 +134,11 @@ hof:until($pred as function(item()*) as xs:boolean, $f as function(item()*) as i
     returns `5.000000000053722`. 
 
 
-### hof:top-k-by
+## hof:top-k-by
 
 hof:top-k-by($seq as item()*, $sort-key as function(item()) as item(), $k as xs:integer) as item()*
 
-:   Returns the `$k` items in `$seq` that are greatest when sorted by the result of `$f` applied to the item. The function is a much more efficient implementation of the following scheme:     (for $x in $seq
-    order by $sort-key($x) descending
-    return $x
-    )[position() <= $k]
-
+:   Returns the `$k` items in `$seq` that are greatest when sorted by the result of `$f` applied to the item. The function is a much more efficient implementation of the following scheme: 
 
     **Examples**
 
@@ -154,7 +148,7 @@ hof:top-k-by($seq as item()*, $sort-key as function(item()) as item(), $k as xs:
     * `hof:top-k-by(<x a='1' b='2' c='3'/>/@*, xs:integer#1, 2)/node-name()`  returns `c b`
 
 
-### hof:top-k-with
+## hof:top-k-with
 
 hof:top-k-with($seq as item()*, $lt as function(item(), item()) as xs:boolean, $k as xs:integer) as item()*
 
@@ -167,7 +161,7 @@ hof:top-k-with($seq as item()*, $lt as function(item(), item()) as xs:boolean, $
     * `hof:top-k-with(-5 to 5, function($a, $b) { abs($a) gt abs($b) }, 5)`  returns `0 1 -1 2 -2`
 
  
-## Changelog
+# Changelog
 ** Version 7.2 **
 
  * Added: [hof:top-k-by](Higher-Order Functions Module.md#hof-top-k-by), [hof:top-k-with](Higher-Order Functions Module.md#hof-top-k-with)

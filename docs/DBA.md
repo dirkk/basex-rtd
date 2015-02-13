@@ -1,5 +1,3 @@
-
-# DBA
  
 
 
@@ -23,12 +21,12 @@ Please be aware that it is an obvious **security risk** if you simply put DBA on
 The DBA has just been released, and it is in beta stage. We are looking forward to your reports and feature requests! Patches and extensions are even more welcome. 
 
  
-## Startup
+# Startup
  * Download the **ZIP Archive** or the **Windows Installer** from the [download page](http://basex.org/download)
  * Start the [BaseX HTTP Server](Startup.md#StartupBaseX_HTTP_Server)
  * Open a browser and visit the URL `http://localhost:8984/dba`
 
-### First Steps
+## First Steps
 
 On the welcome page, you will need to authenticate yourself by entering a username and password. The default user is `admin`/`admin`. By specifying a host and port, you can communicate with a remote BaseX server instance. If you keep the field empty, you will be connected to the local BaseX instance. 
 
@@ -36,7 +34,7 @@ On the welcome page, you will need to authenticate yourself by entering a userna
  The main page of the DBA interface contains a list of all databases on the left. On the right, the global and local options are listed, along with some system information. With the "Create…" button, a new database can be created. Existing database can be viewed, optimized, and dropped.  | ![Bla.png](img/Bla.png)DBA Main Page
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------
  
-## Changelog
+# Changelog
 
 Introduced with Version 8.0. 
 

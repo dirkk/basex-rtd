@@ -1,5 +1,3 @@
-
-# Query Mode
  
 
 
@@ -7,7 +5,7 @@
 The query mode of the [Clients](Clients.md) allows you to bind external variables to a query and evaluate the query in an iterative manner. The `query()` function of the `Session` instance returns a new query instance.
 
  
-## Usage
+# Usage
 
 The query execution works as follows: 
 
@@ -21,7 +19,7 @@ The query execution works as follows:
 8. `options()`  returns the query serialization parameters. 
 9. Don't forget to close the query with `close()`. 
 
-### PHP Example
+## PHP Example
 
 Taken from our [repository](https://github.com/BaseXdb/basex-api/blob/master/src/main/php/QueryBindExample.php): 
 
@@ -61,7 +59,7 @@ Taken from our [repository](https://github.com/BaseXdb/basex-api/blob/master/src
     ?>
 
  
-## Changelog
+# Changelog
 ** Version 7.2 **
 
  * Added: `context()` function 

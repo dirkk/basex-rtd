@@ -1,5 +1,3 @@
-
-# Profiling Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains various testing, profiling and helper functions. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/prof` namespace, which is statically bound to the `prof` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### prof:time
+## prof:time
 
 prof:time($expr as item()) as item()*
 prof:time($expr as item(), $cache as xs:boolean) as item()*
@@ -29,7 +27,7 @@ prof:time($expr as item(), $cache as xs:boolean, $label as xs:string) as item()*
     * `prof:time("1 to 100000", true())`  may output `208.12 ms`. 
 
 
-### prof:mem
+## prof:mem
 
 prof:mem($expr as item()) as item()*
 prof:mem($expr as item(), $cache as xs:boolean) as item()*
@@ -44,21 +42,21 @@ prof:mem($expr as item(), $cache as xs:boolean, $label as xs:string) as item()*
     * `prof:mb("1 to 100000", true())`  may output `26.678 mb`. 
 
 
-### prof:sleep
+## prof:sleep
 
 prof:sleep($ms as xs:integer) as empty-sequence()
 
 :   Sleeps for the specified number of milliseconds. 
 
 
-### prof:human
+## prof:human
 
 prof:human($number as xs:integer) as xs:string
 
 :   Returns a human-readable representation of the specified `$number`. 
 
 
-### prof:dump
+## prof:dump
 
 prof:dump($expr as item()) as empty-sequence()
 prof:dump($expr as item(), $label as xs:string) as empty-sequence()
@@ -66,21 +64,21 @@ prof:dump($expr as item(), $label as xs:string) as empty-sequence()
 :   Dumps a serialized representation of `$expr` to `STDERR`, optionally prefixed with `$label`, and returns an empty sequence. If the GUI is used, the dumped result is shown in the [Info View](Graphical User Interface.md#Visualizations). 
 
 
-### prof:current-ms
+## prof:current-ms
 
 prof:current-ms() as xs:integer
 
 :   Returns the number of milliseconds passed since 1970/01/01 UTC. The granularity of the value depends on the underlying operating system and may be larger. For example, many operating systems measure time in units of tens of milliseconds. 
 
 
-### prof:current-ns
+## prof:current-ns
 
 prof:current-ns() as xs:integer
 
 :   Returns the current value of the most precise available system timer in nanoseconds. 
 
 
-### prof:void
+## prof:void
 
 prof:void($value as item()*) as empty-sequence()
 
@@ -92,7 +90,7 @@ prof:void($value as item()*) as empty-sequence()
     * `prof:void(fetch:binary('http://my.rest.service'))`  performs an HTTP request and ignores the result. 
 
  
-## Changelog
+# Changelog
 ** Version 7.7 **
 
  * Added: `prof:void`

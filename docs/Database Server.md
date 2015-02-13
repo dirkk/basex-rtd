@@ -1,5 +1,3 @@
-
-# Database Server
  
 
 
@@ -7,12 +5,12 @@
 This step by step tutorial is part of the [Getting Started](Getting Started.md) Guide. It shows you how to run BaseX in client-server mode from a terminal. You can copy and paste all commands to get them running on your machine. After you finished this tutorial, you will be familiar with the basic administration of BaseX. Visit the [commands section](Commands.md) for a complete list of database commands. 
 
  
-## Startup
+# Startup
 
 First, launch a **Server** and **Client** instance of BaseX: double click on the **BaseX Server/Client** icons, or run the `basexserver` and `basexclient` scripts. [Follow this link](Startup.md#StartupBaseX_Server) for more information (or check out the additional [command-line options](Command-Line Options.md#Command-Line_OptionsBaseX_Server)). 
 
 
-### Create a database
+## Create a database
  * To create a database you need an XML document, e.g. [factbook.xml](http://files.basex.org/xml/factbook.xml). 
  * Save this document to the directory you are working in. 
  * In the client terminal, type in: 
@@ -33,7 +31,7 @@ If everything works you see the following lines:
 By default, databases are stored in the `BaseXData` directory, which is located in your home folder. Depending on your [Configuration](Configuration.md), the location of your home folder varies. For example, on a Mac it's `/Users/John`, if your name is John. If you have used the Windows Installer, the directory will be named `data`, and reside in the application directory. 
 
 
-### Execute a query
+## Execute a query
 
 The [XQUERY](Commands.md#XQUERY) command lets you run a query. 
 
@@ -46,7 +44,7 @@ The [XQUERY](Commands.md#XQUERY) command lets you run a query.
 ` > RUN /Users/John/query.xq `
 
 
-### Create a new database
+## Create a new database
 
 Now we will create another database from the [xmark.xml](http://files.basex.org/xml/xmark.xml) document. 
 
@@ -63,7 +61,7 @@ Now we will create another database from the [xmark.xml](http://files.basex.org/
 ` > XQUERY //people/person/name `
 
 
-### Switch the database
+## Switch the database
  * You can explicitly query the factbook database with the `doc(...)` funtion, no matter what the current context is. 
 
 ` > XQUERY doc("factbook")//country `
@@ -77,7 +75,7 @@ Now we will create another database from the [xmark.xml](http://files.basex.org/
 ` > LIST`
 
 
-### Close or delete a database
+## Close or delete a database
  * To [close](Commands.md) the current context database, please type: 
 
 ` > CLOSE`
@@ -87,7 +85,7 @@ Now we will create another database from the [xmark.xml](http://files.basex.org/
 ` > DROP DB xmark `
 
 
-### Create a collection
+## Create a collection
 
 **What is a collection?** With BaseX you can group documents into one logical collection. A collection is a database that contains two or more documents. Collections accept any type of XML documents, regardless of their structure. 
 
@@ -103,7 +101,7 @@ Let's add the xmark.xml document to the factbook database to create a collection
 ` > ADD xmark.xml `
 
 
-### Delete a document
+## Delete a document
  * Deleting a document from a collection is easy: 
 
 ` > DELETE xmark.xml `
@@ -112,7 +110,7 @@ Let's add the xmark.xml document to the factbook database to create a collection
 Make sure that the collection, which contains the **xmark.xml** document, is opened. 
 
 
-### Delete a collection
+## Delete a collection
 
 Deleting a collection is the same as deleting a database. 
 
@@ -121,7 +119,7 @@ Deleting a collection is the same as deleting a database.
 ` > DROP DB factbook `
 
 
-### Get server information
+## Get server information
 
 Several commands help to explore the state of a server. For a complete list, please visit the [Commands](Commands.md) Section. 
 
@@ -138,7 +136,7 @@ Several commands help to explore the state of a server. For a complete list, ple
 ` > SHOW USERS`
 
 
-### Backup and restore
+## Backup and restore
  * To backup your database, type: 
 
 ` > CREATE BACKUP factbook `
@@ -154,7 +152,7 @@ Several commands help to explore the state of a server. For a complete list, ple
 The backup-file is stored in the database directory. The file is named `factbook-timestamp.zip` (`db_name-timestamp.zip`). To restore the database the file with the newest timestamp is taken. 
 
 
-### See also 
+## See also 
 
 [Standalone Mode](Standalone Mode.md), [GUI](http://docs.basex.org/wiki/Graphical User Interface), [Getting Started](Getting Started.md), [Advanced Usage](http://docs.basex.org/wiki/Advanced User's Guide)
 

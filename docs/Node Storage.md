@@ -1,5 +1,3 @@
-
-# Node Storage
  
 
 
@@ -7,7 +5,7 @@
 This article describes the [Storage Layout](Storage Layout.md) of the main database table. 
 
  
-## Node Table
+# Node Table
 
 BaseX stores all XML nodes in a flat table. The node table of a database can be displayed via the [INFO STORAGE](Commands.md#INFO_STORAGE) command: 
 
@@ -20,12 +18,12 @@ BaseX stores all XML nodes in a flat table. The node table of a database can be 
       2    1    1    1   2   0  TEXT  HiThere
 
 
-### PRE Value
+## PRE Value
 
 The _pre_ value of a node represents the order in which the XML nodes are visited by a SAX parser. It is actually not stored in the database; instead, it is implicitly given by the table position. As a result, it will change whenever a node with a smaller _pre_ values is added to or deleted from a database. 
 
 
-### ID Value
+## ID Value
 
 Each database node has a persistent _id_ value, which remains valid after update operations, and which is referenced by the [value indexes](Indexes.md#Value_Indexes). As long as no updates are performed on a database, the _pre_ and _id_ values are identical. The values will remain to be identical if new nodes are exclusively added to the end of the database. If nodes are deleted or inserted somewhere else, the values will diverge, as shown in the next example: 
 
@@ -42,7 +40,7 @@ Each database node has a persistent _id_ value, which remains valid after update
 The [db:node-pre](Database Module.md#db-node-pre) and [db:node-id](Database Module.md#db-node-id) functions can be called to retrieve the _pre_ and _id_ values of a node, and [db:open-pre](Database Module.md#db-open-pre) and [db:open-id](Database Module.md#db-open-id) can be used to go back and retrieve the original node. By default, _id_ lookups are expensive. If the [UPDINDEX](Options.md#UPDINDEX) option is turned on, an additional index will be maintained to speed up the process. 
 
 
-### Block Storage
+## Block Storage
 
 BaseX logically splits the `tbl.basex` file into blocks with length 4096 bytes, i.e. each block can have max 256 records each with length 16 bytes. The records within a block are sorted by their pre value (which, therefore, can be implicitly determined and need not be saved). 
 

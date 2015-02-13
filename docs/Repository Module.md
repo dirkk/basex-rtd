@@ -1,5 +1,3 @@
-
-# Repository Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains functions for installing, listing and deleting modules contained in the [Repository](Repository.md). 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/repo` namespace, which is statically bound to the `repo` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### repo:install
+## repo:install
 
 repo:install($path as xs:string) as empty-sequence()
 
@@ -26,7 +24,7 @@ repo:install($path as xs:string) as empty-sequence()
     `BXRE0001`: the package does not exist.`BXRE0002`: a package uses an invalid namespace URI.`BXRE0003`: the package to be installed requires a package which is still not installed.`BXRE0004`: the package descriptor is invalid.`BXRE0005`: the module contained in the package to be installed is already installed as part of another package.`BXRE0006`: the package cannot be parsed.`BXRE0009`: the package version is not supported.`BXRE0010`: the package contains an invalid JAR descriptor.`BXRE0011`: the package contains a JAR descriptor but it cannot be read. 
 
 
-### repo:delete
+## repo:delete
 
 repo:delete($pkg as xs:string) as empty-sequence()
 
@@ -38,14 +36,14 @@ repo:delete($pkg as xs:string) as empty-sequence()
     `BXRE0007`: the package cannot be deleted.`BXRE0008`: another package depends on the package to be deleted. 
 
 
-### repo:list
+## repo:list
 
 repo:list() as element(package)*
 
 :   Lists the names and versions of all currently installed packages. 
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -61,7 +59,7 @@ repo:list() as element(package)*
 `BXRE0010` | The package contains an invalid JAR descriptor. 
 `BXRE0011` | The package contains a JAR descriptor but it cannot be read. 
  
-## Changelog
+# Changelog
 ** Version 7.2.1 **
 
  * Updated: [repo:install](Repository Module.md#repo-install): existing packages will be replaced 

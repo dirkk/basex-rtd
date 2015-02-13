@@ -1,5 +1,3 @@
-
-# Databases
  
 
 
@@ -10,7 +8,7 @@ This page is part of the [Getting Started](Getting Started.md) Section.
 In BaseX, a _database_ is a pretty light-weight concept and can be compared to a _collection_. It contains an arbitrary number of **resources**, addressed by their unique database path. Resources can either be **XML documents** or **raw files** (binaries). Some information on [binary data](Binary Data.md) can be found on an extra page. 
 
  
-## Create Databases
+# Create Databases
 
 New databases can be created via commands, in the GUI, or with any of our [APIs](Developing.md). If some input is specified along with the create operation, it will be added to the database in a bulk operation: 
 
@@ -23,12 +21,12 @@ Database must follow the [valid names constraints](Commands.md#Valid_Names). Var
 **Note:** A main-memory only database can be created using the the `SET MAINMEM true` command before calling `CREATE DB` ([see below](Databases.md#In_Memory_Database) for more). 
 
  
-## Access Resources
+# Access Resources
 
 Stored resources and external documents can be accessed in different ways: 
 
 
-### XML Documents
+## XML Documents
 
 Various XQuery functions exist to access XML documents in databases: 
 
@@ -70,7 +68,7 @@ If the argument of `fn:doc` or `fn:collection` does not start with a valid datab
  * `doc("myfile.xml")` : retrieves the given file from the file system and returns it as a main-memory document node. Note that updates to main-memory nodes are not automatically written back to disk unless the `WRITEBACK` option is set. 
  * `collection("/path/to/docs")` : returns a main-memory collection with all XML documents found at the addressed file path. 
 
-### Raw Files
+## Raw Files
  * XQuery: `db:retrieve("dbname", "path/to/docs")` returns raw files in their Base64 representation. By choosing `"method=raw"` as [Serialization Option](Serialization.md), the data is returned in its original byte representation: 
 
     declare option output:method "raw";
@@ -78,10 +76,10 @@ If the argument of `fn:doc` or `fn:collection` does not start with a valid datab
 
  * Commands: `RETRIEVE` returns raw files without modifications. 
 
-### HTTP Services
+## HTTP Services
  * With [REST](REST.md) and [WebDAV](WebDAV.md), all database resources can be requested in a uniform way, no matter if they are well-formed XML documents or binary files. 
  
-## Update Resources
+# Update Resources
 
 Once you have created a database, additional commands exist to modify its contents: 
 
@@ -121,7 +119,7 @@ You may as well use the BaseX-specific [XQuery Database Functions](Database Modu
 Last but not least, XML documents can also be added via the GUI and the _Database_ menu. 
 
  
-## Export Data
+# Export Data
 
 All resources stored in a database can be _exported_, i.e., written back to disk. This can be done in several ways: 
 
@@ -129,14 +127,14 @@ All resources stored in a database can be _exported_, i.e., written back to disk
  * GUI: Go to _Database_ → _Export_, choose the target directory and press _OK_
  * WebDAV: Locate the database directory (or a sub-directory of it) and copy all contents to another location 
  
-## In Memory Database
+# In Memory Database
  * In the standalone context, a main-memory database can be created (using `CREATE DB`), which can then be accessed by subsequent commands. 
  * If a BaseX server instance is started, and if a database is created in its context (using `CREATE DB`), other BaseX client instances can access (and update) this database (using OPEN, db:open, etc.) as long as no other database is opened/created by the server. 
 
 **Note:** main-memory database instances are also created by the invocation of `doc(...)` or `collection(...)`, if the argument is not a database (no matter which value is set for MAINMEM). In other words: the same internal representation is used for main-memory databases and documents/collections generated via XQuery. 
 
  
-## Changelog
+# Changelog
 ** Version 7.2.1 **
 
  * Updated: `fn:document-uri` and `fn:base-uri` now return strings that can be reused with `fn:doc` or `fn:collection` to reopen the original document. 

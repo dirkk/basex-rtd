@@ -1,5 +1,3 @@
-
-# Database Module
  
 
 
@@ -7,12 +5,12 @@
 This [XQuery Module](Module Library.md) contains functions for processing databases from within XQuery. Existing databases can be opened and listed, its contents can be directly accessed, documents can be added to and removed, etc. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/db` namespace, which is statically bound to the `db` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
 
-### Database Nodes
+## Database Nodes
 
 Database nodes are XML nodes which are either stored in a persistent database or part of a so-called _database fragment_. All XML fragments can be converted to database fragments by e. g. applying the [transform](XQuery Update.md#transform) expression on an XML fragment: 
 
@@ -21,16 +19,16 @@ Database nodes are XML nodes which are either stored in a persistent database or
     := element hello { 'world' } modify () return $c
 
  
-## General Functions
+# General Functions
 
-### db:system
+## db:system
 
 db:system() as element(system)
 
 :   Returns information on the database system, such as the database path and current database settings. The output is similar to the [INFO](Commands.md#INFO) command. 
 
 
-### db:info
+## db:info
 
 db:info($db as xs:string) as element(database)
 
@@ -42,14 +40,13 @@ db:info($db as xs:string) as element(database)
     `BXDB0002`: The addressed database does not exist or could not be opened. 
 
 
-### db:list
+## db:list
 
 db:list() as xs:string*
 db:list($db as xs:string) as xs:string*
 db:list($db as xs:string, $path as xs:string) as xs:string*
 
-:   Returns a string sequence with the names of all databases:  * If a database `$db` is specified, all documents and raw files of the specified database are returned.     * The list of resources can be further restricted by the `$path` argument. 
-
+:   Returns a string sequence with the names of all databases:  * If a database `$db` is specified, all documents and raw files of the specified database are returned. 
 
     **Errors**
 
@@ -62,15 +59,13 @@ db:list($db as xs:string, $path as xs:string) as xs:string*
     * `db:list("docs")`  returns the names of all documents from the database named `docs`. 
 
 
-### db:list-details
+## db:list-details
 
 db:list-details() as element(database)*
 db:list-details($db as xs:string) as element(resource)*
 db:list-details($db as xs:string, $path as xs:string) as element(resource)*
 
-:   * If no argument is specified, a sequence of elements is returned. A single element contains the name of a database, the number of stored resources, the date of modification, and the database path.     * If `$db` is specified, a sequence of elements is returned, comprising information on all resources of the addressed database. An element contains the name of the resource, the content type, the modified date, and the raw flag. 
-    * Returned databases resources can be further restricted by the `$path` argument. 
-
+:   * If no argument is specified, a sequence of elements is returned. A single element contains the name of a database, the number of stored resources, the date of modification, and the database path. 
 
     **Errors**
 
@@ -83,7 +78,7 @@ db:list-details($db as xs:string, $path as xs:string) as element(resource)*
     * `db:list-details("docs")`  returns the names plus additional data of all documents from the database named `docs`. 
 
 
-### db:backups
+## db:backups
 
 db:backups() as element(backup)*
 db:backups($db as xs:string) as element(backup)*
@@ -96,7 +91,7 @@ db:backups($db as xs:string) as element(backup)*
     * `db:backups("factbook")`  returns all backups that have been made from the `factbook` database. 
 
 
-### db:event
+## db:event
 
 db:event($name as xs:string, $query as item()) as empty-sequence()
 
@@ -108,9 +103,9 @@ db:event($name as xs:string, $query as item()) as empty-sequence()
     `BXDB0010`: the specified event is unknown.`SEPM0016`: serialization errors occurred while sending the value. 
 
  
-## Read Operations
+# Read Operations
 
-### db:open
+## db:open
 
 db:open($db as xs:string) as document-node()*
 db:open($db as xs:string, $path as xs:string) as document-node()*
@@ -130,7 +125,7 @@ db:open($db as xs:string, $path as xs:string) as document-node()*
     * `for $i in 1 to 3 return db:open("db" || $i)//item`  returns all item elements from the databases `db1`, `db2` and `db3`. 
 
 
-### db:open-pre
+## db:open-pre
 
 db:open-pre($db as xs:string, $pre as xs:integer) as node()
 
@@ -147,7 +142,7 @@ db:open-pre($db as xs:string, $pre as xs:integer) as node()
     * `db:open-pre("docs", 0)`  returns the first database node from the database named `docs`. 
 
 
-### db:open-id
+## db:open-id
 
 db:open-id($db as xs:string, $id as xs:integer) as node()
 
@@ -159,7 +154,7 @@ db:open-id($db as xs:string, $id as xs:integer) as node()
     `BXDB0002`: The addressed database does not exist or could not be opened.`BXDB0009`: the specified id value does not exist in the database. 
 
 
-### db:node-pre
+## db:node-pre
 
 db:node-pre($nodes as node()*) as xs:integer*
 
@@ -176,7 +171,7 @@ db:node-pre($nodes as node()*) as xs:integer*
     * `db:node-pre(doc("input"))`  returns `0` if the database `input` contains a single document. 
 
 
-### db:node-id
+## db:node-id
 
 db:node-id($nodes as node()*) as xs:integer*
 
@@ -188,7 +183,7 @@ db:node-id($nodes as node()*) as xs:integer*
     `BXDB0001`: `$nodes` contains a node which is not stored in a database. 
 
 
-### db:retrieve
+## db:retrieve
 
 db:retrieve($db as xs:string, $path as xs:string) as xs:base64Binary
 
@@ -206,19 +201,12 @@ db:retrieve($db as xs:string, $path as xs:string) as xs:base64Binary
     * `stream:materialize(db:retrieve("DB", "music/01.mp3"))`  returns a materialized representation of the streamable result. 
 
 
-### db:export
+## db:export
 
 db:export($db as xs:string, $path as xs:string) as empty-sequence()
 db:export($db as xs:string, $path as xs:string, $params as item()) as empty-sequence()
 
-:   Exports the specified database `$db` to the specified file `$path`. Existing files will be overwritten. The `$params` argument contains serialization parameters (see [Serialization](Serialization.md) for more details), which can either be specified  * as children of an `<output:serialization-parameters/>` element, as defined for the [fn:serialize()](http://www.w3.org/TR/xpath-functions-30/#func-serialize) function; e.g.:     <output:serialization-parameters>
-    <output:method value='xml'/>
-    <output:cdata-section-elements value="div"/>
-    ...
-    </output:serialization-parameters>
-    * as map, which contains all key/value pairs: 
-    map { "method": "xml", "cdata-section-elements": "div", ... }
-
+:   Exports the specified database `$db` to the specified file `$path`. Existing files will be overwritten. The `$params` argument contains serialization parameters (see [Serialization](Serialization.md) for more details), which can either be specified  * as children of an `<output:serialization-parameters/>` element, as defined for the [fn:serialize()](http://www.w3.org/TR/xpath-functions-30/#func-serialize) function; e.g.: 
 
     **Errors**
 
@@ -233,9 +221,9 @@ db:export($db as xs:string, $path as xs:string, $params as item()) as empty-sequ
     The following query can be used to export parts of the database: 
 
  
-## Contents
+# Contents
 
-### db:text
+## db:text
 
 db:text($db as xs:string, $string as item()) as text()*
 
@@ -252,7 +240,7 @@ db:text($db as xs:string, $string as item()) as text()*
     * `db:text("DB", "QUERY")/..`  returns the parents of all text nodes of the database `DB` that match the string `QUERY`. 
 
 
-### db:text-range
+## db:text-range
 
 db:text-range($db as xs:string, $min as xs:string, $max as xs:string) as text()*
 
@@ -269,7 +257,7 @@ db:text-range($db as xs:string, $min as xs:string, $max as xs:string) as text()*
     * `db:text-range("DB", "2000", "2001")`  returns all text nodes of the database `DB` that are found in between `2000` and `2001`. 
 
 
-### db:attribute
+## db:attribute
 
 db:attribute($db as xs:string, $string as item()) as attribute()*
 db:attribute($db as xs:string, $string as item(), $attname as xs:string) as attribute()*
@@ -287,7 +275,7 @@ db:attribute($db as xs:string, $string as item(), $attname as xs:string) as attr
     * `db:attribute("DB", "QUERY", "id")/..`  returns the parents of all `id` attribute nodes of the database `DB` that have `QUERY` as string value. 
 
 
-### db:attribute-range
+## db:attribute-range
 
 db:attribute-range($db as xs:string, $min as xs:string, $max as xs:string) as attribute()*
 db:attribute-range($db as xs:string, $min as xs:string, $max as xs:string, $attname as xs:string) as attribute()*
@@ -305,12 +293,12 @@ db:attribute-range($db as xs:string, $min as xs:string, $max as xs:string, $attn
     * `db:attribute-range("DB", "id456", "id473", 'id')`  returns all `@id` attributes of the database `DB` that have a string value in between `id456` and `id473`. 
 
  
-## Updates
+# Updates
 
 **Important note:** All functions in this section are _updating functions_: they will not be immediately executed, but queued on the [Pending Update List](XQuery Update.md#Pending_Update_List), which will be processed after the actual query has been evaluated. This means that the order in which the functions are specified in the query does usually not reflect the order in which the code will be evaluated. 
 
 
-### db:create
+## db:create
 
 Updated with Version 7.9: Support for parsing and XML parsing options added. 
 
@@ -320,13 +308,7 @@ db:create($db as xs:string, $inputs as item()*) as empty-sequence()
 db:create($db as xs:string, $inputs as item()*, $paths as xs:string*) as empty-sequence()
 db:create($db as xs:string, $inputs as item()*, $paths as xs:string*, $options as item()) as empty-sequence()
 
-:   Creates a new database with name `$db` and adds initial documents specified via `$inputs` to the specified `$paths`. An existing database will be overwritten.`$inputs` may be strings or nodes different than attributes. If the `$input` source is not a file or a folder, the `$paths` argument is mandatory.Please note that `db:create` will be placed last on the [Pending Update List](XQuery Update.md#Pending_Update_List). As a consequence, a newly created database cannot be addressed in the same query.The `$options` argument can be used to change the indexing behavior. Allowed options are all [parsing](Options.md#OptionsParsing), [XML parsing](Options.md#XML_Parsing), [indexing](Options.md#Indexing) and [full-text](Options.md#OptionsFull-Text) options in lower case. Options can be specified either...  * as children of an `<options/>` element, e.g.     <options>
-    <textindex value='true'/>
-    <maxcats value='128'/>
-    </options>
-    * or as map, which contains all key/value pairs: 
-    map { "textindex": true(), "maxcats": 128 }
-
+:   Creates a new database with name `$db` and adds initial documents specified via `$inputs` to the specified `$paths`. An existing database will be overwritten.`$inputs` may be strings or nodes different than attributes. If the `$input` source is not a file or a folder, the `$paths` argument is mandatory.Please note that `db:create` will be placed last on the [Pending Update List](XQuery Update.md#Pending_Update_List). As a consequence, a newly created database cannot be addressed in the same query.The `$options` argument can be used to change the indexing behavior. Allowed options are all [parsing](Options.md#OptionsParsing), [XML parsing](Options.md#XML_Parsing), [indexing](Options.md#Indexing) and [full-text](Options.md#OptionsFull-Text) options in lower case. Options can be specified either...  * as children of an `<options/>` element, e.g. 
 
     **Errors**
 
@@ -343,7 +325,7 @@ db:create($db as xs:string, $inputs as item()*, $paths as xs:string*, $options a
     * `db:create("DB", file:list('.'), map { 'ftindex': true() })`  adds all files of the current working directory to a new database and creates a full-text index. 
 
 
-### db:drop
+## db:drop
 
 db:drop($db as xs:string) as empty-sequence()
 
@@ -360,7 +342,7 @@ db:drop($db as xs:string) as empty-sequence()
     * `db:drop("DB")`  drops the database `DB`. 
 
 
-### db:add
+## db:add
 
 Updated with Version 7.9: Support for parsing and XML parsing options added. 
 
@@ -384,7 +366,7 @@ db:add($db as xs:string, $input as item(), $path as xs:string, $options as item(
     * `db:add("DB", "/home/dir", "docs/dir")`  adds all documents in `/home/dir` to the database `DB` under the path `docs/dir`. 
 
 
-### db:delete
+## db:delete
 
 db:delete($db as xs:string, $path as xs:string) as empty-sequence()
 
@@ -402,7 +384,7 @@ db:delete($db as xs:string, $path as xs:string) as empty-sequence()
     * `db:delete("DB", "docs/dir")`  deletes all documents with paths beginning with `docs/dir` in the database `DB`. 
 
 
-### db:copy
+## db:copy
 
 db:copy($db as xs:string, $newname as xs:string) as empty-sequence()
 
@@ -414,7 +396,7 @@ db:copy($db as xs:string, $newname as xs:string) as empty-sequence()
     `BXDB0002`: The addressed database does not exist or could not be opened.`BXDB0011`: Invalid database name.`BXDB0016`: Name of source and target database is equal. 
 
 
-### db:alter
+## db:alter
 
 db:alter($db as xs:string, $newname as xs:string) as empty-sequence()
 
@@ -426,7 +408,7 @@ db:alter($db as xs:string, $newname as xs:string) as empty-sequence()
     `BXDB0002`: The addressed database does not exist or could not be opened.`BXDB0011`: Invalid database name.`BXDB0016`: Name of source and target database is equal. 
 
 
-### db:create-backup
+## db:create-backup
 
 db:create-backup($db as xs:string) as empty-sequence()
 
@@ -443,7 +425,7 @@ db:create-backup($db as xs:string) as empty-sequence()
     * `db:create-backup("DB")`  creates a backup of the database `DB`. 
 
 
-### db:drop-backup
+## db:drop-backup
 
 db:drop-backup($name as xs:string) as empty-sequence()
 
@@ -461,7 +443,7 @@ db:drop-backup($name as xs:string) as empty-sequence()
     * `db:drop-backup("DB-2014-03-13-17-36-44")`  drops the specific backup file `DB-2014-03-13-17-36-44.zip` of the database `DB`. 
 
 
-### db:restore
+## db:restore
 
 db:restore($name as xs:string) as empty-sequence()
 
@@ -479,7 +461,7 @@ db:restore($name as xs:string) as empty-sequence()
     * `db:restore("DB-2014-03-13-18-05-45")`  restores the database `DB` from the backup file with the given timestamp. 
 
 
-### db:optimize
+## db:optimize
 
 Updated with Version 7.9: Allow [UPDINDEX](Options.md#UPDINDEX) if `$all` is `true`. 
 
@@ -502,7 +484,7 @@ db:optimize($db as xs:string, $all as xs:boolean, $options as item()) as empty-s
     * `db:optimize("DB", true(), map { 'ftindex': true() })`  optimizes all database structures of the database `DB` and creates a full-text index. 
 
 
-### db:rename
+## db:rename
 
 db:rename($db as xs:string, $path as xs:string, $newpath as xs:string) as empty-sequence()
 
@@ -520,7 +502,7 @@ db:rename($db as xs:string, $path as xs:string, $newpath as xs:string) as empty-
     * `db:rename("DB", "docs/dir", "docs/newdir")`  renames all documents with paths beginning with `docs/dir` to paths beginning with `docs/newdir` in the database `DB`. 
 
 
-### db:replace
+## db:replace
 
 db:replace($db as xs:string, $path as xs:string, $input as item()) as empty-sequence()
 db:replace($db as xs:string, $path as xs:string, $input as item(), $options as item()) as empty-sequence()
@@ -541,7 +523,7 @@ db:replace($db as xs:string, $path as xs:string, $input as item(), $options as i
     The following query can be used to import files from a directory to a database: 
 
 
-### db:store
+## db:store
 
 db:store($db as xs:string, $path as xs:string, $input as item()) as empty-sequence()
 
@@ -558,7 +540,7 @@ db:store($db as xs:string, $path as xs:string, $input as item()) as empty-sequen
     * `db:store("DB", "video/sample.mov", file:read-binary('video.mov'))`  stores the addressed video file at the specified location. 
 
 
-### db:output
+## db:output
 
 db:output($result as item()*) as empty-sequence()
 
@@ -570,7 +552,7 @@ db:output($result as item()*) as empty-sequence()
     * `db:output("Prices have been deleted."), delete node //price`  deletes all `price` elements in a database and returns an info message. 
 
 
-### db:flush
+## db:flush
 
 db:flush($db as xs:string) as empty-sequence()
 
@@ -582,9 +564,9 @@ db:flush($db as xs:string) as empty-sequence()
     `BXDB0002`: The addressed database does not exist or could not be opened. 
 
  
-## Helper Functions
+# Helper Functions
 
-### db:name
+## db:name
 
 db:name($node as node()) as xs:string
 
@@ -596,7 +578,7 @@ db:name($node as node()) as xs:string
     `BXDB0001`: `$nodes` contains a node which is not stored in a database. 
 
 
-### db:path
+## db:path
 
 db:path($node as node()) as xs:string
 
@@ -608,7 +590,7 @@ db:path($node as node()) as xs:string
     `BXDB0001`: `$nodes` contains a node which is not stored in a database. 
 
 
-### db:exists
+## db:exists
 
 db:exists($db as xs:string) as xs:boolean
 db:exists($db as xs:string, $path as xs:string) as xs:boolean
@@ -622,7 +604,7 @@ db:exists($db as xs:string, $path as xs:string) as xs:boolean
     * `db:exists("DB", "resource")`  returns `true` if `resource` is an XML document or a raw file. 
 
 
-### db:is-raw
+## db:is-raw
 
 db:is-raw($db as xs:string, $path as xs:string) as xs:boolean
 
@@ -639,7 +621,7 @@ db:is-raw($db as xs:string, $path as xs:string) as xs:boolean
     * `db:is-raw("DB", "music/01.mp3")`  returns `true`. 
 
 
-### db:is-xml
+## db:is-xml
 
 db:is-xml($db as xs:string, $path as xs:string) as xs:boolean
 
@@ -656,7 +638,7 @@ db:is-xml($db as xs:string, $path as xs:string) as xs:boolean
     * `db:is-xml("DB", "dir/doc.xml")`  returns `true`. 
 
 
-### db:content-type
+## db:content-type
 
 db:content-type($db as xs:string, $path as xs:string) as xs:string
 
@@ -675,7 +657,7 @@ db:content-type($db as xs:string, $path as xs:string) as xs:string
     * `db:content-type("DB", "docs/doc01")`  returns `application/xml`, if `db:is-xml("DB", "docs/doc01")` returns `true`. 
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -694,7 +676,7 @@ db:content-type($db as xs:string, $path as xs:string) as xs:string
 `BXDB0013` | The number of specified inputs and paths differs. 
 `BXDB0014` | Path points to a directory. 
  
-## Changelog
+# Changelog
 ** Version 7.9 **
 
  * Updated: parsing options added to [db:create](Database Module.md#db-create), [db:add](Database Module.md#db-add) and [db:replace](Database Module.md#db-replace). 

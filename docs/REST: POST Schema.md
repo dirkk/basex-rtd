@@ -1,5 +1,3 @@
-
-# REST: POST Schema
  
 
 

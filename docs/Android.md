@@ -1,5 +1,3 @@
-
-# Android
  
 
 
@@ -7,12 +5,12 @@
 It is possible to create an Android port of BaseX. Therefore the present tutorial outlines the creation of a BaseX Android library, which can be used in any other application project. For the creation of the library the IDE Android Studio[[1]](http://developer.android.com/sdk/installing/studio.html) is used, but the steps are more or less equal using the Eclipse IDE. 
 
  
-## Creating the Android Library Project 
+# Creating the Android Library Project 
 
 The first step is to create an Android library project, which will be later modified to represent the BaseX Android library. In Android Studio the 'Create New Project' menu item needs to be chosen. In order to this the displayed window appears. ![Android-studio-new-project-dialog.png](img/Android-studio-new-project-dialog.png) It is important that the minimum Android version is Gingerbread 2.3.3, because of some String methods used in BaseX which are not supported by Android versions older than Gingerbread. To create an Android library project, the 'Mark this project as library' item need to be checked. An Android library is not executable and therefore does not need the creation of an Activity, which is the reason why this item is unchecked in the picture above. After finishing the dialog Android Studio creates an empty library project with all needed folders and files. The next step is to copy the BaseX code into the created project folder 'src/main/java'. Except the package 'gui' and the Java file 'BaseXGui.java' inside the 'src.main.java.org.basex'[[2]](https://github.com/BaseXdb/basex/tree/master/basex-core/src/main/java/org/basex) package can be copied into the project folder. Android does not support Java AWT and Swing, which is the reason for not copying the gui package. 
 
 
-### Adjusting the Code 
+## Adjusting the Code 
 
 After successfully copying the corresponding BaseX packages and java files into the created Android library project a few adjustments have to be done in order to get a working Android library. At this moment the BaseX source code is presented in the Android library project as well as an empty android package, as it is shown in the following image. ![Library-project-after-copying.png](img/Library-project-after-copying.png) In the empty android package a new Java class needs to be created, this class is used to create the necessary BaseX files and communicate with BaseX. This class needs the data directory of the application for storing the corresponding BaseX files. This files should be stored in the apps /data/data/.. folder which is only accessible from the application. This information is only available inside the applications context and not inside a library project, therefore it is necessary to pass this information to this class at the constructor call. The following source code shows a minimal example for a BaseX class. 
 
@@ -80,7 +78,7 @@ The result of this adjustment is, that it is now possible to use BaseX as an And
  * generate-signature(node,string,string,string,string,string[,item][,item]) 
  * validate-signature(node) 
 
-### Using the BaseX Android Library 
+## Using the BaseX Android Library 
 
 To use the BaseX library the above created BaseXDatabase class can be extended with additional methods which are delegating requests to the BaseX database and return the results. An example of this can be seen in the following code: 
 

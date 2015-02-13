@@ -1,5 +1,3 @@
-
-# Java Bindings
  
 
 
@@ -13,7 +11,7 @@ The Java Binding feature is an extensibility mechanism which enables developers 
 If the addressed Java code is not found in the classpath, it first needs to be installed in the [Repository](Repository.md). 
 
  
-## Namespace Declarations
+# Namespace Declarations
 
 Java classes can be declared via namespaces. The namespace can then be used to call static functions contained in that class. Variables are represented as function with 0 parameters. 
 
@@ -69,7 +67,7 @@ Strings with invalid XML characters will be rejected by default. The validity ch
 Note that Java code cannot be pre-compiled, and will often be evaluated slower than optimized XQuery code. 
 
  
-## Module Imports
+# Module Imports
 
 Java code can also be integrated by _importing_ classes as modules. A new instance of the addressed class is created, which can then be accessed in the query body. 
 
@@ -95,7 +93,7 @@ Advantages of this approach are:
 A drawback is that no arguments can be passed on to the class constructor. As a consequence, the addressed class must provide a constructor with no arguments. 
 
  
-## Context-Awareness
+# Context-Awareness
 
 Java classes can be coupled more closely to the BaseX core library. If a class inherits the abstract [QueryModule](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/query/QueryModule.java) class, the two variables [queryContext](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/query/QueryContext.java) and [staticContext](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/query/StaticContext.java) get available, which provide access to the global and static context of a query. Additionally, the default properties of functions can be changed via annotations: 
 
@@ -174,7 +172,7 @@ The result will look as follows:
 Please visit the XQuery 3.0 specification if you want to get more insight into [function properties](http://www.w3.org/TR/xpath-functions-30/#properties-of-functions). 
 
  
-## Locking
+# Locking
 
 By default, a Java function will be executed in parallel with other code. However, if a Java function performs sensitive write operations, it is advisable to explicitly lock the code. This can be realized via locking annotations: 
 
@@ -192,7 +190,7 @@ By default, a Java function will be executed in parallel with other code. Howeve
 If an XQuery expression is run which calls the Java `write()` function, every other query that calls `write()` or `read()` needs to wait for the query to be finished. If a query calls the `read()` function, only those queries are queued that call `write()`, because this function is only annotated with a `read` lock. More details on parallel query execution can be found in the article on [Transaction Management](Transaction Management.md). 
 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: `QueryResource` interface, called after a query has been fully evaluated. 

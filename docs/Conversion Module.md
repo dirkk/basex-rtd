@@ -1,5 +1,3 @@
-
-# Conversion Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains functions to convert data between different formats. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/convert` namespace, which is statically bound to the `convert` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Strings
+# Strings
 
-### convert:binary-to-string
+## convert:binary-to-string
 
 convert:binary-to-string($bytes as xs:anyAtomicType) as xs:string
 convert:binary-to-string($bytes as xs:anyAtomicType, $encoding as xs:string) as xs:string
@@ -32,7 +30,7 @@ convert:binary-to-string($bytes as xs:anyAtomicType, $encoding as xs:string) as 
     * `convert:binary-to-string(xs:hexBinary('48656c6c6f576f726c64'))`  returns the string `HelloWorld`. 
 
 
-### convert:string-to-base64
+## convert:string-to-base64
 
 convert:string-to-base64($input as xs:string) as xs:base64Binary
 convert:string-to-base64($input as xs:string, $encoding as xs:string) as xs:base64Binary
@@ -50,7 +48,7 @@ convert:string-to-base64($input as xs:string, $encoding as xs:string) as xs:base
     * `convert:string-to-base64('HelloWorld')`  returns the xs:base64binary item `SGVsbG9Xb3JsZA==`. 
 
 
-### convert:string-to-hex
+## convert:string-to-hex
 
 convert:string-to-hex($input as xs:string) as xs:hexBinary
 convert:string-to-hex($input as xs:string, $encoding as xs:string) as xs:hexBinary
@@ -68,9 +66,9 @@ convert:string-to-hex($input as xs:string, $encoding as xs:string) as xs:hexBina
     * `convert:string-to-hex('HelloWorld')`  returns the Base64 item `48656C6C6F576F726C64`. 
 
  
-## Binary Data
+# Binary Data
 
-### convert:bytes-to-base64
+## convert:bytes-to-base64
 
 convert:bytes-to-base64($input as xs:byte*) as xs:base64Binary
 
@@ -87,14 +85,14 @@ convert:bytes-to-base64($input as xs:byte*) as xs:base64Binary
     * `convert:string-to-base64('HelloWorld')`  returns the xs:base64binary item `SGVsbG9Xb3JsZA==`. 
 
 
-### convert:bytes-to-hex
+## convert:bytes-to-hex
 
 convert:bytes-to-hex($input as xs:byte*) as xs:hexBinary
 
 :   Converts the specified byte sequence to a `xs:hexBinary` item. Conversion is cheap, as `xs:hexBinary` items are internally represented as byte arrays. 
 
 
-### convert:binary-to-bytes
+## convert:binary-to-bytes
 
 convert:binary-to-bytes($bin as xs:anyAtomicType) as xs:byte*
 
@@ -107,9 +105,9 @@ convert:binary-to-bytes($bin as xs:anyAtomicType) as xs:byte*
     * `convert:binary-to-bytes(xs:hexBinary("4261736558"))`  returns the sequence `(66 97 115 101 88)`. 
 
  
-## Numbers
+# Numbers
 
-### convert:integer-to-base
+## convert:integer-to-base
 
 convert:integer-to-base($num as xs:integer, $base as xs:integer) as xs:string
 
@@ -122,7 +120,7 @@ convert:integer-to-base($num as xs:integer, $base as xs:integer) as xs:string
     * `convert:integer-to-base(22, 5)`  returns `'42'`. 
 
 
-### convert:integer-from-base
+## convert:integer-from-base
 
 convert:integer-from-base($str as xs:string, $base as xs:integer) as xs:integer
 
@@ -137,9 +135,9 @@ convert:integer-from-base($str as xs:string, $base as xs:integer) as xs:integer
     * `convert:integer-from-base(convert:integer-to-base(123, 7), 7)`  returns `123`. 
 
  
-## Dates and Durations
+# Dates and Durations
 
-### convert:integer-to-dateTime
+## convert:integer-to-dateTime
 
 convert:integer-to-dateTime($ms as xs:integer) as xs:dateTime
 
@@ -152,7 +150,7 @@ convert:integer-to-dateTime($ms as xs:integer) as xs:dateTime
     * `convert:integer-to-dateTime(1234567890123)`  returns `2009-02-13T23:31:30.123Z`. 
 
 
-### convert:dateTime-to-integer
+## convert:dateTime-to-integer
 
 convert:dateTime-to-integer($dateTime as xs:dateTime) as xs:integer
 
@@ -164,7 +162,7 @@ convert:dateTime-to-integer($dateTime as xs:dateTime) as xs:integer
     * `convert:dateTime-to-integer(xs:dateTime('1970-01-01T00:00:00Z'))`  returns `0`. 
 
 
-### convert:integer-to-dayTime
+## convert:integer-to-dayTime
 
 convert:integer-to-dayTime($ms as xs:integer) as xs:dayTimeDuration
 
@@ -176,7 +174,7 @@ convert:integer-to-dayTime($ms as xs:integer) as xs:dayTimeDuration
     * `convert:integer-to-dayTime(1234)`  returns `PT1.234S`. 
 
 
-### convert:dayTime-to-integer
+## convert:dayTime-to-integer
 
 convert:dayTime-to-integer($dayTime as xs:dayTimeDuration) as xs:integer
 
@@ -188,14 +186,14 @@ convert:dayTime-to-integer($dayTime as xs:dayTimeDuration) as xs:integer
     * `convert:dayTime-to-integer(xs:dayTimeDuration('PT1S'))`  returns `1000`. 
 
  
-## Errors
+# Errors
 
 **Code ** |  Description 
 --------- | -------------
 `BXCO0001` | The input is an invalid XML string, or the wrong encoding has been specified. 
 `BXCO0002` | The specified encoding is invalid or not supported. 
  
-## Changelog
+# Changelog
 ** Version 7.5 **
 
  * Added: `convert:integer-to-dateTime`, `convert:dateTime-to-integer`, `convert:integer-to-dayTime`, `convert:dayTime-to-integer`

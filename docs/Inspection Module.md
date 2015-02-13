@@ -1,5 +1,3 @@
-
-# Inspection Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains functions for extracting internal information about modules and functions and generating documentation. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/inspect` namespace, which is statically bound to the `inspect` prefix. xqDoc document instances are assigned to the `http://www.xqdoc.org/1.0` namespace, which is statically bound to the `xqdoc` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Reflection
+# Reflection
 
-### inspect:functions
+## inspect:functions
 
 Updated with Version 7.9: a query URI can now be specified. 
 
@@ -36,9 +34,9 @@ inspect:functions($uri as xs:string) as function(*)*
     Compiles all functions in `code.xqm` and invokes the function named `run`: 
 
  
-## Documentation
+# Documentation
 
-### inspect:function
+## inspect:function
 
 inspect:function($function as function(*)) as element(function)
 
@@ -55,7 +53,7 @@ inspect:function($function as function(*)) as element(function)
     The function… …is represented by `inspect:function(local:same#1)` as… 
 
 
-### inspect:context
+## inspect:context
 
 inspect:context() as element(context)
 
@@ -71,7 +69,7 @@ inspect:context() as element(context)
     Return the names of all private functions in the current context: 
 
 
-### inspect:module
+## inspect:module
 
 inspect:module($input as xs:string) as element(module)
 
@@ -88,7 +86,7 @@ inspect:module($input as xs:string) as element(module)
     An example is [shown below](Inspection Module.md#Inspection_ModuleExamples). 
 
 
-### inspect:xqdoc
+## inspect:xqdoc
 
 inspect:xqdoc($input as xs:string) as element(xqdoc:xqdoc)
 
@@ -105,7 +103,7 @@ inspect:xqdoc($input as xs:string) as element(xqdoc:xqdoc)
     An example is [shown below](Inspection Module.md#Inspection_ModuleExamples). 
 
  
-## Examples
+# Examples
 
 This is the `sample.xqm` library module: 
 
@@ -214,7 +212,7 @@ The output looks as follows if `inspect:xqdoc('sample.xqm')` is called:
     </xqdoc:xqdoc>
 
  
-## Changelog
+# Changelog
 ** Version 7.9 **
 
  * Updated: a query URI can now be specified with [inspect:functions](Inspection Module.md#inspect-functions). 

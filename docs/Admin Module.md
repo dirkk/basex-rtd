@@ -1,5 +1,3 @@
-
-# Admin Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains functions for performing admin-centric operations such as managing database users and log data. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/admin` namespace, which is statically bound to the `admin` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### admin:sessions
+## admin:sessions
 
 admin:sessions() as element(session)*
 
@@ -26,15 +24,13 @@ admin:sessions() as element(session)*
     * `admin:sessions()`  may e.g. return `<session user="admin" address="127.0.0.1:6286" database="factbook"/>`
 
 
-### admin:logs
+## admin:logs
 
 admin:logs() as element(file)*
 admin:logs($date as xs:string) as element(entry)*
 admin:logs($date as xs:string, $merge as xs:boolean) as element(entry)*
 
-:   Returns [Logging](Logging.md) data compiled by the database or HTTP server:  * If no argument is specified, a list of all log files will be returned, including the file size and date.     * If a `$date` is specified, the contents of a single log file will be returned. 
-    * If `$merge` is set to true, related log entries will be merged. Please note that the merge might not be 100% successful, as log entries may be ambiguous. 
-
+:   Returns [Logging](Logging.md) data compiled by the database or HTTP server:  * If no argument is specified, a list of all log files will be returned, including the file size and date. 
 
     **Examples**
 
@@ -44,7 +40,7 @@ admin:logs($date as xs:string, $merge as xs:boolean) as element(entry)*
     ! admin:logs(.)`  lists the contents of all log files. 
 
 
-### admin:write-log
+## admin:write-log
 
 Introduced with Version 8.0: 
 
@@ -54,7 +50,7 @@ admin:write-log($text as xs:string) as empty-sequence()
 :   Writes a string to the database logs, along with current user data (timestamp, user name). If the function is called in a web application or a database client, the IP will be logged. Otherwise, the string `STANDALONE` will be logged. 
 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: [admin:write-log](Admin Module.md#admin-write-log)

@@ -1,5 +1,3 @@
-
-# HTTP Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains a single function to send HTTP requests and handle HTTP responses. The function `send-request` is based on the [EXPath HTTP Client Module](http://expath.org/spec/http-client). It gives full control over the available request and response parameters. For simple GET requests, the [Fetch Module](Fetch Module.md) may be sufficient. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://expath.org/ns/http-client` namespace, which is statically bound to the `http` prefix. All errors are assigned to the `http://expath.org/ns/error` namespace, which is statically bound to the `exerr` prefix. 
 
  
-## Functions
+# Functions
 
-### http:send-request
+## http:send-request
 
 http:send-request($request as element(http:request)?, $href as xs:string?, $bodies as item()*) as item()+
 http:send-request($request as element(http:request)) as item()+
@@ -28,9 +26,9 @@ http:send-request($request as element(http:request)?, $href as xs:string?) as it
     `HC0001`: an HTTP error occurred.`HC0002`: error parsing the entity content as XML or HTML.`HC0003`: with a multipart response, the override-media-type must be either a multipart media type or application/octet-stream.`HC0004`: the src attribute on the body element is mutually exclusive with all other attribute (except the media-type).`HC0005`: the request element is not valid.`HC0006`: a timeout occurred waiting for the response. 
 
 
-### Examples
+## Examples
 
-#### Status Only
+### Status Only
 
 Simple GET request. As the attribute `status-only` is set to true, only the response element is returned. 
 
@@ -58,7 +56,7 @@ Simple GET request. As the attribute `status-only` is set to true, only the resp
     </http:response>
 
 
-#### Google Homepage
+### Google Homepage
 
 Retrieve Google search home page. [TagSoup](http://home.ccil.org/~cowan/XML/tagsoup/) must be contained in the class path in order to parse html. 
 
@@ -116,7 +114,7 @@ The response content type can also be overwritten in order to retrieve HTML page
     }
 
 
-#### SVG Data
+### SVG Data
 
 Content-type ending with +xml, e.g. image/svg+xml. 
 
@@ -153,7 +151,7 @@ Content-type ending with +xml, e.g. image/svg+xml.
     </svg>
 
 
-#### POST Request
+### POST Request
 
 POST request to the BaseX REST Service, specifying a username and password. 
 
@@ -195,7 +193,7 @@ POST request to the BaseX REST Service, specifying a username and password.
     </html>
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -206,7 +204,7 @@ POST request to the BaseX REST Service, specifying a username and password.
 `HC0005` | The request element is not valid. 
 `HC0006` | A timeout occurred waiting for the response. 
  
-## Changelog
+# Changelog
 ** Version 7.6 **
 
  * Updated: [http:send-request](HTTP Module.md#http-send-request): `HC0002`: is raised if the input cannot be parsed, or converted to the final data type. 

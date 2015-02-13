@@ -1,5 +1,3 @@
-
-# User Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains functions for creating and administering database users. The [User Management](User Management.md) article gives more information on database users and permissions. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module and errors are assigned to the `http://basex.org/modules/user` namespace, which is statically bound to the `user` prefix. 
 
  
-## Functions
+# Functions
 
-### user:list
+## user:list
 
 user:list() as xs:string*
 
@@ -26,7 +24,7 @@ user:list() as xs:string*
     * `user:list()`  returns all registered users. 
 
 
-### user:list-details
+## user:list-details
 
 user:list-details() as element(user)*
 user:list-details($name as xs:string) as element(user)*
@@ -53,7 +51,7 @@ user:list-details($name as xs:string) as element(user)*
     </user>
 
 
-### user:exists
+## user:exists
 
 user:exists($name as xs:string) as xs:boolean
 
@@ -70,7 +68,7 @@ user:exists($name as xs:string) as xs:boolean
     * `user:exists('admin')`  will always yield true. 
 
 
-### user:create
+## user:create
 
 user:create($name as xs:string, $password as xs:string) as empty-sequence()
 user:create($name as xs:string, $password as xs:string, $permission as xs:string) as empty-sequence()
@@ -88,7 +86,7 @@ user:create($name as xs:string, $password as xs:string, $permission as xs:string
     * `user:create('John', '7e$j#!1', 'admin')`  creates a new user 'John' with admin permissions. 
 
 
-### user:grant
+## user:grant
 
 user:grant($name as xs:string, $permission as xs:string) as empty-sequence()
 user:grant($name as xs:string, $permission as xs:string, $pattern as xs:string) as empty-sequence()
@@ -107,7 +105,7 @@ user:grant($name as xs:string, $permission as xs:string, $pattern as xs:string) 
     * `user:grant('John', 'write', 'unit*')`  allows John to write to all databases starting with the letters 'unit'. 
 
 
-### user:drop
+## user:drop
 
 user:drop($name as xs:string) as empty-sequence()
 user:drop($name as xs:string, $pattern as xs:string) as empty-sequence()
@@ -126,7 +124,7 @@ user:drop($name as xs:string, $pattern as xs:string) as empty-sequence()
     * `user:grant('John', 'unit*')`  removes the 'unit*' database pattern. If John accesses any of these database, his global permission will be checked again. 
 
 
-### user:alter
+## user:alter
 
 user:alter($name as xs:string, $newname as xs:string) as empty-sequence()
 
@@ -143,7 +141,7 @@ user:alter($name as xs:string, $newname as xs:string) as empty-sequence()
     * `user:rename('John', 'Jack')`  renames the user 'John' to 'Jack'. 
 
 
-### user:password
+## user:password
 
 user:password($name as xs:string, $password as xs:string) as empty-sequence()
 
@@ -160,7 +158,7 @@ user:password($name as xs:string, $password as xs:string) as empty-sequence()
     * `user:password('John', )`_ assigns user 'John' an empty password string._
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -175,7 +173,7 @@ user:password($name as xs:string, $password as xs:string) as empty-sequence()
 `update` | The operation can only be performed once per user or database pattern. 
 `conflict` | A user cannot be both altered and dropped. 
  
-## Changelog
+# Changelog
 
 The Module was introduced with Version 8.0. 
 

@@ -1,5 +1,3 @@
-
-# Clients
  
 
 
@@ -56,7 +54,7 @@ Many of the interfaces contain the following files:
  * `AddExample`  shows how documents can be added to a database by using streams. 
  * `EventExample`  demonstrates how to watch and unwatch [Events](Events.md). 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Updated: cram-md5 replaced with digest authentication 

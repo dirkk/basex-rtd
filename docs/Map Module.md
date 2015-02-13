@@ -1,5 +1,3 @@
-
-# Map Module
  
 
 
@@ -7,12 +5,12 @@
 This [XQuery Module](Module Library.md) contains functions for manipulating maps, which will officially be introduced with [XQuery 3.1](XQuery 3.1.md#Maps). **Please note** that the functions are subject to change until the specification has reached its final stage. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://www.w3.org/2005/xpath-functions/map` namespace, which is statically bound to the `map` prefix. 
 
  
-## Functions
+# Functions
 
 Some examples use the _map_`$week` defined as: 
 
@@ -29,7 +27,7 @@ Some examples use the _map_`$week` defined as:
     };
 
 
-### map:contains
+## map:contains
 
 map:contains($input as map(*), $key as xs:anyAtomicType) as xs:boolean
 
@@ -44,7 +42,7 @@ map:contains($input as map(*), $key as xs:anyAtomicType) as xs:boolean
     * `map:contains(map { "xyz": 23 }, "xyz")`  returns `true()`. 
 
 
-### map:entry
+## map:entry
 
 map:entry($key as xs:anyAtomicType, $value as item()*) as map(*)
 
@@ -56,7 +54,7 @@ map:entry($key as xs:anyAtomicType, $value as item()*) as map(*)
     `map:entry("M", "Monday")` creates `map { "M": "Monday" }`. 
 
 
-### map:for-each
+## map:for-each
 
 Introduced with Version 8.0: 
 
@@ -75,7 +73,7 @@ map:for-each($input as map(*), $fun as function($key as xs:anyAtomicType, $value
     )
 
 
-### map:get
+## map:get
 
 map:get($input as map(*), $key as xs:anyAtomicType) as item()*
 
@@ -89,7 +87,7 @@ map:get($input as map(*), $key as xs:anyAtomicType) as item()*
     * `map:get(map:entry(7,())), 7)`  returns `()`. _(An empty sequence as the result can also signify that the key is present and the associated value is an empty sequence.)._
 
 
-### map:keys
+## map:keys
 
 map:keys($input as map(*)) as xs:anyAtomicType*
 
@@ -101,16 +99,14 @@ map:keys($input as map(*)) as xs:anyAtomicType*
     * `map:keys(map { 1: "yes", 2: "no" })`  returns `(1,2)`. 
 
 
-### map:merge
+## map:merge
 
 Introduced with Version 8.0 (replacing `map:new`): 
 
 
 map:merge($input as map(*)*) as map(*)
 
-:   Constructs and returns a new map. The _map_ is formed by combining the contents of the maps supplied in the `$input` argument. The maps are combined as follows: 1. There is one entry in the new map for each distinct key value present in the union of the input maps, where keys are considered distinct according to the rules of the `distinct-values` function.     2. The associated value for each such key is taken from the last map in the input sequence `$input` that contains an entry with this key. 
-    There is no requirement that the supplied input maps should have the same or compatible types. The type of a map (for example `map(xs:integer, xs:string)`) is descriptive of the entries it currently contains, but is not a constraint on how the map may be combined with other maps. 
-
+:   Constructs and returns a new map. The _map_ is formed by combining the contents of the maps supplied in the `$input` argument. The maps are combined as follows: 1. There is one entry in the new map for each distinct key value present in the union of the input maps, where keys are considered distinct according to the rules of the `distinct-values` function. 
 
     **Examples**
 
@@ -121,7 +117,7 @@ map:merge($input as map(*)*) as map(*)
     * `map:merge(($week, map { 6: "Sonnabend" }))`  creates `map { 0: "Sonntag", 1: "Montag", 2: "Dienstag", 3: "Mittwoch", 4: "Donnerstag", 5: "Freitag", 6: "Sonnabend" }`. 
 
 
-### map:put
+## map:put
 
 Introduced with Version 8.0: 
 
@@ -131,7 +127,7 @@ map:put($input as map(*), $key as xs:anyAtomicType, $value as item()*) as map(*)
 :   Creates a new _map_, containing the entries of the `$input` argument and a new entry composed by `$key` and `$value`. The semantics of this function are equivalent to `map:merge(($input, map { $key, $value }))`
 
 
-### map:remove
+## map:remove
 
 map:remove($input as map(*), $key as xs:anyAtomicType) as map(*)
 
@@ -144,7 +140,7 @@ map:remove($input as map(*), $key as xs:anyAtomicType) as map(*)
     * `map:remove($week, 23)`  creates `map { 0: "Sonntag", 1: "Montag", 2: "Dienstag", 3: "Mittwoch", 4: "Donnerstag", 5: "Freitag", 6: "Samstag" }`. 
 
 
-### map:size
+## map:size
 
 map:size($input as map(*)) as xs:integer
 
@@ -157,7 +153,7 @@ map:size($input as map(*)) as xs:integer
     * `map:size(map { "true": 1, "false": 0 })`  returns `2`. 
 
 
-### map:serialize
+## map:serialize
 
 map:serialize($input as map(*)) as xs:string
 
@@ -169,7 +165,7 @@ map:serialize($input as map(*)) as xs:string
     * `map:serialize(map { 'A': (.1, xs:date('2001-01-01')) })`  returns `{ "A": (0.1, "2001-01-01") }`. 
 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Added: `map:for-each`, `map:merge`, `map:put`

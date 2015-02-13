@@ -1,5 +1,3 @@
-
-# WebDAV: Mac OSX
  
 
 

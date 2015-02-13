@@ -1,5 +1,3 @@
-
-# Server Protocol
  
 
 
@@ -7,7 +5,7 @@
 This page presents the classes and functions of the [BaseX Clients](Clients.md), and the underlying protocol, which is utilized for communicating with the database server. A detailed example demonstrates how a concrete byte exchange can look like. 
 
  
-## Workflow
+# Workflow
  * All clients are based on the client/server architecture. Hence, a BaseX database server must be started first. 
  * Each client provides a session class or script with methods to connect to and communicate with the database server. A socket connection will be established by the constructor, which expects a host, port, user name and password as arguments. 
  * The `execute()` method is called to launch a database command. It returns the result or throws an exception with the received error message. 
@@ -16,16 +14,16 @@ This page presents the classes and functions of the [BaseX Clients](Clients.md),
  * To speed up execution, an output stream can be specified by some clients; this way, all results will be directed to that output stream. 
  * Most clients are accompanied by some example files, which demonstrate how database commands can be executed or how queries can be evaluated. 
 
-### Transfer Protocol
+## Transfer Protocol
 
 All [Clients](Clients.md) use the following client/server protocol to communicate with the server. The description of the protocol is helpful if you want to implement your own client. 
 
 
-#### Conventions
+### Conventions
  * `\x` : single byte. 
  * `{...}` : utf8 strings or raw data, suffixed with a `\0` byte. To avoid confusion with this end-of-string byte, all `\0` and `\FF` bytes that occur in raw data will be prefixed with `\FF`. 
 
-#### Authentication
+### Authentication
 
 Updated with Version 8.0: As unsalted md5 hashes can easily be uncovered using rainbow tables, a light-weight variant of digest authentication is now used for client/server communication: 
 
@@ -34,7 +32,7 @@ Updated with Version 8.0: As unsalted md5 hashes can easily be uncovered using r
 3. Client sends the **user name** and a hash value. The hash is composed of the md5 hash of 
 4. Server replies with `\0` (success) or `\1` (error) 
 
-##### Legacy: cram-md5
+#### Legacy: cram-md5
 1. Client connects to server socket 
 2. Server sends a **nonce** (timestamp): `{nonce}`
 3. Client sends the **user name** and a hash value. The hash is composed of the md5 hash of 
@@ -43,7 +41,7 @@ Updated with Version 8.0: As unsalted md5 hashes can easily be uncovered using r
 Clients can easily be implemented to both support `digest` and `cram-md5` authentication: If the first server response contains no colon, `cram-md5` should be chosen. 
 
 
-#### Command Protocol
+### Command Protocol
 
 The following byte sequences are sent and received from the client (please note that a specific client may not support all of the presented commands): 
 
@@ -60,7 +58,7 @@ The following byte sequences are sent and received from the client (please note 
  STORE  | `\13 {path} {input}` | `{info} \0` |  Stores a binary resource in the opened database. 
  ↯ error  |  | `{`_partial result_`} {error} \1` |  Error feedback. 
 
-#### Query Command Protocol
+### Query Command Protocol
 
 Queries are referenced via an `id`, which has been returned by the `QUERY` command (see above). 
 
@@ -80,7 +78,7 @@ Queries are referenced via an `id`, which has been returned by the `QUERY` comma
 As can be seen in the table, all results end with a single `\0` byte, which indicates that the process was successful. If an error occurs, an additional byte `\1` is sent, which is then followed by the `error` message string. 
 
 
-##### Binding Sequences
+#### Binding Sequences
 
 Since Version 8.0, also sequences can be bound to variables and the context: 
 
@@ -93,7 +91,7 @@ Some examples for the `{value}` argument:
  * the two integers `123` and `789` are encoded as `123`, `\1`, `789` and `\0` (`xs:integer` may be specified via the `{type}` argument). 
  * the two items `xs:integer(123)` and `xs:string('ABC')` are encoded as `123`, `\2`, `xs:integer`, `\1`, `ABC`, `\2`, `xs:string` and `\0`. 
 
-### Example
+## Example
 
 In the following example, a client registers a new session and executes the [INFO](Commands.md#INFO) database command. Next, it creates a new query instance for the XQuery expression `1, 2+'3'`. The query is then evaluated, and the server returns the result of the first subexpression `1` and an error for the second sub expression. Finally, the query instance and client session are closed. 
 
@@ -115,12 +113,12 @@ In the following example, a client registers a new session and executes the [INF
  * **Server**  sends a response (which is equal to an empty info string) and success code: `◄ 00 00`
  * **Client**  closes the socket connection 
 
-### Constructors and Functions
+## Constructors and Functions
 
 Most language bindings provide the following constructors and functions: 
 
 
-#### Session
+### Session
  * Create and return session with host, port, user name and password:`Session(String host, int port, String name, String password)`
  * Execute a command and return the result:`String execute(String command)`
  * Return a query instance for the specified query:`Query query(String query)`
@@ -134,7 +132,7 @@ Most language bindings provide the following constructors and functions:
  * Close the session:`void close()`
 
   
-#### Query
+### Query
  * Create query instance with session and query:`Query(Session session, String query)`
  * Bind an external variable:`void bind(String name, String value, String type)`The type can be an empty string. 
  * Bind the context item:`void context(String value, String type)`The type can be an empty string. 
@@ -146,7 +144,7 @@ Most language bindings provide the following constructors and functions:
  * Return if the query may perform updates:`boolean updating()`
  * Close the query:`void close()`
 
-#### Changelog
+### Changelog
 ** Version 8.0 **
 
  * Updated: cram-md5 replaced with digest authentication 

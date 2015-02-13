@@ -1,5 +1,3 @@
-
-# Index Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) provides functions for displaying information stored in the database index structures. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/index` namespace, which is statically bound to the `index` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### index:facets
+## index:facets
 
 index:facets($db as xs:string) as xs:string
 index:facets($db as xs:string, $type as xs:string) as xs:string
@@ -33,7 +31,7 @@ index:facets($db as xs:string, $type as xs:string) as xs:string
     * `index:facets("DB", "flat")`  returns information about facets and facet values on the database `DB` in a summarized flat structure. 
 
 
-### index:texts
+## index:texts
 
 index:texts($db as xs:string) as element(value)*
 index:texts($db as xs:string, $prefix as xs:string) as element(value)*
@@ -47,7 +45,7 @@ index:texts($db as xs:string, $start as xs:string, $ascending as xs:boolean) as 
     `BXDB0002`: The addressed database does not exist or could not be opened.`BXDB0004`: the text index is not available. 
 
 
-### index:attributes
+## index:attributes
 
 index:attributes($db as xs:string) as element(value)*
 index:attributes($db as xs:string, $prefix as xs:string) as element(value)*
@@ -61,7 +59,7 @@ index:attributes($db as xs:string, $start as xs:string, $ascending as xs:boolean
     `BXDB0002`: The addressed database does not exist or could not be opened.`BXDB0004`: the attribute index is not available. 
 
 
-### index:element-names
+## index:element-names
 
 index:element-names($db as xs:string) as element(value)*
 
@@ -73,7 +71,7 @@ index:element-names($db as xs:string) as element(value)*
     `BXDB0002`: The addressed database does not exist or could not be opened. 
 
 
-### index:attribute-names
+## index:attribute-names
 
 index:attribute-names($db as xs:string) as element(value)*
 
@@ -85,7 +83,7 @@ index:attribute-names($db as xs:string) as element(value)*
     `BXDB0002`: The addressed database does not exist or could not be opened. 
 
  
-## Changelog
+# Changelog
 ** Version 7.7 **
 
  * Updated: the functions no longer accept [Database Nodes](Database Module.md#Database_Nodes) as reference. Instead, the name of a database must now be specified. 

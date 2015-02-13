@@ -1,5 +1,3 @@
-
-# Server Protocol: Types
  
 
 
@@ -7,12 +5,12 @@
 This article lists extended type information that is returned by the [Server Protocol](Server Protocol.md). 
 
  
-## XDM Meta Data
+# XDM Meta Data
 
 In most cases, the XDM meta data is nothing else than the [Type ID](Server Protocol: Types.md#Type_IDs). There are three exceptions, though: document-node(), attribute() and xs:QName items are followed by an additional {URI} string. 
 
 
-### Type IDs
+## Type IDs
 
 The following table lists the type IDs that are returned by the server. Currently, all node kinds are of type `xs:untypedAtomic`: 
 

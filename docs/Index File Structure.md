@@ -1,5 +1,3 @@
-
-# Index File Structure
  
 
 
@@ -7,9 +5,9 @@
 This page is provided to help those who are interested in the specific file format of the index files used by BaseX. It was predominantly written to aid research into the reasons for ever increasing file size when using the `UPDINDEX` option. 
 
  
-## Attribute Index Files 
+# Attribute Index Files 
 
-### atvr.basex 
+## atvr.basex 
 
 This file is made up of a series of 5-byte records. There is one record for each attribute value in the index and the records are sorted by ascending order of value. The record itself is big-endian integer value giving the position of the start of the ID list in the atvl.basex file. 
 
@@ -23,7 +21,7 @@ The bytes of the file (in hex) are:
 `00 00 00 00 08``00 00 00 00 04``00 00 00 00 06``00 00 00 00 0A`
 
 
-### atvl.basex 
+## atvl.basex 
 
 This file provides a number of details. 
 
@@ -49,7 +47,7 @@ The offset is against the beginning of the database for the first occurrence of 
 would show that there are three values of the attribute. The first is offset 11 places from the beginning of the database (ID 11), the second is offset 2 places from that (ID 13) and the third is offset two places from the second (ID 15). 
 
 
-#### Compressed Integers 
+### Compressed Integers 
 
 The example here is from a very small database so the elements of the ID lists are all one byte long. However the ID lists actually use compressed integers (see `Num` under [Storage Layout](Storage Layout.md#Data_Types) and [Num.java](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/util/Num.java)). This means that each element in the list can be from one to five bytes in length. The value of the first byte tells you how many bytes the element is and how to interpret the value. 
 
@@ -84,7 +82,7 @@ A value of `C0` shows a five-byte element. The value of the element is the direc
 `C0 11 12 13 14` is 286,397,204 
 
 
-#### Gaps in the File 
+### Gaps in the File 
 
 When an index is created by using the functions in the GUI, commands or XQuery then the atvl.basex file will be a continuous run of ID lists. However, when the index is being updated automatically because UPDINDEX is set to true then gaps can be created in the file. 
 
@@ -113,7 +111,7 @@ In versions of BaseX prior to 8.0 when items are deleted and a shorter list is r
 From BaseX 8.0 some optimizations have been applies so that while a database is open a list of free spaces is maintained and a new list will only be added to the end of the file if there isn't a free space available that is large enough. However this list of free spaces is lost when the database is closed and future operations will not be aware of any free space available when the database is opened. This, and the fact that small spaces are unlikely to be filled (single bytes for example) mean that the index file may still grow larger than it needs to be. This space can be recovered, as before, by running [OPTIMIZE](Commands.md#OPTIMIZE). 
 
 
-### Value Index Files 
+## Value Index Files 
 
 These files, txtr.basex and txtl.basex work in the same way as the attribute index files but with references to the text nodes instead of attributes. 
 

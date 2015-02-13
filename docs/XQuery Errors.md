@@ -1,5 +1,3 @@
-
-# XQuery Errors
  
 
 
@@ -13,7 +11,7 @@ As the original specifications are rather bulky and meticulous, we tried our bes
 Original definitions of the error codes are found in the [XQuery 3.0](http://www.w3.org/TR/xquery-30/), [XQuery 3.0 Functions](http://www.w3.org/TR/xpath-functions-30/), [XQuery 1.0 Update](http://www.w3.org/TR/xquery-update-10/), [XQuery 1.0 Full Text](http://www.w3.org/TR/xpath-full-text-10/), and [EXPath HTTP](http://www.expath.org/spec/http-client) Specifications. 
 
  
-## BaseX Errors
+# BaseX Errors
 
 Error Codes: `BASX`
 
@@ -28,7 +26,7 @@ Error Codes: `BASX`
 Additional, module-specific error codes are listed in the descriptions of the query modules. 
 
 
-### Static Errors
+## Static Errors
 
 Error Codes: `XPST`, `XQST`
 
@@ -89,7 +87,7 @@ Error Codes: `XPST`, `XQST`
 `XQST0113` |  Context item values may only be in the main module.  | Module: `declare context item := 1;`
 `XQST0114` |  A decimal-format property has been specified more than once.  | `declare decimal-format EN NaN="!" NaN="?"; ()`
 
-### Type Errors
+## Type Errors
 
 Error Codes: `XPTY`, `XQTY`
 
@@ -103,7 +101,7 @@ Error Codes: `XPTY`, `XQTY`
 `XQTY0024` |  An attribute node cannot be bound to its parent element, as other nodes of a different type were specified before.  | `<elem>text { attribute a { "val" } }</elem>`
 `XQTY0105` |  A function item has been specified as content of an element.  | `<X>{ false#0 }</X>`
 
-### Dynamic Errors
+## Dynamic Errors
 
 Error Codes: `XPDY`, `XQDY`
 
@@ -125,7 +123,7 @@ Error Codes: `XPDY`, `XQDY`
 `XQDY0101` |  Invalid namespace declaration.  | `namespace xmlns { 'x' }`
 `XQDY0102` |  Duplicate namespace declaration.  | `element x { namespace a {'b'}, namespace a {'c'} }`
 
-### Functions Errors
+## Functions Errors
 
 Error Codes: `FOAR`, `FOCA`, `FOCH`, `FODC`, `FODF`, `FODT`, `FOER`, `FOFD`, `FONS`, `FORG`, `FORX`, `FOTY`, `FOUT`
 
@@ -185,7 +183,7 @@ Error Codes: `FOAR`, `FOCA`, `FOCH`, `FODC`, `FODF`, `FODT`, `FOER`, `FOFD`, `FO
 `FOUT1170` |  Function argument cannot be used to retrieve a text resource.  | `unparsed-text(':')`
 `FOUT1190` |  Encoding to retrieve a text resource is invalid or not supported.  | `unparsed-text('file.txt', 'InvalidEncoding')`
 
-### Serialization Errors
+## Serialization Errors
 
 Error Codes: `SEPM`, `SERE`, `SESU`
 
@@ -199,7 +197,7 @@ Error Codes: `SEPM`, `SERE`, `SESU`
 `SERE0015` | `method` is set to `html`, and a closing bracket (>) appears inside a processing instruction.  | 
 `SEPM0016` |  A specified parameter is unknown or has an invalid value.  | `declare option output:indent "nope"; 1` | 
 
-### Update Errors
+## Update Errors
 
 Error Codes: `FOUP`, `XUDY`, `XUST`, `XUTY`
 
@@ -239,7 +237,7 @@ Error Codes: `FOUP`, `XUDY`, `XUST`, `XUTY`
 `XUTY0013` |  An expression in the `copy` clause must return a single node.  | `copy $c := (<a/>, <b/>) modify () return $c`
 `XUTY0022` |  An attribute must not be inserted into a document node.  | `insert node <e a=""/>/@a into document {'a'}`
 
-### Full-Text Errors
+## Full-Text Errors
 
 Error Codes: `FTDY`, `FTST`
 

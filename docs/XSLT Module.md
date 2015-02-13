@@ -1,5 +1,3 @@
-
-# XSLT Module
  
 
 
@@ -14,39 +12,36 @@ This [XQuery Module](Module Library.md) contains functions and variables to perf
     ctx.close();
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://basex.org/modules/xslt` namespace, which is statically bound to the `xslt` prefix. All errors are assigned to the `http://basex.org/errors` namespace, which is statically bound to the `bxerr` prefix. 
 
  
-## Functions
+# Functions
 
-### xslt:processor
+## xslt:processor
 
 xslt:processor() as xs:string
 
 :   Returns the name of the applied XSLT processor, or the path to a custom implementation (currently: "Java", "Saxon EE", "Saxon PE", or "Saxon HE"). 
 
 
-### xslt:version
+## xslt:version
 
 xslt:version() as xs:string
 
 :   Returns the supported XSLT version (currently: "1.0" or "2.0"). "Unknown" is returned if a custom implementation was chosen. 
 
 
-### xslt:transform
+## xslt:transform
 
 xslt:transform($input as item(), $stylesheet as item()) as node()
 xslt:transform($input as item(), $stylesheet as item(), $params as item()) as node()
 
-:   Transforms the document specified by `$input`, using the XSLT template specified by `$stylesheet`, and returns the result as node. `$input` and `$stylesheet` can be specified as  * `xs:string` , containing the path to the document,     * `xs:string` , containing the document in its string representation, or 
-    * `node()` , containing the document itself. 
-    The `$params` argument can be used to bind variables to a stylesheet, which can either be specified Note that only strings are supported when using Saxon (XSLT 2.0). 
+:   Transforms the document specified by `$input`, using the XSLT template specified by `$stylesheet`, and returns the result as node. `$input` and `$stylesheet` can be specified as  * `xs:string` , containing the path to the document, 
 
 
-
-### xslt:transform-text
+## xslt:transform-text
 
 xslt:transform-text($input as item(), $stylesheet as item()) as xs:string
 xslt:transform-text($input as item(), $stylesheet as item(), $params as item()) as xs:string
@@ -54,7 +49,7 @@ xslt:transform-text($input as item(), $stylesheet as item(), $params as item()) 
 :   Transforms the document specified by `$input`, using the XSLT template specified by `$stylesheet`, and returns the result as string. The parameters are the same as described for [xslt:transform](XSLT Module.md#xslt-transform). 
 
 
-### Examples
+## Examples
 
 **Example 1: Basic XSL transformation with dummy document and without parameters**
 
@@ -172,13 +167,13 @@ xslt:transform-text($input as item(), $stylesheet as item(), $params as item()) 
     <v>1</v>
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
 `BXSL0001` |  An error occurred during the transformation process. 
  
-## Changelog
+# Changelog
 ** Version 7.6 **
 
  * Added: [xslt:transform-text](XSLT Module.md#xslt-transform-text)

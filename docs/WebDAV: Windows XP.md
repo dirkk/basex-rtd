@@ -1,5 +1,3 @@
-
-# WebDAV: Windows XP
  
 
 

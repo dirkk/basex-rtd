@@ -1,5 +1,3 @@
-
-# Binary Data
  
 
 
@@ -10,7 +8,7 @@ This page is linked from the [Database](Databases.md) page.
 The BaseX store also provides support for _raw files_ (binary data). A database may contain both XML documents and raw files. XML and binary data is handled in a uniform way: a unique database path serves as key, and the contents can be retrieved via database commands, XQuery, or the various APIs. 
 
  
-## Storage
+# Storage
 
 XML documents are stored in a proprietary format to speed up XPath axis traversals and update operations, and raw data is stored in its original format in a dedicated sub-directory (called `"raw"`). Several reasons exist why we did not extend our existing storage to binary data: 
 
@@ -26,7 +24,7 @@ For some use cases, the chosen database design may bring along certain limitatio
 In the latter case, a key/value store might be the better option anyway. 
 
 
-### Usage
+## Usage
 
 More information on how to store, retrieve, update and export binary data is found in the general [Database](Databases.md) documentation. 
 

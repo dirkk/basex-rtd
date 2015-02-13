@@ -1,5 +1,3 @@
-
-# Releases
  
 
 
@@ -7,7 +5,7 @@
 This page is part of the [Developer Section](Developing.md). It lists the official locations of major and minor BaseX versions: 
 
  
-## Official Releases
+# Official Releases
 
 Our releases, packaged for various platforms, are linked from our homepage. They are updated every 2-8 weeks: 
 
@@ -17,7 +15,7 @@ Our file server contains links to older releases as well (but we recommend every
 
  * `http://files.basex.org/releases`
 
-### Stable Snapshots
+## Stable Snapshots
 
 If you are a developer, we recommend you to regularly download one of our stable snapshots, which are packaged and uploaded several times a week: 
 
@@ -26,7 +24,7 @@ If you are a developer, we recommend you to regularly download one of our stable
 Note that the offered snapshot files are replaced as soon as newer versions are available. 
 
 
-### Code Base
+## Code Base
 
 If you always want to be on the cutting edge, you are invited to [watch and clone](Git.md) our GitHub repository: 
 
@@ -35,13 +33,13 @@ If you always want to be on the cutting edge, you are invited to [watch and clon
 We do our best to keep our main repository stable as well. 
 
 
-### Maven Artifacts
+## Maven Artifacts
 
 The official releases and the current snapshots of both our core and our API packages are also deployed as [Maven](Maven.md) artifacts on our file server at regular intervals: 
 
  * `http://files.basex.org/maven/org/basex/`
 
-### Linux
+## Linux
 
 BaseX can also be found in some Linux distributions, such as Debian, Ubuntu and archlinux (Suse and other distributions will follow soon): 
 

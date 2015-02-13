@@ -1,5 +1,3 @@
-
-# Standard Mode
  
 
 
@@ -7,7 +5,7 @@
 In the standard mode of the [Clients](Clients.md), a database command can be sent to the server using the `execute()` function of the `Session`. This functions returns the whole result. With the `info()` function, you can request some information on your executed process. If an error occurs, an exception with the error message will be thrown.
 
  
-## Usage
+# Usage
 
 The standard execution works as follows:
 
@@ -17,7 +15,7 @@ The standard execution works as follows:
 4. Optionally, call `info()` to get some process information 
 5. Continue using the client (back to 2.), or close the session. 
 
-### Example in PHP
+## Example in PHP
 
 Taken from our [repository](https://github.com/BaseXdb/basex-api/blob/master/src/main/php/Example.php): 
 

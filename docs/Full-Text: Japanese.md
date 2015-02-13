@@ -1,5 +1,3 @@
-
-# Full-Text: Japanese
  
 
 
@@ -7,7 +5,7 @@
 This article is linked from the [Full-Text](Full-Text.md) page. It gives some insight into the implementation of the full-text features for Japanese text corpora. The Japanese version is [also available as PDF](http://files.basex.org/etc/ja-ft.pdf). Thank you to [Toshio HIRAI](http://blog.infinite.jp) for integrating the lexer in BaseX! 
 
  
-## Introduction
+# Introduction
 
 The lexical analysis of Japanese documents is performed by [Igo](http://igo.sourceforge.jp/). Igo is a _morphological analyser_, and some of the advantages and reasons for using Igo are: 
 
@@ -23,7 +21,7 @@ In addition to the library, one of the following dictionary files must either be
  * IPA Dictionary: [http://files.basex.org/etc/ipadic.zip](http://files.basex.org/etc/ipadic.zip)
  * NAIST Dictionary: [http://files.basex.org/etc/naistdic.zip](http://files.basex.org/etc/naistdic.zip)
 
-### Lexical Analysis
+## Lexical Analysis
 
 The example sentence "私は本を書きました。(I wrote a book.)" is analyzed as follows. 
 
@@ -49,7 +47,7 @@ The element of the decomposed part is called "Surface", the content analysis is 
 Of these, the surface is used as a token. Also, The contents of analysis of a morpheme are used in indexing and stemming. 
 
 
-### Parsing
+## Parsing
 
 During indexing and parsing, the input strings are split into single _tokens_. In order to reduce the index size and speed up search, the following word classes have been intentionally excluded: 
 
@@ -61,12 +59,12 @@ During indexing and parsing, the input strings are split into single _tokens_. I
 Thus, in the example above, `私`, `本`, and `書き` will be passed to the indexer for each token. 
 
 
-### Token Processing
+## Token Processing
 
 "Fullwidth" and "Halfwidth" (which is defined by [East Asian Width Properties](http://unicode.org/Public/UNIDATA/EastAsianWidth.txt)) are not distinguished (this is the so-called ZENKAKU/HANKAKU problem). For example, `ＸＭＬ` and `XML` will be treated as the same word. If documents are _hybrid_, i.e. written in multiple languages​​, this is also helpful for some other options of the XQuery Full Text Specification, such as the [Case](http://www.w3.org/TR/xpath-full-text-10/#ftcaseoption) or the [Diacritics](http://www.w3.org/TR/xpath-full-text-10/#ftdiacriticsoption) Option. 
 
 
-### Stemming
+## Stemming
 
 Stemming in Japanese means to analyze the results of morphological analysis ("verbs" and "adjectives") that are processed using the "prototype". 
 
@@ -85,7 +83,7 @@ Because the "auxiliary verb" is always excluded from the tokens, there is no nee
     '私は本を書いた' contains text '書く' using stemming using language 'ja''私は本を書く' contains text '書いた' using stemming using language 'ja'
 
 
-### Wildcards
+## Wildcards
 
 The Wildcard option in XQuery Full-Text is available for Japanese as well. The following example is based on '芥川 龍之介(AKUTAGAWA, Ryunosuke)', a prominent Japanese writer, the first name of whom is often spelled as "竜之介". The following two queries both return `true`: 
 

@@ -1,5 +1,3 @@
-
-# Cryptographic Module
  
 
 
@@ -7,14 +5,14 @@
 This [XQuery Module](Module Library.md) contains functions to perform cryptographic operations in XQuery. The cryptographic module is based on an early draft of the [EXPath Cryptographic Module](http://expath.org/spec/crypto) and provides the following functionality: creation of message authentication codes (HMAC), encryption and decryption, and creation and validation of XML Digital Signatures. 
 
  
-## Conventions
+# Conventions
 
 All functions in this module are assigned to the `http://expath.org/ns/crypto` namespace, which is statically bound to the `crypto` prefix. All errors are assigned to the `http://expath.org/ns/error` namespace, which is statically bound to the `experr` prefix. 
 
  
-## Message Authentication
+# Message Authentication
 
-### crypto:hmac
+## crypto:hmac
 
 crypto:hmac($message as xs:string, $key as xs:string, $algorithm as xs:string) as xs:string
 crypto:hmac($message as xs:string, $key as xs:string, $algorithm as xs:string, $encoding as xs:string) as xs:string
@@ -27,7 +25,7 @@ crypto:hmac($message as xs:string, $key as xs:string, $algorithm as xs:string, $
     `CX0013`: the specified hashing algorithm is not supported.`CX0014`: the specified encoding method is not supported.`CX0019`: the specified secret key is invalid. 
 
  
-## Encryption & Decryption
+# Encryption & Decryption
 
 The encryption and decryption functions underlie several limitations: 
 
@@ -37,7 +35,7 @@ The encryption and decryption functions underlie several limitations:
  * The result of an encryption using the same message, algorithm and key looks different each time it is executed. This is due to a random initialization vector (IV) which is appended to the message and simply increases security. 
  * As the IV has to be passed along with the encrypted message somehow, data which has been encrypted by the `crypto:encrypt` function in BaseX can only be decrypted by calling the `crypto:decrypt` function. 
 
-### crypto:encrypt
+## crypto:encrypt
 
 crypto:encrypt($input as xs:string, $encryption as xs:string, $key as xs:string, $algorithm as xs:string) as xs:string
 
@@ -49,7 +47,7 @@ crypto:encrypt($input as xs:string, $encryption as xs:string, $key as xs:string,
     `CX0016`: padding problems arise.`CX0017`: padding is incorrect.`CX0018`: the encryption type is not supported.`CX0019`: the secret key is invalid.`CX0020`: the block size is incorrect.`CX0021`: the specified encryption algorithm is not supported. 
 
 
-### crypto:decrypt
+## crypto:decrypt
 
 crypto:decrypt($input as xs:string, $type as xs:string, $key as xs:string, $algorithm as xs:string) as xs:string
 
@@ -61,7 +59,7 @@ crypto:decrypt($input as xs:string, $type as xs:string, $key as xs:string, $algo
     `CX0016`: padding problems arise.`CX0017`: padding is incorrect.`CX0018`: the encryption type is not supported.`CX0019`: the secret key is invalid.`CX0020`: the block size is incorrect.`CX0021`: the specified encryption algorithm is not supported. 
 
  
-## XML Signatures
+# XML Signatures
 
 [XML Signatures](http://www.w3.org/TR/xmldsig-core/) are used to sign data. In our case, the data which is signed is an XQuery node. The following example shows the basic structure of an XML signature. 
 
@@ -114,7 +112,7 @@ The `generate-signature` function allows to pass a `digital certificate`. This c
     </digital-certificate>
 
 
-### crypto:generate-signature
+## crypto:generate-signature
 
 crypto:generate-signature($input as node(), $canonicalization as xs:string, $digest as xs:string, $signature as xs:string, $prefix as xs:string, $type as xs:string) as node()
 crypto:generate-signature($input as node(), $canonicalization as xs:string, $digest as xs:string, $signature as xs:string, $prefix as xs:string, $type as xs:string, $xpath as xs:string, $certificate as node()) as node()
@@ -128,7 +126,7 @@ crypto:generate-signature($input as node(), $canonicalization as xs:string, $dig
     `CX0001`: the canonicalization algorithm is not supported.`CX0002`: the digest algorithm is not supported.`CX0003`: the signature algorithm is not supported.`CX0004`: the `$xpath-expression` is invalid.`CX0005`: the root name of `$digital-certificate` is not 'digital-certificate.`CX0007`: the key store is null.`CX0012`: the key cannot be found in the specified key store.`CX0023`: the certificate alias is invalid.`CX0024`: an invalid algorithm is specified.`CX0025`: an exception occurs while the signing the document.`CX0026`: an exception occurs during key store initialization.`CX0027`: an IO exception occurs.`CX0028`: the signature type is not supported. 
 
 
-### crypto:validate-signature
+## crypto:validate-signature
 
 crypto:validate-signature($input-doc as node()) as xs:boolean
 
@@ -140,7 +138,7 @@ crypto:validate-signature($input-doc as node()) as xs:boolean
     `CX0015`: the signature element cannot be found.`CX9994`: an unspecified problem occurs during validation.`CX9996`: an IO exception occurs during validation. 
 
  
-## Errors
+# Errors
 
 **Code ** | Description 
 --------- | ------------
@@ -172,7 +170,7 @@ crypto:validate-signature($input-doc as node()) as xs:boolean
 `CX0027` | An I/O Exception occurred. Added to the official specification. 
 `CX0028` | The specified signature type is not supported. Added to the official specification. 
  
-## Changelog
+# Changelog
 
 The Module was introduced with Version 7.0. 
 

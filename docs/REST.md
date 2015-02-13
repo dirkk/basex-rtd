@@ -1,5 +1,3 @@
-
-# REST
  
 
 
@@ -10,7 +8,7 @@ This page presents one of the [Web Application](Web Application.md) services. It
 BaseX offers a RESTful API for accessing distributed XML resources. REST ([REpresentational State Transfer](http://en.wikipedia.org/wiki/Representational_State_Transfer)) facilitates a simple and fast access to databases through HTTP. The HTTP methods GET, PUT, DELETE, and POST can be used to interact with the database. 
 
  
-## Usage
+# Usage
 
 By default, REST services are available at `http://localhost:8984/rest/`. If no default credentials are specified in the URL or when starting the web application, they will be requested by the client ([see further](Web Application.md#Web_ApplicationUser_Management)). 
 
@@ -18,7 +16,7 @@ By default, REST services are available at `http://localhost:8984/rest/`. If no 
 A web browser can be used to perform simple GET-based REST requests and display the response. Some alternatives for using REST are listed in the [Usage Examples](REST.md#Usage_Examples). 
 
  
-## URL Architecture
+# URL Architecture
 
 The root URL lists all available databases. The following examples assume that you have created a database instance from the [factbook.xml](http://files.basex.org/xml/factbook.xml) document: 
 
@@ -48,7 +46,7 @@ The contents of a database can be retrieved by directly addressing the resource:
 If a resource is not found, an HTTP response will be generated with `404` as status code. 
 
 
-### Parameters
+## Parameters
 
 The following **parameters** can be applied to the operations: 
 
@@ -61,9 +59,9 @@ The following **parameters** can be applied to the operations:
 While **Options** can be specified for all operations, the remaining parameters will only make sense for **Query** and **Run**. 
 
  
-## Request Methods
+# Request Methods
 
-### GET Requests
+## GET Requests
 
 If the GET method is used, all query parameters are directly specified within the URL. Additionally, the following **operations** can be specified: 
 
@@ -78,7 +76,7 @@ If the GET method is used, all query parameters are directly specified within th
  * `US-ASCII`  is chosen as output encoding, and the query `eval.xq` is evaluated:`http://localhost:8984/rest?run=eval.xq&encoding=US-ASCII`
  * The next URL lists all database users that are known to BaseX:`http://localhost:8984/rest?command=show+users`
 
-### POST Requests
+## POST Requests
 
 The body of a POST request is interpreted as XML fragment, which specifies the operation to perform. The body must conform to a given [XML Schema](http://docs.basex.org/wiki/REST:_POST_Schema). 
 
@@ -123,7 +121,7 @@ The body of a POST request is interpreted as XML fragment, which specifies the o
     </run>
 
 
-### PUT Requests
+## PUT Requests
 
 The PUT method is used to create new databases, or to add or update existing database resources: 
 
@@ -149,7 +147,7 @@ An HTTP response with status code `201` (CREATED) is sent back if the operation 
 Have a look at the [usage examples](REST.md#Usage_Examples) for more detailed examples using Java and shell tools like cURL. 
 
 
-### DELETE Requests
+## DELETE Requests
 
 The DELETE method is used to delete databases or resources within a database. 
 
@@ -161,9 +159,9 @@ The DELETE method is used to delete databases or resources within a database.
 The HTTP status code `404` is returned if no database is specified. `200` (OK) will be sent in all other cases. 
 
  
-## Assigning Variables
+# Assigning Variables
 
-### GET Requests
+## GET Requests
 
 All query parameters that have not been processed before will be treated as variable assignments: 
 
@@ -181,7 +179,7 @@ All query parameters that have not been processed before will be treated as vari
 The dollar sign can be omitted as long as the variable name does not equal a parameter keyword (e.g.: `method`). 
 
 
-### POST Requests
+## POST Requests
 
 If `query` or `run` is used as operation, external variables can be specified via the `<variable/>` element: 
 
@@ -197,7 +195,7 @@ If `query` or `run` is used as operation, external variables can be specified vi
     </query>
 
  
-## Content Type
+# Content Type
 
 As the content type of a REST response cannot be dynamically determined in all cases, it can be manually adjusted by the user. The final content type of a REST response is chosen in several steps: 
 
@@ -210,11 +208,11 @@ The following three example requests will all return `<a/>` as result and use `a
 ** **
 
  
-## Usage Examples
+# Usage Examples
 
-### Java
+## Java
 
-#### Authentication
+### Authentication
 
 Most programming languages offer libraries to communicate with HTTP servers. The following example demonstrates how easy it is to perform a DELETE request with Java. 
 
@@ -247,7 +245,7 @@ Basic access authentication can be activated in Java by adding an authorization 
     }
 
 
-#### Content-Types
+### Content-Types
 
 The content-type of the input can easily be included, just add the following property to the connection (in this example we explicitly store the input file as raw): 
 
@@ -262,7 +260,7 @@ See the [PUT Requests](REST.md#PUT_Requests) section for a description of the po
 Find Java examples for all methods here: [GET](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/rest/RESTGet.java), [POST](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/rest/RESTPost.java), [PUT](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/rest/RESTPut.java), [DELETE](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/rest/RESTDelete.java). 
 
 
-### Command Line
+## Command Line
 
 Tools such as the Linux commands [Wget](http://www.gnu.org/s/wget/) or [cURL](http://curl.haxx.se/) exist to perform HTTP requests (try copy & paste): 
 
@@ -281,7 +279,7 @@ Tools such as the Linux commands [Wget](http://www.gnu.org/s/wget/) or [cURL](ht
 
  * `curl -i -X DELETE "http://admin:admin@localhost:8984/rest/factbook"`
  
-## Changelog
+# Changelog
 ** Version 7.9 **
 
  * Updated: Also evaluate command scripts via the `run` operation. 

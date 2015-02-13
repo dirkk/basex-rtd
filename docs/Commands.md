@@ -1,5 +1,3 @@
-
-# Commands
  
 
 
@@ -7,14 +5,14 @@
 This article is part of the [Getting Started](Getting Started.md) Section. It lists all database commands supported by BaseX. Commands can e.g. be executed from the [Command Line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone), [Scripts](Commands.md#Command_Scripts), the [Clients](Clients.md), [REST](REST.md), the input field in the [GUI](http://docs.basex.org/wiki/Graphical User Interface) and other ways. If the GUI is used, all commands that are triggered by the GUI itself will show up in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations). The [Permission](User Management.md) fields indicate which rights are required by a user to perform a command in the client/server architecture. 
 
  
-## Basics
+# Basics
 
-### Command Scripts
+## Command Scripts
 
 Database commands in both the string and XML syntax can be placed in a text file and stored on disk. The default extension for BaseX command scripts is `.bxs`. If the path to a command script is passed on to BaseX, it will automatically be recognized and evaluated as such. 
 
 
-### String Syntax
+## String Syntax
 
 Multiple commands can be written in a single line and separated by semicolons, or stored as command script. Lines starting with `#` are interpreted as comments and are skipped. The following script creates a database, adds two documents to it and performs a query: 
 
@@ -26,7 +24,7 @@ Multiple commands can be written in a single line and separated by semicolons, o
     XQUERY count(//text())
 
 
-### XML Syntax
+## XML Syntax
 
 The string syntax is limited when XML snippets need to be embedded in a command, or when complex queries are to be specified. 
 
@@ -42,7 +40,7 @@ This is why database commands can also be specified in XML. Multiple commands ca
     </commands>
 
 
-### Glob Syntax
+## Glob Syntax
 
 Some commands support the glob syntax to address more than one database or user. Question marks and asterisks can be used to match one or more characters, and commas can be used to separate multiple patterns. Some examples: 
 
@@ -50,7 +48,7 @@ Some commands support the glob syntax to address more than one database or user.
  * `*AB`  addresses all names ending with the characters `AB`. 
  * `X*,Y*,Z*`  addresses all names starting with the characters `X`, `Y`, or `Z`. 
 
-### Valid Names
+## Valid Names
 
 Database, user and event names follow the same naming constraints: Names are restricted to ASCII characters. They must at least have one character, and they may contain letters, numbers and any of the special characters `!#$%&'()+-=@[]^_`{}~`. The following characters are reserved for other features: 
 
@@ -60,14 +58,14 @@ Database, user and event names follow the same naming constraints: Names are res
  * `.` : hidden folders (e.g. the [.logs directory](Logging.md)) 
  * `:*?\"<>|}` : invalid filename characters on Windows 
 
-### Aliases
+## Aliases
 
 In all commands, the `DB` keyword can be replaced by `DATABASE`. 
 
  
-## Database Operations
+# Database Operations
 
-### CREATE DB
+## CREATE DB
 
 **Syntax** | `CREATE DB [name] ([input])`
 ---------- | ----------------------------
@@ -84,7 +82,7 @@ In all commands, the `DB` keyword can be replaced by `DATABASE`.
  * `<create-db name='simple'><hello>Universe</hello></create-db>` creates a database named `simple` with an initial document `<hello>Universe</hello>`. 
 
 
-### OPEN
+## OPEN
 
 Updated with Version 8.0: path argument added. 
 
@@ -96,7 +94,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Opens the database specified by `name`. The documents to be opened can be specified by the [path] argument. 
 **Errors** | The command fails if the specified database does not exist, is currently being updated by another process or cannot be opened for some other reason. 
 
-### CHECK
+## CHECK
 
 **Syntax** | `CHECK [input]`
 ---------- | ---------------
@@ -105,7 +103,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | This convenience command combines [OPEN](Commands.md#OPEN) and [CREATE DB](Commands.md#CREATE_DB): if a database with the name `input` exists, it is opened. Otherwise, a new database is created; if the specified input points to an existing resource, it is stored as initial content. 
 **Errors** | The command fails if the addressed database could neither be opened nor created. 
 
-### CLOSE
+## CLOSE
 
 **Syntax** | `CLOSE `
 ---------- | --------
@@ -114,7 +112,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Closes the currently opened database. 
 **Errors** | The command fails if the database files could not be closed for some reason. 
 
-### EXPORT
+## EXPORT
 
 **Syntax** | `EXPORT [path]`
 ---------- | ---------------
@@ -123,7 +121,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Exports all documents in the database to the specified file `path`, using the serializer options specified by the `EXPORTER` option. 
 **Errors** | The command fails if no database is opened, if the target path points to a file or is invalid, if the serialization parameters are invalid, or if the documents cannot be serialized for some other reason. 
 
-### CREATE INDEX
+## CREATE INDEX
 
 **Syntax** | `CREATE INDEX [TEXT|ATTRIBUTE|FULLTEXT]`
 ---------- | ----------------------------------------
@@ -132,7 +130,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Creates the specified database [index](Indexes.md). 
 **Errors** | The command fails if no database is opened, if the specified index is unknown, or if indexing fails for some other reason. 
 
-### DROP INDEX
+## DROP INDEX
 
 **Syntax** | `DROP INDEX [TEXT|ATTRIBUTE|FULLTEXT]`
 ---------- | --------------------------------------
@@ -141,9 +139,9 @@ Updated with Version 8.0: path argument added.
 **Summary** | Drops the specified database [index](Indexes.md). 
 **Errors** | The command fails if no database is opened, if the specified index is unknown, or if it could not be deleted for some other reason. 
  
-## Administration
+# Administration
 
-### ALTER DB
+## ALTER DB
 
 **Syntax** | `ALTER DB [name] [newname]`
 ---------- | ---------------------------
@@ -154,7 +152,7 @@ Updated with Version 8.0: path argument added.
 **Examples** |  * `ALTER DB db tempdb` renames the database `db` into `tempdb`. 
 
 
-### DROP DB
+## DROP DB
 
 **Syntax** | `DROP DB [name]`
 ---------- | ----------------
@@ -163,7 +161,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Drops the database with the specified `name`. The [Glob Syntax](Commands.md#Glob_Syntax) can be used to address more than one database. 
 **Errors** | The command fails if the specified database does not exist or is currently locked, or if the database could not be deleted for some other reason. 
 
-### CREATE BACKUP
+## CREATE BACKUP
 
 **Syntax** | `CREATE BACKUP [name]`
 ---------- | ----------------------
@@ -174,7 +172,7 @@ Updated with Version 8.0: path argument added.
 **Examples** |  * `BACKUP db` creates a zip archive of the database `db` (e.g. `db-2011-04-01-12-27-28.zip`) in the [database directory](Configuration.md#Database_Directory). 
 
 
-### RESTORE
+## RESTORE
 
 **Syntax** | `RESTORE [name]`
 ---------- | ----------------
@@ -183,7 +181,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Restores a database with the specified `name`. The name may include the timestamp of the backup file. 
 **Errors** | The command fails if the specified backup does not exist, if the database to be restored is currently locked, or if it could not be restored for some other reason. 
 
-### INSPECT
+## INSPECT
 
 **Syntax** | `INSPECT`
 ---------- | ---------
@@ -191,7 +189,7 @@ Updated with Version 8.0: path argument added.
 **Permission** | _READ_
 **Summary** | Performs some integrity checks on the opened database and returns a brief summary. 
 
-### DROP BACKUP
+## DROP BACKUP
 
 **Syntax** | `DROP BACKUP [name]`
 ---------- | --------------------
@@ -201,7 +199,7 @@ Updated with Version 8.0: path argument added.
 **Examples** |  * `DROP BACKUP abc*` deletes the backups of all databases starting with the characters `abc`. 
 
 
-### SHOW BACKUPS
+## SHOW BACKUPS
 
 **Syntax** | `SHOW BACKUPS`
 ---------- | --------------
@@ -209,7 +207,7 @@ Updated with Version 8.0: path argument added.
 **Permission** | _CREATE_
 **Summary** | Shows all database backups. 
 
-### COPY
+## COPY
 
 **Syntax** | `COPY [name] [newname]`
 ---------- | -----------------------
@@ -218,7 +216,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Creates a copy of the database specified by `name`. `newname` must be a [valid database name](Commands.md#Valid_Names). 
 **Errors** | The command fails if the target database already exists, or if the source database does not exist. 
 
-### INFO DB
+## INFO DB
 
 **Syntax** | `INFO DB`
 ---------- | ---------
@@ -227,7 +225,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Shows information on the currently opened database. 
 **Errors** | The command fails if no database is opened. 
 
-### INFO INDEX
+## INFO INDEX
 
 **Syntax** | `INFO INDEX ([TAG|ATTNAME|PATH|TEXT|ATTRIBUTE|FULLTEXT])`
 ---------- | ---------------------------------------------------------
@@ -236,7 +234,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Shows information on the existing [index](Indexes.md) structures. The output can be optionally limited to the specified index. 
 **Errors** | The command fails if no database is opened, or if the specified index is unknown. 
 
-### INFO STORAGE
+## INFO STORAGE
 
 **Syntax** | `INFO STORAGE [start end] | [query]`
 ---------- | ------------------------------------
@@ -245,9 +243,9 @@ Updated with Version 8.0: path argument added.
 **Summary** | Shows the internal main table of the currently opened database. An integer range or a query may be specified as argument. 
 **Errors** | The command fails if no database is opened, or if one of the specified arguments is invalid. 
  
-## Querying 
+# Querying 
 
-### LIST
+## LIST
 
 **Syntax** | `LIST ([name] ([path]))`
 ---------- | ------------------------
@@ -256,7 +254,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Lists all available databases. If `name` is specified, the resources of a database are listed. The output can be further restricted to the resources matching the specified `path`. 
 **Errors** | The command fails if the optional database cannot be opened, or if the existing databases cannot be listed for some other reason. 
 
-### XQUERY
+## XQUERY
 
 **Syntax** | `XQUERY [query]`
 ---------- | ----------------
@@ -269,7 +267,7 @@ Updated with Version 8.0: path argument added.
  * `SET XMLPLAN true; XQUERY 1 to 10` returns the result and prints the query plan as XML. 
 
 
-### RETRIEVE
+## RETRIEVE
 
 **Syntax** | `RETRIEVE [path]`
 ---------- | -----------------
@@ -278,7 +276,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Retrieves a raw file from the opened database at the specified `path`. 
 **Errors** | The command fails if no database is opened, if the source path is invalid or if the data cannot not be retrieved for some other reason. 
 
-### FIND
+## FIND
 
 **Syntax** | `FIND [query]`
 ---------- | --------------
@@ -287,7 +285,7 @@ Updated with Version 8.0: path argument added.
 **Summary** | Builds and runs a query for the specified `query` terms. Keywords can be enclosed in quotes to look for phrases. The following modifiers can be used to further limit search:  `=` looks for exact text nodes`~` looks for approximate hits`@=` looks for exact attribute values`@` looks for attributes 
 **Errors** | The command fails if no database is opened. 
 
-### TEST
+## TEST
 
 Introduced with Version 7.9:
 
@@ -301,7 +299,7 @@ Introduced with Version 7.9:
 **Examples** |  * `TEST project/tests` runs all tests in the directory `project/tests`. 
 
 
-### REPO INSTALL
+## REPO INSTALL
 
 **Syntax** | `REPO INSTALL [path]`
 ---------- | ---------------------
@@ -316,7 +314,7 @@ Introduced with Version 7.9:
  * A component of the package is already installed as part of another package. 
 
 
-### REPO LIST
+## REPO LIST
 
 **Syntax** | `REPO LIST`
 ---------- | -----------
@@ -324,7 +322,7 @@ Introduced with Version 7.9:
 **Permission** | _READ_
 **Summary** |  Lists all installed packages. 
 
-### REPO DELETE
+## REPO DELETE
 
 **Syntax** | `REPO DELETE [name]`
 ---------- | --------------------
@@ -333,9 +331,9 @@ Introduced with Version 7.9:
 **Summary** |  Deletes the package with name `name`, optionally followed by a version. 
 **Errors** |  The command fails if the package to be deleted participates in a dependency. 
  
-## Updates
+# Updates
 
-### ADD
+## ADD
 
 **Syntax** | `ADD (TO [path]) [input]`
 ---------- | -------------------------
@@ -351,7 +349,7 @@ Introduced with Version 7.9:
  * `ADD TO target/ xmldir` adds all files from the `xmldir` directory to the database in the `target` path. 
 
 
-### DELETE
+## DELETE
 
 **Syntax** | `DELETE [path]`
 ---------- | ---------------
@@ -360,7 +358,7 @@ Introduced with Version 7.9:
 **Summary** | Deletes all documents from the currently opened database that start with the specified `path`. 
 **Errors** | The command fails if no database is opened. 
 
-### RENAME
+## RENAME
 
 **Syntax** | `RENAME [path] [newpath]`
 ---------- | -------------------------
@@ -372,7 +370,7 @@ Introduced with Version 7.9:
  * `RENAME / TOP` moves all documents to a `TOP` root directory. 
 
 
-### REPLACE
+## REPLACE
 
 **Syntax** | `REPLACE [path] [input]`
 ---------- | ------------------------
@@ -384,7 +382,7 @@ Introduced with Version 7.9:
  * `REPLACE top.xml <xml/>` replaces the document `top.xml` with the document `<xml/>`. 
 
 
-### STORE
+## STORE
 
 **Syntax** | `STORE (TO [path]) [input]`
 ---------- | ---------------------------
@@ -393,7 +391,7 @@ Introduced with Version 7.9:
 **Summary** | Stores a raw file in the opened database to the specified `path`. `input` may either be a file reference, a remote URL, or a plain string. If the path denotes a directory, it needs to be suffixed with a slash (`/`). 
 **Errors** | The command fails if no database is opened, if the specified resource is not found, if the target path is invalid or if the data cannot not be written for some other reason. 
 
-### OPTIMIZE
+## OPTIMIZE
 
 **Syntax** | `OPTIMIZE (ALL)`
 ---------- | ----------------
@@ -402,7 +400,7 @@ Introduced with Version 7.9:
 **Summary** | Optimizes the index structures, meta data and statistics of the currently opened database. If the `ALL` flag is specified, the internal database structures are completely rebuilt; this often leads to a reduction of the total database size. 
 **Errors** | The command fails if no database is opened, or if the currently opened database is a main-memory instance. 
 
-### FLUSH
+## FLUSH
 
 **Syntax** | `FLUSH`
 ---------- | -------
@@ -411,9 +409,9 @@ Introduced with Version 7.9:
 **Summary** | Explicitly flushes the buffers of the currently opened database to disk. This command is applied if [AUTOFLUSH](Options.md#AUTOFLUSH) has been set to `false`. 
 **Errors** | The command fails if no database is opened. 
  
-## Server Administration
+# Server Administration
 
-### SHOW SESSIONS
+## SHOW SESSIONS
 
 **Syntax** | `SHOW SESSIONS`
 ---------- | ---------------
@@ -421,7 +419,7 @@ Introduced with Version 7.9:
 **Permission** | _ADMIN_
 **Summary** | Shows all sessions that are connected to the current server instance. 
 
-### SHOW USERS
+## SHOW USERS
 
 **Syntax** | `SHOW USERS (ON [database])`
 ---------- | ----------------------------
@@ -430,7 +428,7 @@ Introduced with Version 7.9:
 **Summary** | Shows all users that are registered in the database. If a `database` is specified, all user will be shown for which a pattern was specified that matches the database name. 
 **Errors** | The command fails if the optional database could not be opened. 
 
-### KILL
+## KILL
 
 **Syntax** | `KILL [target]`
 ---------- | ---------------
@@ -439,7 +437,7 @@ Introduced with Version 7.9:
 **Summary** | Kills sessions of a user or an IP:port combination, specified by `target`. The [Glob Syntax](Commands.md#Glob_Syntax) can be used to address more than one user. 
 **Errors** | The command fails if a user tried to kill his/her own session. 
 
-### CREATE EVENT
+## CREATE EVENT
 
 **Syntax** | `CREATE EVENT [NAME]`
 ---------- | ---------------------
@@ -448,7 +446,7 @@ Introduced with Version 7.9:
 **Summary** | Creates the specified [event](Events.md). 
 **Errors** | The command fails if event already exists. 
 
-### SHOW EVENTS
+## SHOW EVENTS
 
 **Syntax** | `SHOW EVENTS`
 ---------- | -------------
@@ -456,7 +454,7 @@ Introduced with Version 7.9:
 **Permission** | _ADMIN_
 **Summary** | Shows all [events](Events.md) that have been registered in the database. 
 
-### DROP EVENT
+## DROP EVENT
 
 **Syntax** | `DROP EVENT [NAME]`
 ---------- | -------------------
@@ -465,12 +463,12 @@ Introduced with Version 7.9:
 **Summary** | Drops the specified [event](Events.md). 
 **Errors** | The command fails if the event doesn't exist. 
  
-## User Management
+# User Management
 
 Updated with Version 8.0: all passwords are now specified in plain text (see [User Management](User Management.md) for more information). Database arguments have been replaced with glob patterns. 
 
 
-### CREATE USER
+## CREATE USER
 
 **Syntax** | `CREATE USER [name] ([password])`
 ---------- | ---------------------------------
@@ -479,7 +477,7 @@ Updated with Version 8.0: all passwords are now specified in plain text (see [Us
 **Summary** | Creates a user with the specified `name` and `password`. If no password is specified, it is requested via the chosen frontend (GUI or bash). 
 **Errors** | The command fails if the specified user already exists. 
 
-### ALTER USER
+## ALTER USER
 
 Updated with Version 8.0: this command will now change the user name. 
 
@@ -491,7 +489,7 @@ Updated with Version 8.0: this command will now change the user name.
 **Summary** | Renames the user with the specified `name` to `newname`. 
 **Errors** | The command fails if the specified user does not exist, or if the new user already exists. 
 
-### ALTER PASSWORD
+## ALTER PASSWORD
 
 Renamed with Version 8.0 (before: ALTER USER). 
 
@@ -503,7 +501,7 @@ Renamed with Version 8.0 (before: ALTER USER).
 **Summary** | Alters the `password` of the user with the specified `name`. If no password is specified, it is requested via the chosen frontend (GUI or bash). 
 **Errors** | The command fails if the specified user does not exist. 
 
-### DROP USER
+## DROP USER
 
 Updated with Version 8.0: the database argument was changed to a glob pattern argument. 
 
@@ -515,7 +513,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 **Summary** | Drops the user with the specified `name`. The [Glob Syntax](Commands.md#Glob_Syntax) can be used to address more than one database or user. If a glob `pattern` is specified, only the pattern will be removed. 
 **Errors** | The command fails if `admin` is specified as user name, or if the specified user does not exist or is currently logged in. 
 
-### GRANT
+## GRANT
 
 Updated with Version 8.0: the database argument was changed to a glob pattern argument. 
 
@@ -530,7 +528,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
  * `GRANT WRITE ON Wiki TO editor*` grants `WRITE` permissions on the `Wiki` database to all users starting with the characters `editor*`. 
 
 
-### PASSWORD
+## PASSWORD
 
 **Syntax** | `PASSWORD ([password])`
 ---------- | -----------------------
@@ -538,9 +536,9 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 **Permission** | _NONE_
 **Summary** | Changes the `password` of the current user. If no password is specified, it is requested via the chosen frontend (GUI or bash). 
  
-## General Commands
+# General Commands
 
-### RUN
+## RUN
 
 **Syntax** | `RUN [file]`
 ---------- | ------------
@@ -552,7 +550,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
  * `RUN commands.bxs` will evaluated the specified file as command script 
 
 
-### EXECUTE
+## EXECUTE
 
 **Syntax** | `EXECUTE [input]`
 ---------- | -----------------
@@ -564,7 +562,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
  * `EXECUTE "<commands><create-db name='db1'/><create-db name='db2'/></commands>"` both commands will create two databases `db1` and `db2` in a single transaction. 
 
 
-### GET
+## GET
 
 **Syntax** | `GET [option]`
 ---------- | --------------
@@ -573,7 +571,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 **Summary** | Returns the current value of the [Option](Options.md) specified via `option`. Global options can only be requested by users with ADMIN permissions. 
 **Errors** | The command fails if the specified option is unknown. 
 
-### SET
+## SET
 
 **Syntax** | `SET [option] ([value])`
 ---------- | ------------------------
@@ -582,7 +580,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 **Summary** | Sets the [Option](Options.md) specified by `option` to a new `value`. Only local options can be modified. If no value is specified, and if the value is boolean, it will be inverted. 
 **Errors** | The command fails if the specified option is unknown or if the specified value is invalid. 
 
-### INFO
+## INFO
 
 **Syntax** | `INFO`
 ---------- | ------
@@ -590,7 +588,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 **Permission** | _READ_
 **Summary** | Shows global information. 
 
-### HELP
+## HELP
 
 **Syntax** | `HELP ([command])`
 ---------- | ------------------
@@ -599,7 +597,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 **Summary** | If `command` is specified, information on the specific command is printed; otherwise, all commands are listed. 
 **Errors** | The command fails if the specified command is unknown. 
 
-### EXIT
+## EXIT
 
 **Syntax** | `EXIT `
 ---------- | -------
@@ -607,7 +605,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 **Permission** | _NONE_
 **Summary** | Exits the console mode. 
 
-### QUIT
+## QUIT
 
 Introduced with Version 8.0: 
 
@@ -618,7 +616,7 @@ Introduced with Version 8.0:
 **Permission** | _NONE_
 **Summary** | Exits the console mode (alias of [EXIT](Commands.md#EXIT)). 
  
-## Changelog
+# Changelog
 ** Version 8.0 **
 
  * Updated: commands for [User Management](Commands.md#CommandsUser_Management)
