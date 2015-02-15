@@ -73,8 +73,8 @@ h3, h4, h5, h6 {
   display: block;
 }
 
-li.toctree-l2 ul ul {
-  padding-left: 20px;
+a.toctree-l4 {
+  padding-left: 50px !important;
 }
 
 nav.stickynav {
