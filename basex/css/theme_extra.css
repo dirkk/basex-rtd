@@ -76,3 +76,7 @@ h3, h4, h5, h6 {
 li.toctree-l2 ul ul {
   padding-left: 20px;
 }
+
+nav.stickynav {
+  position: fixed !important;
+}
