@@ -1,10 +1,3 @@
- 
-
-
- 
-This article is part of the [Getting Started](Getting Started.md) Guide. It gives more details on the command-line options of all BaseX [Startup](Startup.md) modes. 
-
- 
 Options can be specified multiple times. All options are evaluated in the given order (in earlier versions, the sequential evaluation was limited to the specified inputs, query files, queries and commands, while all other options were initially set). The standard input can be parsed by specifying a single dash (`-`) as argument. 
 
  
