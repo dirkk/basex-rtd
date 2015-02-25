@@ -25,7 +25,17 @@ $( document ).ready(function() {
 
     hljs.initHighlightingOnLoad();
 
-    $('table').addClass('docutils');
+    $("table").addClass('docutils');
+
+    // all main images should open in full resolution when clicked
+    $("[role='main'] img").magnificPopup({ 
+      type: 'image',
+      callbacks: {
+        elementParse: function(item) {
+          item.src = item.el.attr("src");
+        }
+      }
+    });
 });
 
 window.SphinxRtdTheme = (function (jquery) {
