@@ -99,3 +99,13 @@ nav.stickynav {
   float: right;
   display: inline;
 }
+
+.wy-side-nav-search > a,
+.wy-side-nav-search .wy-dropdown > a {
+  margin-bottom: 0 !important;
+}
+
+.wy-side-nav-search > a.icon,
+.wy-side-nav-search .wy-dropdown > a.icon {
+  margin-bottom: 0.809em !important;
+}
