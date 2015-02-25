@@ -89,3 +89,13 @@ nav.stickynav {
   background-image: url('/img/BaseX.png');
   background-size: 100%;
 }
+
+.header h1 {
+  font-size: 250%;
+  display: inline;
+}
+
+.header-aside {
+  float: right;
+  display: inline;
+}
