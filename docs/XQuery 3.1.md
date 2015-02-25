@@ -13,12 +13,9 @@ A _map_ is a function that associates a set of keys with values, resulting in a 
 Maps can be constructed as follows: 
 
 
-    map { },                                    (: empty map
-    :)
-    map { 'key': true(), 1984: (<a/>, <b/>) },  (: map with two entries
-    :)
-    map:merge(                                  (: map with ten entries
-    :)
+    map { },                                    (: empty map :)
+    map { 'key': true(), 1984: (<a/>, <b/>) },  (: map with two entries :)
+    map:merge(                                  (: map with ten entries :)
       for $i in 1 to 10
       return map { $i: 'value' || $i }
     )
