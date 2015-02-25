@@ -16,7 +16,7 @@ All functions in this module are assigned to the `http://basex.org/modules/admin
 
 admin:sessions() as element(session)*
 
-:   Returns an element sequence with all currently opened sessions, including the user name, address (IP:port) and an optionally opened database.The output of this function and the [SHOW SESSIONS](Commands.md#SHOW_SESSIONS) command is similar. 
+:   Returns an element sequence with all currently opened sessions, including the user name, address (IP:port) and an optionally opened database.The output of this function and the [SHOW SESSIONS](Commands.md#showsessions) command is similar. 
 
     **Examples**
 
@@ -53,12 +53,12 @@ admin:write-log($text as xs:string) as empty-sequence()
 # Changelog
 ** Version 8.0 **
 
- * Added: [admin:write-log](Admin Module.md#admin-write-log)
- * Deleted: admin:users (renamed to [user:list-details](User Module.md#user-list-details)) 
+ * Added: [admin:write-log](Admin Module.md#adminwrite-log)
+ * Deleted: admin:users (renamed to [user:list-details](User Module.md#userlist-details)) 
 ** Version 7.8.2 **
 
  * Updated: [admin:users](.md): md5-encoded password added to output. 
- * Updated: [admin:logs](Admin Module.md#admin-logs): represent name of log files as string value; `$merge` argument added. 
+ * Updated: [admin:logs](Admin Module.md#adminlogs): represent name of log files as string value; `$merge` argument added. 
 
 The Module was introduced with Version 7.5. 
 

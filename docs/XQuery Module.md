@@ -23,7 +23,7 @@ xquery:eval($query as xs:string, $bindings as map(*), $options as item()) as ite
     **Errors**
 
 
-    `BXXQ0001`: the query contains [updating expressions](XQuery Update.md#Updating_Expressions).`BXXQ0003`: insufficient permissions for evaluating the query.`BXXQ0004`: query execution exceeded timeout or memory constraints.`FOTY0013`: the expression yields function items.Any other error that may occur while evaluating the query. 
+    `BXXQ0001`: the query contains [updating expressions](XQuery Update.md#updatingexpressions).`BXXQ0003`: insufficient permissions for evaluating the query.`BXXQ0004`: query execution exceeded timeout or memory constraints.`FOTY0013`: the expression yields function items.Any other error that may occur while evaluating the query. 
 
     **Examples**
 
@@ -61,12 +61,12 @@ xquery:update($query as xs:string) as item()*
 xquery:update($query as xs:string, $bindings as map(*)) as item()*
 xquery:update($query as xs:string, $bindings as map(*), $options as item()) as item()
 
-:   Evaluates `$query` as updating XQuery expression at runtime.All updates will be added to the [Pending Update List](XQuery Update.md#Pending_Update_List) of the main query and performed after the evaluation of the main query. 
+:   Evaluates `$query` as updating XQuery expression at runtime.All updates will be added to the [Pending Update List](XQuery Update.md#pendingupdate-list) of the main query and performed after the evaluation of the main query. 
 
     **Errors**
 
 
-    `BXXQ0002`: the query contains no [updating expressions](XQuery Update.md#Updating_Expressions).`BXXQ0003`: insufficient permissions for evaluating the query.`BXXQ0004`: query execution exceeded timeout or memory constraints.`FOTY0013`: the expression yields function items.Any other error that may occur while evaluating the query. 
+    `BXXQ0002`: the query contains no [updating expressions](XQuery Update.md#updatingexpressions).`BXXQ0003`: insufficient permissions for evaluating the query.`BXXQ0004`: query execution exceeded timeout or memory constraints.`FOTY0013`: the expression yields function items.Any other error that may occur while evaluating the query. 
 
 
 ## xquery:parse
@@ -101,12 +101,12 @@ xquery:invoke($uri as xs:string) as item()*
 xquery:invoke($uri as xs:string, $bindings as map(*)) as item()*
 xquery:invoke($uri as xs:string, $bindings as map(*), $options as item()) as item()*
 
-:   Opens `$uri` as file, evaluates it as XQuery expression at runtime, and returns the resulting items. Database nodes in the result will be copied and returned instead.The semantics of the `$bindings` and `$options` parameters is the same as for [xquery:eval](XQuery Module.md#xquery-eval). 
+:   Opens `$uri` as file, evaluates it as XQuery expression at runtime, and returns the resulting items. Database nodes in the result will be copied and returned instead.The semantics of the `$bindings` and `$options` parameters is the same as for [xquery:eval](XQuery Module.md#xqueryeval). 
 
     **Errors**
 
 
-    `BXXQ0001`: the expression contains [updating expressions](XQuery Update.md#Updating_Expressions).`BXXQ0003`: insufficient permissions for evaluating the query.`BXXQ0004`: query execution exceeded timeout.`FOTY0013`: the expression yields function items.Any other error that may occur while evaluating the query. 
+    `BXXQ0001`: the expression contains [updating expressions](XQuery Update.md#updatingexpressions).`BXXQ0003`: insufficient permissions for evaluating the query.`BXXQ0004`: query execution exceeded timeout.`FOTY0013`: the expression yields function items.Any other error that may occur while evaluating the query. 
 
 
 ## xquery:type
@@ -120,15 +120,15 @@ xquery:type($expr as item()*) as item()*
 
 **Code ** | Description 
 --------- | ------------
-`BXXQ0001` | The specified query contains [updating expressions](XQuery Update.md#Updating_Expressions). 
-`BXXQ0002` | The specified query contains no [updating expressions](XQuery Update.md#Updating_Expressions). 
+`BXXQ0001` | The specified query contains [updating expressions](XQuery Update.md#updatingexpressions). 
+`BXXQ0002` | The specified query contains no [updating expressions](XQuery Update.md#updatingexpressions). 
 `BXXQ0003` | Insufficient permissions for evaluating the query. 
 `BXXQ0004` | Query execution exceeded timeout. 
  
 # Changelog
 ** Version 8.0 **
 
- * Added: [xquery:update](XQuery Module.md#xquery-update), [xquery:parse](XQuery Module.md#xquery-parse)
+ * Added: [xquery:update](XQuery Module.md#xqueryupdate), [xquery:parse](XQuery Module.md#xqueryparse)
  * Deleted: [xquery:evaluate](.md) (opened databases will now be closed by main query) 
 ** Version 7.8.2 **
 

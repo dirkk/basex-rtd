@@ -15,10 +15,10 @@ New databases can be created via commands, in the GUI, or with any of our [APIs]
  * [Console](.md) : `CREATE DB db /path/to/resources` will add initial documents to a database 
  * [GUI](.md) : Go to _Database_ → _New_, press _Browse_ to choose an initial file or directory, and press _OK_
 
-Database must follow the [valid names constraints](Commands.md#Valid_Names). Various [parsers](Parsers.md) can be chosen to influence the database creation, or to convert different formats to XML. 
+Database must follow the [valid names constraints](Commands.md#validnames). Various [parsers](Parsers.md) can be chosen to influence the database creation, or to convert different formats to XML. 
 
 
-**Note:** A main-memory only database can be created using the the `SET MAINMEM true` command before calling `CREATE DB` ([see below](Databases.md#In_Memory_Database) for more). 
+**Note:** A main-memory only database can be created using the the `SET MAINMEM true` command before calling `CREATE DB` ([see below](Databases.md#inmemory-database) for more). 
 
  
 # Access Resources
@@ -44,7 +44,7 @@ You can access multiple databases in a single query:
     return db:open('books' || $i)//book/title
 
 
-If the [DEFAULTDB](Options.md#DEFAULTDB) option is turned on, the path argument of the `fn:doc` or `fn:collection` function will first be resolved against the globally opened database. 
+If the [DEFAULTDB](Options.md#defaultdb) option is turned on, the path argument of the `fn:doc` or `fn:collection` function will first be resolved against the globally opened database. 
 
 
 Two more functions are available for retrieving information on database nodes: 
@@ -88,10 +88,10 @@ Once you have created a database, additional commands exist to modify its conten
  * Existing resources can be replaced with the `REPLACE` command. 
  * Resources can be deleted via `DELETE`. 
 
-The [AUTOFLUSH](Options.md#AUTOFLUSH) option can be turned off before _bulk operations_ (i.e. before a large number of new resources is added to the database). 
+The [AUTOFLUSH](Options.md#autoflush) option can be turned off before _bulk operations_ (i.e. before a large number of new resources is added to the database). 
 
 
-The [ADDCACHE](Options.md#ADDCACHE) option will first cache the input before adding it to the database. This is helpful when the input documents to be added are expected to eat up too much main memory. 
+The [ADDCACHE](Options.md#addcache) option will first cache the input before adding it to the database. This is helpful when the input documents to be added are expected to eat up too much main memory. 
 
 
 The following commands create an empty database, add two resources, explicitly flush data structures to disk, and finally delete all inserted data: 

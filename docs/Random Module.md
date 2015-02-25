@@ -2,7 +2,7 @@
 
 
  
-This [XQuery Module](Module Library.md) contains functions for computing random values. All functions except for [random:seeded-double](Random Module.md#random-seeded-double) and [random:seeded-integer](Random Module.md#random-seeded-integer) are non-deterministic, i. e., they return different values for each call. 
+This [XQuery Module](Module Library.md) contains functions for computing random values. All functions except for [random:seeded-double](Random Module.md#randomseeded-double) and [random:seeded-integer](Random Module.md#randomseeded-integer) are non-deterministic, i. e., they return different values for each call. 
 
  
 # Conventions
@@ -87,7 +87,7 @@ random:uuid() as xs:string
 # Changelog
 ** Version 8.0 **
 
- * Updated: [random:integer](Random Module.md#random-integer), [random:seeded-integer](Random Module.md#random-seeded-integer) raise error for invalid input. 
+ * Updated: [random:integer](Random Module.md#randominteger), [random:seeded-integer](Random Module.md#randomseeded-integer) raise error for invalid input. 
 
 The module was introduced with Version 7.5. It includes some functionality which was previously located in the [Math Module](Math Module.md). 
 

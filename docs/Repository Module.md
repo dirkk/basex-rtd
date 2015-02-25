@@ -62,11 +62,11 @@ repo:list() as element(package)*
 # Changelog
 ** Version 7.2.1 **
 
- * Updated: [repo:install](Repository Module.md#repo-install): existing packages will be replaced 
- * Updated: [repo:delete](Repository Module.md#repo-delete): remove specific version of a package 
+ * Updated: [repo:install](Repository Module.md#repoinstall): existing packages will be replaced 
+ * Updated: [repo:delete](Repository Module.md#repodelete): remove specific version of a package 
 ** Version 7.2 **
 
- * Updated: [repo:list](Repository Module.md#repo-list) now returns nodes 
+ * Updated: [repo:list](Repository Module.md#repolist) now returns nodes 
 
 The module was introduced with Version 7.1. 
 

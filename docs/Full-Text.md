@@ -51,7 +51,7 @@ The query will output the names of all countries with a religion element contain
  * `all words` : all single words within the specified strings need to be found 
  * `phrase` : all strings need to be found as a single phrase 
 
-The keywords `ftand`, `ftor` and `ftnot` can also be used to combine multiple query terms. The following query yields the same result as the last one does (but it takes [more memory](Full-Text.md#FTAnd)): 
+The keywords `ftand`, `ftor` and `ftnot` can also be used to combine multiple query terms. The following query yields the same result as the last one does (but it takes [more memory](Full-Text.md#ftand)): 
 
 
     doc('factbook')//country[descendant::religions contains text 'sunni' ftor 'shia']/name
@@ -122,7 +122,7 @@ As indicated in the introduction, the input and query texts are tokenized before
     "You and me" contains text "you or me" using stop words ("and", "or"),
     "You and me" contains text "you or me" using stop words at "http://files.basex.org/etc/stopwords.txt"
 
- * Related terms such as synonyms can be found with the sophisticated [Thesaurus](Full-Text.md#Thesaurus) option. 
+ * Related terms such as synonyms can be found with the sophisticated [Thesaurus](Full-Text.md#thesaurus) option. 
 
 The `wildcards` option facilitates search operations similar to simple regular expressions: 
 
@@ -152,7 +152,7 @@ The available full-text index can handle various combinations of the match optio
 
 The following indexing options are available: 
 
- * **Language** : [see below](Full-Text.md#Languages) for more details (`SET LANGUAGE EN`). 
+ * **Language** : [see below](Full-Text.md#languages) for more details (`SET LANGUAGE EN`). 
  * **Stemming** : tokens are stemmed with the Porter Stemmer before being indexed (`SET STEMMING true`). 
  * **Case Sensitive** : tokens are indexed in case-sensitive mode (`SET CASESENS true`). 
  * **Diacritics** : diacritics are indexed as well (`SET DIACRITICS true`). 
@@ -353,7 +353,7 @@ The ignore option would enable you to search for the string “illustrative purp
 For more examples, see [XQuery and XPath Full Text 1.0 Use Cases](http://www.w3.org/TR/xpath-full-text-10-use-cases/#Ignore). 
 
 
-As BaseX does not support the ignore option, it raises error [FTST0007](XQuery Errors.md#Full-Text_Errors) when it encounters `without content` in a full-text `contains` expression. 
+As BaseX does not support the ignore option, it raises error [FTST0007](XQuery Errors.md#fulltext-errors) when it encounters `without content` in a full-text `contains` expression. 
 
  
 # Functions
@@ -363,7 +363,7 @@ Some additional [Full-Text Functions](Full-Text Module.md) have been added to Ba
  
 # Collations
 
-Version 8.0: See [XQuery 3.1](XQuery 3.1.md#XQuery_3.1Collations) for new official collation features. 
+Version 8.0: See [XQuery 3.1](XQuery 3.1.md#xquery3.1collations) for new official collation features. 
 
 
 By default, string comparisons in XQuery are based on the Unicode codepoint order. The default namespace URI `http://www.w3.org/2003/05/xpath-functions/collation/codepoint` specifies this ordering. In BaseX, the following URI syntax is supported to specify collations: 
@@ -401,10 +401,10 @@ Semicolons can be replaced with ampersands; for convenience, the URL can be redu
 # Changelog
 ** Version 8.0**
 
- * Updated: [Scores](Full-Text.md#Scoring) will be propagated by the `and` and `or` expressions and in predicates. 
+ * Updated: [Scores](Full-Text.md#scoring) will be propagated by the `and` and `or` expressions and in predicates. 
 ** Version 7.7**
 
- * Added: [Collations](Full-Text.md#Full-TextCollations) support. 
+ * Added: [Collations](Full-Text.md#fulltextcollations) support. 
 ** Version 7.3**
 
  * Removed: Trie index, which was specialized on wildcard queries. The fuzzy index now supports both wildcard and fuzzy queries. 

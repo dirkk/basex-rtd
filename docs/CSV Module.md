@@ -190,7 +190,7 @@ csv:serialize($input as node(), $options as item()) as xs:string
  * Added: `backslashes` option 
 ** Version 7.8 **
 
- * Updated: [csv:parse](CSV Module.md#csv-parse) now returns a document node instead of an element, or an XQuery map if `format` is set to `map`. 
+ * Updated: [csv:parse](CSV Module.md#csvparse) now returns a document node instead of an element, or an XQuery map if `format` is set to `map`. 
  * Added: `format` and `lax` options 
 
 The module was introduced with Version 7.7.2. 

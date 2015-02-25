@@ -103,7 +103,7 @@ validate:dtd-info($input as item(), $dtd as xs:string) as xs:string*
 # Changelog
 ** Version 7.6 **
 
- * Added: [validate:xsd-info](Validation Module.md#validate-xsd-info), [validate:dtd-info](Validation Module.md#validate-dtd-info)
+ * Added: [validate:xsd-info](Validation Module.md#validatexsd-info), [validate:dtd-info](Validation Module.md#validatedtd-info)
 
 The module was introduced with Version 7.3. 
 

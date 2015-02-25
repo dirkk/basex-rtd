@@ -130,7 +130,7 @@ Updated with Version 7.9: The returned values now also include form field parame
 
 request:parameter-names() as xs:string*
 
-:   Returns the names of all query and form field parameters available from the HTTP request. With [RESTXQ](RESTXQ.md), this function can be used to access parameters that have not been statically bound by [%rest:query-param](RESTXQ.md#Query_Parameters). 
+:   Returns the names of all query and form field parameters available from the HTTP request. With [RESTXQ](RESTXQ.md), this function can be used to access parameters that have not been statically bound by [%rest:query-param](RESTXQ.md#queryparameters). 
 
 
 ## request:parameter
@@ -150,7 +150,7 @@ request:parameter($name as xs:string, $default as xs:string) as xs:string*
 
 request:header-names() as xs:string*
 
-:   Returns the names of all headers available from the HTTP request. If [RESTXQ](RESTXQ.md) is used, this function can be used to access headers that have not been statically bound by [%rest:header-param](RESTXQ.md#HTTP_Headers). 
+:   Returns the names of all headers available from the HTTP request. If [RESTXQ](RESTXQ.md) is used, this function can be used to access headers that have not been statically bound by [%rest:header-param](RESTXQ.md#httpheaders). 
 
 
 ## request:header
@@ -167,7 +167,7 @@ request:header($name as xs:string, $default as xs:string) as xs:string
 
 request:cookie-names() as xs:string*
 
-:   Returns the names of all cookies in the HTTP headers available from the HTTP request. If [RESTXQ](RESTXQ.md) is used, this function can be used to access cookies that have not been statically bound by [%rest:cookie-param](RESTXQ.md#Cookies). 
+:   Returns the names of all cookies in the HTTP headers available from the HTTP request. If [RESTXQ](RESTXQ.md) is used, this function can be used to access cookies that have not been statically bound by [%rest:cookie-param](RESTXQ.md#cookies). 
 
 
 ## request:cookie
@@ -181,13 +181,13 @@ request:cookie($name as xs:string, $default as xs:string) as xs:string
 # Changelog
 ** Version 7.9 **
 
- * Updated: The returned values of [request:parameter-names](Request Module.md#request-parameter-names), [request:parameter](Request Module.md#request-parameter) now also include form field parameters. 
+ * Updated: The returned values of [request:parameter-names](Request Module.md#requestparameter-names), [request:parameter](Request Module.md#requestparameter) now also include form field parameters. 
 ** Version 7.8 **
 
- * Added: [request:context-path](Request Module.md#request-context-path)
+ * Added: [request:context-path](Request Module.md#requestcontext-path)
 ** Version 7.7 **
 
- * Added: [request:attribute](Request Module.md#request-attribute)
+ * Added: [request:attribute](Request Module.md#requestattribute)
 
 This module was introduced with Version 7.5. 
 

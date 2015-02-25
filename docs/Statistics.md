@@ -8,7 +8,7 @@ This article is part of the [Advanced User's Guide](Advanced User's Guide.md). I
 # Databases 
  * FileSize is the original size of the input documents 
  * #Files indicates the number of stored XML documents 
- * #DbSize is the size of the resulting database (excluding the [value index structures](Indexes.md#Value_Indexes)) 
+ * #DbSize is the size of the resulting database (excluding the [value index structures](Indexes.md#valueindexes)) 
  * #Nodes represents the number of XML nodes (elements, attributes, texts, etc.) stored in the database 
  * #Attr indicates the maximum number of attributes stored for a single element 
  * #ENames and #ANames reflect the number of distinct element and attribute names 

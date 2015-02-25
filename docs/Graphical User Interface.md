@@ -15,7 +15,7 @@ First of all, launch a GUI instance of BaseX. Depending on your operating system
 Select _Database_ → _New_ and browse to an XML document of your choice. As an example, you can start with the `factbook.xml` document, which contains statistical information on the worlds' countries. It is included in our official releases and can also be [downloaded](http://files.basex.org/xml/factbook.xml) (1.3 MB). If you type nothing in the input field, an empty database will be created. Next, choose the _OK_ button, and BaseX will create a database that you can visually explore and query. 
 
 
-If no XML document is available, the [Text Editor](Graphical User Interface.md#Text_Editor) can also be used to create an initial XML document. After saving the entered XML document to harddisk, it can be specified in the above dialog. 
+If no XML document is available, the [Text Editor](Graphical User Interface.md#texteditor) can also be used to create an initial XML document. After saving the entered XML document to harddisk, it can be specified in the above dialog. 
 
 
 ## Realtime Options
@@ -81,7 +81,7 @@ To return all cities of the resulting element node, the query can be extended by
 
 ### Text Editor
 
-The text editor can be used to type in [XQuery](XQuery.md) expressions, [Command Scripts](Commands.md#Basics), XML documents, or any other text files. Query files and XML documents can be started by clicking on the green triangle. They will automatically parsed with each key click, and errors will be highlighted. Various [keyboard shortcuts](Shortcuts.md) are available to speed up editing and debugging. 
+The text editor can be used to type in [XQuery](XQuery.md) expressions, [Command Scripts](Commands.md#basics), XML documents, or any other text files. Query files and XML documents can be started by clicking on the green triangle. They will automatically parsed with each key click, and errors will be highlighted. Various [keyboard shortcuts](Shortcuts.md) are available to speed up editing and debugging. 
 
 
 ## Visualizations

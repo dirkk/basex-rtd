@@ -7,7 +7,7 @@ This [XQuery Module](Module Library.md) contains annotations and functions for p
  
 With Version 7.9, the unit testing functionality has been further stabilized: 
 
-  * Tests are now started with a [TEST](Commands.md#TEST) command. 
+  * Tests are now started with a [TEST](Commands.md#test) command. 
  * Tests can also be executed from the BaseX GUI. 
  * XQUnit functions can now contain updating functions.  
  
@@ -21,7 +21,7 @@ This module borrows heavily from the existing frameworks: it provides various an
  
 # Usage
 
-Tests are not started from within XQuery anymore. Instead, a [TEST](Commands.md#TEST) command is now available, which compiles all XQuery modules in a given file or directory and runs all functions that are annotated with `%unit:test`. A test report is generated and returned, which resembles the format returned by other xUnit testing frameworks, such as the Maven Surefire Plugin ([see below](Unit Module.md#Result)). 
+Tests are not started from within XQuery anymore. Instead, a [TEST](Commands.md#test) command is now available, which compiles all XQuery modules in a given file or directory and runs all functions that are annotated with `%unit:test`. A test report is generated and returned, which resembles the format returned by other xUnit testing frameworks, such as the Maven Surefire Plugin ([see below](Unit Module.md#result)). 
 
  
 # Conventions
@@ -258,7 +258,7 @@ By running `TEST tests.xqm`, the following report will be generated (timings may
 ** Version 8.0 **
 
  * Deleted: `UNIT0006` (ignore results returned by functions). 
- * Added: [unit:fail](Unit Module.md#unit-fail), 0-argument signature. 
+ * Added: [unit:fail](Unit Module.md#unitfail), 0-argument signature. 
  * Updated: the info argument of functions can now be an arbitrary item. 
  * Updated: infos are now represented in an `info` child element. 
  * Updated: [unit:before](.md) and [unit:after](.md) can be extended by a filter argument. 
@@ -268,7 +268,7 @@ By running `TEST tests.xqm`, the following report will be generated (timings may
  * Removed: [unit:test](.md), [unit:test-uris](.md)
 ** Version 7.8 **
 
- * Added: [unit:assert-equals](Unit Module.md#unit-assert-equals)
+ * Added: [unit:assert-equals](Unit Module.md#unitassert-equals)
  * Updated: enhanced test report output 
 
 This module was introduced with Version 7.7. 

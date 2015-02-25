@@ -28,7 +28,7 @@ client:connect($host as xs:string, $port as xs:integer, $user as xs:string, $pas
 
 client:execute($id as xs:anyURI, $command as xs:string) as xs:string
 
-:   This function executes a [command](Commands.md) and returns the result as string. The parameter `$id` contains the session id returned by [client:connect](Client Module.md#client-connect). The `$command` argument represents a single command, which will be executed by the server. 
+:   This function executes a [command](Commands.md) and returns the result as string. The parameter `$id` contains the session id returned by [client:connect](Client Module.md#clientconnect). The `$command` argument represents a single command, which will be executed by the server. 
 
     **Errors**
 
@@ -48,7 +48,7 @@ client:execute($id as xs:anyURI, $command as xs:string) as xs:string
 
 client:info($id as xs:anyURI) as xs:string
 
-:   This function returns an information string, created by a previous call of [client:execute](Client Module.md#client-execute). `$id` specifies the session id. 
+:   This function returns an information string, created by a previous call of [client:execute](Client Module.md#clientexecute). `$id` specifies the session id. 
 
 
 ## client:query
@@ -59,7 +59,7 @@ Updated with Version 8.0: Bound values may now contain no or more than one item.
 client:query($id as xs:anyURI, $query as xs:string) as item()*
 client:query($id as xs:anyURI, $query as xs:string, $bindings as map(*)) as item()*
 
-:   Evaluates a query and returns the result as sequence. The parameter `$id` contains the session id returned by [client:connect](Client Module.md#client-connect), and `$query` represents the query string, which will be evaluated by the server.Variables and the context item can be declared via `$bindings`. The specified keys must be QNames or strings:  * If a key is a QName, it will be directly adopted as variable name. 
+:   Evaluates a query and returns the result as sequence. The parameter `$id` contains the session id returned by [client:connect](Client Module.md#clientconnect), and `$query` represents the query string, which will be evaluated by the server.Variables and the context item can be declared via `$bindings`. The specified keys must be QNames or strings:  * If a key is a QName, it will be directly adopted as variable name. 
 
     **Errors**
 
@@ -102,10 +102,10 @@ client:close($id as xs:anyURI) as empty-sequence()
 # Changelog
 ** Version 8.0 **
 
- * Updated: Bound values may now contain no or more than one item in [client:query](Client Module.md#client-query). 
+ * Updated: Bound values may now contain no or more than one item in [client:query](Client Module.md#clientquery). 
 ** Version 7.5 **
 
- * Added: [client:info](Client Module.md#client-info)
+ * Added: [client:info](Client Module.md#clientinfo)
 
 The module was introduced with Version 7.3. 
 

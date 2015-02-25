@@ -93,7 +93,7 @@ Some examples for the `{value}` argument:
 
 ## Example
 
-In the following example, a client registers a new session and executes the [INFO](Commands.md#INFO) database command. Next, it creates a new query instance for the XQuery expression `1, 2+'3'`. The query is then evaluated, and the server returns the result of the first subexpression `1` and an error for the second sub expression. Finally, the query instance and client session are closed. 
+In the following example, a client registers a new session and executes the [INFO](Commands.md#info) database command. Next, it creates a new query instance for the XQuery expression `1, 2+'3'`. The query is then evaluated, and the server returns the result of the first subexpression `1` and an error for the second sub expression. Finally, the query instance and client session are closed. 
 
  * **Client**  connects to the database server socket 
  * **Server**  sends realm and timestamp "BaseX:1369578179679": `◄ 42 61 73 65 58 3A 31 33 36 39 35 37 38 31 37 39 36 37 39 00`

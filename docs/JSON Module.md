@@ -104,7 +104,7 @@ Updated with BaseX 8.0: Aligned with the `json` output method of the official sp
 json:serialize($input as node()) as xs:string
 json:serialize($input as node(), $options as item()) as xs:string
 
-:   Serializes the node specified by `$input` as JSON, and returns the result as `xs:string` instance. The node is expected to conform to the output created by the [json:parse()](JSON Module.md#json-parse) function. All other items will be serialized as specified for the [json output method](XQuery 3.1.md#JSON_Serialization) of the official specification.Items can also be serialized as JSON if the [Serialization Parameter](Serialization.md)`method` is set to `json`.The `$options` argument can be used to control the way the input is serialized. 
+:   Serializes the node specified by `$input` as JSON, and returns the result as `xs:string` instance. The node is expected to conform to the output created by the [json:parse()](JSON Module.md#jsonparse) function. All other items will be serialized as specified for the [json output method](XQuery 3.1.md#jsonserialization) of the official specification.Items can also be serialized as JSON if the [Serialization Parameter](Serialization.md)`method` is set to `json`.The `$options` argument can be used to control the way the input is serialized. 
 
     **Errors**
 
@@ -375,7 +375,7 @@ json:serialize($input as node(), $options as item()) as xs:string
  * Updated: `json:parse` now returns a document node instead of an element, or an XQuery map if `format` is set to `map`. 
 ** Version 7.7.2 **
 
- * Updated: `$options` argument added to [json:parse](JSON Module.md#json-parse) and [json:serialize](JSON Module.md#json-serialize)
+ * Updated: `$options` argument added to [json:parse](JSON Module.md#jsonparse) and [json:serialize](JSON Module.md#jsonserialize)
  * Updated: [json:parse-ml](.md) and [json:serialize-ml](.md) are now _deprecated_
 
 The module was introduced with Version 7.0. 

@@ -1,3 +1,10 @@
+ 
+
+
+ 
+This article is part of the [Getting Started](Getting Started.md) Guide. It gives more details on the command-line options of all BaseX [Startup](Startup.md) modes. 
+
+ 
 Options can be specified multiple times. All options are evaluated in the given order (in earlier versions, the sequential evaluation was limited to the specified inputs, query files, queries and commands, while all other options were initially set). The standard input can be parsed by specifying a single dash (`-`) as argument. 
 
  
@@ -37,12 +44,12 @@ Available command-line flags can be listed with `-h`:
       -z          Skip output of results
 
 
-The meaning of all flags is listed in the following table. If an equivalent database option exists (which can be specified via the [SET](Commands.md#SET) command), it is listed as well. For the examples to work escaping some characters might be necessary, depending on your Operating System. 
+The meaning of all flags is listed in the following table. If an equivalent database option exists (which can be specified via the [SET](Commands.md#set) command), it is listed as well. For the examples to work escaping some characters might be necessary, depending on your Operating System. 
 
 
 ** Flag ** | ** Description ** | ** Option ** | ** Default ** | ** Examples **
 ---------- | ----------------- | ------------ | ------------- | --------------
-`[input]` | Evaluates the specified input:  * The input string may point to an existing file. If the file suffix is `.bxs`, the file content will be evaluated as [Command Script](Commands.md#Basics); otherwise, it will be evaluated as XQuery expression. 
+`[input]` | Evaluates the specified input:  * The input string may point to an existing file. If the file suffix is `.bxs`, the file content will be evaluated as [Command Script](Commands.md#basics); otherwise, it will be evaluated as XQuery expression. 
  * Otherwise, the input string itself is evaluated as XQuery expression. 
  |  |  | • `"doc('X')//head"`• `query.xq`• `commands.bxs`
 `-b<pars>` |  Binds external variables to XQuery expressions. This flag may be specified multiple times. Variables names and their values are delimited by equality signs (`=`). The names may be optionally prefixed with dollar signs. If a variable uses a namespace different to the default namespace, it can be specified with the [Clark Notation](http://www.jclark.com/xml/xmlns.htm).  | `BINDINGS` |  | • `-b$v=example "declare variable $v external; $v"`• `-b{URL}ln=value"declare namespace ns='URL'; declare variable $ns:ln external; $ns:ln"`
@@ -62,7 +69,7 @@ The meaning of all flags is listed in the following table. If an equivalent data
 `-v` |  Prints process and timing information to the _standard output_.  |  | `false` | 
 `-V` |  Prints detailed query information to the _standard output_, including details on the compilation and profiling steps.  | `QUERYINFO` | `false` | 
 `-w` |  Specifies if whitespaces in XML text nodes should be chopped (which is the default) or preserved.  | `CHOP` | `true` | 
-`-x` |  This flags turn on the output of the query execution plan, formatted in [XML](Options.md#XMLPLAN).  | `XMLPLAN` | `false` | 
+`-x` |  This flags turn on the output of the query execution plan, formatted in [XML](Options.md#xmlplan).  | `XMLPLAN` | `false` | 
 `-X` |  Generates the query plan before or after query compilation. `-x` needs to be activated to make the plan visible.  | `COMPPLAN` | `true` | 
 `-z` |  Turns the serialization of XQuery results on/off. This flag is useful if the query is profiled or analyzed.  | `SERIALIZE` | `true` | 
  
@@ -156,7 +163,7 @@ The flags have the following meaning (equivalent database options are shown in t
 
 ** Flag ** | ** Description ** | ** Option ** | ** Default ** | ** Examples **
 ---------- | ----------------- | ------------ | ------------- | --------------
-`[input]` | Evaluates the specified input:  * The input string may point to an existing file. If the file suffix is `.bxs`, the file content will be evaluated as [Command Script](Commands.md#Basics); otherwise, it will be evaluated as XQuery expression. 
+`[input]` | Evaluates the specified input:  * The input string may point to an existing file. If the file suffix is `.bxs`, the file content will be evaluated as [Command Script](Commands.md#basics); otherwise, it will be evaluated as XQuery expression. 
  * Otherwise, the input string itself is evaluated as XQuery expression. 
  |  |  | • `"doc('X')//head"`• `query.xq`• `commands.bxs`
 `-b<pars>` |  Binds external variables to XQuery expressions. This flag may be specified multiple times. Variables names and their values are delimited by equality signs (`=`). The names may be optionally prefixed with dollar signs. If a variable uses a namespace different to the default namespace, it can be specified with the [Clark Notation](http://www.jclark.com/xml/xmlns.htm) or [Expanded QName Notation](http://www.w3.org/TR/xquery-30/#id-basics).  | `BINDINGS` |  | • `-b$v=example "declare variable $v external; $v"`• `-b{URL}ln=value"declare namespace ns='URL'; declare variable $ns:ln external; $ns:ln"`
@@ -178,7 +185,7 @@ The flags have the following meaning (equivalent database options are shown in t
 `-v` |  Prints process and timing information to the _standard output_.  |  | `false` | 
 `-V` |  Prints detailed query information to the _standard output_, including details on the compilation and profiling steps.  | `QUERYINFO` | `false` | 
 `-w` |  Specifies if whitespaces in XML text nodes should be chopped (which is the default) or preserved.  | `CHOP` | `chop` | 
-`-x` |  This flags turn on the output of the query execution plan, formatted in [XML](Options.md#XMLPLAN).  | `XMLPLAN` | `false` | 
+`-x` |  This flags turn on the output of the query execution plan, formatted in [XML](Options.md#xmlplan).  | `XMLPLAN` | `false` | 
 `-X` |  Generates the query plan before or after query compilation. `-x` needs to be activated to make the plan visible.  | `COMPPLAN` | `after` | 
 `-z` |  Turns the serialization of XQuery results on/off. This flag is useful if the query is profiled or analyzed.  | `SERIALIZE` | `true` | 
  
@@ -250,10 +257,10 @@ One or more XML and XQuery files can be passed on as parameters. If an XML file 
  * Added: Specify if a query will be executed or parsed only with `-R`. 
 ** Version 7.7 **
 
- * Added: Bind host to the [BaseX Server](Command-Line Options.md#BaseX_Server) with `-n`. 
+ * Added: Bind host to the [BaseX Server](Command-Line Options.md#basexserver) with `-n`. 
 ** Version 7.5 **
 
- * Added: detection of [Command Scripts](Commands.md#Basics). 
+ * Added: detection of [Command Scripts](Commands.md#basics). 
  * Removed: HTTP server flags `-R`, `-W`, and `-X`. 
 ** Version 7.3**
 

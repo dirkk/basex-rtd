@@ -12,7 +12,7 @@ This page is part of the [Getting Started](Getting Started.md) Section. It gives
 The GUI editor provides various code completions, which simplify the authoring of complex XQuery applications. Opening elements, comments, quotes or brackets will automatically be closed, and new lines will automatically be indented. 
 
 
-If some characters have been entered, and if the [shortcut](Shortcuts.md#Editor_Shortcuts) for code completions is pressed (Ctrl Space), a popup menu will appear and provides some code templates. If only one completion is possible, it will automatically be inserted. 
+If some characters have been entered, and if the [shortcut](Shortcuts.md#editorshortcuts) for code completions is pressed (Ctrl Space), a popup menu will appear and provides some code templates. If only one completion is possible, it will automatically be inserted. 
 
 
 ## Editor Shortcuts
@@ -24,7 +24,7 @@ The text editor can be used to create, edit, save and execute XQuery expressions
 
 **Description** | **Win/Linux** | **Mac**
 --------------- | ------------- | -------
-Performs [Code Completions](Shortcuts.md#Code_Completions) | Ctrl Space  | Ctrl Space 
+Performs [Code Completions](Shortcuts.md#codecompletions) | Ctrl Space  | Ctrl Space 
 Sort lines  | Ctrl U  | ⌘ U 
 Format code (experimental)  | Ctrl Shift F  | ⌘ Shift F 
 (Un)comment selection/line  | Ctrl K  | ⌘ K 
@@ -161,7 +161,7 @@ Show Help  | F1  | F1
  * Added: Sort lines (Ctrl-U) 
 ** Version 7.8 **
 
- * Added: [Code Completions](Shortcuts.md#Code_Completions), Project (Ctrl P), Find Files (Ctrl Shift F) 
+ * Added: [Code Completions](Shortcuts.md#codecompletions), Project (Ctrl P), Find Files (Ctrl Shift F) 
 ** Version 7.5 **
 
  * Added: go to line (Ctrl F) 

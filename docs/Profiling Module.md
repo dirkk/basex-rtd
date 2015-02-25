@@ -61,7 +61,7 @@ prof:human($number as xs:integer) as xs:string
 prof:dump($expr as item()) as empty-sequence()
 prof:dump($expr as item(), $label as xs:string) as empty-sequence()
 
-:   Dumps a serialized representation of `$expr` to `STDERR`, optionally prefixed with `$label`, and returns an empty sequence. If the GUI is used, the dumped result is shown in the [Info View](Graphical User Interface.md#Visualizations). 
+:   Dumps a serialized representation of `$expr` to `STDERR`, optionally prefixed with `$label`, and returns an empty sequence. If the GUI is used, the dumped result is shown in the [Info View](Graphical User Interface.md#visualizations). 
 
 
 ## prof:current-ms

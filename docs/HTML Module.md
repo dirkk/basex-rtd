@@ -2,7 +2,7 @@
 
 
  
-This [XQuery Module](Module Library.md) provides functions for converting HTML to XML. Conversion will only take place if [TagSoup](http://home.ccil.org/~cowan/XML/tagsoup/) is included in the classpath (see [HTML Parsing](Parsers.md#HTML_Parser) for more details). 
+This [XQuery Module](Module Library.md) provides functions for converting HTML to XML. Conversion will only take place if [TagSoup](http://home.ccil.org/~cowan/XML/tagsoup/) is included in the classpath (see [HTML Parsing](Parsers.md#htmlparser) for more details). 
 
  
 # Conventions

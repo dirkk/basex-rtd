@@ -9,7 +9,7 @@ This page contains code snippets that mainly originate from our [basex-talk](htt
 
 `if`/`not`/`else` constructs can look pretty verbose in XQuery. However, some alternatives exist in order to make conditional code more compact: 
 
- * The [Simple Map Operator](XQuery 3.0.md#Simple_Map_Operator) can be used to trigger an action if a value has a single item. The following two expressions are equivalent: 
+ * The [Simple Map Operator](XQuery 3.0.md#simplemap-operator) can be used to trigger an action if a value has a single item. The following two expressions are equivalent: 
 
     let $s
     := "X" return (

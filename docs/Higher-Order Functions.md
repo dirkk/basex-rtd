@@ -10,7 +10,7 @@ This page talks about _higher-order functions_ introduced with [XQuery 3.0](XQue
 Probably the most important new feature in XQuery 3.0 are _function items_, i. e., items that act as functions, but can also be passed to and from other functions and expressions. This feature makes functions _first-class citizens_ of the language. 
 
 
-The [XQuery 3.0](XQuery 3.0.md#XQuery_3.0Function_Items) page goes into details on how function items can be obtained. 
+The [XQuery 3.0](XQuery 3.0.md#xquery3.0function-items) page goes into details on how function items can be obtained. 
 
 
 ## Function Types 

@@ -23,7 +23,7 @@ The following example uses Java’s `Math` class to return the cosine of an angl
     math:cos(xs:double(0)), math:PI()
 
 
-The new [Expanded QName](XQuery 3.0.md#Expanded_QNames) notation of XQuery 3.0 allows you to directly specify a namespace URI instead of the prefix: 
+The new [Expanded QName](XQuery 3.0.md#expandedqnames) notation of XQuery 3.0 allows you to directly specify a namespace URI instead of the prefix: 
 
 
     Q{java:java.lang.Math}cos(xs:double(0))
@@ -53,7 +53,7 @@ Function names with dashes will be rewritten to Java’s camel case notation:
     : getContents(String x)
 
 
-Strings with invalid XML characters will be rejected by default. The validity check can be disabled by setting the [CHECKSTRINGS](Options.md#CHECKSTRINGS) option to false. The following query writes a file with a single 00-byte, which will then be successfully read via Java functions: 
+Strings with invalid XML characters will be rejected by default. The validity check can be disabled by setting the [CHECKSTRINGS](Options.md#checkstrings) option to false. The following query writes a file with a single 00-byte, which will then be successfully read via Java functions: 
 
 
     declare namespace br = 'java.io.BufferedReader';

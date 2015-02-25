@@ -363,7 +363,7 @@ Since Version 8.0 of BaseX, the following implementation-defined annotations are
     local:id(123)
 
 
-In this query, function inlining has been deactivated by setting [inlinelimit](Options.md#INLINELIMIT) to `0`. The annotation enforces inlining for the given function, though, resulting in the optimized query expression `123`. 
+In this query, function inlining has been deactivated by setting [inlinelimit](Options.md#inlinelimit) to `0`. The annotation enforces inlining for the given function, though, resulting in the optimized query expression `123`. 
 
 
 If an integer is specified as annotation argument, it will be interpreted a local inline limit. 
@@ -402,17 +402,17 @@ New signatures have been added for the following functions:
  * Added: %basex:inline, %basex:lazy 
 ** Version 7.7 **
 
- * Added: [Enhanced FLWOR Expressions](XQuery 3.0.md#Enhanced_FLWOR_Expressions)
+ * Added: [Enhanced FLWOR Expressions](XQuery 3.0.md#enhancedflwor-expressions)
 ** Version 7.3 **
 
- * Added: [Simple Map Operator](XQuery 3.0.md#Simple_Map_Operator)
+ * Added: [Simple Map Operator](XQuery 3.0.md#simplemap-operator)
 ** Version 7.2 **
 
- * Added: [Annotations](XQuery 3.0.md#XQuery_3.0Annotations)
- * Updated: [Expanded QNames](XQuery 3.0.md#Expanded_QNames)
+ * Added: [Annotations](XQuery 3.0.md#xquery3.0annotations)
+ * Updated: [Expanded QNames](XQuery 3.0.md#expandedqnames)
 ** Version 7.1 **
 
- * Added: [Expanded QNames](XQuery 3.0.md#Expanded_QNames), [Namespace Constructors](XQuery 3.0.md#Namespace_Constructors)
+ * Added: [Expanded QNames](XQuery 3.0.md#expandedqnames), [Namespace Constructors](XQuery 3.0.md#namespaceconstructors)
 ** Version 7.0 **
 
- * Added: [String Concatenations](XQuery 3.0.md#String_Concatenations)
+ * Added: [String Concatenations](XQuery 3.0.md#stringconcatenations)

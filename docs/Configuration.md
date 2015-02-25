@@ -7,13 +7,13 @@ This article is part of the [Advanced User's Guide](Advanced User's Guide.md). I
  
 # Configuration Files
 
-BaseX maintains some configuration files, which are stored in the project’s [Home Directory](Configuration.md#Home_Directory): 
+BaseX maintains some configuration files, which are stored in the project’s [Home Directory](Configuration.md#homedirectory): 
 
  * `.basex`  contains all options that are relevant for running the server or standalone versions of BaseX. 
  * `.basexgui`  defines all options relevant to the BaseX GUI. 
  * `.basexevents`  contains all existing events (see [Events](Events.md)). 
  * `.basexhistory`  contains commands that have been typed in most recently. 
- * `.basexhome`  can be created by a user to mark a folder as [home directory](Configuration.md#Home_Directory). Its contents do not matter, so it is usually empty. 
+ * `.basexhome`  can be created by a user to mark a folder as [home directory](Configuration.md#homedirectory). Its contents do not matter, so it is usually empty. 
  * Since Version 8.0, the `.basexperm` file is obsolete. Users are now stored in `users.xml` in the database directory (see [User Management](User Management.md) for more information). 
 
 Note that, depending on your OS and configuration, files and folders with a '.' prefix may be hidden. 
@@ -52,4 +52,4 @@ Log files are stored in text format in a `.logs` sub-directory of the database f
  * Updated: `.basexperm` is obsolete. 
 ** Version 7.7 **
 
- * Updated: the `.basexhome` file marks a folder as [home directory](Configuration.md#Home_Directory). 
+ * Updated: the `.basexhome` file marks a folder as [home directory](Configuration.md#homedirectory). 

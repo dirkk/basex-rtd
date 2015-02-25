@@ -60,7 +60,7 @@ Added with Version 8.0:
 fetch:xml($uri as xs:string) as document-node()
 fetch:xml($uri as xs:string, $options as item()) as document-node()
 
-:   Fetches the resource referred to by the given `$uri` and returns it as an XML document.The `$options` argument can be used to change the parsing behavior. Allowed options are all [parsing](Options.md#OptionsParsing) and [XML parsing](Options.md#XML_Parsing) options in lower case. Options can be specified either...  * as children of an `<options/>` element, e.g. 
+:   Fetches the resource referred to by the given `$uri` and returns it as an XML document.The `$options` argument can be used to change the parsing behavior. Allowed options are all [parsing](Options.md#optionsparsing) and [XML parsing](Options.md#xmlparsing) options in lower case. Options can be specified either...  * as children of an `<options/>` element, e.g. 
 
     **Errors**
 
@@ -100,7 +100,7 @@ fetch:content-type($uri as xs:string) as xs:string
 # Changelog
 ** Version 8.0 **
 
- * Added: [fetch:xml](Fetch Module.md#fetch-xml)
+ * Added: [fetch:xml](Fetch Module.md#fetchxml)
 
 The module was introduced with Version 7.6. 
 

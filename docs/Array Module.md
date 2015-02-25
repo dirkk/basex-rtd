@@ -2,7 +2,7 @@
 
 
  
-This [XQuery Module](Module Library.md) contains functions for manipulating arrays, which will officially be introduced with [XQuery 3.1](XQuery 3.1.md#Arrays). **Please note** that the functions are subject to change until the specification has reached its final stage. 
+This [XQuery Module](Module Library.md) contains functions for manipulating arrays, which will officially be introduced with [XQuery 3.1](XQuery 3.1.md#arrays). **Please note** that the functions are subject to change until the specification has reached its final stage. 
 
  
 # Conventions

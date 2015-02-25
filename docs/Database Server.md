@@ -7,7 +7,7 @@ This step by step tutorial is part of the [Getting Started](Getting Started.md) 
  
 # Startup
 
-First, launch a **Server** and **Client** instance of BaseX: double click on the **BaseX Server/Client** icons, or run the `basexserver` and `basexclient` scripts. [Follow this link](.md) for more information (or check out the additional [command-line options](Command-Line Options.md#BaseX_Server)). 
+First, launch a **Server** and **Client** instance of BaseX: double click on the **BaseX Server/Client** icons, or run the `basexserver` and `basexclient` scripts. [Follow this link](.md) for more information (or check out the additional [command-line options](Command-Line Options.md#basexserver)). 
 
 
 ## Create a database
@@ -33,7 +33,7 @@ By default, databases are stored in the `BaseXData` directory, which is located 
 
 ## Execute a query
 
-The [XQUERY](Commands.md#XQUERY) command lets you run a query. 
+The [XQUERY](Commands.md#xquery) command lets you run a query. 
 
  * For example, this query returns all country nodes in the currently opened database. 
 
@@ -80,7 +80,7 @@ Now we will create another database from the [xmark.xml](http://files.basex.org/
 
 ` > CLOSE`
 
- * Use the [DROP DB](Commands.md#DROP_DB) command to delete the xmark database: 
+ * Use the [DROP DB](Commands.md#dropdb) command to delete the xmark database: 
 
 ` > DROP DB xmark `
 

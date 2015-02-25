@@ -27,7 +27,7 @@ file:list($dir as xs:string) as xs:string*
 file:list($dir as xs:string, $recursive as xs:boolean) as xs:string*
 file:list($dir as xs:string, $recursive as xs:boolean, $pattern as xs:string) as xs:string*
 
-:   Lists all files and directories found in the specified `$dir`. The returned paths are relative to the provided path.The optional parameter `$recursive` specifies whether sub-directories will be traversed, too.The optional parameter `$pattern` defines a file name pattern in the [Glob Syntax](Commands.md#Glob_Syntax). If present, only those files and directories are returned that correspond to the pattern. Several patterns can be separated with a comma (`,`). 
+:   Lists all files and directories found in the specified `$dir`. The returned paths are relative to the provided path.The optional parameter `$recursive` specifies whether sub-directories will be traversed, too.The optional parameter `$pattern` defines a file name pattern in the [Glob Syntax](Commands.md#globsyntax). If present, only those files and directories are returned that correspond to the pattern. Several patterns can be separated with a comma (`,`). 
 
     **Errors**
 
@@ -42,7 +42,7 @@ Introduced with Version 8.0:
 
 file:children($dir as xs:string) as xs:string*
 
-:   Returns the full paths to all files and directories found in the specified `$dir`.The inverse function is [file:parent](File Module.md#file-parent). The related function [file:list](File Module.md#file-list) returns relative file paths. 
+:   Returns the full paths to all files and directories found in the specified `$dir`.The inverse function is [file:parent](File Module.md#fileparent). The related function [file:list](File Module.md#filelist) returns relative file paths. 
 
     **Errors**
 
@@ -340,7 +340,7 @@ file:name($path as xs:string) as xs:string
 
 file:parent($path as xs:string) as xs:string?
 
-:   Returns the absolute path to the parent directory of a file or directory specified by `$path`. An empty sequence is returned if the path points to a root directory.The inverse function is [file:children](File Module.md#file-children). 
+:   Returns the absolute path to the parent directory of a file or directory specified by `$path`. An empty sequence is returned if the path points to a root directory.The inverse function is [file:children](File Module.md#filechildren). 
 
     **Examples**
 
@@ -440,22 +440,22 @@ file:base-dir() as xs:string?
 # Changelog
 ** Version 8.0 **
 
- * Added: [file:current-dir](File Module.md#file-current-dir), [file:base-dir](File Module.md#file-base-dir), [file:children](File Module.md#file-children)
+ * Added: [file:current-dir](File Module.md#filecurrent-dir), [file:base-dir](File Module.md#filebase-dir), [file:children](File Module.md#filechildren)
 ** Version 7.8 **
 
- * Added: [file:parent](File Module.md#file-parent), [file:name](File Module.md#file-name)
- * Updated: error codes; [file:read-binary](File Module.md#file-read-binary), [file:write-binary](File Module.md#file-write-binary): `$offset` and `$length` arguments added. 
+ * Added: [file:parent](File Module.md#fileparent), [file:name](File Module.md#filename)
+ * Updated: error codes; [file:read-binary](File Module.md#fileread-binary), [file:write-binary](File Module.md#filewrite-binary): `$offset` and `$length` arguments added. 
  * Deleted: file:base-name, file:dir-name 
 ** Version 7.7 **
 
- * Added: [file:create-temp-dir](File Module.md#file-create-temp-dir), [file:create-temp-file](File Module.md#file-create-temp-file), [file:temp-dir](File Module.md#file-temp-dir)
+ * Added: [file:create-temp-dir](File Module.md#filecreate-temp-dir), [file:create-temp-file](File Module.md#filecreate-temp-file), [file:temp-dir](File Module.md#filetemp-dir)
  * Updated: all returned strings that refer to existing directories will be suffixed with a directory separator. 
 ** Version 7.3 **
 
- * Added: [file:append-text](File Module.md#file-append-text), [file:write-text](File Module.md#file-write-text), [file:append-text-lines](File Module.md#file-append-text-lines), [file:write-text-lines](File Module.md#file-write-text-lines), [file:line-separator](File Module.md#file-line-separator)
- * Aligned with latest specification: $file:directory-separator → [file:dir-separator](File Module.md#file-dir-separator), $file:path-separator → [file:path-separator](File Module.md#file-path-separator), file:is-directory → [file:is-dir](File Module.md#file-is-dir), file:create-directory → [file:create-dir](File Module.md#file-create-dir)
- * Updated: [file:write-binary](File Module.md#file-write-binary), [file:append-binary](File Module.md#file-append-binary): output limited to a single value 
+ * Added: [file:append-text](File Module.md#fileappend-text), [file:write-text](File Module.md#filewrite-text), [file:append-text-lines](File Module.md#fileappend-text-lines), [file:write-text-lines](File Module.md#filewrite-text-lines), [file:line-separator](File Module.md#fileline-separator)
+ * Aligned with latest specification: $file:directory-separator → [file:dir-separator](File Module.md#filedir-separator), $file:path-separator → [file:path-separator](File Module.md#filepath-separator), file:is-directory → [file:is-dir](File Module.md#fileis-dir), file:create-directory → [file:create-dir](File Module.md#filecreate-dir)
+ * Updated: [file:write-binary](File Module.md#filewrite-binary), [file:append-binary](File Module.md#fileappend-binary): output limited to a single value 
 ** Version 7.2.1 **
 
- * Updated: [file:delete](File Module.md#file-delete): `$recursive` parameter added to prevent sub-directories from being accidentally deleted. 
- * Fixed: [file:list](File Module.md#file-list) now returns relative instead of absolute paths. 
+ * Updated: [file:delete](File Module.md#filedelete): `$recursive` parameter added to prevent sub-directories from being accidentally deleted. 
+ * Fixed: [file:list](File Module.md#filelist) now returns relative instead of absolute paths. 

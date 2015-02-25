@@ -46,5 +46,5 @@ You may directly add new languages to the JAR file. JAR files are nothing else t
 3. Update your JAR file by copying the translated file into the zipped `lang` directory. Your new language file will be automatically detected. 
 4. Start BaseX.jar, choose your language via _Options_ → _Preferences..._ and restart BaseX to see the changes 
 
-You may also change the language in the `.basex` configuration file, which is placed in your [home directory](Configuration.md). In order to see where the all text keys are used within BaseX, you may temporarily set the [LANGKEY](Options.md#LANGKEY) option to `true`. 
+You may also change the language in the `.basex` configuration file, which is placed in your [home directory](Configuration.md). In order to see where the all text keys are used within BaseX, you may temporarily set the [LANGKEY](Options.md#langkey) option to `true`. 
 

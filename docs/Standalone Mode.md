@@ -7,7 +7,7 @@ This page is part of the [Getting Started](Getting Started.md) Section. BaseX of
  
 # Startup
 
-First of all, please launch a **standalone** version of BaseX: double click on the **BaseX** icon, or run the `basex` script. [Follow this link](.md) for more information (or check out the additional [command-line options](Command-Line Options.md#BaseX_Standalone)). 
+First of all, please launch a **standalone** version of BaseX: double click on the **BaseX** icon, or run the `basex` script. [Follow this link](.md) for more information (or check out the additional [command-line options](Command-Line Options.md#basexstandalone)). 
 
 
 ## Working with the BaseX Console
@@ -35,7 +35,7 @@ To evaluate commands without entering the console mode, you can use the `-c` opt
     Query executed in 15.62 ms.
 
 
-All available command-line options can be found [here](Command-Line Options.md#BaseX_Standalone). 
+All available command-line options can be found [here](Command-Line Options.md#basexstandalone). 
 
 
 ## See also 

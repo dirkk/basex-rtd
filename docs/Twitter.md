@@ -10,7 +10,7 @@ As [Twitter](http://twitter.com) attracts more and more users (over 140 million 
  
 # BaseX as Twitter Storage
 
-For retrieving the Twitter stream we connect with the Streaming API to the endpoint of Twitter and receive a never ending tweet stream. As Twitter delivers the tweets as [JSON](http://www.json.org/) objects the objects has to be converted into XML fragments. For this purpose the parse function of the [XQuery JSON Module](JSON Module.md) is used. In the examples section both versions are shown ([tweet as JSON](Twitter.md#Example_Tweet_.28JSON.29) and [tweet as XML](Twitter.md#Example_Tweet_.28XML.29)). For storing the tweets including the meta-data, we use the standard _insert_ function of [XQuery Update](http://docs.basex.org/wiki/XQuery Update). 
+For retrieving the Twitter stream we connect with the Streaming API to the endpoint of Twitter and receive a never ending tweet stream. As Twitter delivers the tweets as [JSON](http://www.json.org/) objects the objects has to be converted into XML fragments. For this purpose the parse function of the [XQuery JSON Module](JSON Module.md) is used. In the examples section both versions are shown ([tweet as JSON](Twitter.md#exampletweet-.28json.29) and [tweet as XML](Twitter.md#exampletweet-.28xml.29)). For storing the tweets including the meta-data, we use the standard _insert_ function of [XQuery Update](http://docs.basex.org/wiki/XQuery Update). 
 
  
 # Twitter’s Streaming Data

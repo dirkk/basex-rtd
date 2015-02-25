@@ -224,7 +224,7 @@ The following expression demonstrates how SQLite can be addressed using the [Xer
 # Changelog
 ** Version 7.5 **
 
- * Updated: prepared statements are now executed via [sql:execute-prepared](SQL Module.md#sql-execute-prepared)
+ * Updated: prepared statements are now executed via [sql:execute-prepared](SQL Module.md#sqlexecute-prepared)
 
 The module was introduced with Version 7.0. 
 

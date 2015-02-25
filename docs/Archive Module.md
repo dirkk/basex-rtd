@@ -2,7 +2,7 @@
 
 
  
-This [XQuery Module](Module Library.md) contains functions to handle archives (including ePub, Open Office, JAR, and many other formats). New ZIP and GZIP archives can be created, existing archives can be updated, and the archive entries can be listed and extracted. The [archive:extract-binary](Archive Module.md#archive-extract-binary) function includes an example for writing the contents of an archive to disk. 
+This [XQuery Module](Module Library.md) contains functions to handle archives (including ePub, Open Office, JAR, and many other formats). New ZIP and GZIP archives can be created, existing archives can be updated, and the archive entries can be listed and extracted. The [archive:extract-binary](Archive Module.md#archiveextract-binary) function includes an example for writing the contents of an archive to disk. 
 
  
 # Conventions
@@ -54,7 +54,7 @@ archive:entries($archive as xs:base64Binary) as element(archive:entry)*
 
 archive:options($archive as xs:base64Binary) as element(archive:options)
 
-:   Returns the options of the specified `$archive` in the format specified by [archive:create](Archive Module.md#archive-create). 
+:   Returns the options of the specified `$archive` in the format specified by [archive:create](Archive Module.md#archivecreate). 
 
     **Errors**
 
@@ -77,7 +77,7 @@ archive:extract-text($archive as xs:base64Binary) as xs:string*
 archive:extract-text($archive as xs:base64Binary, $entries as item()*) as xs:string*
 archive:extract-text($archive as xs:base64Binary, $entries as item()*, $encoding as xs:string) as xs:string*
 
-:   Extracts entries of the specified `$archive` and returns them as texts.The returned entries can be limited via `$entries`. The format of the argument is the same as for [archive:create](Archive Module.md#archive-create) (attributes will be ignored).The encoding of the input files can be specified via `$encoding`. 
+:   Extracts entries of the specified `$archive` and returns them as texts.The returned entries can be limited via `$entries`. The format of the argument is the same as for [archive:create](Archive Module.md#archivecreate) (attributes will be ignored).The encoding of the input files can be specified via `$encoding`. 
 
     **Errors**
 
@@ -99,7 +99,7 @@ archive:extract-text($archive as xs:base64Binary, $entries as item()*, $encoding
 archive:extract-binary($archive as xs:base64Binary) as xs:string*
 archive:extract-binary($archive as xs:base64Binary, $entries as item()*) as xs:base64Binary*
 
-:   Extracts entries of the specified `$archive` and returns them as binaries.The returned entries can be limited via `$entries`. The format of the argument is the same as for [archive:create](Archive Module.md#archive-create) (attributes will be ignored). 
+:   Extracts entries of the specified `$archive` and returns them as binaries.The returned entries can be limited via `$entries`. The format of the argument is the same as for [archive:create](Archive Module.md#archivecreate) (attributes will be ignored). 
 
     **Errors**
 
@@ -127,7 +127,7 @@ archive:extract-binary($archive as xs:base64Binary, $entries as item()*) as xs:b
 
 archive:update($archive as xs:base64Binary, $entries as item()*, $contents as item()*) as xs:base64Binary
 
-:   Creates an updated version of the specified `$archive` with new or replaced entries.The format of `$entries` and `$contents` is the same as for [archive:create](Archive Module.md#archive-create). 
+:   Creates an updated version of the specified `$archive` with new or replaced entries.The format of `$entries` and `$contents` is the same as for [archive:create](Archive Module.md#archivecreate). 
 
     **Errors**
 
@@ -161,7 +161,7 @@ archive:update($archive as xs:base64Binary, $entries as item()*, $contents as it
 
 archive:delete($archive as xs:base64Binary, $entries as item()*) as xs:base64Binary
 
-:   Deletes entries from an `$archive`.The format of `$entries` is the same as for [archive:create](Archive Module.md#archive-create). 
+:   Deletes entries from an `$archive`.The format of `$entries` is the same as for [archive:create](Archive Module.md#archivecreate). 
 
     **Errors**
 
@@ -184,7 +184,7 @@ archive:delete($archive as xs:base64Binary, $entries as item()*) as xs:base64Bin
 archive:write($path as xs:string, $archive as xs:base64Binary) as xs:string*
 archive:write($path as xs:string, $archive as xs:base64Binary, $entries as item()*) as empty-sequence()
 
-:   This convenience function directly writes files of an `$archive` to the specified directory `$path`.The entries to be written can be limited via `$entries`. The format of the argument is the same as for [archive:create](Archive Module.md#archive-create) (attributes will be ignored). 
+:   This convenience function directly writes files of an `$archive` to the specified directory `$path`.The entries to be written can be limited via `$entries`. The format of the argument is the same as for [archive:create](Archive Module.md#archivecreate) (attributes will be ignored). 
 
     **Errors**
 
@@ -213,7 +213,7 @@ archive:write($path as xs:string, $archive as xs:base64Binary, $entries as item(
 # Changelog
 ** Version 7.7 **
 
- * Added: [archive:write](Archive Module.md#archive-write)
+ * Added: [archive:write](Archive Module.md#archivewrite)
 
 The module was introduced with Version 7.3. 
 

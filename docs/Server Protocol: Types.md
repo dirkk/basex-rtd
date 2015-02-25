@@ -7,7 +7,7 @@ This article lists extended type information that is returned by the [Server Pro
  
 # XDM Meta Data
 
-In most cases, the XDM meta data is nothing else than the [Type ID](Server Protocol: Types.md#Type_IDs). There are three exceptions, though: document-node(), attribute() and xs:QName items are followed by an additional {URI} string. 
+In most cases, the XDM meta data is nothing else than the [Type ID](Server Protocol: Types.md#typeids). There are three exceptions, though: document-node(), attribute() and xs:QName items are followed by an additional {URI} string. 
 
 
 ## Type IDs
@@ -17,7 +17,7 @@ The following table lists the type IDs that are returned by the server. Currentl
 
 ** Type ID ** | ** Node Kind/Item Type ** | ** Type **
 ------------- | ------------------------- | ----------
- 7  | [Function item](XQuery 3.0.md#XQuery_3.0Function_Items) | _function_
+ 7  | [Function item](XQuery 3.0.md#xquery3.0function-items) | _function_
  8  | `node()` | _node_
  9  | `text()` | _node_
  10  | `processing-instruction()` | _node_

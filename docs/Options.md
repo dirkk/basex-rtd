@@ -5,15 +5,15 @@
 This page is linked from the [Getting Started](Getting Started.md) Section. 
 
  
-The options listed on this page influence the way how database [commands](Commands.md) are executed and XQuery expressions are evaluated. Options are divided into [global options](Options.md#Global_Options), which are valid for all BaseX instances, and **local options**, which are specific to a client or session. Values of options are either _strings_, _numbers_ or _booleans_. 
+The options listed on this page influence the way how database [commands](Commands.md) are executed and XQuery expressions are evaluated. Options are divided into [global options](Options.md#globaloptions), which are valid for all BaseX instances, and **local options**, which are specific to a client or session. Values of options are either _strings_, _numbers_ or _booleans_. 
 
  
-The `.basex`[configuration file](Configuration.md#Configuration_Files) is parsed by every new local BaseX instance. It contains all global options and, optionally, local options at the end of the file. 
+The `.basex`[configuration file](Configuration.md#configurationfiles) is parsed by every new local BaseX instance. It contains all global options and, optionally, local options at the end of the file. 
 
  
 Various ways exist to access and change options: 
 
-  * The current value of an option can be requested with the [GET](Commands.md#GET) and changed with the [SET](Commands.md#SET) command. All values are _static_: they stay valid until they are changed once again by another operation. If an option is of type _boolean_, and if no value is specified, its existing value will be inverted. 
+  * The current value of an option can be requested with the [GET](Commands.md#get) and changed with the [SET](Commands.md#set) command. All values are _static_: they stay valid until they are changed once again by another operation. If an option is of type _boolean_, and if no value is specified, its existing value will be inverted. 
   * Initial values for options can also be specified via system properties, which can e.g. be passed on with the [-D flag](http://docs.oracle.com/javase/1.4.2/docs/tooldocs/windows/java.html#options) on command line, or using [System.setProperty()](http://docs.oracle.com/javase/6/docs/api/java/lang/System.html#setProperty(java.lang.String,%20java.lang.String)) before creating a BaseX instance. The specified keys needs to be prefixed with `org.basex.`. An example: 
  
     java -Dorg.basex.CHOP=false -cp basex.jar org.basex.BaseX -c"get chop"
@@ -44,7 +44,7 @@ Global options are constants. They can only be set in the configuration file or 
 **Signature** | `DEBUG [boolean]`
 ------------- | -----------------
 **Default** | `false`
-**Summary** | Sends internal debug info to STDERR. This option can be turned on to get additional information for development and debugging purposes. It can also be triggered on [command line](Command-Line Options.md#BaseX_Standalone) via `-d`. 
+**Summary** | Sends internal debug info to STDERR. This option can be turned on to get additional information for development and debugging purposes. It can also be triggered on [command line](Command-Line Options.md#basexstandalone) via `-d`. 
 
 ### DBPATH
 
@@ -88,28 +88,28 @@ Global options are constants. They can only be set in the configuration file or 
 **Signature** | `HOST [host]`
 ------------- | -------------
 **Default** | `localhost`
-**Summary** | This host name is used by the client when connecting to a server. This option can also be changed when running the client on [command line](Command-Line Options.md#BaseX_Client) via `-n`. 
+**Summary** | This host name is used by the client when connecting to a server. This option can also be changed when running the client on [command line](Command-Line Options.md#basexclient) via `-n`. 
 
 ### PORT
 
 **Signature** | `PORT [port]`
 ------------- | -------------
 **Default** | `1984`
-**Summary** | This port is used by the client when connecting to a server. This option can also be changed when running the client on [command line](Command-Line Options.md#BaseX_Client) via `-p`. 
+**Summary** | This port is used by the client when connecting to a server. This option can also be changed when running the client on [command line](Command-Line Options.md#basexclient) via `-p`. 
 
 ### SERVERPORT
 
 **Signature** | `SERVERPORT [port]`
 ------------- | -------------------
 **Default** | `1984`
-**Summary** | This is the port the database server will be listening to. This option can also be changed when running the server on [command line](Command-Line Options.md#BaseX_Server) via `-p`. 
+**Summary** | This is the port the database server will be listening to. This option can also be changed when running the server on [command line](Command-Line Options.md#basexserver) via `-p`. 
 
 ### EVENTPORT
 
 **Signature** | `EVENTPORT [port]`
 ------------- | ------------------
 **Default** | `1985`
-**Summary** | This port is used by the client to listen for [server events](Events.md). It will only be bound if a client attaches itself to a database event. This option can also be changed when running the server on [command line](Command-Line Options.md#BaseX_Server) via `-e`. 
+**Summary** | This port is used by the client to listen for [server events](Events.md). It will only be bound if a client attaches itself to a database event. This option can also be changed when running the server on [command line](Command-Line Options.md#basexserver) via `-e`. 
 
 ### USER
 
@@ -118,7 +118,7 @@ Global options are constants. They can only be set in the configuration file or 
 **Default** | _empty_
 **Summary** | Represents a user name, which is used for accessing the server or an HTTP service:  * The default value will be overwritten if a client specifies its own credentials. 
  * If the default value is empty, login will only be possible if the client specifies credentials. 
- * The option can also be changed on [command line](Command-Line Options.md#BaseX_Client) via `-U`. 
+ * The option can also be changed on [command line](Command-Line Options.md#basexclient) via `-U`. 
 
 
 ### PASSWORD
@@ -128,7 +128,7 @@ Global options are constants. They can only be set in the configuration file or 
 **Default** | _empty_
 **Summary** | Represents a password, which is used for accessing the server or an HTTP service:  * The default value will be overwritten if a client specifies its own credentials. 
  * If the default value is empty, login will only be possible if the client specifies credentials. 
- * The option can also be changed on [command line](Command-Line Options.md#BaseX_Client) via `-P`. 
+ * The option can also be changed on [command line](Command-Line Options.md#basexclient) via `-P`. 
  * Please note that it is a security risk to specify your password in plain text. 
 
 
@@ -205,7 +205,7 @@ Updated with Version 8.0: empty string will be ignored.
 **Signature** | `LOG [boolean]`
 ------------- | ---------------
 **Default** | `true`
-**Summary** | Turns [Logging](Logging.md) of server operations and HTTP requests on/off. This option can also be changed when running the server on [command line](Command-Line Options.md#BaseX_Server) via `-z`. 
+**Summary** | Turns [Logging](Logging.md) of server operations and HTTP requests on/off. This option can also be changed when running the server on [command line](Command-Line Options.md#basexserver) via `-z`. 
 
 ### LOGMSGMAXLEN
 
@@ -231,7 +231,7 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
 **Signature** | `RESTXQPATH [path]`
 ------------- | -------------------
 **Default** | _empty_
-**Summary** | Points to the directory which contains the [RESTXQ](RESTXQ.md) modules of a web application. Relative paths will be resolved against the [WEBPATH](Options.md#WEBPATH) directory. 
+**Summary** | Points to the directory which contains the [RESTXQ](RESTXQ.md) modules of a web application. Relative paths will be resolved against the [WEBPATH](Options.md#webpath) directory. 
 
 ### HTTPLOCAL
 
@@ -246,8 +246,8 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
 ------------- | -----------------
 **Default** | `8985`
 **Summary** | This is the port on which the [HTTP Server](.md) can be locally closed:  * The listener for stopping the web server will only be started if the specified value is greater than `0`. 
- * The option is ignored if BaseX is used as a [Web Application](Web Application.md) or started via [Maven](Web Application.md#Web_ApplicationMaven). 
- * This option can also be changed when running the HTTP server on [command line](Command-Line Options.md#BaseX_Server) via `-s`. 
+ * The option is ignored if BaseX is used as a [Web Application](Web Application.md) or started via [Maven](Web Application.md#webapplicationmaven). 
+ * This option can also be changed when running the HTTP server on [command line](Command-Line Options.md#basexserver) via `-s`. 
 
  
 # Create Options
@@ -275,7 +275,7 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
 **Signature** | `CREATEFILTER [filter]`
 ------------- | -----------------------
 **Default** | `*.xml`
-**Summary** | File filter in the [Glob Syntax](Commands.md#Glob_Syntax), which is applied whenever new databases are created, or resources are added to a database. 
+**Summary** | File filter in the [Glob Syntax](Commands.md#globsyntax), which is applied whenever new databases are created, or resources are added to a database. 
 
 ### ADDARCHIVES
 
@@ -296,7 +296,7 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
 **Signature** | `ADDRAW [boolean]`
 ------------- | ------------------
 **Default** | `false`
-**Summary** | If this option is activated, and if new resources are added to a database, all files that are not filtered by the [CREATEFILTER](Options.md#CREATEFILTER) option will be added as _raw_ files (i.e., in their binary representation). 
+**Summary** | If this option is activated, and if new resources are added to a database, all files that are not filtered by the [CREATEFILTER](Options.md#createfilter) option will be added as _raw_ files (i.e., in their binary representation). 
 
 ### PARSER
 
@@ -310,14 +310,14 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
 **Signature** | `CSVPARSER [options]`
 ------------- | ---------------------
 **Default** | _empty_
-**Summary** | Specifies the way how CSV data is to be parsed. The available options are listed in the [CSV Module](CSV Module.md#CSV_ModuleOptions). 
+**Summary** | Specifies the way how CSV data is to be parsed. The available options are listed in the [CSV Module](CSV Module.md#csvmoduleoptions). 
 
 ### JSONPARSER
 
 **Signature** | `JSONPARSER [options]`
 ------------- | ----------------------
 **Default** | _empty_
-**Summary** | Specifies the way how JSON data is to be parsed. The available options are listed in the [JSON Module](JSON Module.md#JSON_ModuleOptions). 
+**Summary** | Specifies the way how JSON data is to be parsed. The available options are listed in the [JSON Module](JSON Module.md#jsonmoduleoptions). 
 
 ### TEXTPARSER
 
@@ -334,8 +334,8 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
 ------------- | ----------------
 **Default** | `true`
 **Summary** | Many XML documents include whitespaces that have been added to improve readability. The `CHOP` option controls the [white-space processing mode](http://www.w3.org/TR/REC-xml/#sec-white-space) of the XML parser:  * By default, this option is set to `true`. This way, leading and trailing whitespaces from text nodes will be chopped and all empty text nodes will be discarded. 
- * The flag should be turned off if a document contains [mixed content](Full-Text.md#Mixed_Content). 
- * The flag can also be turned off on [command line](Command-Line Options.md#BaseX_Standalone) via `-w`. 
+ * The flag should be turned off if a document contains [mixed content](Full-Text.md#mixedcontent). 
+ * The flag can also be turned off on [command line](Command-Line Options.md#basexstandalone) via `-w`. 
  * If the `xml:space="preserve"` attribute is attached to an element, chopping will be turned off for all descendant text nodes. In the following example document, the whitespaces in the text nodes of the `text` element will not be chopped: 
 
     <xml>
@@ -366,7 +366,7 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
 **Signature** | `DTD [boolean]`
 ------------- | ---------------
 **Default** | `false`
-**Summary** | Parses referenced DTDs and resolves XML entities. By default, this option is switched to `false`, as many DTDs are located externally, which may completely block the process of creating new databases. The [CATFILE](Options.md#CATFILE) option can be changed to locally resolve DTDs. 
+**Summary** | Parses referenced DTDs and resolves XML entities. By default, this option is switched to `false`, as many DTDs are located externally, which may completely block the process of creating new databases. The [CATFILE](Options.md#catfile) option can be changed to locally resolve DTDs. 
 
 ### XINCLUDE
 
@@ -376,7 +376,7 @@ Added with Version 8.0:
 **Signature** | `XINCLUDE [boolean]`
 ------------- | --------------------
 **Default** | `true`
-**Summary** | Resolves XInclude inclusion tags and merges referenced XML documents. By default, this option is switched to `true`. This option is only available if the standard Java XML Parser is used (see [INTPARSE](Options.md#INTPARSE)). 
+**Summary** | Resolves XInclude inclusion tags and merges referenced XML documents. By default, this option is switched to `true`. This option is only available if the standard Java XML Parser is used (see [INTPARSE](Options.md#intparse)). 
 
 ### CATFILE
 
@@ -387,7 +387,7 @@ Added with Version 8.0:
 
 ## Indexing
 
-The current index and full-text index options will be stored in a new database, and take effect if indexes are rebuilt via the [OPTIMIZE](Commands.md#OPTIMIZE). 
+The current index and full-text index options will be stored in a new database, and take effect if indexes are rebuilt via the [OPTIMIZE](Commands.md#optimize). 
 
 
 ### TEXTINDEX
@@ -433,7 +433,7 @@ The current index and full-text index options will be stored in a new database, 
 **Summary** | If turned on, incremental indexing will be applied to new databases:  * With each update, the text and attributes indexes will be refreshed as well. 
  * The advantage is that the value index structures will always be up-to-date. 
  * However, updates will usually take longer (the article on [Index Structures](http://docs.basex.org/wiki/IndexesUpdates) provides more details). 
- * The value of this option will be assigned once to a new database. It can be reassigned by running [OPTIMIZE ALL](Commands.md#OPTIMIZE) or [db:optimize($db, true())](Database Module.md#db-optimize). 
+ * The value of this option will be assigned once to a new database. It can be reassigned by running [OPTIMIZE ALL](Commands.md#optimize) or [db:optimize($db, true())](Database Module.md#dboptimize). 
 
 
 ### AUTOOPTIMIZE
@@ -447,7 +447,7 @@ Introduced with Version 8.0:
 **Summary** | If turned on, auto optimization will be applied to new databases:  * With each update, outdated indexes and database statistics will be recreated. 
  * As a result, the index structures will always be up-to-date. 
  * However, updates can take much longer, so this option should only be activated for medium-sized databases. 
- * The value of this option will be assigned once to a new database. It can be reassigned by running [OPTIMIZE](Commands.md#OPTIMIZE) or [db:optimize](Database Module.md#db-optimize). 
+ * The value of this option will be assigned once to a new database. It can be reassigned by running [OPTIMIZE](Commands.md#optimize) or [db:optimize](Database Module.md#dboptimize). 
 
 
 ### INDEXSPLITSIZE
@@ -455,14 +455,14 @@ Introduced with Version 8.0:
 **Signature** | `INDEXSPLITSIZE [num]`
 ------------- | ----------------------
 **Default** | `0`
-**Summary** | This option affects the [construction](Indexes.md#Index_Construction) of new text and attribute indexes. It specifies the number of index build operations that are performed before writing partial index data to disk. By default, if the value is set to 0, some dynamic split heuristics are applied. By setting the value to its maximum (2147483647), the index will never be split. 
+**Summary** | This option affects the [construction](Indexes.md#indexconstruction) of new text and attribute indexes. It specifies the number of index build operations that are performed before writing partial index data to disk. By default, if the value is set to 0, some dynamic split heuristics are applied. By setting the value to its maximum (2147483647), the index will never be split. 
 
 ### FTINDEXSPLITSIZE
 
 **Signature** | `FTINDEXSPLITSIZE [num]`
 ------------- | ------------------------
 **Default** | `0`
-**Summary** | This option affects the [construction](Indexes.md#Index_Construction) of new full-text indexes. It specifies the number of index build operations that are performed before writing partial index data to disk. By default, if the value is set to 0, some dynamic split heuristics are applied. By setting the value to its maximum (2147483647), the index will never be split. 
+**Summary** | This option affects the [construction](Indexes.md#indexconstruction) of new full-text indexes. It specifies the number of index build operations that are performed before writing partial index data to disk. By default, if the value is set to 0, some dynamic split heuristics are applied. By setting the value to its maximum (2147483647), the index will never be split. 
 
 ## Full-Text
 
@@ -508,7 +508,7 @@ Introduced with Version 8.0:
 **Signature** | `QUERYINFO [boolean]`
 ------------- | ---------------------
 **Default** | `false`
-**Summary** | Prints more information on internal query rewritings, optimizations, and performance. By default, this info is shown in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations) in the GUI. It can also be activated on [command line](Command-Line Options.md#BaseX_Standalone) via `-V`. 
+**Summary** | Prints more information on internal query rewritings, optimizations, and performance. By default, this info is shown in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations) in the GUI. It can also be activated on [command line](Command-Line Options.md#basexstandalone) via `-V`. 
 
 ## XQUERY3
 
@@ -525,7 +525,7 @@ Added with Version 8.0:
 **Signature** | `MIXUPDATES`
 ------------- | ------------
 **Default** | `false`
-**Summary** | Allows queries to both contain updating and non-updating expressions. All updating constraints will be turned off, and nodes to be returned will be copied before they are modified by an updating expression. – By default, this option is set to `false`, because the XQuery Update Facility does not allow to [return results](XQuery Update.md#Returning_Results). 
+**Summary** | Allows queries to both contain updating and non-updating expressions. All updating constraints will be turned off, and nodes to be returned will be copied before they are modified by an updating expression. – By default, this option is set to `false`, because the XQuery Update Facility does not allow to [return results](XQuery Update.md#returningresults). 
 
 ## BINDINGS
 
@@ -536,13 +536,13 @@ Added with Version 8.0:
  * Variables may optionally be introduced with a leading dollar sign. 
  * Commas that occur in the value itself are encoded by duplication. 
  * If a variable uses a namespace different to the default namespace, it can be specified with the [Clark Notation](http://www.jclark.com/xml/xmlns.htm) or [Expanded QName Notation](http://www.w3.org/TR/xquery-30/#id-basics). 
- * This option can also be used on [command line](Command-Line Options.md#BaseX_Standalone) with the flag `-b`. 
+ * This option can also be used on [command line](Command-Line Options.md#basexstandalone) with the flag `-b`. 
 
 **Examples** | `$a=1,$b=2`   binds the values `1` and `2` to the variables $a and $b `a=1,,2`   binds the value `1,2` to the variable $a `{URI}a=x`   binds the value `x` to the variable $a with the namespace `URI`. 
     SET BINDINGS BIND-VAR="hello world!"
     XQUERY declare variable $BIND-VAR external; $BIND-VAR
 
-   binds the value `hello world!` to the variable $BIND-VAR and shows how it can be used in a [ Command Script](Commands.md#Command_Scripts). 
+   binds the value `hello world!` to the variable $BIND-VAR and shows how it can be used in a [ Command Script](Commands.md#commandscripts). 
 
 ## QUERYPATH
 
@@ -570,7 +570,7 @@ Added with Version 8.0:
 **Signature** | `DEFAULTDB`
 ------------- | -----------
 **Default** | `false`
-**Summary** | If this option is turned on, paths specified in the `fn:doc` and `fn:collections` functions will first be resolved against a database that has been opened in the global context outside the query (e.g. by the [OPEN](Commands.md#OPEN) command). If the path does not match any existing resources, it will be resolved as described in the article on [accessing database resources](Databases.md#Access_Resources). 
+**Summary** | If this option is turned on, paths specified in the `fn:doc` and `fn:collections` functions will first be resolved against a database that has been opened in the global context outside the query (e.g. by the [OPEN](Commands.md#open) command). If the path does not match any existing resources, it will be resolved as described in the article on [accessing database resources](Databases.md#accessresources). 
 
 ## CACHEQUERY
 
@@ -591,7 +591,7 @@ Added with Version 8.0:
 **Signature** | `CHECKSTRINGS [boolean]`
 ------------- | ------------------------
 **Default** | `true`
-**Summary** | If this option is turned off, strings from external sources will be adopted as is, i. e., without being checked for valid XML characters:  * This option affects [Java Bindings](Java Bindings.md) and the string conversion and input functions [archive:create](Archive Module.md#archive-create), [archive:extract-text](Archive Module.md#archive-extract-text), [archive:update](Archive Module.md#archive-update), [convert:binary-to-string](Conversion Module.md#convert-binary-to-string), [fetch:text](Fetch Module.md#fetch-text), [file:read-text](File Module.md#file-read-text), and [zip:text-entry](ZIP Module.md#zip-text-entry). 
+**Summary** | If this option is turned off, strings from external sources will be adopted as is, i. e., without being checked for valid XML characters:  * This option affects [Java Bindings](Java Bindings.md) and the string conversion and input functions [archive:create](Archive Module.md#archivecreate), [archive:extract-text](Archive Module.md#archiveextract-text), [archive:update](Archive Module.md#archiveupdate), [convert:binary-to-string](Conversion Module.md#convertbinary-to-string), [fetch:text](Fetch Module.md#fetchtext), [file:read-text](File Module.md#fileread-text), and [zip:text-entry](ZIP Module.md#ziptext-entry). 
  * Please be aware that an inconsiderate use of this option may cause unexpected behavior when storing or outputting strings. 
 
 
@@ -600,21 +600,21 @@ Added with Version 8.0:
 **Signature** | `LSERROR [error]`
 ------------- | -----------------
 **Default** | `0`
-**Summary** | This option specifies the maximum Levenshtein error for the BaseX-specific fuzzy match option. See the page on [Full-Texts](Full-Text.md#Fuzzy_Querying) for more information on fuzzy querying. 
+**Summary** | This option specifies the maximum Levenshtein error for the BaseX-specific fuzzy match option. See the page on [Full-Texts](Full-Text.md#fuzzyquerying) for more information on fuzzy querying. 
 
 ## RUNQUERY
 
 **Signature** | `RUNQUERY [boolean]`
 ------------- | --------------------
 **Default** | `true`
-**Summary** | Specifies if a query will be executed or parsed only. This option can also be changed on [command line](Command-Line Options.md#BaseX_Standalone) via `-R`. 
+**Summary** | Specifies if a query will be executed or parsed only. This option can also be changed on [command line](Command-Line Options.md#basexstandalone) via `-R`. 
 
 ## RUNS
 
 **Signature** | `RUNS [num]`
 ------------- | ------------
 **Default** | `1`
-**Summary** | Specifies how often a query will be evaluated. The result is serialized only once, and the measured times are averages of all runs. This option can also be changed on [command line](Command-Line Options.md#BaseX_Standalone) via `-r`. 
+**Summary** | Specifies how often a query will be evaluated. The result is serialized only once, and the measured times are averages of all runs. This option can also be changed on [command line](Command-Line Options.md#basexstandalone) via `-r`. 
  
 # Serialization Options
 
@@ -623,7 +623,7 @@ Added with Version 8.0:
 **Signature** | `SERIALIZE [boolean]`
 ------------- | ---------------------
 **Default** | `true`
-**Summary** | Results of XQuery expressions will be serialized if this option is turned on. For debugging purposes and performance measurements, this option can be set to `false`. It can also be turned off on [command line](Command-Line Options.md#BaseX_Standalone) via `-z`. 
+**Summary** | Results of XQuery expressions will be serialized if this option is turned on. For debugging purposes and performance measurements, this option can be set to `false`. It can also be turned off on [command line](Command-Line Options.md#basexstandalone) via `-z`. 
 
 ## SERIALIZER
 
@@ -632,7 +632,7 @@ Added with Version 8.0:
 **Default** | _empty_
 **Summary** | Contains parameters for [serializing](Serialization.md) query results:  * Keys and values are separated by equality signs. 
  * Multiple parameters are delimited by commas. 
- * The option can also be used on [command line](Command-Line Options.md#BaseX_Standalone) with the flag `-s`. 
+ * The option can also be used on [command line](Command-Line Options.md#basexstandalone) with the flag `-s`. 
 
 **Example** | `encoding=US-ASCII,omit-xml-declaration=no` : sets the encoding to `US-ASCII` and prints the XML declaration. 
 
@@ -648,14 +648,14 @@ Added with Version 8.0:
 **Signature** | `XMLPLAN [boolean]`
 ------------- | -------------------
 **Default** | `false`
-**Summary** | Prints the execution plan of an XQuery expression in its XML representation. This option can also be activated on [command line](Command-Line Options.md#BaseX_Standalone) via `-x`. 
+**Summary** | Prints the execution plan of an XQuery expression in its XML representation. This option can also be activated on [command line](Command-Line Options.md#basexstandalone) via `-x`. 
 
 ## COMPPLAN
 
 **Signature** | `COMPPLAN [boolean]`
 ------------- | --------------------
 **Default** | `true`
-**Summary** | Generates the query plan, which can be activated via [[#XMLPLAN|XMLPLAN], before or after query compilation. This option can also be activated on [command line](Command-Line Options.md#BaseX_Standalone) via `-X`. 
+**Summary** | Generates the query plan, which can be activated via [[#XMLPLAN|XMLPLAN], before or after query compilation. This option can also be activated on [command line](Command-Line Options.md#basexstandalone) via `-X`. 
 
 ## DOTPLAN
 
@@ -678,14 +678,14 @@ Added with Version 8.0:
 **Signature** | `AUTOFLUSH [boolean]`
 ------------- | ---------------------
 **Default** | `true`
-**Summary** | Flushes database buffers to disk after each update. If this option is set to `false`, bulk operations (multiple single updates) will be evaluated faster. As a drawback, the chance of data loss increases if the database is not explicitly flushed via the [FLUSH](Commands.md#FLUSH) command. 
+**Summary** | Flushes database buffers to disk after each update. If this option is set to `false`, bulk operations (multiple single updates) will be evaluated faster. As a drawback, the chance of data loss increases if the database is not explicitly flushed via the [FLUSH](Commands.md#flush) command. 
 
 ## WRITEBACK
 
 **Signature** | `WRITEBACK [boolean]`
 ------------- | ---------------------
 **Default** | `false`
-**Summary** | Propagates updates on main-memory instances of files that have been retrieved via `fn:doc` or `fn:collection` back to disk. This option can also be activated on [command line](Command-Line Options.md#BaseX_Standalone) via `-u`. Please note that, when turning this option on, your original files will not be backed up. 
+**Summary** | Propagates updates on main-memory instances of files that have been retrieved via `fn:doc` or `fn:collection` back to disk. This option can also be activated on [command line](Command-Line Options.md#basexstandalone) via `-u`. Please note that, when turning this option on, your original files will not be backed up. 
 
 ## MAXSTAT
 

@@ -102,7 +102,7 @@ hof:const($expr as item()*, $ignored as item()*) as item()*
 
 hof:fold-left1($seq as item()+, $f as function(item()*, item()) as item()*) as item()*
 
-:   Works the same as [fn:fold-left](Higher-Order Functions.md#fn-fold-left), but doesn't need a seed, because the sequence must be non-empty. 
+:   Works the same as [fn:fold-left](Higher-Order Functions.md#fnfold-left), but doesn't need a seed, because the sequence must be non-empty. 
 
     **Examples**
 
@@ -164,7 +164,7 @@ hof:top-k-with($seq as item()*, $lt as function(item(), item()) as xs:boolean, $
 # Changelog
 ** Version 7.2 **
 
- * Added: [hof:top-k-by](Higher-Order Functions Module.md#hof-top-k-by), [hof:top-k-with](Higher-Order Functions Module.md#hof-top-k-with)
+ * Added: [hof:top-k-by](Higher-Order Functions Module.md#hoftop-k-by), [hof:top-k-with](Higher-Order Functions Module.md#hoftop-k-with)
  * Removed: hof:iterate 
 ** Version 7.0 **
 

@@ -4,12 +4,12 @@
  
 This page is part of the [XQuery Portal](XQuery.md). Serialization parameters define how XQuery items and XML nodes are textually output, i.e., _serialized_. (For input, see [Parsers](Parsers.md).) They have been formalized in the [W3C XQuery Serialization 3.0](http://www.w3.org/TR/xslt-xquery-serialization-30) document. In BaseX, they can be specified by… 
 
-  * including them in the [prolog of the XQuery expression](XQuery 3.0.md#XQuery_3.0Serialization), 
- * specifying them in the XQuery functions [file:write()](File Module.md#file-write) or [fn:serialize()](XQuery 3.0.md#XQuery_3.0Functions). The serialization parameters are specified as 
- * using the `-s` flag of the BaseX [command-line](Command-Line Options.md#BaseX_Standalone) clients, 
- * setting the [SERIALIZER](Options.md#SERIALIZER) option before running a query, 
- * setting the [EXPORTER](Options.md#EXPORTER) option before exporting a database, or 
- * setting them as [REST](REST.md#RESTParameters) query parameters. 
+  * including them in the [prolog of the XQuery expression](XQuery 3.0.md#xquery3.0serialization), 
+ * specifying them in the XQuery functions [file:write()](File Module.md#filewrite) or [fn:serialize()](XQuery 3.0.md#xquery3.0functions). The serialization parameters are specified as 
+ * using the `-s` flag of the BaseX [command-line](Command-Line Options.md#basexstandalone) clients, 
+ * setting the [SERIALIZER](Options.md#serializer) option before running a query, 
+ * setting the [EXPORTER](Options.md#exporter) option before exporting a database, or 
+ * setting them as [REST](REST.md#restparameters) query parameters. 
  
 # Parameters
 

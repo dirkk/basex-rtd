@@ -18,8 +18,8 @@ Please note that BaseX provides various extensions to the official draft of the 
  
 The following features are available since Version 8.0: 
 
-  * Regular expresssions in the [Path Annotation](RESTXQ.md#Paths)
- * Evaluation of quality factors that are supplied in the [Accept header](RESTXQ.md#Content_Negotiation)
+  * Regular expresssions in the [Path Annotation](RESTXQ.md#paths)
+ * Evaluation of quality factors that are supplied in the [Accept header](RESTXQ.md#contentnegotiation)
  * BaseX is now shipped with a Database Administration Interface (DBA). It will automatically be launched when requesting the RESTXQ root page. 
  
 # Introduction
@@ -27,10 +27,10 @@ The following features are available since Version 8.0:
 The RESTXQ service is accessible via `http://localhost:8984/`. 
 
 
-All RESTXQ [annotations](XQuery 3.0.md#XQuery_3.0Annotations) are assigned to the `http://exquery.org/ns/restxq` namespace, which is statically bound to the `rest` prefix. A _Resource Function_ is an XQuery function that has been marked up with RESTXQ annotations. When an HTTP request comes in, a resource function will be invoked that matches the constraints indicated by its annotations. 
+All RESTXQ [annotations](XQuery 3.0.md#xquery3.0annotations) are assigned to the `http://exquery.org/ns/restxq` namespace, which is statically bound to the `rest` prefix. A _Resource Function_ is an XQuery function that has been marked up with RESTXQ annotations. When an HTTP request comes in, a resource function will be invoked that matches the constraints indicated by its annotations. 
 
 
-Whenever a RESTXQ URL is requested, the [RESTXQPATH](Options.md#RESTXQPATH) module directory and its sub-directories will be parsed for functions with RESTXQ annotations in library modules (detected by the extension `.xqm`) and main modules (detected by `.xq`). In main expressions, the main module will never be evaluated. All modules will be cached and parsed again when their timestamp changes. 
+Whenever a RESTXQ URL is requested, the [RESTXQPATH](Options.md#restxqpath) module directory and its sub-directories will be parsed for functions with RESTXQ annotations in library modules (detected by the extension `.xqm`) and main modules (detected by `.xq`). In main expressions, the main module will never be evaluated. All modules will be cached and parsed again when their timestamp changes. 
 
 
 A first RESTXQ function is shown below: 
@@ -178,7 +178,7 @@ The following function will be called if GET or POST is used as request method:
       function page:post() { "This was a GET or POST request" };
 
 
-The POST and PUT annotations may optionally take a string literal in order to map the HTTP request body to a [function argument](RESTXQ.md#RESTXQParameters). Once again, the target variable must be embraced by curly brackets: 
+The POST and PUT annotations may optionally take a string literal in order to map the HTTP request body to a [function argument](RESTXQ.md#restxqparameters). Once again, the target variable must be embraced by curly brackets: 
 
 
     declare
@@ -241,7 +241,7 @@ The following annotations can be used to bind request values to function argumen
 
 ### Query Parameters
 
-The value of the _first parameter_, if found in the [query component](Request Module.md#Request_ModuleConventions), will be assigned to the variable specified as _second parameter_. If no value is specified in the HTTP request, all additional parameters will be bound to the variable (if no additional parameter is given, an empty sequence will be bound): 
+The value of the _first parameter_, if found in the [query component](Request Module.md#requestmoduleconventions), will be assigned to the variable specified as _second parameter_. If no value is specified in the HTTP request, all additional parameters will be bound to the variable (if no additional parameter is given, an empty sequence will be bound): 
 
 
     declare
@@ -256,7 +256,7 @@ The value of the _first parameter_, if found in the [query component](Request Mo
 
 ### HTML Form Fields
 
-Form parameters are specified the same way as [query parameters](RESTXQ.md#Query_Parameters). Their values are extracted from GET or POST requests. 
+Form parameters are specified the same way as [query parameters](RESTXQ.md#queryparameters). Their values are extracted from GET or POST requests. 
 
 
     %rest:form-param("parameter", "{$value}", "default")
@@ -296,7 +296,7 @@ The file contents are placed in a [map](Map Module.md), with the filename servin
 
 ### HTTP Headers
 
-Header parameters are specified the same way as [query parameters](RESTXQ.md#Query_Parameters): 
+Header parameters are specified the same way as [query parameters](RESTXQ.md#queryparameters): 
 
 
     %rest:header-param("User-Agent", "{$user-agent}")
@@ -305,7 +305,7 @@ Header parameters are specified the same way as [query parameters](RESTXQ.md#Que
 
 ### Cookies
 
-Cookie parameters are specified the same way as [query parameters](RESTXQ.md#Query_Parameters): 
+Cookie parameters are specified the same way as [query parameters](RESTXQ.md#queryparameters): 
 
 
     %rest:cookie-param("username", "{$user}")
@@ -381,7 +381,7 @@ The client decides whether to follow this redirection. Browsers usually will, to
 
 ## Output
 
-Similar to the [REST](REST.md#Content_Type) interface, result serialization can be modified via [XQuery 3.0 serialization parameters](XQuery 3.0.md#XQuery_3.0Serialization); in RESTXQ, serialization parameters may be specified in the query prolog, via annotations, or within REST response element. Global parameters are overwritten by more local parameters. 
+Similar to the [REST](REST.md#contenttype) interface, result serialization can be modified via [XQuery 3.0 serialization parameters](XQuery 3.0.md#xquery3.0serialization); in RESTXQ, serialization parameters may be specified in the query prolog, via annotations, or within REST response element. Global parameters are overwritten by more local parameters. 
 
 
 ### Query Prolog
@@ -460,7 +460,7 @@ By default, `application/xml` is returned as content type. In the following exam
 Updated with Version 7.9:
 
 
-XQuery runtime errors can be processed via _error annotations_. Error annotations have one or more arguments, which represent the error codes to be caught. The codes equal the names of the XQuery 3.0 [try/catch](XQuery 3.0.md#Try.2FCatch) construct: 
+XQuery runtime errors can be processed via _error annotations_. Error annotations have one or more arguments, which represent the error codes to be caught. The codes equal the names of the XQuery 3.0 [try/catch](XQuery 3.0.md#try.2fcatch) construct: 
 
 
 ** Priority ** | ** Syntax ** | ** Example **
@@ -475,7 +475,7 @@ All error codes that are specified for a function must be of the same priority. 
  * Codes with a higher priority will be preferred. 
  * A global RESTXQ error will be raised if two functions with conflicting codes are found. 
 
-Similar to try/catch, the pre-defined variables (`code`, `description`, `value`, `module`, `line-number`, `column-number`, `additional`) can be bound to variables via _error parameter annotations_, which are specified the same way as [query parameters](RESTXQ.md#Query_Parameters). 
+Similar to try/catch, the pre-defined variables (`code`, `description`, `value`, `module`, `line-number`, `column-number`, `additional`) can be bound to variables via _error parameter annotations_, which are specified the same way as [query parameters](RESTXQ.md#queryparameters). 
 
 
 Errors may occur unexpectedly. However, they can also be triggered by a query, as demonstrated by the following example: 
@@ -509,7 +509,7 @@ Errors that occur outside RESTXQ can be caught by adding `error-page` elements w
     </error-page>
 
 
-The target location may be another RESTXQ function. The [request:attribute](Request Module.md#request-attribute) function can be used to request details on the caught error: 
+The target location may be another RESTXQ function. The [request:attribute](Request Module.md#requestattribute) function can be used to request details on the caught error: 
 
 
     declare
@@ -546,15 +546,15 @@ RESTXQ has been proposed by [Adam Retter](http://www.adamretter.org.uk/). More i
 # Changelog
 ** Version 8.0 **
 
- * Added: Support for regular expresssions in the [Path Annotation](RESTXQ.md#Paths)
- * Added: Evaluation of quality factors that are supplied in the [Accept header](RESTXQ.md#Content_Negotiation)
+ * Added: Support for regular expresssions in the [Path Annotation](RESTXQ.md#paths)
+ * Added: Evaluation of quality factors that are supplied in the [Accept header](RESTXQ.md#contentnegotiation)
 ** Version 7.9 **
 
- * Updated: [XQuery Errors](RESTXQ.md#XQuery_Errors), extended error annotations 
+ * Updated: [XQuery Errors](RESTXQ.md#xqueryerrors), extended error annotations 
  * Added: `%rest:method`
 ** Version 7.7 **
 
- * Added: [Error Handling](RESTXQ.md#Error_Handling), [File Uploads](RESTXQ.md#File_Uploads), [Multipart Types](RESTXQ.md#Multipart_Types)
+ * Added: [Error Handling](RESTXQ.md#errorhandling), [File Uploads](RESTXQ.md#fileuploads), [Multipart Types](RESTXQ.md#multiparttypes)
  * Updated: RESTXQ function may now also be specified in main modules (suffix: `*.xq`). 
  * Updated: the RESTXQ prefix has been changed from `restxq` to `rest`. 
  * Updated: parameters are implicitly cast to the type of the function argument 

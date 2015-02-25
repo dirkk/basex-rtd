@@ -55,7 +55,7 @@ ft:search($db as xs:string, $terms as item()*, $options as item()) as text()*
 ft:contains($input as item()*, $terms as item()*) as xs:boolean
 ft:contains($input as item()*, $terms as item()*, $options as item()) as xs:boolean
 
-:   Checks if the specified `$input` items contain the specified `$terms`.The function does the same as the [Full-Text](Full-Text.md) expression `contains text`, but options can be specified more dynamically. The `$options` are the same as for [ft:search](Full-Text Module.md#ft-search), and the following ones in addition:  * `case` : determines how character case is processed. Allowed values are `insensitive`, `sensitive`, `upper` and `lower`. By default, search is case insensitive. 
+:   Checks if the specified `$input` items contain the specified `$terms`.The function does the same as the [Full-Text](Full-Text.md) expression `contains text`, but options can be specified more dynamically. The `$options` are the same as for [ft:search](Full-Text Module.md#ftsearch), and the following ones in addition:  * `case` : determines how character case is processed. Allowed values are `insensitive`, `sensitive`, `upper` and `lower`. By default, search is case insensitive. 
 
     **Errors**
 
@@ -93,7 +93,7 @@ ft:extract($nodes as node()*) as node()*
 ft:extract($nodes as node()*, $name as xs:string) as node()*
 ft:extract($nodes as node()*, $name as xs:string, $length as xs:integer) as node()*
 
-:   Extracts and returns relevant parts of full-text results. It puts a marker element around the resulting `$nodes` of a full-text index request and chops irrelevant sections of the result.The default tag name of the marker element is `mark`. An alternative tag name can be chosen via the optional `$name` argument.The default length of the returned text is `150` characters. An alternative length can be specified via the optional `$length` argument. Note that the effective text length may differ from the specified text due to formatting and readibility issues.For more details on this function, please have a look at [ft:mark](Full-Text Module.md#ft-mark). 
+:   Extracts and returns relevant parts of full-text results. It puts a marker element around the resulting `$nodes` of a full-text index request and chops irrelevant sections of the result.The default tag name of the marker element is `mark`. An alternative tag name can be chosen via the optional `$name` argument.The default length of the returned text is `150` characters. An alternative length can be specified via the optional `$length` argument. Note that the effective text length may differ from the specified text due to formatting and readibility issues.For more details on this function, please have a look at [ft:mark](Full-Text Module.md#ftmark). 
 
     **Examples**
 
@@ -167,7 +167,7 @@ ft:tokenize($input as xs:string, $options as item()) as xs:string*
 ft:normalize($input as xs:string) as xs:string*
 ft:normalize($input as xs:string, $options as item()) as xs:string*
 
-:   Normalizes the given `$input` string, using the current default full-text options or the `$options` specified as second argument. The function provides the same arguments as [ft:tokenize](Full-Text Module.md#ft-tokenize). 
+:   Normalizes the given `$input` string, using the current default full-text options or the `$options` specified as second argument. The function provides the same arguments as [ft:tokenize](Full-Text Module.md#fttokenize). 
 
     **Examples**
 
@@ -184,18 +184,18 @@ ft:normalize($input as xs:string, $options as item()) as xs:string*
 # Changelog
 ** Version 8.0 **
 
- * Added: [ft:contains](Full-Text Module.md#ft-contains), [ft:normalize](Full-Text Module.md#ft-normalize)
- * Updated: Options added to [ft:tokenize](Full-Text Module.md#ft-tokenize)
+ * Added: [ft:contains](Full-Text Module.md#ftcontains), [ft:normalize](Full-Text Module.md#ftnormalize)
+ * Updated: Options added to [ft:tokenize](Full-Text Module.md#fttokenize)
 ** Version 7.8 **
 
- * Added: [ft:contains](Full-Text Module.md#ft-contains)
- * Updated: Options added to [ft:search](Full-Text Module.md#ft-search)
+ * Added: [ft:contains](Full-Text Module.md#ftcontains)
+ * Updated: Options added to [ft:search](Full-Text Module.md#ftsearch)
 ** Version 7.7 **
 
- * Updated: the functions no longer accept [Database Nodes](Database Module.md#Database_Nodes) as reference. Instead, the name of a database must now be specified. 
+ * Updated: the functions no longer accept [Database Nodes](Database Module.md#databasenodes) as reference. Instead, the name of a database must now be specified. 
 ** Version 7.2 **
 
- * Updated: [ft:search](Full-Text Module.md#ft-search) (second argument generalized, third parameter added) 
+ * Updated: [ft:search](Full-Text Module.md#ftsearch) (second argument generalized, third parameter added) 
 ** Version 7.1 **
 
- * Added: [ft:tokens](Full-Text Module.md#ft-tokens), [ft:tokenize](Full-Text Module.md#ft-tokenize)
+ * Added: [ft:tokens](Full-Text Module.md#fttokens), [ft:tokenize](Full-Text Module.md#fttokenize)

@@ -12,8 +12,8 @@ One of the reasons why languages such as Java or Perl have been so successful is
 
 BaseX offers the following mechanisms to make modules accessible to the XQuery processor: 
 
-1. The default [Packaging](Repository.md#Packaging) mechanism will install single XQuery and Java modules in the repository. 
-2. The [EXPath Packaging](Repository.md#EXPath_Packaging) system provides a generic mechanism for adding XQuery modules to query processors. A package is defined as a `.xar` archive, which encapsulates one or more extension libraries. 
+1. The default [Packaging](Repository.md#packaging) mechanism will install single XQuery and Java modules in the repository. 
+2. The [EXPath Packaging](Repository.md#expathpackaging) system provides a generic mechanism for adding XQuery modules to query processors. A package is defined as a `.xar` archive, which encapsulates one or more extension libraries. 
 
 ## Importing Modules
 
@@ -36,7 +36,7 @@ Library modules can be imported with the `import module` statement, followed by 
     };
 
 
-Repository modules are stored in a directory named `BaseXRepo` or `repo`, which resides in your [home directory](Configuration.md#Home_Directory). XQuery modules can be manually copied to the repository directory or installed and deleted via [commands](Repository.md#RepositoryCommands). 
+Repository modules are stored in a directory named `BaseXRepo` or `repo`, which resides in your [home directory](Configuration.md#homedirectory). XQuery modules can be manually copied to the repository directory or installed and deleted via [commands](Repository.md#repositorycommands). 
 
 
 If a modules is placed in the repository, there is no need to specify a location. The following example calls a function from the FunctX module: 
@@ -93,7 +93,7 @@ A package can be deleted with the command REPO DELETE and an additional argument
 
 ### XQuery
 
-If an XQuery file is specified as input for the install command, it will be parsed as XQuery library module. If parsing was successful, the module URI will be [rewritten](Repository.md#URI_Rewriting) to a file path and attached with the `.xqm` file suffix, and the original file will be renamed and copied to that path into the repository. 
+If an XQuery file is specified as input for the install command, it will be parsed as XQuery library module. If parsing was successful, the module URI will be [rewritten](Repository.md#urirewriting) to a file path and attached with the `.xqm` file suffix, and the original file will be renamed and copied to that path into the repository. 
 
 
 **Example:**
@@ -117,7 +117,7 @@ Importing the repository module:
 Suitable JAR archives may contain one or more class files. One of them will be chosen as main class, which must be specified in a `Main-Class` entry in the manifest file (`META-INF/MANIFEST.MF`). This fully qualified Java class name will be rewritten to a file path by replacing the dots with slashes and attaching with the `.jar` file suffix, and the original file will be renamed and copied to that path into the repository. 
 
 
-The public functions of this class can then be addressed from XQuery, using the class or file path as namespace URI, or an alternative writing that can be [rewritten](Repository.md#URI_Rewriting) to the module file path. Moreover, a class may extend the `QueryModule` class to get access to the current query context and to be enriched by some helpful annotations (please consult [Context Awareness of Java Bindings](Java Bindings.md#Context-Awareness) for more information). 
+The public functions of this class can then be addressed from XQuery, using the class or file path as namespace URI, or an alternative writing that can be [rewritten](Repository.md#urirewriting) to the module file path. Moreover, a class may extend the `QueryModule` class to get access to the current query context and to be enriched by some helpful annotations (please consult [Context Awareness of Java Bindings](Java Bindings.md#contextawareness) for more information). 
 
 
 **Example:**
@@ -254,12 +254,12 @@ If the resulting path has no file suffix, it may point to either an XQuery modul
 ## Changelog
 ** Version 7.2.1 **
 
- * Updated: [Installation](Repository.md#RepositoryInstallation): existing packages will be replaced without raising an error 
- * Updated: [Removal](Repository.md#Removal): remove specific version of a package 
- * Added: [Packaging](Repository.md#Packaging), [URI Rewriting](Repository.md#URI_Rewriting)
+ * Updated: [Installation](Repository.md#repositoryinstallation): existing packages will be replaced without raising an error 
+ * Updated: [Removal](Repository.md#removal): remove specific version of a package 
+ * Added: [Packaging](Repository.md#packaging), [URI Rewriting](Repository.md#urirewriting)
 ** Version 7.1 **
 
  * Added: [Repository Module](Repository Module.md)
 ** Version 7.0 **
 
- * Added: [EXPath Packaging](Repository.md#EXPath_Packaging)
+ * Added: [EXPath Packaging](Repository.md#expathpackaging)

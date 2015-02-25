@@ -195,7 +195,7 @@ math:crc32($str as xs:string) as xs:hexBinary
 # Changelog
 ** Version 7.5 **
 
- * Moved: [math:random](Random Module.md#random-integer) and [math:uuid](Random Module.md#random-uuid) have been move to [Random Module](Random Module.md). 
+ * Moved: [math:random](Random Module.md#randominteger) and [math:uuid](Random Module.md#randomuuid) have been move to [Random Module](Random Module.md). 
 ** Version 7.3 **
 
- * Added: [math:crc32](Math Module.md#math-crc32) and [math:uuid](Random Module.md#random-uuid) have been adopted from the obsolete Utility Module. 
+ * Added: [math:crc32](Math Module.md#mathcrc32) and [math:uuid](Random Module.md#randomuuid) have been adopted from the obsolete Utility Module. 

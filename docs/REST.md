@@ -10,10 +10,10 @@ BaseX offers a RESTful API for accessing distributed XML resources. REST ([REpre
  
 # Usage
 
-By default, REST services are available at `http://localhost:8984/rest/`. If no default credentials are specified in the URL or when starting the web application, they will be requested by the client ([see further](Web Application.md#Web_ApplicationUser_Management)). 
+By default, REST services are available at `http://localhost:8984/rest/`. If no default credentials are specified in the URL or when starting the web application, they will be requested by the client ([see further](Web Application.md#webapplicationuser-management)). 
 
 
-A web browser can be used to perform simple GET-based REST requests and display the response. Some alternatives for using REST are listed in the [Usage Examples](REST.md#Usage_Examples). 
+A web browser can be used to perform simple GET-based REST requests and display the response. Some alternatives for using REST are listed in the [Usage Examples](REST.md#usageexamples). 
 
  
 # URL Architecture
@@ -50,7 +50,7 @@ If a resource is not found, an HTTP response will be generated with `404` as sta
 
 The following **parameters** can be applied to the operations: 
 
- * **Variables** :External variables can be _bound_ before a query is evaluated ([see below](REST.md#Assigning_Variables) for more). 
+ * **Variables** :External variables can be _bound_ before a query is evaluated ([see below](REST.md#assigningvariables) for more). 
  * **Context** :The `context` parameter may be used to provide an initial XML context node. 
  * **Options** :Specified [Options](Options.md) are applied before the actual operation will be performed. 
  * **Serialization** :All [Serialization](Serialization.md) parameters known to BaseX can be specified as query parameters. Parameters that are specified within a query will be interpreted by the REST server before the output is generated. 
@@ -144,7 +144,7 @@ If raw data is added and if no content type, or a wrong content, is specified, a
 An HTTP response with status code `201` (CREATED) is sent back if the operation was successful. Otherwise, the server will reply with `404` (if a specified database was not found) or `400` (if the operation could not be completed). 
 
 
-Have a look at the [usage examples](REST.md#Usage_Examples) for more detailed examples using Java and shell tools like cURL. 
+Have a look at the [usage examples](REST.md#usageexamples) for more detailed examples using Java and shell tools like cURL. 
 
 
 ## DELETE Requests
@@ -200,7 +200,7 @@ If `query` or `run` is used as operation, external variables can be specified vi
 As the content type of a REST response cannot be dynamically determined in all cases, it can be manually adjusted by the user. The final content type of a REST response is chosen in several steps: 
 
 1. By default, the content type of a response depends on the chosen operation: 
-2. The default content type is overwritten if a [serialization method](Serialization.md) is specified, either as [query parameters](REST.md#RESTParameters) or within the XQuery expression. The following method/content-type mappings are available: 
+2. The default content type is overwritten if a [serialization method](Serialization.md) is specified, either as [query parameters](REST.md#restparameters) or within the XQuery expression. The following method/content-type mappings are available: 
 3. The content type is overwritten in any case if a specific [media-type](Serialization.md) is chosen, again as query parameter or within the query. 
 
 The following three example requests will all return `<a/>` as result and use `application/xml` as content-type: 
@@ -254,7 +254,7 @@ The content-type of the input can easily be included, just add the following pro
     conn.setRequestProperty("Content-Type", "application/octet-stream");
 
 
-See the [PUT Requests](REST.md#PUT_Requests) section for a description of the possible content-types. 
+See the [PUT Requests](REST.md#putrequests) section for a description of the possible content-types. 
 
 
 Find Java examples for all methods here: [GET](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/rest/RESTGet.java), [POST](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/rest/RESTPost.java), [PUT](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/rest/RESTPut.java), [DELETE](https://github.com/BaseXdb/basex-examples/tree/master/src/main/java/org/basex/examples/rest/RESTDelete.java). 

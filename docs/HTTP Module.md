@@ -210,5 +210,5 @@ POST request to the BaseX REST Service, specifying a username and password.
  * Added: digest authentication 
 ** Version 7.6 **
 
- * Updated: [http:send-request](HTTP Module.md#http-send-request): `HC0002` is raised if the input cannot be parsed or converted to the final data type. 
+ * Updated: [http:send-request](HTTP Module.md#httpsend-request): `HC0002` is raised if the input cannot be parsed or converted to the final data type. 
  * Updated: errors are using `text/plain` as media-type. 

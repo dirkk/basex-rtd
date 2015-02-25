@@ -5,14 +5,14 @@
 This article is part of the [Advanced User's Guide](Advanced User's Guide.md). It describes how client operations are logged by the server. The server logs can e.g. be used to get an overview of all processes executed on your server, trace any errors or compile performance statistics. 
 
  
-The server logs are written in plain text. In your [Database Directory](Configuration.md#Database_Directory), you can find a folder named `.logs` in which all log files are stored with the according date. Note that, depending on your OS and configuration, files and folders beinning with a `.` may be hidden. 
+The server logs are written in plain text. In your [Database Directory](Configuration.md#databasedirectory), you can find a folder named `.logs` in which all log files are stored with the according date. Note that, depending on your OS and configuration, files and folders beinning with a `.` may be hidden. 
 
  
 Some more notes on the logging facility: 
 
   * HTTP requests are included in the log files. 
- * Logging can be turned on/off via the [LOG](Options.md#LOG) option. 
- * The maximum length of logging messages can be changed via [LOGMSGMAXLEN](Options.md#LOGMSGMAXLEN). 
+ * Logging can be turned on/off via the [LOG](Options.md#log) option. 
+ * The maximum length of logging messages can be changed via [LOGMSGMAXLEN](Options.md#logmsgmaxlen). 
  * The [Admin Module](Admin Module.md) provides access to the log files from XQuery. 
  
 # Format

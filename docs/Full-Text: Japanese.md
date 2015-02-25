@@ -16,7 +16,7 @@ The lexical analysis of Japanese documents is performed by [Igo](http://igo.sour
 Japanese tokenization will be activated in BaseX if Igo is found in the classpath. [igo-0.4.3.jar](http://en.sourceforge.jp/projects/igo/releases/) of Igo is currently included in all distributions of BaseX. 
 
 
-In addition to the library, one of the following dictionary files must either be unzipped into the current directory, or into the `etc` sub-directory of the project’s [Home Directory](Configuration.md#Home_Directory): 
+In addition to the library, one of the following dictionary files must either be unzipped into the current directory, or into the `etc` sub-directory of the project’s [Home Directory](Configuration.md#homedirectory): 
 
  * IPA Dictionary: [http://files.basex.org/etc/ipadic.zip](http://files.basex.org/etc/ipadic.zip)
  * NAIST Dictionary: [http://files.basex.org/etc/naistdic.zip](http://files.basex.org/etc/naistdic.zip)

@@ -46,7 +46,7 @@ xslt:transform($input as item(), $stylesheet as item(), $params as item()) as no
 xslt:transform-text($input as item(), $stylesheet as item()) as xs:string
 xslt:transform-text($input as item(), $stylesheet as item(), $params as item()) as xs:string
 
-:   Transforms the document specified by `$input`, using the XSLT template specified by `$stylesheet`, and returns the result as string. The parameters are the same as described for [xslt:transform](XSLT Module.md#xslt-transform). 
+:   Transforms the document specified by `$input`, using the XSLT template specified by `$stylesheet`, and returns the result as string. The parameters are the same as described for [xslt:transform](XSLT Module.md#xslttransform). 
 
 
 ## Examples
@@ -176,8 +176,8 @@ xslt:transform-text($input as item(), $stylesheet as item(), $params as item()) 
 # Changelog
 ** Version 7.6 **
 
- * Added: [xslt:transform-text](XSLT Module.md#xslt-transform-text)
- * Updated: [xslt:transform](XSLT Module.md#xslt-transform) returned error code 
+ * Added: [xslt:transform-text](XSLT Module.md#xslttransform-text)
+ * Updated: [xslt:transform](XSLT Module.md#xslttransform) returned error code 
 ** Version 7.3 **
 
- * Updated: $xslt:processor → [xslt:processor](XSLT Module.md#xslt-processor), $xslt:version → [xslt:version](XSLT Module.md#xslt-version)
+ * Updated: $xslt:processor → [xslt:processor](XSLT Module.md#xsltprocessor), $xslt:version → [xslt:version](XSLT Module.md#xsltversion)

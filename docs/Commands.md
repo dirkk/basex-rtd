@@ -2,7 +2,7 @@
 
 
  
-This article is part of the [Getting Started](Getting Started.md) Section. It lists all database commands supported by BaseX. Commands can e.g. be executed from the [Command Line](Command-Line Options.md#BaseX_Standalone), [Scripts](Commands.md#Command_Scripts), the [Clients](Clients.md), [REST](REST.md), the input field in the [GUI](http://docs.basex.org/wiki/Graphical User Interface) and other ways. If the GUI is used, all commands that are triggered by the GUI itself will show up in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations). The [Permission](User Management.md) fields indicate which rights are required by a user to perform a command in the client/server architecture. 
+This article is part of the [Getting Started](Getting Started.md) Section. It lists all database commands supported by BaseX. Commands can e.g. be executed from the [Command Line](Command-Line Options.md#basexstandalone), [Scripts](Commands.md#commandscripts), the [Clients](Clients.md), [REST](REST.md), the input field in the [GUI](http://docs.basex.org/wiki/Graphical User Interface) and other ways. If the GUI is used, all commands that are triggered by the GUI itself will show up in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations). The [Permission](User Management.md) fields indicate which rights are required by a user to perform a command in the client/server architecture. 
 
  
 # Basics
@@ -52,7 +52,7 @@ Some commands support the glob syntax to address more than one database or user.
 
 Database, user and event names follow the same naming constraints: Names are restricted to ASCII characters. They must at least have one character, and they may contain letters, numbers and any of the special characters `!#$%&'()+-=@[]^_`{}~`. The following characters are reserved for other features: 
 
- * `,?*` : [glob syntax](Commands.md#Glob_Syntax)
+ * `,?*` : [glob syntax](Commands.md#globsyntax)
  * `;` : Separator for multiple database commands on the [command line](Command-Line Options.md)
  * `\/` : Directory path separators 
  * `.` : hidden folders (e.g. the [.logs directory](Logging.md)) 
@@ -71,14 +71,14 @@ In all commands, the `DB` keyword can be replaced by `DATABASE`.
 ---------- | ----------------------------
 **XML Syntax**     | `<create-db name='...'>([input])</create-db>`
 **Permission** | _CREATE_
-**Summary** | Creates the database `name` with an optional `input` and opens it. An existing database will be overwritten.The input may either be a reference to a single XML document, a directory, a remote URL, or a string containing XML:  * `name`  must be a [valid database name](Commands.md#Valid_Names)
- * several additional [Create Options](Options.md#Create_Options) can be set to influence the creation process. 
+**Summary** | Creates the database `name` with an optional `input` and opens it. An existing database will be overwritten.The input may either be a reference to a single XML document, a directory, a remote URL, or a string containing XML:  * `name`  must be a [valid database name](Commands.md#validnames)
+ * several additional [Create Options](Options.md#createoptions) can be set to influence the creation process. 
 
 **Errors** | The command fails if a database with the specified name is currently used by another process, if one of the documents to be added is not well-formed or if it cannot be parsed for some other reason. 
 **Examples** |  * `CREATE DB input` creates an empty database `input`. 
  * `CREATE DB xmark http://files.basex.org/xml/xmark.xml` creates the database `xmark`, containing a single initial document called `xmark.xml`. 
  * `CREATE DATABASE coll /path/to/input` creates the database `coll` with all documents found in the `input` directory. 
- * `SET INTPARSE false; CREATE DB input input.xml` creates a database `input` with `input.xml` as initial document, which will be parsed with Java's [default XML parser](Parsers.md#XML_Parsers). 
+ * `SET INTPARSE false; CREATE DB input input.xml` creates a database `input` with `input.xml` as initial document, which will be parsed with Java's [default XML parser](Parsers.md#xmlparsers). 
  * `<create-db name='simple'><hello>Universe</hello></create-db>` creates a database named `simple` with an initial document `<hello>Universe</hello>`. 
 
 
@@ -100,7 +100,7 @@ Updated with Version 8.0: path argument added.
 ---------- | ---------------
 **XML Syntax**     | `<check input='...'/>`
 **Permission** | _READ/CREATE_
-**Summary** | This convenience command combines [OPEN](Commands.md#OPEN) and [CREATE DB](Commands.md#CREATE_DB): if a database with the name `input` exists, it is opened. Otherwise, a new database is created; if the specified input points to an existing resource, it is stored as initial content. 
+**Summary** | This convenience command combines [OPEN](Commands.md#open) and [CREATE DB](Commands.md#createdb): if a database with the name `input` exists, it is opened. Otherwise, a new database is created; if the specified input points to an existing resource, it is stored as initial content. 
 **Errors** | The command fails if the addressed database could neither be opened nor created. 
 
 ## CLOSE
@@ -147,7 +147,7 @@ Updated with Version 8.0: path argument added.
 ---------- | ---------------------------
 **XML Syntax**     | `<alter-db name='...' newname='...'/>`
 **Permission** | _CREATE_
-**Summary** | Renames the database specified by `name` to `newname`. `newname` must be a [valid database name](Commands.md#Valid_Names). 
+**Summary** | Renames the database specified by `name` to `newname`. `newname` must be a [valid database name](Commands.md#validnames). 
 **Errors** | The command fails if the target database already exists, if the source database does not exist or is currently locked, or if it could not be renamed for some other reason. 
 **Examples** |  * `ALTER DB db tempdb` renames the database `db` into `tempdb`. 
 
@@ -158,7 +158,7 @@ Updated with Version 8.0: path argument added.
 ---------- | ----------------
 **XML Syntax**     | `<drop-db name='...'/>`
 **Permission** | _CREATE_
-**Summary** | Drops the database with the specified `name`. The [Glob Syntax](Commands.md#Glob_Syntax) can be used to address more than one database. 
+**Summary** | Drops the database with the specified `name`. The [Glob Syntax](Commands.md#globsyntax) can be used to address more than one database. 
 **Errors** | The command fails if the specified database does not exist or is currently locked, or if the database could not be deleted for some other reason. 
 
 ## CREATE BACKUP
@@ -167,9 +167,9 @@ Updated with Version 8.0: path argument added.
 ---------- | ----------------------
 **XML Syntax**     | `<create-backup name='...'/>`
 **Permission** | _CREATE_
-**Summary** | Creates a zipped backup of the database specified by `name`. The backup file will be suffixed with the current timestamp and stored in the database directory. The [Glob Syntax](Commands.md#Glob_Syntax) can be used to address more than one database. 
+**Summary** | Creates a zipped backup of the database specified by `name`. The backup file will be suffixed with the current timestamp and stored in the database directory. The [Glob Syntax](Commands.md#globsyntax) can be used to address more than one database. 
 **Errors** | The command fails if the specified database does not exist, or if it could not be zipped for some other reason. 
-**Examples** |  * `BACKUP db` creates a zip archive of the database `db` (e.g. `db-2011-04-01-12-27-28.zip`) in the [database directory](Configuration.md#Database_Directory). 
+**Examples** |  * `BACKUP db` creates a zip archive of the database `db` (e.g. `db-2011-04-01-12-27-28.zip`) in the [database directory](Configuration.md#databasedirectory). 
 
 
 ## RESTORE
@@ -195,7 +195,7 @@ Updated with Version 8.0: path argument added.
 ---------- | --------------------
 **XML Syntax**     | `<drop-backup name='...'/>`
 **Permission** | _CREATE_
-**Summary** | Drops all backups of the database with the specified `name`. The [Glob Syntax](Commands.md#Glob_Syntax) can be used to address more than one database. 
+**Summary** | Drops all backups of the database with the specified `name`. The [Glob Syntax](Commands.md#globsyntax) can be used to address more than one database. 
 **Examples** |  * `DROP BACKUP abc*` deletes the backups of all databases starting with the characters `abc`. 
 
 
@@ -213,7 +213,7 @@ Updated with Version 8.0: path argument added.
 ---------- | -----------------------
 **XML Syntax**     | `<copy name='...' newname='...'/>`
 **Permission** | _CREATE_
-**Summary** | Creates a copy of the database specified by `name`. `newname` must be a [valid database name](Commands.md#Valid_Names). 
+**Summary** | Creates a copy of the database specified by `name`. `newname` must be a [valid database name](Commands.md#validnames). 
 **Errors** | The command fails if the target database already exists, or if the source database does not exist. 
 
 ## INFO DB
@@ -294,7 +294,7 @@ Introduced with Version 7.9:
 ---------- | -------------
 **XML Syntax**     | `<test path='...'/>`
 **Permission** | _ADMIN_
-**Summary** | Runs all [XQUnit tests](Unit Module.md) in the specified `path`. The path can point to a single file or a directory.Unit testing can also be triggered via `-t` on [command line](Command-Line Options.md#BaseX_Standalone). 
+**Summary** | Runs all [XQUnit tests](Unit Module.md) in the specified `path`. The path can point to a single file or a directory.Unit testing can also be triggered via `-t` on [command line](Command-Line Options.md#basexstandalone). 
 **Errors** | The command fails if at least one test fails. 
 **Examples** |  * `TEST project/tests` runs all tests in the directory `project/tests`. 
 
@@ -340,8 +340,8 @@ Introduced with Version 7.9:
 **XML Syntax**     | `<add (path='...')>[input]</add>`
 **Permission** | _WRITE_
 **Summary** | Adds a file, directory or XML string specified by `input` to the currently opened database at the specified `path`:  * `input`  may either be a single XML document, a directory, a remote URL or a plain XML string. 
- * A document with the same path may occur than once in a database. If this is unwanted, [REPLACE](Commands.md#REPLACE) can be used. 
- * If a file is too large to be added in one go, its data structures will be cached to disk first. Caching can be enforced by turning the [ADDCACHE](Options.md#ADDCACHE) option on. 
+ * A document with the same path may occur than once in a database. If this is unwanted, [REPLACE](Commands.md#replace) can be used. 
+ * If a file is too large to be added in one go, its data structures will be cached to disk first. Caching can be enforced by turning the [ADDCACHE](Options.md#addcache) option on. 
 
 **Errors** | The command fails if no database is opened, if one of the documents to be added is not well-formed, or if it could not be parsed for some other reason. 
 **Examples** |  * `ADD input.xml` adds the file `input.xml` to the database. 
@@ -406,7 +406,7 @@ Introduced with Version 7.9:
 ---------- | -------
 **XML Syntax**     | `<flush/>`
 **Permission** | _WRITE_
-**Summary** | Explicitly flushes the buffers of the currently opened database to disk. This command is applied if [AUTOFLUSH](Options.md#AUTOFLUSH) has been set to `false`. 
+**Summary** | Explicitly flushes the buffers of the currently opened database to disk. This command is applied if [AUTOFLUSH](Options.md#autoflush) has been set to `false`. 
 **Errors** | The command fails if no database is opened. 
  
 # Server Administration
@@ -434,7 +434,7 @@ Introduced with Version 7.9:
 ---------- | ---------------
 **XML Syntax**     | `<kill target='...'/>`
 **Permission** | _ADMIN_
-**Summary** | Kills sessions of a user or an IP:port combination, specified by `target`. The [Glob Syntax](Commands.md#Glob_Syntax) can be used to address more than one user. 
+**Summary** | Kills sessions of a user or an IP:port combination, specified by `target`. The [Glob Syntax](Commands.md#globsyntax) can be used to address more than one user. 
 **Errors** | The command fails if a user tried to kill his/her own session. 
 
 ## CREATE EVENT
@@ -510,7 +510,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 ---------- | -----------------------------------
 **XML Syntax**     | `<drop-user name='...' (pattern='...')/>`
 **Permission** | _ADMIN_
-**Summary** | Drops the user with the specified `name`. The [Glob Syntax](Commands.md#Glob_Syntax) can be used to address more than one database or user. If a glob `pattern` is specified, only the pattern will be removed. 
+**Summary** | Drops the user with the specified `name`. The [Glob Syntax](Commands.md#globsyntax) can be used to address more than one database or user. If a glob `pattern` is specified, only the pattern will be removed. 
 **Errors** | The command fails if `admin` is specified as user name, or if the specified user does not exist or is currently logged in. 
 
 ## GRANT
@@ -522,7 +522,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 ---------- | ---------------------------------------------------------------
 **XML Syntax**     | `<grant name='...' permission='none|read|write|create|admin' (pattern='...')/>`
 **Permission** | _ADMIN_
-**Summary** | Grants the specified [permission](User Management.md) to the specified `user`. The [Glob Syntax](Commands.md#Glob_Syntax) can be used to address more than one user. If a glob `pattern` is specified, the permission will be applied to all databases that match this pattern. 
+**Summary** | Grants the specified [permission](User Management.md) to the specified `user`. The [Glob Syntax](Commands.md#globsyntax) can be used to address more than one user. If a glob `pattern` is specified, the permission will be applied to all databases that match this pattern. 
 **Errors** | The command fails if `admin` is specified as user name or if the specified user does not exist. 
 **Examples** |  * `GRANT READ TO JoeWinson` grants `READ` permission to the user `JoeWinson`. 
  * `GRANT WRITE ON Wiki TO editor*` grants `WRITE` permissions on the `Wiki` database to all users starting with the characters `editor*`. 
@@ -544,7 +544,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 ---------- | ------------
 **XML Syntax**     | `<run file='...'/>`
 **Permission** | _depends on input_
-**Summary** | Evaluates the contents of `file` as XQuery expression. If the file ends with the suffix `.bxs`, the file content will be evaluated as [command script](Commands.md#Basics). This command can be used to run several commands in a single transaction. 
+**Summary** | Evaluates the contents of `file` as XQuery expression. If the file ends with the suffix `.bxs`, the file content will be evaluated as [command script](Commands.md#basics). This command can be used to run several commands in a single transaction. 
 **Errors** | The command fails if the specified file does not exist, or if the retrieved input is invalid. It will be canceled as soon as one of the executed commands fails. 
 **Examples** |  * `RUN query.xq` will evaluated the specified file as XQuery expression 
  * `RUN commands.bxs` will evaluated the specified file as command script 
@@ -556,7 +556,7 @@ Updated with Version 8.0: the database argument was changed to a glob pattern ar
 ---------- | -----------------
 **XML Syntax**     | `<execute>[input]</execute>`
 **Permission** | _depends on input_
-**Summary** | Evaluates the specified `input` as [command script](Commands.md#Basics). This command can be used to run several commands in a single transaction. 
+**Summary** | Evaluates the specified `input` as [command script](Commands.md#basics). This command can be used to run several commands in a single transaction. 
 **Errors** | The command fails if the syntax of the specified input is invalid. It will be canceled as soon as one of the executed commands fails. 
 **Examples** |  * `EXECUTE "create db db1; create db db2"`
  * `EXECUTE "<commands><create-db name='db1'/><create-db name='db2'/></commands>"` both commands will create two databases `db1` and `db2` in a single transaction. 
@@ -614,12 +614,12 @@ Introduced with Version 8.0:
 ---------- | -------
 **XML Syntax**     | `<quit/>`
 **Permission** | _NONE_
-**Summary** | Exits the console mode (alias of [EXIT](Commands.md#EXIT)). 
+**Summary** | Exits the console mode (alias of [EXIT](Commands.md#exit)). 
  
 # Changelog
 ** Version 8.0 **
 
- * Updated: commands for [User Management](Commands.md#CommandsUser_Management)
+ * Updated: commands for [User Management](Commands.md#commandsusermanagement)
  * Updated: `OPEN`: path argument added 
  * Removed: `CS` command 
  * Added: `QUIT`
@@ -628,17 +628,17 @@ Introduced with Version 8.0:
  * Added: `TEST` runs XQUnit tests. 
 ** Version 7.7 **
 
- * Updated: syntax of [valid names](Commands.md#Valid_Names). 
+ * Updated: syntax of [valid names](Commands.md#validnames). 
 ** Version 7.5 **
 
  * Added: `EXECUTE` executes a command script. 
  * Added: `INSPECT` performs integrity checks. 
- * Added: automatic detection of [Command Scripts](Commands.md#Basics). 
+ * Added: automatic detection of [Command Scripts](Commands.md#basics). 
  * Removed: `SHOW DATABASES`; information is also returned by `SHOW SESSIONS`. 
  * Removed: `OPEN`: path argument. 
 ** Version 7.3 **
 
- * Added: [XML Syntax](Commands.md#XML_Syntax) added. 
+ * Added: [XML Syntax](Commands.md#xmlsyntax) added. 
  * Updated: `CHECK` can now be used to create empty databases. 
  * Updated: Names and paths in `OPEN` and `LIST` are now specified as separate arguments. 
 ** Version 7.2.1 **
@@ -646,7 +646,7 @@ Introduced with Version 8.0:
  * Updated: permissions for `GET` and `SET` changed from `READ` to `NONE`. 
 ** Version 7.2 **
 
- * Updated: `CREATE INDEX`, `DROP INDEX` (`PATH` argument removed. Path summary is always available now and updated with [OPTIMIZE](Commands.md#OPTIMIZE)). 
+ * Updated: `CREATE INDEX`, `DROP INDEX` (`PATH` argument removed. Path summary is always available now and updated with [OPTIMIZE](Commands.md#optimize)). 
  * Updated: permissions for `REPO DELETE`, `REPO INSTALL` and `REPO LIST`. 
 ** Version 7.1 **
 

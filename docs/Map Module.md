@@ -2,7 +2,7 @@
 
 
  
-This [XQuery Module](Module Library.md) contains functions for manipulating maps, which will officially be introduced with [XQuery 3.1](XQuery 3.1.md#Maps). **Please note** that the functions are subject to change until the specification has reached its final stage. 
+This [XQuery Module](Module Library.md) contains functions for manipulating maps, which will officially be introduced with [XQuery 3.1](XQuery 3.1.md#maps). **Please note** that the functions are subject to change until the specification has reached its final stage. 
 
  
 # Conventions
@@ -172,11 +172,11 @@ map:serialize($input as map(*)) as xs:string
  * Removed: support for collations (in accordance with the XQuery 3.1 spec). 
  * Removed: `map:new` (replaced with `map:merge`) 
  * Updated: aligned with latest specification: compare keys of type `xs:untypedAtomic` as `xs:string` instances, store `xs:float` or `xs:double` value `NaN`. 
- * Introduction on maps is now found in the article on [XQuery 3.1](XQuery 3.1.md#Maps). 
+ * Introduction on maps is now found in the article on [XQuery 3.1](XQuery 3.1.md#maps). 
 ** Version 7.8 **
 
  * Updated: map syntax `map { 'key': 'value' }`
- * Added: [map:serialize](Map Module.md#map-serialize)
+ * Added: [map:serialize](Map Module.md#mapserialize)
 ** Version 7.7.1 **
 
  * Updated: alternative map syntax without `map` keyword and `:` as key/value delimiter (e.g.: `{ 'key': 'value' })`

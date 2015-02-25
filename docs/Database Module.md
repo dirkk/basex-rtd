@@ -25,14 +25,14 @@ Database nodes are XML nodes which are either stored in a persistent database or
 
 db:system() as element(system)
 
-:   Returns information on the database system, such as the database path and current database settings. The output is similar to the [INFO](Commands.md#INFO) command. 
+:   Returns information on the database system, such as the database path and current database settings. The output is similar to the [INFO](Commands.md#info) command. 
 
 
 ## db:info
 
 db:info($db as xs:string) as element(database)
 
-:   Returns meta information on the database `$db`. The output is similar to the [INFO DB](Commands.md#INFO_DB) command. 
+:   Returns meta information on the database `$db`. The output is similar to the [INFO DB](Commands.md#infodb) command. 
 
     **Errors**
 
@@ -129,7 +129,7 @@ db:open($db as xs:string, $path as xs:string) as document-node()*
 
 db:open-pre($db as xs:string, $pre as xs:integer) as node()
 
-:   Opens the database `$db` and returns the node with the specified `$pre` value.The [PRE value](Node Storage.md#PRE_Value) provides very fast access to an existing database node, but it will change whenever a node with a smaller _pre_ values is added to or deleted from a database. 
+:   Opens the database `$db` and returns the node with the specified `$pre` value.The [PRE value](Node Storage.md#prevalue) provides very fast access to an existing database node, but it will change whenever a node with a smaller _pre_ values is added to or deleted from a database. 
 
     **Errors**
 
@@ -146,7 +146,7 @@ db:open-pre($db as xs:string, $pre as xs:integer) as node()
 
 db:open-id($db as xs:string, $id as xs:integer) as node()
 
-:   Opens the database `$db` and returns the node with the specified `$id` value.Each database node has a _persistent_[ID value](Node Storage.md#ID_Value). Access to the node id can be sped up by turning on the [UPDINDEX](Options.md#UPDINDEX) option. 
+:   Opens the database `$db` and returns the node with the specified `$id` value.Each database node has a _persistent_[ID value](Node Storage.md#idvalue). Access to the node id can be sped up by turning on the [UPDINDEX](Options.md#updindex) option. 
 
     **Errors**
 
@@ -158,7 +158,7 @@ db:open-id($db as xs:string, $id as xs:integer) as node()
 
 db:node-pre($nodes as node()*) as xs:integer*
 
-:   Returns the _pre_ values of the nodes supplied by `$nodes`, which must all be [database nodes](Database Module.md#Database_Nodes).The [PRE value](Node Storage.md#PRE_Value) provides very fast access to an existing database node, but it will change whenever a node with a smaller _pre_ values is added to or deleted from a database. 
+:   Returns the _pre_ values of the nodes supplied by `$nodes`, which must all be [database nodes](Database Module.md#databasenodes).The [PRE value](Node Storage.md#prevalue) provides very fast access to an existing database node, but it will change whenever a node with a smaller _pre_ values is added to or deleted from a database. 
 
     **Errors**
 
@@ -175,7 +175,7 @@ db:node-pre($nodes as node()*) as xs:integer*
 
 db:node-id($nodes as node()*) as xs:integer*
 
-:   Returns the _id_ values of the nodes supplied by `$nodes`, which must all be [database nodes](Database Module.md#Database_Nodes).Each database node has a _persistent_[ID value](Node Storage.md#ID_Value). Access to the node id can be sped up by turning on the [UPDINDEX](Options.md#UPDINDEX) option. 
+:   Returns the _id_ values of the nodes supplied by `$nodes`, which must all be [database nodes](Database Module.md#databasenodes).Each database node has a _persistent_[ID value](Node Storage.md#idvalue). Access to the node id can be sped up by turning on the [UPDINDEX](Options.md#updindex) option. 
 
     **Errors**
 
@@ -295,7 +295,7 @@ db:attribute-range($db as xs:string, $min as xs:string, $max as xs:string, $attn
  
 # Updates
 
-**Important note:** All functions in this section are _updating functions_: they will not be immediately executed, but queued on the [Pending Update List](XQuery Update.md#Pending_Update_List), which will be processed after the actual query has been evaluated. This means that the order in which the functions are specified in the query does usually not reflect the order in which the code will be evaluated. 
+**Important note:** All functions in this section are _updating functions_: they will not be immediately executed, but queued on the [Pending Update List](XQuery Update.md#pendingupdate-list), which will be processed after the actual query has been evaluated. This means that the order in which the functions are specified in the query does usually not reflect the order in which the code will be evaluated. 
 
 
 ## db:create
@@ -308,12 +308,12 @@ db:create($db as xs:string, $inputs as item()*) as empty-sequence()
 db:create($db as xs:string, $inputs as item()*, $paths as xs:string*) as empty-sequence()
 db:create($db as xs:string, $inputs as item()*, $paths as xs:string*, $options as item()) as empty-sequence()
 
-:   Creates a new database with name `$db` and adds initial documents specified via `$inputs` to the specified `$paths`. An existing database will be overwritten.`$inputs` may be strings or nodes different than attributes. If the `$input` source is not a file or a folder, the `$paths` argument is mandatory.Please note that `db:create` will be placed last on the [Pending Update List](XQuery Update.md#Pending_Update_List). As a consequence, a newly created database cannot be addressed in the same query.The `$options` argument can be used to change the indexing behavior. Allowed options are all [parsing](Options.md#OptionsParsing), [XML parsing](Options.md#XML_Parsing), [indexing](Options.md#Indexing) and [full-text](Options.md#OptionsFull-Text) options in lower case. Options can be specified either...  * as children of an `<options/>` element, e.g. 
+:   Creates a new database with name `$db` and adds initial documents specified via `$inputs` to the specified `$paths`. An existing database will be overwritten.`$inputs` may be strings or nodes different than attributes. If the `$input` source is not a file or a folder, the `$paths` argument is mandatory.Please note that `db:create` will be placed last on the [Pending Update List](XQuery Update.md#pendingupdate-list). As a consequence, a newly created database cannot be addressed in the same query.The `$options` argument can be used to change the indexing behavior. Allowed options are all [parsing](Options.md#optionsparsing), [XML parsing](Options.md#xmlparsing), [indexing](Options.md#indexing) and [full-text](Options.md#optionsfulltext) options in lower case. Options can be specified either...  * as children of an `<options/>` element, e.g. 
 
     **Errors**
 
 
-    `FODC0002`: `$inputs` points to an unknown resource.`FOUP0001`: `$inputs` is neither string nor a document node.`BXDB0007`: `$db` is opened by another process.`BXDB0011`: `$db` is not a [valid database name](Commands.md#Valid_Names).`BXDB0012`: two `db:create` statements with the same database name were specified.`BXDB0013`: the number of specified inputs and paths differs. 
+    `FODC0002`: `$inputs` points to an unknown resource.`FOUP0001`: `$inputs` is neither string nor a document node.`BXDB0007`: `$db` is opened by another process.`BXDB0011`: `$db` is not a [valid database name](Commands.md#validnames).`BXDB0012`: two `db:create` statements with the same database name were specified.`BXDB0013`: the number of specified inputs and paths differs. 
 
     **Examples**
 
@@ -351,7 +351,7 @@ db:add($db as xs:string, $input as item()) as empty-sequence()
 db:add($db as xs:string, $input as item(), $path as xs:string) as empty-sequence()
 db:add($db as xs:string, $input as item(), $path as xs:string, $options as item()) as empty-sequence()
 
-:   Adds documents specified by `$input` to the database `$db` and the specified `$path`. A document with the same path may occur more than once in a database. If this is unwanted, [db:replace](Database Module.md#db-replace) can be used.`$input` may be a string or a node different than attribute. If the `$input` source is not a file or a folder, `$path` must be specified.The `$options` argument can be used to control parsing. The syntax is identical to the [db:create](Database Module.md#db-create) function. Allowed options are all [parsing](Options.md#OptionsParsing) and [XML parsing](Options.md#XML_Parsing) options. 
+:   Adds documents specified by `$input` to the database `$db` and the specified `$path`. A document with the same path may occur more than once in a database. If this is unwanted, [db:replace](Database Module.md#dbreplace) can be used.`$input` may be a string or a node different than attribute. If the `$input` source is not a file or a folder, `$path` must be specified.The `$options` argument can be used to control parsing. The syntax is identical to the [db:create](Database Module.md#dbcreate) function. Allowed options are all [parsing](Options.md#optionsparsing) and [XML parsing](Options.md#xmlparsing) options. 
 
     **Errors**
 
@@ -463,14 +463,14 @@ db:restore($name as xs:string) as empty-sequence()
 
 ## db:optimize
 
-Updated with Version 7.9: Allow [UPDINDEX](Options.md#UPDINDEX) if `$all` is `true`. 
+Updated with Version 7.9: Allow [UPDINDEX](Options.md#updindex) if `$all` is `true`. 
 
 
 db:optimize($db as xs:string) as empty-sequence()
 db:optimize($db as xs:string, $all as xs:boolean) as empty-sequence()
 db:optimize($db as xs:string, $all as xs:boolean, $options as item()) as empty-sequence()
 
-:   Optimizes the meta data and indexes of the database `$db`.If `$all` is `true`, the complete database will be rebuilt.The `$options` argument can be used to control indexing. The syntax is identical to the [db:create](Database Module.md#db-create) function: Allowed options are all [indexing](Options.md#Indexing) and [full-text](Options.md#OptionsFull-Text) options. [UPDINDEX](Options.md#UPDINDEX) is only allowed if `$all` is `true`. 
+:   Optimizes the meta data and indexes of the database `$db`.If `$all` is `true`, the complete database will be rebuilt.The `$options` argument can be used to control indexing. The syntax is identical to the [db:create](Database Module.md#dbcreate) function: Allowed options are all [indexing](Options.md#indexing) and [full-text](Options.md#optionsfulltext) options. [UPDINDEX](Options.md#updindex) is only allowed if `$all` is `true`. 
 
     **Errors**
 
@@ -507,7 +507,7 @@ db:rename($db as xs:string, $path as xs:string, $newpath as xs:string) as empty-
 db:replace($db as xs:string, $path as xs:string, $input as item()) as empty-sequence()
 db:replace($db as xs:string, $path as xs:string, $input as item(), $options as item()) as empty-sequence()
 
-:   Replaces a document, specified by `$path`, in the database `$db` with the content of `$input`, or adds it as a new document.The `$options` argument can be used to control parsing. The syntax is identical to the [db:create](Database Module.md#db-create) function: Allowed options are all [parsing](Options.md#OptionsParsing) and [XML parsing](Options.md#XML_Parsing) options. 
+:   Replaces a document, specified by `$path`, in the database `$db` with the content of `$input`, or adds it as a new document.The `$options` argument can be used to control parsing. The syntax is identical to the [db:create](Database Module.md#dbcreate) function: Allowed options are all [parsing](Options.md#optionsparsing) and [XML parsing](Options.md#xmlparsing) options. 
 
     **Errors**
 
@@ -544,7 +544,7 @@ db:store($db as xs:string, $path as xs:string, $input as item()) as empty-sequen
 
 db:output($result as item()*) as empty-sequence()
 
-:   This function can be used to both perform updates and return results in a single query. The argument of the function will be evaluated, and the resulting items will be cached and returned after the updates on the _pending update list_ have been processed. As nodes may be updated, they will be copied before being cached.The function can only be used together with [updating expressions](XQuery Update.md#Updating_Expressions); if the function is called within a transform expression, its results will be discarded. 
+:   This function can be used to both perform updates and return results in a single query. The argument of the function will be evaluated, and the resulting items will be cached and returned after the updates on the _pending update list_ have been processed. As nodes may be updated, they will be copied before being cached.The function can only be used together with [updating expressions](XQuery Update.md#updatingexpressions); if the function is called within a transform expression, its results will be discarded. 
 
     **Examples**
 
@@ -556,7 +556,7 @@ db:output($result as item()*) as empty-sequence()
 
 db:flush($db as xs:string) as empty-sequence()
 
-:   Explicitly flushes the buffers of the database `$db`. This command is only useful if [AUTOFLUSH](Options.md#AUTOFLUSH) has been set to `false`. 
+:   Explicitly flushes the buffers of the database `$db`. This command is only useful if [AUTOFLUSH](Options.md#autoflush) has been set to `false`. 
 
     **Errors**
 
@@ -570,7 +570,7 @@ db:flush($db as xs:string) as empty-sequence()
 
 db:name($node as node()) as xs:string
 
-:   Returns the name of the database in which the specified [database node](Database Module.md#Database_Nodes)`$node` is stored. 
+:   Returns the name of the database in which the specified [database node](Database Module.md#databasenodes)`$node` is stored. 
 
     **Errors**
 
@@ -582,7 +582,7 @@ db:name($node as node()) as xs:string
 
 db:path($node as node()) as xs:string
 
-:   Returns the path of the database document in which the specified [database node](Database Module.md#Database_Nodes)`$node` is stored. 
+:   Returns the path of the database document in which the specified [database node](Database Module.md#databasenodes)`$node` is stored. 
 
     **Errors**
 
@@ -661,11 +661,11 @@ db:content-type($db as xs:string, $path as xs:string) as xs:string
 
 **Code ** | Description 
 --------- | ------------
-`BXDB0001` | The referenced XML node is no [database node](Database Module.md#Database_Nodes), i.e. it is neither stored in a database nor represented as database fragment. 
+`BXDB0001` | The referenced XML node is no [database node](Database Module.md#databasenodes), i.e. it is neither stored in a database nor represented as database fragment. 
 `BXDB0002` | The addressed database does not exist or could not be opened. 
 `BXDB0003` | The addressed database is not _persistent_ (stored on disk). 
 `BXDB0004` | The database lacks an index structure required by the called function. 
-`BXDB0005` | A query is expected to exclusively return [database nodes](Database Module.md#Database_Nodes) of a single database. 
+`BXDB0005` | A query is expected to exclusively return [database nodes](Database Module.md#databasenodes) of a single database. 
 `BXDB0006` | A database path addressed with `doc()` contains more than one document. 
 `BXDB0007` | A database cannot be updated because it is opened by another process. 
 `BXDB0008` | Database paths cannot be renamed to empty strings. 
@@ -679,39 +679,39 @@ db:content-type($db as xs:string, $path as xs:string) as xs:string
 # Changelog
 ** Version 7.9 **
 
- * Updated: parsing options added to [db:create](Database Module.md#db-create), [db:add](Database Module.md#db-add) and [db:replace](Database Module.md#db-replace). 
- * Updated: allow [UPDINDEX](Options.md#UPDINDEX) if `$all` is `true`. 
+ * Updated: parsing options added to [db:create](Database Module.md#dbcreate), [db:add](Database Module.md#dbadd) and [db:replace](Database Module.md#dbreplace). 
+ * Updated: allow [UPDINDEX](Options.md#updindex) if `$all` is `true`. 
 ** Version 7.8.2 **
 
- * Added: [db:alter](Database Module.md#db-alter), [db:copy](Database Module.md#db-copy), [db:create-backup](Database Module.md#db-create-backup), [db:drop-backup](Database Module.md#db-drop-backup), [db:restore](Database Module.md#db-restore)
+ * Added: [db:alter](Database Module.md#dbalter), [db:copy](Database Module.md#dbcopy), [db:create-backup](Database Module.md#dbcreate-backup), [db:drop-backup](Database Module.md#dbdrop-backup), [db:restore](Database Module.md#dbrestore)
 ** Version 7.8 **
 
- * Removed: db:fulltext (use [ft:search](Full-Text Module.md#ft-search) instead) 
+ * Removed: db:fulltext (use [ft:search](Full-Text Module.md#ftsearch) instead) 
 ** Version 7.7 **
 
- * Added: [db:export](Database Module.md#db-export), [db:name](Database Module.md#db-name), [db:path](Database Module.md#db-path)
- * Updated: `$options` argument added to [db:create](Database Module.md#db-create) and [db:optimize](Database Module.md#db-optimize). 
- * Updated: the functions no longer accept [Database Nodes](Database Module.md#Database_Nodes) as reference. Instead, the name of a database must now be specified. 
+ * Added: [db:export](Database Module.md#dbexport), [db:name](Database Module.md#dbname), [db:path](Database Module.md#dbpath)
+ * Updated: `$options` argument added to [db:create](Database Module.md#dbcreate) and [db:optimize](Database Module.md#dboptimize). 
+ * Updated: the functions no longer accept [Database Nodes](Database Module.md#databasenodes) as reference. Instead, the name of a database must now be specified. 
 ** Version 7.6 **
 
- * Updated: [db:create](Database Module.md#db-create): allow more than one input and path. 
+ * Updated: [db:create](Database Module.md#dbcreate): allow more than one input and path. 
 ** Version 7.5 **
 
- * Updated: [db:add](Database Module.md#db-add): input nodes will be automatically converted to document nodes 
- * Added: [db:backups](Database Module.md#db-backups)
- * Added: [db:create](Database Module.md#db-create)
- * Added: [db:drop](Database Module.md#db-drop)
+ * Updated: [db:add](Database Module.md#dbadd): input nodes will be automatically converted to document nodes 
+ * Added: [db:backups](Database Module.md#dbbackups)
+ * Added: [db:create](Database Module.md#dbcreate)
+ * Added: [db:drop](Database Module.md#dbdrop)
 ** Version 7.3 **
 
- * Added: [db:flush](Database Module.md#db-flush)
+ * Added: [db:flush](Database Module.md#dbflush)
 ** Version 7.2.1 **
 
- * Added: [db:text-range](Database Module.md#db-text-range), [db:attribute-range](Database Module.md#db-attribute-range), [db:output](Database Module.md#db-output)
+ * Added: [db:text-range](Database Module.md#dbtext-range), [db:attribute-range](Database Module.md#dbattribute-range), [db:output](Database Module.md#dboutput)
 ** Version 7.1 **
 
- * Added: [db:list-details](Database Module.md#db-list-details), [db:content-type](Database Module.md#db-content-type)
- * Updated: [db:info](Database Module.md#db-info), [db:system](Database Module.md#db-system), [db:retrieve](Database Module.md#db-retrieve)
+ * Added: [db:list-details](Database Module.md#dblist-details), [db:content-type](Database Module.md#dbcontent-type)
+ * Updated: [db:info](Database Module.md#dbinfo), [db:system](Database Module.md#dbsystem), [db:retrieve](Database Module.md#dbretrieve)
 ** Version 7.0 **
 
- * Added: [db:retrieve](Database Module.md#db-retrieve), [db:store](Database Module.md#db-store), [db:exists](Database Module.md#db-exists), [db:is-raw](Database Module.md#db-is-raw), [db:is-xml](Database Module.md#db-is-xml)
- * Updated: [db:list](Database Module.md#db-list), [db:open](Database Module.md#db-open), [db:add](Database Module.md#db-add)
+ * Added: [db:retrieve](Database Module.md#dbretrieve), [db:store](Database Module.md#dbstore), [db:exists](Database Module.md#dbexists), [db:is-raw](Database Module.md#dbis-raw), [db:is-xml](Database Module.md#dbis-xml)
+ * Updated: [db:list](Database Module.md#dblist), [db:open](Database Module.md#dbopen), [db:add](Database Module.md#dbadd)

@@ -13,9 +13,12 @@ A _map_ is a function that associates a set of keys with values, resulting in a 
 Maps can be constructed as follows: 
 
 
-    map { },                                    (: empty map :)
-    map { 'key': true(), 1984: (<a/>, <b/>) },  (: map with two entries :)
-    map:merge(                                  (: map with ten entries :)
+    map { },                                    (: empty map
+    :)
+    map { 'key': true(), 1984: (<a/>, <b/>) },  (: map with two entries
+    :)
+    map:merge(                                  (: map with ten entries
+    :)
       for $i in 1 to 10
       return map { $i: 'value' || $i }
     )
@@ -266,7 +269,7 @@ Please check out the [Array Module](Array Module.md) for more details.
 
 ### JSON Functions
 
-XQuery now provides native support for JSON objects. Strings and resources can be parsed to XQuery items and, as [shown above](XQuery 3.1.md#JSON_Serialization), serialized back to their original form. 
+XQuery now provides native support for JSON objects. Strings and resources can be parsed to XQuery items and, as [shown above](XQuery 3.1.md#jsonserialization), serialized back to their original form. 
 
 
 #### fn:parse-json
@@ -290,7 +293,7 @@ Parses the supplied string as JSON text and returns its item representation. The
  * `fn:json-doc($uri as xs:string) as item()?`
  * `fn:json-doc($uri as xs:string, $options as map(*)) as item()?`
 
-Retrieves the text from the specified URI, parses the supplied string as JSON text and returns its item representation (see [fn:parse-json](XQuery 3.1.md#fn-parse-json) for more details). 
+Retrieves the text from the specified URI, parses the supplied string as JSON text and returns its item representation (see [fn:parse-json](XQuery 3.1.md#fnparse-json) for more details). 
 
 
     json-doc("http://ip.jsontest.com/")('ip')  (: returns your IP address

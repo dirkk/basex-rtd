@@ -28,7 +28,7 @@ rest:base-uri() as xs:anyURI
 
 rest:uri() as xs:anyURI
 
-:   This function returns the complete URI that addresses the Resource Function. This is the result of [rest:base-uri](RESTXQ Module.md#rest-base-uri) appended with the path from the path annotation of the resource function. 
+:   This function returns the complete URI that addresses the Resource Function. This is the result of [rest:base-uri](RESTXQ Module.md#restbase-uri) appended with the path from the path annotation of the resource function. 
 
 
 ## rest:wadl

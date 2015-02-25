@@ -29,7 +29,7 @@ user:list() as xs:string*
 user:list-details() as element(user)*
 user:list-details($name as xs:string) as element(user)*
 
-:   Returns an element sequence, containing all registered users and their permissions.In addition to the [SHOW USERS](Commands.md#SHOW_USERS) command, encoded password strings and database permissions will be output. A user `$name` can be specified to filter the results in advance. 
+:   Returns an element sequence, containing all registered users and their permissions.In addition to the [SHOW USERS](Commands.md#showusers) command, encoded password strings and database permissions will be output. A user `$name` can be specified to filter the results in advance. 
 
     **Errors**
 

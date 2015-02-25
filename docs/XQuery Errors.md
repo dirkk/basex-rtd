@@ -18,7 +18,7 @@ Error Codes: `BASX`
 
 **Code ** | **Description ** | Examples 
 --------- | ---------------- | ---------
-`BASX0000` |  Generic error, which is used for exceptions in [context-aware Java bindings](Java Bindings.md#Context-Awareness).  | 
+`BASX0000` |  Generic error, which is used for exceptions in [context-aware Java bindings](Java Bindings.md#contextawareness).  | 
 `BASX0001` |  The current user has insufficient [permissions](User Management.md) to execute an expression.  | `file:delete('file.txt')`: _Create_ rights needed. 
 `BASX0002` |  The specified database option is unknown.  | `declare option db:xyz "no"; 1`
 `BASX0003` |  Errors related to [RESTXQ](RESTXQ.md).  | `%restxq:GET('x')`

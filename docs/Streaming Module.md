@@ -53,7 +53,7 @@ stream:is-streamable($item as item()) as item()
 # Changelog
 ** Version 8.0 **
 
- * Update: [stream:materialize](Streaming Module.md#stream-materialize) extended to sequences. 
+ * Update: [stream:materialize](Streaming Module.md#streammaterialize) extended to sequences. 
 
 This module was introduced with Version 7.7. 
 

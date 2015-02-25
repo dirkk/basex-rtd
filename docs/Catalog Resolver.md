@@ -61,7 +61,7 @@ The **paths** to your catalog file and the actual DTDs are either absolute or re
 
 ### Please Note
 
-Entity resolving only works if the [internal XML parser](Parsers.md#XML_Parsers) is switched off (which is the default case). If you use the internal parser, you can manually specify whether you want to parse DTDs and entities or not. 
+Entity resolving only works if the [internal XML parser](Parsers.md#xmlparsers) is switched off (which is the default case). If you use the internal parser, you can manually specify whether you want to parse DTDs and entities or not. 
 
 
 ## Using other Resolvers 

@@ -13,11 +13,11 @@ This page is part of the [Advanced User's Guide](Advanced User's Guide.md). The 
 
 ## Console Example
 1. Start the [BaseX Standalone](.md) client from a console. 
-2. Create a new database via the [CREATE DB](Commands.md#CREATE_DB) command. 
-3. Use the [CREATE BACKUP](Commands.md#CREATE_BACKUP) command to back up your database. 
-4. Add a new document via [ADD](Commands.md#ADD): `ADD AS newdoc.xml <newdoc/>`
-5. Use the [RESTORE](Commands.md#RESTORE) command to restore the original database. 
-6. Type in [XQUERY /](Commands.md#XQUERY) to see the restored database contents. 
+2. Create a new database via the [CREATE DB](Commands.md#createdb) command. 
+3. Use the [CREATE BACKUP](Commands.md#createbackup) command to back up your database. 
+4. Add a new document via [ADD](Commands.md#add): `ADD AS newdoc.xml <newdoc/>`
+5. Use the [RESTORE](Commands.md#restore) command to restore the original database. 
+6. Type in [XQUERY /](Commands.md#xquery) to see the restored database contents. 
 
 The same commands can be used with a BaseX client connected to a remote [Database Server](Database Server.md). 
 

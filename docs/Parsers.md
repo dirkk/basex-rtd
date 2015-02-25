@@ -28,7 +28,7 @@ To turn the internal XML parser and DTD parsing on/off, modify the `INTPARSE` an
 
 ## XQuery
 
-The [db:add](Database Module.md#db-add) and [db:replace](Database Module.md#db-replace) functions can also be used to add new XML documents to the database. The following example query uses the internal XML parser and adds all files to the database `DB` that are found in the directory `2Bimported`: 
+The [db:add](Database Module.md#dbadd) and [db:replace](Database Module.md#dbreplace) functions can also be used to add new XML documents to the database. The following example query uses the internal XML parser and adds all files to the database `DB` that are found in the directory `2Bimported`: 
 
 
     declare option db:intparse "yes";

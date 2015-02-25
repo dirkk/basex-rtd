@@ -13,7 +13,7 @@ In a nutshell, a transaction is equal to a command or query. So each command or 
 Incoming requests are parsed and checked for errors on the server. If the command or query is not correct, the request will not be executed, and the user will receive an error message. Otherwise the request becomes a transaction and gets into the transaction monitor. 
 
 
-Note: An unexpected abort of the server during a transaction, caused by a hardware failure or power cut, may lead to an inconsistent database state if a transaction was active at the shutdown time. So we advise to use the [BACKUP](Commands.md#CREATE_BACKUP) command to backup your database regularly. If the worst case occurs, you can try the [INSPECT](Commands.md#INSPECT) command to check if your database has obvious inconsistencies, and [RESTORE](Commands.md#RESTORE) to restore a previous version of the database. 
+Note: An unexpected abort of the server during a transaction, caused by a hardware failure or power cut, may lead to an inconsistent database state if a transaction was active at the shutdown time. So we advise to use the [BACKUP](Commands.md#createbackup) command to backup your database regularly. If the worst case occurs, you can try the [INSPECT](Commands.md#inspect) command to check if your database has obvious inconsistencies, and [RESTORE](Commands.md#restore) to restore a previous version of the database. 
 
 
 ## Update Transactions
@@ -23,7 +23,7 @@ Many update operations are triggered by [XQuery Update](http://docs.basex.org/wi
  
 # Concurrency Control
 
-BaseX provides locking on database level. Writing transactions do not necessarily block all other transactions any more. The number of parallel transactions can be limited by setting the [PARALLEL](Options.md#PARALLEL) option. 
+BaseX provides locking on database level. Writing transactions do not necessarily block all other transactions any more. The number of parallel transactions can be limited by setting the [PARALLEL](Options.md#parallel) option. 
 
 
 ## Transaction Monitor
@@ -57,7 +57,7 @@ These option declarations will put read locks on _foo_, _bar_ and _batz_ and a w
 
 ### Java Modules
 
-Locks can also be acquired on [Java functions](Java Bindings.md#Java_BindingsLocking) which are imported and invoked from an XQuery expression. It is advisable to explicitly lock Java code whenever it performs sensitive read and write operations. 
+Locks can also be acquired on [Java functions](Java Bindings.md#javabindingslocking) which are imported and invoked from an XQuery expression. It is advisable to explicitly lock Java code whenever it performs sensitive read and write operations. 
 
 
 ## Limitations
@@ -119,7 +119,7 @@ As the standalone versions of BaseX (command-line, GUI) cannot be synchronized w
 # Changelog
 ** Version 7.8 **
 
- * Added: Locks can also be acquired on [Java functions](Java Bindings.md#Java_BindingsLocking). 
+ * Added: Locks can also be acquired on [Java functions](Java Bindings.md#javabindingslocking). 
 ** Version 7.6 **
 
  * Added: database locking introduced, replacing process locking. 

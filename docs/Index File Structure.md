@@ -32,7 +32,7 @@ This file provides a number of details.
 In the example below we have the file for the database used in the atrv.basex example above. The first four bytes provide a big-endian integer value of the total number of different attribute values in the index - in this case 4. 
 
 
-The remainder of the file is made up of ID lists. Each list starts on one of the bytes from atvr.basex - in the case of our example there is a list starting on byte at position 8 (counting starting from 0). The first item in the list is a count of the number of attributes will this value - in our case here it's 1. Then the list has the locations of the attributes - in our case there is only one attribute and it's at a position 8. This means that it is offset 8 positions from the beginning of the database (use [INFO STORAGE](Commands.md#INFO_STORAGE) command to view the order). 
+The remainder of the file is made up of ID lists. Each list starts on one of the bytes from atvr.basex - in the case of our example there is a list starting on byte at position 8 (counting starting from 0). The first item in the list is a count of the number of attributes will this value - in our case here it's 1. Then the list has the locations of the attributes - in our case there is only one attribute and it's at a position 8. This means that it is offset 8 positions from the beginning of the database (use [INFO STORAGE](Commands.md#infostorage) command to view the order). 
 
 
 `00 00 00 04``[01] 02``[01] 05`**`[01] 08`**`[01] 0B`
@@ -49,7 +49,7 @@ would show that there are three values of the attribute. The first is offset 11 
 
 ### Compressed Integers 
 
-The example here is from a very small database so the elements of the ID lists are all one byte long. However the ID lists actually use compressed integers (see `Num` under [Storage Layout](Storage Layout.md#Data_Types) and [Num.java](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/util/Num.java)). This means that each element in the list can be from one to five bytes in length. The value of the first byte tells you how many bytes the element is and how to interpret the value. 
+The example here is from a very small database so the elements of the ID lists are all one byte long. However the ID lists actually use compressed integers (see `Num` under [Storage Layout](Storage Layout.md#datatypes) and [Num.java](https://github.com/BaseXdb/basex/blob/master/basex-core/src/main/java/org/basex/util/Num.java)). This means that each element in the list can be from one to five bytes in length. The value of the first byte tells you how many bytes the element is and how to interpret the value. 
 
 
 Values from `00` to `3F` are single byte elements can be read directly as 0 to 63. 
@@ -105,10 +105,10 @@ The atvl.basex file may now look like this:
 The header tells us that there are 4 attribute values but we can see there are 5 ID lists in the file. One has become orphaned - a new longer list was required to include the newly added attribute and has been appended to the end of the file. 
 
 
-In versions of BaseX prior to 8.0 when items are deleted and a shorter list is required it will be updated in place. When items are added and a longer list is required the new list is always added at the end of the file. Over a period of time the file will grow - running the [OPTIMIZE](Commands.md#OPTIMIZE) command will recreate the index from scratch and recover the lost space. 
+In versions of BaseX prior to 8.0 when items are deleted and a shorter list is required it will be updated in place. When items are added and a longer list is required the new list is always added at the end of the file. Over a period of time the file will grow - running the [OPTIMIZE](Commands.md#optimize) command will recreate the index from scratch and recover the lost space. 
 
 
-From BaseX 8.0 some optimizations have been applied: While a database is open, a list of free spaces is maintained and a new list will only be added to the end of the file if there isn't a free space available that is large enough. However, this list of free spaces is lost when the database is closed and future operations will not be aware of any free space available when the database is opened. This, and the fact that small spaces are unlikely to be filled (single bytes for example) mean that the index file may still grow larger than it needs to be. This space can be recovered, as before, by running [OPTIMIZE](Commands.md#OPTIMIZE). 
+From BaseX 8.0 some optimizations have been applied: While a database is open, a list of free spaces is maintained and a new list will only be added to the end of the file if there isn't a free space available that is large enough. However, this list of free spaces is lost when the database is closed and future operations will not be aware of any free space available when the database is opened. This, and the fact that small spaces are unlikely to be filled (single bytes for example) mean that the index file may still grow larger than it needs to be. This space can be recovered, as before, by running [OPTIMIZE](Commands.md#optimize). 
 
 
 ## Value Index Files 

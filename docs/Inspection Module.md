@@ -83,7 +83,7 @@ inspect:module($input as xs:string) as element(module)
     **Examples**
 
 
-    An example is [shown below](Inspection Module.md#Inspection_ModuleExamples). 
+    An example is [shown below](Inspection Module.md#inspectionmoduleexamples). 
 
 
 ## inspect:xqdoc
@@ -100,7 +100,7 @@ inspect:xqdoc($input as xs:string) as element(xqdoc:xqdoc)
     **Examples**
 
 
-    An example is [shown below](Inspection Module.md#Inspection_ModuleExamples). 
+    An example is [shown below](Inspection Module.md#inspectionmoduleexamples). 
 
  
 # Examples
@@ -215,7 +215,7 @@ The output looks as follows if `inspect:xqdoc('sample.xqm')` is called:
 # Changelog
 ** Version 7.9 **
 
- * Updated: a query URI can now be specified with [inspect:functions](Inspection Module.md#inspect-functions). 
+ * Updated: a query URI can now be specified with [inspect:functions](Inspection Module.md#inspectfunctions). 
 
 This module was introduced with Version 7.7. 
 

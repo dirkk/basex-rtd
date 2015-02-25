@@ -135,7 +135,7 @@ Here is an example where we return an entire document, parts modified and all:
     return $item update delete node text()
 
 
-The `update` expression is a convenience operator for writing simple transform expressions. Similar to the [XQuery 3.0 map operator](XQuery 3.0.md#Simple_Map_Operator), the value of the first expression is bound as context item, and the second expression performs updates on this item. The updated item is returned as result. 
+The `update` expression is a convenience operator for writing simple transform expressions. Similar to the [XQuery 3.0 map operator](XQuery 3.0.md#simplemap-operator), the value of the first expression is bound as context item, and the second expression performs updates on this item. The updated item is returned as result. 
 
 
 Please note that `update` is not part of the official XQuery Update Facility yet. It is currently being discussed in the [W3 Bug Tracker](https://www.w3.org/Bugs/Public/show_bug.cgi?id=23643); your feedback is welcome. 
@@ -150,7 +150,7 @@ Please note that `update` is not part of the official XQuery Update Facility yet
 
 ### Database Functions
 
-Some additional, updating [database functions](Database Module.md#Database_ModuleUpdates) exist in order to perform updates on document and database level. 
+Some additional, updating [database functions](Database Module.md#databasemoduleupdates) exist in order to perform updates on document and database level. 
 
 
 ## Concepts
@@ -172,7 +172,7 @@ The most important thing to keep in mind when using XQuery Update is the Pending
 If an inconsistency is found, an error message is returned and all accessed databases remain untouched (atomicity). For the user, this means that updates are only visible **after** the end of a snapshot. 
 
 
-It may be surprising to see `db:create` in the lower part of this list. This means that newly created database cannot be accessed by the same query, which can be explained by the semantics of updating queries: all expressions can only be evaluated on databases that already exist while the query is evaluated. As a consequence, `db:create` is mainly useful in the context of [Command Scripts](Commands.md#Basics), or [Web Applications](Web Application.md), in which a redirect to another page can be triggered after having created a database. 
+It may be surprising to see `db:create` in the lower part of this list. This means that newly created database cannot be accessed by the same query, which can be explained by the semantics of updating queries: all expressions can only be evaluated on databases that already exist while the query is evaluated. As a consequence, `db:create` is mainly useful in the context of [Command Scripts](Commands.md#basics), or [Web Applications](Web Application.md), in which a redirect to another page can be triggered after having created a database. 
 
 
 #### Example
@@ -208,7 +208,7 @@ By default, it is not possible to mix different types of expressions in a query 
 
     db:output("Update successful."), insert node <c/> into doc('factbook')/mondial
 
- * Since Version 8.0, the [MIXUPDATES](Options.md#MIXUPDATES) option is available. All updating constraints will be turned off, and nodes to be returned will be copied before they are modified by updating expressions. An error is raised if items are returned within a transform expression. 
+ * Since Version 8.0, the [MIXUPDATES](Options.md#mixupdates) option is available. All updating constraints will be turned off, and nodes to be returned will be copied before they are modified by updating expressions. An error is raised if items are returned within a transform expression. 
 
 If you want to modify nodes in main memory, you can use the [transform expression](http://docs.basex.org/wiki/XQuery Updatetransform). 
 
@@ -228,24 +228,24 @@ To use updating expressions within a function, the `%updating` annotation has to
 
 In BaseX, all updates are performed on database nodes or in main memory. By default, update operations never affect the original input file (since Version 8.0, the info string "Updates are not written back" appears in the query info to indicate this). The following solutions exist to write XML documents and binary resources to disk: 
 
- * Updates on main-memory instances of files that have been retrieved via `fn:doc` or `fn:collection` will be propagated back to disk when the `WRITEBACK` option is turned on. This option can also be activated on [command line](Command-Line Options.md#BaseX_Standalone) via `-u`. Make sure you back up the original documents before running your queries. 
+ * Updates on main-memory instances of files that have been retrieved via `fn:doc` or `fn:collection` will be propagated back to disk when the `WRITEBACK` option is turned on. This option can also be activated on [command line](Command-Line Options.md#basexstandalone) via `-u`. Make sure you back up the original documents before running your queries. 
  * Functions like `fn:put` or `file:write` can be used to write single XML documents to disk. With `file:write-binary`, you can write binary resources. 
- * The [EXPORT](Commands.md#EXPORT) command can be used write all resources of a databases to disk. 
+ * The [EXPORT](Commands.md#export) command can be used write all resources of a databases to disk. 
 
 ### Indexes
 
-Index structures are discarded after update operations when [UPDINDEX](Options.md#UPDINDEX) is turned off (which is the default). More details are found in the article on [Indexing](http://docs.basex.org/wiki/IndexesUpdates). 
+Index structures are discarded after update operations when [UPDINDEX](Options.md#updindex) is turned off (which is the default). More details are found in the article on [Indexing](http://docs.basex.org/wiki/IndexesUpdates). 
 
 
 ## Error Messages
 
-Along with the Update Facility, a number of new error codes and messages have been added to the specification and BaseX. All errors are listed in the [XQuery Errors](XQuery Errors.md#Update_Errors) overview. 
+Along with the Update Facility, a number of new error codes and messages have been added to the specification and BaseX. All errors are listed in the [XQuery Errors](XQuery Errors.md#updateerrors) overview. 
 
  
 # Changelog
 ** Version 8.0 **
 
- * Added: `MIXUPDATES` option for [Returning Results](XQuery Update.md#Returning_Results) in updating expressions 
+ * Added: `MIXUPDATES` option for [Returning Results](XQuery Update.md#returningresults) in updating expressions 
  * Added: information message if files are not written back 
 ** Version 7.8 **
 

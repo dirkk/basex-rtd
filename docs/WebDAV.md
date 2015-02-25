@@ -10,7 +10,7 @@ BaseX offers access to the databases and documents using the [WebDAV](http://en.
  
 # Usage
 
-By default, the BaseX HTTP server makes the WebDAV service accessible at `http://localhost:8984/webdav/`. If no default credentials are specified, they will be requested by the client ([see further](Web Application.md#Web_ApplicationUser_Management)). It can be accessed by either `http://<httphost>:<httpport>/webdav/` or `webdav://<httphost>:<httpport>/webdav/`, depending on your WebDAV client. 
+By default, the BaseX HTTP server makes the WebDAV service accessible at `http://localhost:8984/webdav/`. If no default credentials are specified, they will be requested by the client ([see further](Web Application.md#webapplicationuser-management)). It can be accessed by either `http://<httphost>:<httpport>/webdav/` or `webdav://<httphost>:<httpport>/webdav/`, depending on your WebDAV client. 
 
 
 Please note that the file size of XML documents will be displayed as 0 bytes, as the actual file size can only be determined if the full document is being returned and serialized. This may cause problems with some WebDAV clients (e.g. NetDrive or WebDrive). 
@@ -18,7 +18,7 @@ Please note that the file size of XML documents will be displayed as 0 bytes, as
  
 # Authorization
 
-The WebDAV service uses the database user credentials in order to perform authentication and authorization. If database user and password are explicitly specified when starting the BaseX HTTP Server using the corresponding [startup options](Command-Line Options.md#BaseX_HTTP_Server), WebDAV will not request additional user authentication from the client. 
+The WebDAV service uses the database user credentials in order to perform authentication and authorization. If database user and password are explicitly specified when starting the BaseX HTTP Server using the corresponding [startup options](Command-Line Options.md#basexhttp-server), WebDAV will not request additional user authentication from the client. 
 
  
 # Locking
@@ -43,7 +43,7 @@ Please check out the following tutorials to get WebDAV running on different oper
 # Changelog
 ** Version 7.7 **
 
- * Added: [Locking](WebDAV.md#WebDAVLocking)
+ * Added: [Locking](WebDAV.md#webdavlocking)
 ** Version 7.0 **
 
  * WebDAV API introduced 
