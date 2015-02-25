@@ -5,7 +5,7 @@
 This article is part of the [Advanced User's Guide](Advanced User's Guide.md) and introduces the available index structures, which are utilized by the query optimizer to rewrite expressions and speed up query evaluation. 
 
  
-Nearly all examples in this article are based on the [factbook.xml](http://files.basex.org/xml/factbook.xml) document. To see how a query is rewritten, please turn on the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations) in the GUI or use the [-V flag](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) on command line. 
+Nearly all examples in this article are based on the [factbook.xml](http://files.basex.org/xml/factbook.xml) document. To see how a query is rewritten, please turn on the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations) in the GUI or use the [-V flag](Command-Line Options.md#BaseX_Standalone) on command line. 
 
  
 # Structural Indexes

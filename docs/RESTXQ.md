@@ -546,8 +546,7 @@ RESTXQ has been proposed by [Adam Retter](http://www.adamretter.org.uk/). More i
 # Changelog
 ** Version 8.0 **
 
- * Added: DBA (Database Administration Interface, written with RESTXQ) 
- * Added: Support of regular expresssions in the [Path Annotation](RESTXQ.md#Paths)
+ * Added: Support for regular expresssions in the [Path Annotation](RESTXQ.md#Paths)
  * Added: Evaluation of quality factors that are supplied in the [Accept header](RESTXQ.md#Content_Negotiation)
 ** Version 7.9 **
 

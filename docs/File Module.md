@@ -260,7 +260,7 @@ file:append-text-lines($path as xs:string, $values as xs:string*, $encoding as x
 
 file:copy($source as xs:string, $target as xs:string) as empty-sequence()
 
-:   Copies a file specified by `$source` to the file or directory specified by `$target`. If the target file already exists, it will be overwritten. No operation will be performed if the source and target path are equal. 
+:   Copies a file or directory specified by `$source` to the file or directory specified by `$target`. If the target file already exists, it will be overwritten. No operation will be performed if the source and target path are equal. 
 
     **Errors**
 

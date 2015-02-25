@@ -6,7 +6,7 @@ This page is part of the [XQuery Portal](XQuery.md). Serialization parameters de
 
   * including them in the [prolog of the XQuery expression](XQuery 3.0.md#XQuery_3.0Serialization), 
  * specifying them in the XQuery functions [file:write()](File Module.md#file-write) or [fn:serialize()](XQuery 3.0.md#XQuery_3.0Functions). The serialization parameters are specified as 
- * using the `-s` flag of the BaseX [command-line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) clients, 
+ * using the `-s` flag of the BaseX [command-line](Command-Line Options.md#BaseX_Standalone) clients, 
  * setting the [SERIALIZER](Options.md#SERIALIZER) option before running a query, 
  * setting the [EXPORTER](Options.md#EXPORTER) option before exporting a database, or 
  * setting them as [REST](REST.md#RESTParameters) query parameters. 

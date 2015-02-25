@@ -44,7 +44,7 @@ Global options are constants. They can only be set in the configuration file or 
 **Signature** | `DEBUG [boolean]`
 ------------- | -----------------
 **Default** | `false`
-**Summary** | Sends internal debug info to STDERR. This option can be turned on to get additional information for development and debugging purposes. It can also be triggered on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-d`. 
+**Summary** | Sends internal debug info to STDERR. This option can be turned on to get additional information for development and debugging purposes. It can also be triggered on [command line](Command-Line Options.md#BaseX_Standalone) via `-d`. 
 
 ### DBPATH
 
@@ -88,28 +88,28 @@ Global options are constants. They can only be set in the configuration file or 
 **Signature** | `HOST [host]`
 ------------- | -------------
 **Default** | `localhost`
-**Summary** | This host name is used by the client when connecting to a server. This option can also be changed when running the client on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Client) via `-n`. 
+**Summary** | This host name is used by the client when connecting to a server. This option can also be changed when running the client on [command line](Command-Line Options.md#BaseX_Client) via `-n`. 
 
 ### PORT
 
 **Signature** | `PORT [port]`
 ------------- | -------------
 **Default** | `1984`
-**Summary** | This port is used by the client when connecting to a server. This option can also be changed when running the client on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Client) via `-p`. 
+**Summary** | This port is used by the client when connecting to a server. This option can also be changed when running the client on [command line](Command-Line Options.md#BaseX_Client) via `-p`. 
 
 ### SERVERPORT
 
 **Signature** | `SERVERPORT [port]`
 ------------- | -------------------
 **Default** | `1984`
-**Summary** | This is the port the database server will be listening to. This option can also be changed when running the server on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Server) via `-p`. 
+**Summary** | This is the port the database server will be listening to. This option can also be changed when running the server on [command line](Command-Line Options.md#BaseX_Server) via `-p`. 
 
 ### EVENTPORT
 
 **Signature** | `EVENTPORT [port]`
 ------------- | ------------------
 **Default** | `1985`
-**Summary** | This port is used by the client to listen for [server events](Events.md). It will only be bound if a client attaches itself to a database event. This option can also be changed when running the server on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Server) via `-e`. 
+**Summary** | This port is used by the client to listen for [server events](Events.md). It will only be bound if a client attaches itself to a database event. This option can also be changed when running the server on [command line](Command-Line Options.md#BaseX_Server) via `-e`. 
 
 ### USER
 
@@ -118,7 +118,7 @@ Global options are constants. They can only be set in the configuration file or 
 **Default** | _empty_
 **Summary** | Represents a user name, which is used for accessing the server or an HTTP service:  * The default value will be overwritten if a client specifies its own credentials. 
  * If the default value is empty, login will only be possible if the client specifies credentials. 
- * The option can also be changed on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Client) via `-U`. 
+ * The option can also be changed on [command line](Command-Line Options.md#BaseX_Client) via `-U`. 
 
 
 ### PASSWORD
@@ -128,7 +128,7 @@ Global options are constants. They can only be set in the configuration file or 
 **Default** | _empty_
 **Summary** | Represents a password, which is used for accessing the server or an HTTP service:  * The default value will be overwritten if a client specifies its own credentials. 
  * If the default value is empty, login will only be possible if the client specifies credentials. 
- * The option can also be changed on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Client) via `-P`. 
+ * The option can also be changed on [command line](Command-Line Options.md#BaseX_Client) via `-P`. 
  * Please note that it is a security risk to specify your password in plain text. 
 
 
@@ -205,7 +205,7 @@ Updated with Version 8.0: empty string will be ignored.
 **Signature** | `LOG [boolean]`
 ------------- | ---------------
 **Default** | `true`
-**Summary** | Turns [Logging](Logging.md) of server operations and HTTP requests on/off. This option can also be changed when running the server on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Server) via `-z`. 
+**Summary** | Turns [Logging](Logging.md) of server operations and HTTP requests on/off. This option can also be changed when running the server on [command line](Command-Line Options.md#BaseX_Server) via `-z`. 
 
 ### LOGMSGMAXLEN
 
@@ -245,9 +245,9 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
 **Signature** | `STOPPORT [port]`
 ------------- | -----------------
 **Default** | `8985`
-**Summary** | This is the port on which the [HTTP Server](Startup.md#StartupBaseX_HTTP_Server) can be locally closed:  * The listener for stopping the web server will only be started if the specified value is greater than `0`. 
+**Summary** | This is the port on which the [HTTP Server](.md) can be locally closed:  * The listener for stopping the web server will only be started if the specified value is greater than `0`. 
  * The option is ignored if BaseX is used as a [Web Application](Web Application.md) or started via [Maven](Web Application.md#Web_ApplicationMaven). 
- * This option can also be changed when running the HTTP server on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Server) via `-s`. 
+ * This option can also be changed when running the HTTP server on [command line](Command-Line Options.md#BaseX_Server) via `-s`. 
 
  
 # Create Options
@@ -335,7 +335,7 @@ If BaseX is run as [Web Application](Web Application.md), the HTTP options are e
 **Default** | `true`
 **Summary** | Many XML documents include whitespaces that have been added to improve readability. The `CHOP` option controls the [white-space processing mode](http://www.w3.org/TR/REC-xml/#sec-white-space) of the XML parser:  * By default, this option is set to `true`. This way, leading and trailing whitespaces from text nodes will be chopped and all empty text nodes will be discarded. 
  * The flag should be turned off if a document contains [mixed content](Full-Text.md#Mixed_Content). 
- * The flag can also be turned off on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-w`. 
+ * The flag can also be turned off on [command line](Command-Line Options.md#BaseX_Standalone) via `-w`. 
  * If the `xml:space="preserve"` attribute is attached to an element, chopping will be turned off for all descendant text nodes. In the following example document, the whitespaces in the text nodes of the `text` element will not be chopped: 
 
     <xml>
@@ -508,7 +508,7 @@ Introduced with Version 8.0:
 **Signature** | `QUERYINFO [boolean]`
 ------------- | ---------------------
 **Default** | `false`
-**Summary** | Prints more information on internal query rewritings, optimizations, and performance. By default, this info is shown in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations) in the GUI. It can also be activated on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-V`. 
+**Summary** | Prints more information on internal query rewritings, optimizations, and performance. By default, this info is shown in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations) in the GUI. It can also be activated on [command line](Command-Line Options.md#BaseX_Standalone) via `-V`. 
 
 ## XQUERY3
 
@@ -536,7 +536,7 @@ Added with Version 8.0:
  * Variables may optionally be introduced with a leading dollar sign. 
  * Commas that occur in the value itself are encoded by duplication. 
  * If a variable uses a namespace different to the default namespace, it can be specified with the [Clark Notation](http://www.jclark.com/xml/xmlns.htm) or [Expanded QName Notation](http://www.w3.org/TR/xquery-30/#id-basics). 
- * This option can also be used on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) with the flag `-b`. 
+ * This option can also be used on [command line](Command-Line Options.md#BaseX_Standalone) with the flag `-b`. 
 
 **Examples** | `$a=1,$b=2`   binds the values `1` and `2` to the variables $a and $b `a=1,,2`   binds the value `1,2` to the variable $a `{URI}a=x`   binds the value `x` to the variable $a with the namespace `URI`. 
     SET BINDINGS BIND-VAR="hello world!"
@@ -607,14 +607,14 @@ Added with Version 8.0:
 **Signature** | `RUNQUERY [boolean]`
 ------------- | --------------------
 **Default** | `true`
-**Summary** | Specifies if a query will be executed or parsed only. This option can also be changed on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-R`. 
+**Summary** | Specifies if a query will be executed or parsed only. This option can also be changed on [command line](Command-Line Options.md#BaseX_Standalone) via `-R`. 
 
 ## RUNS
 
 **Signature** | `RUNS [num]`
 ------------- | ------------
 **Default** | `1`
-**Summary** | Specifies how often a query will be evaluated. The result is serialized only once, and the measured times are averages of all runs. This option can also be changed on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-r`. 
+**Summary** | Specifies how often a query will be evaluated. The result is serialized only once, and the measured times are averages of all runs. This option can also be changed on [command line](Command-Line Options.md#BaseX_Standalone) via `-r`. 
  
 # Serialization Options
 
@@ -623,7 +623,7 @@ Added with Version 8.0:
 **Signature** | `SERIALIZE [boolean]`
 ------------- | ---------------------
 **Default** | `true`
-**Summary** | Results of XQuery expressions will be serialized if this option is turned on. For debugging purposes and performance measurements, this option can be set to `false`. It can also be turned off on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-z`. 
+**Summary** | Results of XQuery expressions will be serialized if this option is turned on. For debugging purposes and performance measurements, this option can be set to `false`. It can also be turned off on [command line](Command-Line Options.md#BaseX_Standalone) via `-z`. 
 
 ## SERIALIZER
 
@@ -632,7 +632,7 @@ Added with Version 8.0:
 **Default** | _empty_
 **Summary** | Contains parameters for [serializing](Serialization.md) query results:  * Keys and values are separated by equality signs. 
  * Multiple parameters are delimited by commas. 
- * The option can also be used on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) with the flag `-s`. 
+ * The option can also be used on [command line](Command-Line Options.md#BaseX_Standalone) with the flag `-s`. 
 
 **Example** | `encoding=US-ASCII,omit-xml-declaration=no` : sets the encoding to `US-ASCII` and prints the XML declaration. 
 
@@ -648,14 +648,14 @@ Added with Version 8.0:
 **Signature** | `XMLPLAN [boolean]`
 ------------- | -------------------
 **Default** | `false`
-**Summary** | Prints the execution plan of an XQuery expression in its XML representation. This option can also be activated on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-x`. 
+**Summary** | Prints the execution plan of an XQuery expression in its XML representation. This option can also be activated on [command line](Command-Line Options.md#BaseX_Standalone) via `-x`. 
 
 ## COMPPLAN
 
 **Signature** | `COMPPLAN [boolean]`
 ------------- | --------------------
 **Default** | `true`
-**Summary** | Generates the query plan, which can be activated via [[#XMLPLAN|XMLPLAN], before or after query compilation. This option can also be activated on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-X`. 
+**Summary** | Generates the query plan, which can be activated via [[#XMLPLAN|XMLPLAN], before or after query compilation. This option can also be activated on [command line](Command-Line Options.md#BaseX_Standalone) via `-X`. 
 
 ## DOTPLAN
 
@@ -685,7 +685,7 @@ Added with Version 8.0:
 **Signature** | `WRITEBACK [boolean]`
 ------------- | ---------------------
 **Default** | `false`
-**Summary** | Propagates updates on main-memory instances of files that have been retrieved via `fn:doc` or `fn:collection` back to disk. This option can also be activated on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-u`. Please note that, when turning this option on, your original files will not be backed up. 
+**Summary** | Propagates updates on main-memory instances of files that have been retrieved via `fn:doc` or `fn:collection` back to disk. This option can also be activated on [command line](Command-Line Options.md#BaseX_Standalone) via `-u`. Please note that, when turning this option on, your original files will not be backed up. 
 
 ## MAXSTAT
 

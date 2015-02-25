@@ -4,7 +4,7 @@
  
 BaseX provides access to stored database resources and to the XQuery engine via [REST](REST.md), [RESTXQ](RESTXQ.md) and [WebDAV](WebDAV.md) services. This article describes different ways of deploying and configuring these services. The services can be deployed in three different ways: 
 
-  * as standalone application by running the [BaseX HTTP Server](Startup.md#StartupBaseX_HTTP_Server), 
+  * as standalone application by running the [BaseX HTTP Server](.md), 
  * as web servlets in a J2EE [Servlet Container](Web Application.md#Servlet_Container), and 
  * for development purposes, using [Maven](Web Application.md#Web_ApplicationMaven). 
  
@@ -94,7 +94,7 @@ The same options as in the case of deployment in a servlet container apply. In t
  
 # User Management
 
-By default, REST and WebDAV services require client-side authentication. Default credentials can be stored server-side in the `web.xml` file or specified via [command-line arguments](Command-Line Options.md#Command-Line_OptionsBaseX_HTTP_Server). If the HTTP server is started with no pre-defined credentials, users and passwords can be sent via [HTTP Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication) with each HTTP request. Since Version 8.0, [Digest Authentication](http://en.wikipedia.org/wiki/Digest_authentication) is available as well, with support for all qop directives (`auth` and `auth-int`). 
+By default, REST and WebDAV services require client-side authentication. Default credentials can be stored server-side in the `web.xml` file or specified via [command-line arguments](Command-Line Options.md#BaseX_HTTP_Server). If the HTTP server is started with no pre-defined credentials, users and passwords can be sent via [HTTP Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication) with each HTTP request. Since Version 8.0, [Digest Authentication](http://en.wikipedia.org/wiki/Digest_authentication) is available as well, with support for all qop directives (`auth` and `auth-int`). 
 
 
 Users are specified in a `users.xml` file, which is stored in the database directory (see [User Management](User Management.md) for more information). 

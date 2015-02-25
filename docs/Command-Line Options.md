@@ -232,7 +232,7 @@ The flags have the following meaning (equivalent database options are shown in t
 `-n<name>` |  Specifies the host name on which the server is running.  | `HOST` | `localhost` | `-nserver.basex.org`
 `-p<num>` |  Specifies the port on which the database server will be addressable.  | `SERVERPORT` | `1984` | `-p9998`
 `-P<pass>` |  Specifies a user password, which will be used by the HTTP services to open a new session. If this flag is omitted, and if `-U` was specified, the password will be requested on command line. _Warning_: when the password is specified with this flag, it may get visible to others.  | `PASSWORD` |  | `-Uadmin -Padmin`
-`-s<num>` |  Specifies the port that will be used to stop the HTTP server.  | `STOPPORT` or`pom.xml` | `8983` | 
+`-s<num>` |  Specifies the port that will be used to stop the HTTP server.  | `STOPPORT` or`pom.xml` | `8985` | 
 `-S` |  Starts the server as service (i.e., in the background).  |  | 
 `-U<name>` |  Specifies a user name, which will be used by the HTTP services for opening a new session.  | `USER` |  | `-Uadmin`
 `-z` |  Does not generate any [log files](Logging.md).  | `LOG` | 
@@ -257,7 +257,7 @@ One or more XML and XQuery files can be passed on as parameters. If an XML file 
  * Added: Specify if a query will be executed or parsed only with `-R`. 
 ** Version 7.7 **
 
- * Added: Bind host to the [BaseX Server](Command-Line Options.md#Command-Line_OptionsBaseX_Server) with `-n`. 
+ * Added: Bind host to the [BaseX Server](Command-Line Options.md#BaseX_Server) with `-n`. 
 ** Version 7.5 **
 
  * Added: detection of [Command Scripts](Commands.md#Basics). 

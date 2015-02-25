@@ -18,7 +18,7 @@ http:send-request($request as element(http:request)?, $href as xs:string?, $bodi
 http:send-request($request as element(http:request)) as item()+
 http:send-request($request as element(http:request)?, $href as xs:string?) as item()+
 
-:   Sends an HTTP request and interprets the corresponding response. `$request` contains the parameters of the HTTP request such as HTTP method and headers. In addition to this it can also contain the URI to which the request will be sent and the body of the HTTP method. If the URI is not given with the parameter `$href`, its value in `$request` is used instead. The structure of `http:request` element follows the [EXPath](http://expath.org/spec/http-client) specification. 
+:   Sends an HTTP request and interprets the corresponding response. `$request` contains the parameters of the HTTP request such as HTTP method and headers. In addition to this it can also contain the URI to which the request will be sent and the body of the HTTP method. If the URI is not given with the parameter `$href`, its value in `$request` is used instead.The structure of `http:request` element follows the [EXPath](http://expath.org/spec/http-client) specification. Since Version 8.0, digest authentication is supported as well. 
 
     **Errors**
 
@@ -205,7 +205,10 @@ POST request to the BaseX REST Service, specifying a username and password.
 `HC0006` | A timeout occurred waiting for the response. 
  
 # Changelog
+** Version 8.0 **
+
+ * Added: digest authentication 
 ** Version 7.6 **
 
- * Updated: [http:send-request](HTTP Module.md#http-send-request): `HC0002`: is raised if the input cannot be parsed, or converted to the final data type. 
+ * Updated: [http:send-request](HTTP Module.md#http-send-request): `HC0002` is raised if the input cannot be parsed or converted to the final data type. 
  * Updated: errors are using `text/plain` as media-type. 

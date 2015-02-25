@@ -2,12 +2,12 @@
 
 
  
-This page is part of the [Getting Started](Getting Started.md) Section. BaseX offers a standalone (embedded) console mode from which all [database commands](Commands.md) can be executed. The article on the [Database Server](Database Server.md) provides numerous examples for running commands in the console mode (note that the GUI does _not_ interact with the client/server architecture). 
+This page is part of the [Getting Started](Getting Started.md) Section. BaseX offers a standalone console mode from which all [database commands](Commands.md) can be executed. The article on the [Database Server](Database Server.md) provides numerous examples for running commands in the console mode (note that the GUI does _not_ interact with the client/server architecture). 
 
  
 # Startup
 
-First of all, please launch a **standalone** version of BaseX: double click on the **BaseX** icon, or run the `basex` script. [Follow this link](Startup.md#StartupBaseX_Standalone) for more information (or check out the additional [command-line options](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone)). 
+First of all, please launch a **standalone** version of BaseX: double click on the **BaseX** icon, or run the `basex` script. [Follow this link](.md) for more information (or check out the additional [command-line options](Command-Line Options.md#BaseX_Standalone)). 
 
 
 ## Working with the BaseX Console
@@ -35,7 +35,7 @@ To evaluate commands without entering the console mode, you can use the `-c` opt
     Query executed in 15.62 ms.
 
 
-All available command-line options can be found [here](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone). 
+All available command-line options can be found [here](Command-Line Options.md#BaseX_Standalone). 
 
 
 ## See also 

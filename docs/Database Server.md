@@ -7,7 +7,7 @@ This step by step tutorial is part of the [Getting Started](Getting Started.md) 
  
 # Startup
 
-First, launch a **Server** and **Client** instance of BaseX: double click on the **BaseX Server/Client** icons, or run the `basexserver` and `basexclient` scripts. [Follow this link](Startup.md#StartupBaseX_Server) for more information (or check out the additional [command-line options](Command-Line Options.md#Command-Line_OptionsBaseX_Server)). 
+First, launch a **Server** and **Client** instance of BaseX: double click on the **BaseX Server/Client** icons, or run the `basexserver` and `basexclient` scripts. [Follow this link](.md) for more information (or check out the additional [command-line options](Command-Line Options.md#BaseX_Server)). 
 
 
 ## Create a database

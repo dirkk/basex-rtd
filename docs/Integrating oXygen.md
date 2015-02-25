@@ -35,7 +35,7 @@ You can now open single database files as follows:
 
 ### Preparations
 1. Download one of the complete [BaseX distributions](http://basex.org/download) (ZIP, EXE) 
-2. Charles Foster's XQJ implementation provides a default (client/server) and a local driver. If you want to use the first flavor, you need to start a [BaseX Server](Startup.md#StartupBaseX_Server) instance 
+2. Charles Foster's XQJ implementation provides a default (client/server) and a local driver. If you want to use the first flavor, you need to start a [BaseX Server](.md) instance 
 
 ### Data Source
 1. Start oXygen and go to _Options_ → _Preferences_ → _Data Sources_

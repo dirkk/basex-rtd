@@ -7,7 +7,7 @@ This page is part of the [Getting Started](Getting Started.md) Section. The Base
  
 # Startup
 
-First of all, launch a GUI instance of BaseX. Depending on your operating system, double click on the **BaseX GUI** start icon or run the `basexgui` script. Beside that, some more [startup options](Startup.md#StartupBaseX_GUI) are available. 
+First of all, launch a GUI instance of BaseX. Depending on your operating system, double click on the **BaseX GUI** start icon or run the `basexgui` script. Beside that, some more [startup options](.md) are available. 
 
 
 ## Create Database

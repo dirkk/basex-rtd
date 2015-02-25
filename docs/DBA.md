@@ -23,7 +23,7 @@ The DBA has just been released, and it is in beta stage. We are looking forward 
  
 # Startup
  * Download the **ZIP Archive** or the **Windows Installer** from the [download page](http://basex.org/download)
- * Start the [BaseX HTTP Server](Startup.md#StartupBaseX_HTTP_Server)
+ * Start the [BaseX HTTP Server](.md)
  * Open a browser and visit the URL `http://localhost:8984/dba`
 
 ## First Steps

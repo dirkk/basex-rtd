@@ -7,6 +7,14 @@ This page is part of the [Getting Started](Getting Started.md) Section. It gives
  
 # Editor
 
+## Code Completions
+
+The GUI editor provides various code completions, which simplify the authoring of complex XQuery applications. Opening elements, comments, quotes or brackets will automatically be closed, and new lines will automatically be indented. 
+
+
+If some characters have been entered, and if the [shortcut](Shortcuts.md#Editor_Shortcuts) for code completions is pressed (Ctrl Space), a popup menu will appear and provides some code templates. If only one completion is possible, it will automatically be inserted. 
+
+
 ## Editor Shortcuts
 
 The text editor can be used to create, edit, save and execute XQuery expressions, XML documents and any other textual files. 
@@ -62,59 +70,6 @@ Move one line up/down  | ↑/↓  | ↑/↓
 Move one screen-full up/down  | Page ↑/↓  | Page ↑/↓ (fn ↑/↓) 
 Move to top/bottom  | Ctrl Home/End  | ↖/↘ (⌘ ↑/↓) 
 Scroll one line up/down  | Ctrl ↑/↓  | Alt ↑/↓ 
-
-### Code Completions
- The GUI editor provides various code completions, which simplify the authoring of complex XQuery applications. Opening elements, comments, quotes or brackets will automatically be closed, and new lines will automatically be indented. If the [shortcut](Shortcuts.md#Editor_Shortcuts) for code completions is pressed (Ctrl Space), the keys listed in the following table will be replaced with their corresponding values. An underscore indicates where the cursor will be placed after the replacement: 
-
-
-**Key** | **Value**
-------- | ---------
-`..` | `parent::node()`
-`.` | `self::node()`
-`//` | `/descendant-or-self::node()/`
-`/` | `root()`
-`@` | `attribute`
-`an` | `ancestor::`
-`as` | `ancestor-or-self::`
-`copy` | `copy $_ := modify return `
-`cr` | `&xD;`
-`ch` | `child::`
-`ct` | `contains text`
-`de` | `descendant::`
-`ds` | `descendant-or-self::`
-`declnl` | `declare option output:item-separator "&#xA;";`
-`declns` | `declare namespace _ = "";`
-`delete` | `delete node _`
-`dump` | `prof:dump(_)`
-`fo` | `following::`
-`for` | `for $_ in return `
-`fs` | `following-sibling::`
-`function` | `declare function _() {  };`
-`group` | `group by $_`
-`import` | `import module namespace _ = "";`
-
-  
-**Key** | **Value**
-------- | ---------
-`insert` | `insert node _ into `
-`let` | `let $_ := return `
-`module` | `module namespace _ = "";`
-`nl` | `&xA;`
-`ns` | `namespace`
-`order` | `order by _`
-`pa` | `parent::`
-`pr` | `preceding::`
-`ps` | `preceding-sibling::`
-`rename` | `rename node _ as `
-`replace value` | `replace value of node _ with `
-`replace` | `replace node _ with `
-`some` | `some $_ in satisfies `
-`switch` | `switch(_)  case return   default return `
-`tab` | `&#x9;`
-`trace` | `trace(_ , 'Info: ')`
-`try` | `try {  _} catch * {  }`
-`typeswitch` | `typeswitch(_)  case return   default return `
-`variable` | `declare variable $_ := ;`
 
 ### GUI
 
@@ -198,6 +153,9 @@ Show Help  | F1  | F1
 
 
 ## Changelog
+** Version 8.0 **
+
+ * Added: New code completions, popup menu 
 ** Version 7.8.2 **
 
  * Added: Sort lines (Ctrl-U) 

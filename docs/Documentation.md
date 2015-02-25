@@ -7,7 +7,8 @@ This page is linked from the [Main Page](index.md). It contains links to previou
  
 Since Version 7.2, we are offering PDF versions of our documentation: 
 
-  * [BaseX79.pdf](http://files.basex.org/releases/7.9/BaseX79.pdf)
+  * [BaseX80.pdf](http://files.basex.org/releases/8.0/BaseX80.pdf)
+ * [BaseX79.pdf](http://files.basex.org/releases/7.9/BaseX79.pdf)
  * [BaseX782.pdf](http://files.basex.org/releases/7.8.2/BaseX782.pdf)
  * [BaseX781.pdf](http://files.basex.org/releases/7.8.1/BaseX781.pdf)
  * [BaseX78.pdf](http://files.basex.org/releases/7.8/BaseX78.pdf)

@@ -49,7 +49,8 @@ h3, h4, h5, h6 {
 .wy-nav-top,
 .wy-menu-vertical a:active,
 .wy-side-nav-search {
-    background-color: #A00;
+  background-color: #A00;
+  padding: 0;
 }
 
 .wy-menu-vertical li.toctree-l1.current {
@@ -79,4 +80,12 @@ a.toctree-l4 {
 
 nav.stickynav {
   position: fixed !important;
+}
+
+#logo {
+  width: 120px;
+  height: 120px;
+  display: inline-block;
+  background-image: url('/img/BaseX.png');
+  background-size: 100%;
 }

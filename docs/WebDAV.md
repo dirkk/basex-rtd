@@ -18,7 +18,7 @@ Please note that the file size of XML documents will be displayed as 0 bytes, as
  
 # Authorization
 
-The WebDAV service uses the database user credentials in order to perform authentication and authorization. If database user and password are explicitly specified when starting the BaseX HTTP Server using the corresponding [startup options](Command-Line Options.md#Command-Line_OptionsBaseX_HTTP_Server), WebDAV will not request additional user authentication from the client. 
+The WebDAV service uses the database user credentials in order to perform authentication and authorization. If database user and password are explicitly specified when starting the BaseX HTTP Server using the corresponding [startup options](Command-Line Options.md#BaseX_HTTP_Server), WebDAV will not request additional user authentication from the client. 
 
  
 # Locking

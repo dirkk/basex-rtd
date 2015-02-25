@@ -2,7 +2,7 @@
 
 
  
-This article is part of the [Getting Started](Getting Started.md) Section. It lists all database commands supported by BaseX. Commands can e.g. be executed from the [Command Line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone), [Scripts](Commands.md#Command_Scripts), the [Clients](Clients.md), [REST](REST.md), the input field in the [GUI](http://docs.basex.org/wiki/Graphical User Interface) and other ways. If the GUI is used, all commands that are triggered by the GUI itself will show up in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations). The [Permission](User Management.md) fields indicate which rights are required by a user to perform a command in the client/server architecture. 
+This article is part of the [Getting Started](Getting Started.md) Section. It lists all database commands supported by BaseX. Commands can e.g. be executed from the [Command Line](Command-Line Options.md#BaseX_Standalone), [Scripts](Commands.md#Command_Scripts), the [Clients](Clients.md), [REST](REST.md), the input field in the [GUI](http://docs.basex.org/wiki/Graphical User Interface) and other ways. If the GUI is used, all commands that are triggered by the GUI itself will show up in the [Info View](http://docs.basex.org/wiki/Graphical User InterfaceVisualizations). The [Permission](User Management.md) fields indicate which rights are required by a user to perform a command in the client/server architecture. 
 
  
 # Basics
@@ -294,7 +294,7 @@ Introduced with Version 7.9:
 ---------- | -------------
 **XML Syntax**     | `<test path='...'/>`
 **Permission** | _ADMIN_
-**Summary** | Runs all [XQUnit tests](Unit Module.md) in the specified `path`. The path can point to a single file or a directory.Unit testing can also be triggered via `-t` on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone). 
+**Summary** | Runs all [XQUnit tests](Unit Module.md) in the specified `path`. The path can point to a single file or a directory.Unit testing can also be triggered via `-t` on [command line](Command-Line Options.md#BaseX_Standalone). 
 **Errors** | The command fails if at least one test fails. 
 **Examples** |  * `TEST project/tests` runs all tests in the directory `project/tests`. 
 

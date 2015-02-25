@@ -12,8 +12,8 @@ In BaseX, a _database_ is a pretty light-weight concept and can be compared to a
 
 New databases can be created via commands, in the GUI, or with any of our [APIs](Developing.md). If some input is specified along with the create operation, it will be added to the database in a bulk operation: 
 
- * [Console](Startup.md#StartupBaseX_Standalone) : `CREATE DB db /path/to/resources` will add initial documents to a database 
- * [GUI](Startup.md#StartupBaseX_GUI) : Go to _Database_ → _New_, press _Browse_ to choose an initial file or directory, and press _OK_
+ * [Console](.md) : `CREATE DB db /path/to/resources` will add initial documents to a database 
+ * [GUI](.md) : Go to _Database_ → _New_, press _Browse_ to choose an initial file or directory, and press _OK_
 
 Database must follow the [valid names constraints](Commands.md#Valid_Names). Various [parsers](Parsers.md) can be chosen to influence the database creation, or to convert different formats to XML. 
 

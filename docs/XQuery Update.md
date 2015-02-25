@@ -228,7 +228,7 @@ To use updating expressions within a function, the `%updating` annotation has to
 
 In BaseX, all updates are performed on database nodes or in main memory. By default, update operations never affect the original input file (since Version 8.0, the info string "Updates are not written back" appears in the query info to indicate this). The following solutions exist to write XML documents and binary resources to disk: 
 
- * Updates on main-memory instances of files that have been retrieved via `fn:doc` or `fn:collection` will be propagated back to disk when the `WRITEBACK` option is turned on. This option can also be activated on [command line](Command-Line Options.md#Command-Line_OptionsBaseX_Standalone) via `-u`. Make sure you back up the original documents before running your queries. 
+ * Updates on main-memory instances of files that have been retrieved via `fn:doc` or `fn:collection` will be propagated back to disk when the `WRITEBACK` option is turned on. This option can also be activated on [command line](Command-Line Options.md#BaseX_Standalone) via `-u`. Make sure you back up the original documents before running your queries. 
  * Functions like `fn:put` or `file:write` can be used to write single XML documents to disk. With `file:write-binary`, you can write binary resources. 
  * The [EXPORT](Commands.md#EXPORT) command can be used write all resources of a databases to disk. 
 
@@ -245,7 +245,7 @@ Along with the Update Facility, a number of new error codes and messages have be
 # Changelog
 ** Version 8.0 **
 
- * Added: `MIXUPDATES` option for [Returning Results](XQuery Update.md#Returning_Results) in updating expressions.</code> 
+ * Added: `MIXUPDATES` option for [Returning Results](XQuery Update.md#Returning_Results) in updating expressions 
  * Added: information message if files are not written back 
 ** Version 7.8 **
 

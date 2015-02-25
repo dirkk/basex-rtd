@@ -2,7 +2,7 @@
 
 
  
-This page is part of the [Developer Section](Developing.md). It describes how to communicate with BaseX with other programming languages. 
+This page is part of the [Developer Section](Developing.md). It describes how to communicate with BaseX from other programming languages. 
 
  
 Please note that with Version 8.0, we have switched from cram-md5 to digest authentication. If a language binding does not work anymore, it will need to be slightly updated. Please have a look at our [Server Protocol](Server Protocol.md) for more information on the exchanged bytes. Your contributions are welcome! 
